@@ -1,0 +1,53 @@
+{
+  "caso": "TC-REQ16-001",
+  "fixture": "REP-01",
+  "base_datos": "bancoerp_e2_qa_rep01",
+  "estado_inicial": {
+    "clientes": [
+      {
+        "dpi": "2999999990301",
+        "nombre": "Rita Reporte",
+        "estado": "ACTIVO"
+      },
+      {
+        "dpi": "2999999990302",
+        "nombre": "Raul Reporte",
+        "estado": "EN_REVISION"
+      }
+    ],
+    "cuentas": [
+      {
+        "numero": "AH261002000301",
+        "estado": "ACTIVA",
+        "saldo_inicial": "2475.00"
+      },
+      {
+        "numero": "MO261002000302",
+        "estado": "ACTIVA",
+        "saldo_inicial": "1500.00"
+      },
+      {
+        "numero": "AH261002000303",
+        "estado": "CERRADA",
+        "saldo_inicial": "0.00"
+      }
+    ]
+  },
+  "operaciones": [
+    "Transferencia interna Q200.00 de AH261002000301 a MO261002000302 (POST /api/transacciones/transferencia)",
+    "ACH entrante aprobado Q25.00 a MO261002000302 (POST /api/external/ach/transferencias, código E2-REP01-ACH-001)"
+  ],
+  "totales_esperados": {
+    "totalClientes": 2,
+    "clientesActivos": 1,
+    "clientesEnRevision": 1,
+    "totalCuentas": 3,
+    "cuentasActivas": 2,
+    "saldoTotalActivo": "4000.00",
+    "transferenciasInternas": 1,
+    "montoTransferenciasInternas": "200.00",
+    "achAprobadas": 1,
+    "montoAchAprobado": "25.00"
+  },
+  "nota": "Saldo activo inicial 2475.00+1500.00=3975.00; la transferencia interna no cambia el total; el ACH entrante +25.00 lo lleva a 4000.00."
+}

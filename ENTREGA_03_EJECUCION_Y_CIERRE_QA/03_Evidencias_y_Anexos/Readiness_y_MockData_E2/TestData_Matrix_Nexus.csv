@@ -1,0 +1,26 @@
+﻿ID,Tipo,Descripción,Valores exactos,Fuente,Disponibilidad,Casos que lo usan
+TD-01,Válido,Usuario qa_admin activo/no bloqueado con permisos administrativos,username=qa_admin; password=QaNexus2026,MockData_Fixtures_Nexus.sql,Preparado,"TC-REQ01-001, TC-REQ03-001, TC-REQ05-002, TC-REQ13-001, TC-REQ13-002, TC-REQ16-002"
+TD-02,Válido,Usuario qa_cajero con empleado activo asociado,username=qa_cajero; empleado 1881838a-ef70-5465-b2df-093b95388779 ACTIVO,MockData_Sintetica.sql + fixtures,Preparado,"TC-REQ02-001, TC-REQ02-002, TC-REQ06-001, TC-REQ08-001..003, TC-REQ09-001/002, TC-REQ10-001..003, TC-REQ11-001..003, TC-REQ15-002"
+TD-03,Inválido,Usuario qa_inactivo con estado=false,username=qa_inactivo; estado=false,MockData_Sintetica.sql,Preparado,TC-REQ01-003
+TD-04,Límite,Configuración MaxFailedAccessAttempts=5; secuencia 4/5/6 intentos,qa_bloqueo con intentos_fallidos=0; password errónea=Incorrecta9*,docker-compose.qa.yml + fixtures,Preparado,"TC-REQ01-002, TC-REQ15-001"
+TD-05,Válido,"Cliente A ACTIVO, DPI 2999999990101, teléfono 55667788",Ana Prueba; ana.prueba@nexus.test; nac. 1995-01-15,MockData_Fixtures_Nexus.sql,Preparado,"TC-REQ04-002, TC-REQ06-001, TC-REQ12-001..003"
+TD-06,Válido,Cliente exactamente 18 años al 02/10/2026 (nacimiento 02/10/2008),Diego Frontera; DPI 2999999990199; tel 55778899; diego.qa@nexus.test,Generado (cuerpo Postman),Preparado,TC-REQ04-001
+TD-07,Inválido,Cliente menor por 1 día (nacimiento 03/10/2008),Mateo Menor; DPI 2999999990195; tel 55778800,Generado (cuerpo Postman),Preparado,TC-REQ04-001 (variante)
+TD-08,Límite,DPI 12/13/14 dígitos y DPI duplicado,299999999010 / 2999999990198 / 29999999901012 / 2999999990101,Generado (cuerpo Postman),Preparado,TC-REQ04-002
+TD-09,Límite,Teléfono 7/8/9 dígitos; correo con/sin @,5566778 / 55667788 / 556677889; correo.invalido,Generado (cuerpo Postman),Preparado,TC-REQ04-003
+TD-10,Válido,"Cuenta A1 AHORRO ACTIVA: saldo Q7000, mínimo Q100, límite Q5000",AH261002000101 (Ana),MockData_Fixtures_Nexus.sql,Preparado,"TC-REQ09-001, TC-REQ09-002, TC-REQ10-001, TC-REQ11-001, TC-REQ14-001, TC-REQ15-002, TC-REQ17-003"
+TD-11,Válido,Cuenta A2 MONETARIA ACTIVA: saldo Q1500,MO261002000102 (Ana),MockData_Fixtures_Nexus.sql,Preparado,"TC-REQ12-001, TC-REQ12-002, TC-REQ14-002"
+TD-12,Seguridad,Cuenta B1 pertenece a Cliente B para acceso horizontal,AH261002000201 / MO261002000202 (Bruno),MockData_Fixtures_Nexus.sql,Preparado,"TC-REQ12-001, TC-REQ12-002"
+TD-13,Inválido,Cuenta BLOQUEADA con saldo Q500,AH261002000103 (Ana),MockData_Fixtures_Nexus.sql,Preparado,TC-REQ09-003
+TD-14,Límite,Montos Q0.00 y Q0.01,0.00 / 0.01,Generado (cuerpo Postman),Preparado,"TC-REQ09-001, TC-REQ10-001"
+TD-15,Límite,Límite diario Q5000: 4999.99 / 5000.00 / 5000.01,AH261002000207 (retirado 0); AH261002000104 (retirado 4900); AH261002000105 (retirado 4990),MockData_Fixtures_Nexus.sql,Preparado,"TC-REQ10-003, TC-REQ12-003, TC-REQ14-003"
+TD-16,Límite,Diferencia de caja ±Q10.00 y ±Q10.01,fondo 1000.00; efectivoContado 1010.00 / 1010.01 / 989.99,Generado (cuerpo Postman),Preparado,"TC-REQ08-002, TC-REQ08-003"
+TD-17,Integración,Banco ACH QA_NEXUS activo apuntando al banco simulado QA,codigo=QA_NEXUS; apiBaseUrl=http://mock-bank:8081; destino EXT-QA-0001,Postman TC-REQ13-001 (crea) + mock-bank,Preparado,"TC-REQ13-001, TC-REQ14-001, TC-REQ14-003"
+TD-18,Inválido,Banco ACH QA_NEXUS marcado inactivo,PATCH activo=false,Postman TC-REQ13-002,Preparado,"TC-REQ13-002, TC-REQ14-002"
+TD-19,Integración,Respuesta ACH simulada válida para cuenta destino ACTIVA,mock-bank /success → HTTP 201 APROBADA (MOCK observado en RD-15),Banco simulado QA,Preparado,TC-REQ14-001
+TD-20,Fallo externo,Respuesta ACH timeout / 5xx / rechazo,"mock-bank /timeout, /http500, /invalid",Banco simulado QA,Disponible; oráculo bloqueado por H-04,BC-03 (sin caso de aceptación)
+TD-21,Válido,Banco externo con rol BANCO_EXTERNO y permisos públicos,qa.banco.externo@nexus.test / QaNexus2026,MockData_Fixtures_Nexus.sql,Preparado,"TC-REQ03-002, TC-REQ17-001, TC-REQ17-003"
+TD-22,Seguridad,Banco externo autenticado pero sin permiso puntual,Se retira temporalmente ach.public.cuentas.consultar y ach.public.transferencias.crear del rol (bloque TC-REQ17-002 del SQL),MockData_Fixtures_Nexus.sql (bloque por caso),Preparado,TC-REQ17-002
+TD-23,Reporte,Fixture REP-01 con totales conocidos para /api/reportes/resumen,BD bancoerp_e2_qa_rep01; totales esperados en REP01_Totales_Esperados.json,MockData_Fixture_REP01.sql,Preparado (BD aislada),TC-REQ16-001
+TD-24,Dependencia,"Catálogos EN_REVISION/ACTIVO, AHORRO/MONETARIA y plan 1101/2101/2102 activos",Consultas C-05..C-07 del checklist,QA_Readiness_Check_Nexus.sql,Verificable,TC-REQ18-002
+TD-25,Inválido,Plan contable con 2101 o 1101 inactivo en fixture aislado,UPDATE contabilidad.plan_cuentas SET activo=false WHERE codigo='1101' (y restauración),MockData_Fixtures_Nexus.sql (bloque por caso),Solo ambiente aislado,TC-REQ18-002

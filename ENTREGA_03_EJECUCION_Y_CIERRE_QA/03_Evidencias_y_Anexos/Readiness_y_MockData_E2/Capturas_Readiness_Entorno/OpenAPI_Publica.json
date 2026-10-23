@@ -1,0 +1,484 @@
+{
+  "openapi": "3.0.4",
+  "info": {
+    "title": "BancoERP.PublicAPI",
+    "version": "1.0"
+  },
+  "paths": {
+    "/api/external/ach/cuentas/search/{numeroCuenta}": {
+      "get": {
+        "tags": [
+          "ExternalAch"
+        ],
+        "summary": "Busca una cuenta destino en Banco ERP para validar si puede recibir ACH.",
+        "description": "Ejemplo de response exitosa:\n            \n    {\n      \"status\": true,\n      \"message\": \"Cuenta encontrada.\",\n      \"data\": {\n        \"numeroCuenta\": \"0000000000000\",\n        \"nombreTitular\": \"Nombre del cliente\",\n        \"moneda\": \"Q\",\n        \"estado\": \"ACTIVA\",\n        \"puedeRecibirTransferencias\": true\n      }\n    }",
+        "parameters": [
+          {
+            "name": "numeroCuenta",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ExternalAchCuentaResponsePublicApiResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ExternalAchCuentaResponsePublicApiResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Unprocessable Content",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ExternalAchCuentaResponsePublicApiResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ExternalAchCuentaResponsePublicApiResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/external/ach/transferencias": {
+      "post": {
+        "tags": [
+          "ExternalAch"
+        ],
+        "summary": "Registra y acredita una transferencia ACH entrante de un banco externo.",
+        "description": "Ejemplo de request:\n            \n    POST /api/external/ach/transferencias\n    {\n      \"codigo_confirmacion\": \"TRX-EXTERNO-20260505-000001\",\n      \"banco_externo\": \"DERBANCKS\",\n      \"cuenta_externa\": \"1234567890\",\n      \"numeroCuentaDestino\": \"0000000000000\",\n      \"monto\": 500.00,\n      \"moneda\": \"Q\",\n      \"referencia\": \"Transferencia ACH entrante\",\n      \"tipo\": \"entrante\"\n    }\n            \nEjemplo de response exitosa:\n            \n    {\n      \"status\": true,\n      \"message\": \"Transferencia recibida correctamente.\",\n      \"data\": {\n        \"codigoConfirmacion\": \"TRX-EXTERNO-20260505-000001\",\n        \"numeroCuentaDestino\": \"0000000000000\",\n        \"monto\": 500.00,\n        \"moneda\": \"Q\",\n        \"estado\": \"APROBADA\",\n        \"fechaProcesamiento\": \"2026-05-05T20:00:00Z\"\n      }\n    }\n            \nEjemplo de response duplicada:\n            \n    {\n      \"status\": false,\n      \"message\": \"La transferencia ya fue procesada.\",\n      \"errors\": {\n        \"codigo_confirmacion\": [\n          \"El codigo de confirmacion ya existe.\"\n        ]\n      }\n    }",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ExternalAchTransferCreateRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ExternalAchTransferCreateRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/ExternalAchTransferCreateRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ExternalAchTransferResponsePublicApiResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ExternalAchTransferResponsePublicApiResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ExternalAchTransferResponsePublicApiResponse"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ExternalAchTransferResponsePublicApiResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Unprocessable Content",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ExternalAchTransferResponsePublicApiResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ExternalAchTransferResponsePublicApiResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/external/auth/login": {
+      "post": {
+        "tags": [
+          "ExternalAuth"
+        ],
+        "summary": "Autentica un banco externo y genera un JWT limitado a operaciones ACH publicas.",
+        "description": "Ejemplo de request:\n            \n    POST /api/external/auth/login\n    {\n      \"email\": \"bancoexterno@nexus.com\",\n      \"password\": \"******\"\n    }\n            \nEjemplo de response:\n            \n    {\n      \"accessToken\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...\",\n      \"expiresAt\": \"2026-05-05T20:00:00Z\",\n      \"tokenType\": \"Bearer\"\n    }",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ExternalBankLoginRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ExternalBankLoginRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/ExternalBankLoginRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ExternalBankLoginResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "423": {
+            "description": "Locked",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Home": {
+      "get": {
+        "tags": [
+          "Home"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "ExternalAchCuentaResponse": {
+        "type": "object",
+        "properties": {
+          "numeroCuenta": {
+            "type": "string",
+            "nullable": true
+          },
+          "nombreTitular": {
+            "type": "string",
+            "nullable": true
+          },
+          "moneda": {
+            "type": "string",
+            "nullable": true
+          },
+          "estado": {
+            "type": "string",
+            "nullable": true
+          },
+          "puedeRecibirTransferencias": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false
+      },
+      "ExternalAchCuentaResponsePublicApiResponse": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "boolean"
+          },
+          "message": {
+            "type": "string",
+            "nullable": true
+          },
+          "data": {
+            "$ref": "#/components/schemas/ExternalAchCuentaResponse"
+          },
+          "errors": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "ExternalAchTransferCreateRequest": {
+        "type": "object",
+        "properties": {
+          "codigo_confirmacion": {
+            "type": "string",
+            "nullable": true
+          },
+          "banco_externo": {
+            "type": "string",
+            "nullable": true
+          },
+          "cuenta_externa": {
+            "type": "string",
+            "nullable": true
+          },
+          "numeroCuentaDestino": {
+            "type": "string",
+            "nullable": true
+          },
+          "monto": {
+            "type": "number",
+            "format": "double"
+          },
+          "moneda": {
+            "type": "string",
+            "nullable": true
+          },
+          "referencia": {
+            "type": "string",
+            "nullable": true
+          },
+          "tipo": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "ExternalAchTransferResponse": {
+        "type": "object",
+        "properties": {
+          "codigoConfirmacion": {
+            "type": "string",
+            "nullable": true
+          },
+          "numeroCuentaDestino": {
+            "type": "string",
+            "nullable": true
+          },
+          "monto": {
+            "type": "number",
+            "format": "double"
+          },
+          "moneda": {
+            "type": "string",
+            "nullable": true
+          },
+          "estado": {
+            "type": "string",
+            "nullable": true
+          },
+          "fechaProcesamiento": {
+            "type": "string",
+            "format": "date-time"
+          }
+        },
+        "additionalProperties": false
+      },
+      "ExternalAchTransferResponsePublicApiResponse": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "boolean"
+          },
+          "message": {
+            "type": "string",
+            "nullable": true
+          },
+          "data": {
+            "$ref": "#/components/schemas/ExternalAchTransferResponse"
+          },
+          "errors": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "ExternalBankLoginRequest": {
+        "type": "object",
+        "properties": {
+          "email": {
+            "type": "string",
+            "nullable": true
+          },
+          "password": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "ExternalBankLoginResponse": {
+        "type": "object",
+        "properties": {
+          "accessToken": {
+            "type": "string",
+            "nullable": true
+          },
+          "expiresAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "tokenType": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "ProblemDetails": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "nullable": true
+          },
+          "title": {
+            "type": "string",
+            "nullable": true
+          },
+          "status": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "detail": {
+            "type": "string",
+            "nullable": true
+          },
+          "instance": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": {}
+      }
+    },
+    "securitySchemes": {
+      "Bearer": {
+        "type": "http",
+        "description": "Pega el JWT del banco externo.",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
+      }
+    }
+  },
+  "security": [
+    {
+      "Bearer": []
+    }
+  ],
+  "tags": [
+    {
+      "name": "ExternalAch"
+    },
+    {
+      "name": "ExternalAuth"
+    },
+    {
+      "name": "Home"
+    }
+  ]
+}

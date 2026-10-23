@@ -1,0 +1,866 @@
+{
+  "metadata": {
+    "nombre": "MockData_Sintetica_Nexus",
+    "documento": "E2_Documento_Diseno_Implementacion_Nexus.docx",
+    "fecha": "2026-10-08",
+    "origen": "Generación determinista UUIDv5 (namespace 6f1c2d3e-4b5a-5c6d-8e7f-a0b1c2d3e4f5); sin copia de producción",
+    "moneda": "GTQ",
+    "password_casos": "QaNexus2026",
+    "fecha_base_edad": "2026-10-02",
+    "dominios": "Correos .test (capa Nexus) y .invalid (carga base); ambos reservados para pruebas (RFC 2606)"
+  },
+  "relacion_con_carga_base": {
+    "archivos": [
+      "MockData_Sintetica.json",
+      "MockData_Sintetica.sql",
+      "MockData_Cuentas.csv"
+    ],
+    "volumen": {
+      "usuarios": 8,
+      "clientes": 1000,
+      "cuentas": 2000,
+      "movimientos": 10000
+    },
+    "evidencia": "Capturas_Readiness_Entorno/Readiness_Resultados.json (RD-05) — carga observada el 2026-10-06",
+    "uso": "Volumen masivo para listados, paginación, reportes y rendimiento básico. Los casos del Word usan la capa Nexus de este archivo."
+  },
+  "configuracion_qa": {
+    "Security__MaxFailedAccessAttempts": 5,
+    "Jwt__ExpirationHours": 1,
+    "Jwt__RefreshTokenDays": 7,
+    "Security__RecoveryTokenHours": 2,
+    "Security__PasswordHistoryLimit": 5,
+    "fuente": "docker-compose.qa.yml (idéntico a docker-compose.ci.yml del documento, sección 1.2)"
+  },
+  "usuarios": [
+    {
+      "id": "1e99735f-ed03-5b6c-b60b-455321c9507f",
+      "username": "qa_admin",
+      "email": "qa_admin@example.invalid",
+      "rol": "ADMIN",
+      "estado": true,
+      "bloqueado": false,
+      "password": "QaNexus2026",
+      "origen": "base",
+      "uso": "TD-01; TC-REQ01-001, TC-REQ03-001, TC-REQ05-002, TC-REQ13-001/002, TC-REQ16-002 (con permiso)"
+    },
+    {
+      "id": "b6b6a2f5-73e0-58b6-8f78-d50f97d583ba",
+      "username": "qa_cajero",
+      "email": "qa_cajero@example.invalid",
+      "rol": "CAJERO",
+      "estado": true,
+      "bloqueado": false,
+      "password": "QaNexus2026",
+      "origen": "base",
+      "uso": "TD-02; empleado ACTIVO; caja, depósitos, retiros, transferencias, apertura de cuentas; TC-REQ02-001/002; TC-REQ16-002 (sin reportes.ver)"
+    },
+    {
+      "id": "13267dec-3767-59a6-8bde-094b92374494",
+      "username": "qa_inactivo",
+      "email": "qa_inactivo@example.invalid",
+      "rol": "CAJERO",
+      "estado": false,
+      "bloqueado": false,
+      "password": "QaNexus2026",
+      "origen": "base",
+      "uso": "TD-03; TC-REQ01-003 (inactivo → HTTP 403)"
+    },
+    {
+      "id": "4d00b5fc-9b29-5274-bf79-4d712ff0c72b",
+      "username": "qa_bloqueo",
+      "email": "qa_bloqueo@example.invalid",
+      "rol": "CAJERO",
+      "estado": true,
+      "bloqueado": false,
+      "password": "QaNexus2026",
+      "origen": "base",
+      "uso": "TD-04; TC-REQ01-002 y TC-REQ15-001 (secuencia 4/5/6 intentos; se reinicia intentos_fallidos=0)"
+    },
+    {
+      "id": "0436b634-89cf-51b6-9bec-699dafd94133",
+      "username": "qa_bloqueado",
+      "email": "qa.bloqueado@nexus.test",
+      "rol": "CAJERO",
+      "estado": true,
+      "bloqueado": true,
+      "password": "QaNexus2026",
+      "origen": "nexus",
+      "uso": "TC-REQ01-003 (bloqueado → HTTP 423); bloqueado_hasta=2099-12-31"
+    },
+    {
+      "id": "674999bc-166d-5449-b57e-f63d92e62e69",
+      "username": "qa_cajero2",
+      "email": "qa.cajero2@nexus.test",
+      "rol": "CAJERO",
+      "estado": true,
+      "bloqueado": false,
+      "password": "QaNexus2026",
+      "origen": "nexus",
+      "uso": "Empleado ACTIVO sin caja abierta; TC-REQ09-003 (operador sin caja)"
+    },
+    {
+      "id": "59846613-f222-5e88-b5f4-1cab566fefa1",
+      "username": "qa_sin_empleado",
+      "email": "qa.sin.empleado@nexus.test",
+      "rol": "CAJERO",
+      "estado": true,
+      "bloqueado": false,
+      "password": "QaNexus2026",
+      "origen": "nexus",
+      "uso": "Usuario interno sin empleado asociado; TC-REQ06-002 (R4), TC-REQ18-001"
+    },
+    {
+      "id": "cfe8f37e-e228-5832-8550-20d4e1ee5b76",
+      "username": "qa_cliente_ana",
+      "email": "ana.prueba@nexus.test",
+      "rol": "CLIENTE",
+      "estado": true,
+      "bloqueado": false,
+      "password": "QaNexus2026",
+      "origen": "nexus",
+      "uso": "Usuario portal de Cliente A (Ana); TC-REQ03-002, TC-REQ12-001/002/003"
+    },
+    {
+      "id": "70d69928-4a24-5132-a158-45ca52b3436b",
+      "username": "qa_cliente_bruno",
+      "email": "bruno.prueba@nexus.test",
+      "rol": "CLIENTE",
+      "estado": true,
+      "bloqueado": false,
+      "password": "QaNexus2026",
+      "origen": "nexus",
+      "uso": "Usuario portal de Cliente B (Bruno); contraste de TC-REQ12-001"
+    },
+    {
+      "id": "ee25b0a2-90a7-588a-8564-3a7e47c7adb2",
+      "username": "qa_banco_externo",
+      "email": "qa.banco.externo@nexus.test",
+      "rol": "BANCO_EXTERNO",
+      "estado": true,
+      "bloqueado": false,
+      "password": "QaNexus2026",
+      "origen": "nexus",
+      "uso": "TD-21; TC-REQ03-002, TC-REQ17-001, TC-REQ17-002, TC-REQ17-003"
+    }
+  ],
+  "empleados": [
+    {
+      "id": "1c9f58e7-b05e-54d8-9bf0-7b8bd10cfc18",
+      "primer_nombre": "Operadora",
+      "primer_apellido": "Nexus",
+      "cargo": "Cajero",
+      "turno": "COMPLETO",
+      "estado": "ACTIVO",
+      "usuario": "qa_cajero2",
+      "fecha_ingreso": "2026-01-01",
+      "usuario_id": "674999bc-166d-5449-b57e-f63d92e62e69"
+    },
+    {
+      "id": "1881838a-ef70-5465-b2df-093b95388779",
+      "usuario": "qa_cajero",
+      "estado": "ACTIVO",
+      "origen": "base"
+    }
+  ],
+  "clientes": [
+    {
+      "id": "5eefea06-04b7-5a99-8e78-a3080150319d",
+      "clave": "ANA",
+      "nombre_completo": "Ana Prueba",
+      "primer_nombre": "Ana",
+      "primer_apellido": "Prueba",
+      "dpi": "2999999990101",
+      "fecha_nacimiento": "1995-01-15",
+      "email": "ana.prueba@nexus.test",
+      "telefono": "55667788",
+      "estado": "ACTIVO",
+      "usuario": "qa_cliente_ana",
+      "uso": "TD-05; Cliente A. TC-REQ04-002 (DPI duplicado), TC-REQ06-001, TC-REQ12-001/002/003"
+    },
+    {
+      "id": "29f57303-cfdf-5c62-883f-ac4372522b71",
+      "clave": "BRUNO",
+      "nombre_completo": "Bruno Prueba",
+      "primer_nombre": "Bruno",
+      "primer_apellido": "Prueba",
+      "dpi": "2999999990102",
+      "fecha_nacimiento": "1994-06-20",
+      "email": "bruno.prueba@nexus.test",
+      "telefono": "55443322",
+      "estado": "ACTIVO",
+      "usuario": "qa_cliente_bruno",
+      "uso": "Cliente B (titular de cuentas operativas de backoffice y de B1 para acceso horizontal)"
+    },
+    {
+      "id": "b5d182a8-d502-5b07-9a23-ab1276efa52e",
+      "clave": "CARLA",
+      "nombre_completo": "Carla Revision",
+      "primer_nombre": "Carla",
+      "primer_apellido": "Revision",
+      "dpi": "2999999990103",
+      "fecha_nacimiento": "1990-03-10",
+      "email": "carla.revision@nexus.test",
+      "telefono": "55112233",
+      "estado": "EN_REVISION",
+      "usuario": null,
+      "uso": "TC-REQ05-002 (EN_REVISION → ACTIVO); el fixture la regresa a EN_REVISION al recargar"
+    },
+    {
+      "id": "0a8594f6-191d-559c-9712-73c726efaa6d",
+      "clave": "GABRIEL",
+      "nombre_completo": "Gabriel Revision",
+      "primer_nombre": "Gabriel",
+      "primer_apellido": "Revision",
+      "dpi": "2999999990104",
+      "fecha_nacimiento": "1991-07-21",
+      "email": "gabriel.revision@nexus.test",
+      "telefono": "55223344",
+      "estado": "EN_REVISION",
+      "usuario": null,
+      "uso": "TC-REQ06-002 R2 (cliente no ACTIVO)"
+    }
+  ],
+  "cuentas": [
+    {
+      "id": "60e12f09-f1be-5506-b494-5381502e3e75",
+      "numero_cuenta": "AH261002000101",
+      "tipo_cuenta": "AHORRO",
+      "estado": "ACTIVA",
+      "saldo": "7000.00",
+      "saldo_disponible": "7000.00",
+      "saldo_minimo": "100.00",
+      "limite_retiro_diario": "5000.00",
+      "monto_retirado_hoy": "0.00",
+      "moneda": "GTQ",
+      "uso": "A1. TC-REQ09-001, TC-REQ09-002, TC-REQ10-001, TC-REQ11-001, TC-REQ14-001, TC-REQ15-002, TC-REQ17-003 (destino), TC-REQ12-001",
+      "cliente": "Ana Prueba",
+      "cliente_id": "5eefea06-04b7-5a99-8e78-a3080150319d"
+    },
+    {
+      "id": "5552b0a0-8bcc-5e57-98d5-e8397b435642",
+      "numero_cuenta": "MO261002000102",
+      "tipo_cuenta": "MONETARIA",
+      "estado": "ACTIVA",
+      "saldo": "1500.00",
+      "saldo_disponible": "1500.00",
+      "saldo_minimo": "0.00",
+      "limite_retiro_diario": null,
+      "monto_retirado_hoy": "0.00",
+      "moneda": "GTQ",
+      "uso": "A2. TC-REQ12-001, TC-REQ12-002 (destino), TC-REQ14-002 (monto 1500.01 > disponible)",
+      "cliente": "Ana Prueba",
+      "cliente_id": "5eefea06-04b7-5a99-8e78-a3080150319d"
+    },
+    {
+      "id": "c208ccfb-cd17-5696-bd75-9f0fd1f32a02",
+      "numero_cuenta": "AH261002000103",
+      "tipo_cuenta": "AHORRO",
+      "estado": "BLOQUEADA",
+      "saldo": "500.00",
+      "saldo_disponible": "500.00",
+      "saldo_minimo": "100.00",
+      "limite_retiro_diario": "5000.00",
+      "monto_retirado_hoy": "0.00",
+      "moneda": "GTQ",
+      "uso": "A3. TC-REQ09-003 (depósito a cuenta BLOQUEADA)",
+      "cliente": "Ana Prueba",
+      "cliente_id": "5eefea06-04b7-5a99-8e78-a3080150319d"
+    },
+    {
+      "id": "adf283fb-726b-50bb-92b1-f011160f3e2f",
+      "numero_cuenta": "AH261002000104",
+      "tipo_cuenta": "AHORRO",
+      "estado": "ACTIVA",
+      "saldo": "6000.00",
+      "saldo_disponible": "6000.00",
+      "saldo_minimo": "100.00",
+      "limite_retiro_diario": "5000.00",
+      "monto_retirado_hoy": "4900.00",
+      "moneda": "GTQ",
+      "uso": "A4. TC-REQ12-003 (restante exacto Q100.00)",
+      "cliente": "Ana Prueba",
+      "cliente_id": "5eefea06-04b7-5a99-8e78-a3080150319d"
+    },
+    {
+      "id": "1f2314cc-84d6-51f5-82e5-224bf6f4bea3",
+      "numero_cuenta": "AH261002000105",
+      "tipo_cuenta": "AHORRO",
+      "estado": "ACTIVA",
+      "saldo": "8000.00",
+      "saldo_disponible": "8000.00",
+      "saldo_minimo": "100.00",
+      "limite_retiro_diario": "5000.00",
+      "monto_retirado_hoy": "4990.00",
+      "moneda": "GTQ",
+      "uso": "A5. TC-REQ14-003 (restante exacto Q10.00)",
+      "cliente": "Ana Prueba",
+      "cliente_id": "5eefea06-04b7-5a99-8e78-a3080150319d"
+    },
+    {
+      "id": "f1fcbae5-8252-5ff6-9602-2b3c8c038254",
+      "numero_cuenta": "AH261002000201",
+      "tipo_cuenta": "AHORRO",
+      "estado": "ACTIVA",
+      "saldo": "3000.00",
+      "saldo_disponible": "3000.00",
+      "saldo_minimo": "100.00",
+      "limite_retiro_diario": "5000.00",
+      "monto_retirado_hoy": "0.00",
+      "moneda": "GTQ",
+      "uso": "B1. TC-REQ12-002 (origen ajeno a Cliente A)",
+      "cliente": "Bruno Prueba",
+      "cliente_id": "29f57303-cfdf-5c62-883f-ac4372522b71"
+    },
+    {
+      "id": "a4bd5c79-c948-51fa-8a63-824646b7f55c",
+      "numero_cuenta": "MO261002000202",
+      "tipo_cuenta": "MONETARIA",
+      "estado": "ACTIVA",
+      "saldo": "800.00",
+      "saldo_disponible": "800.00",
+      "saldo_minimo": "0.00",
+      "limite_retiro_diario": null,
+      "monto_retirado_hoy": "0.00",
+      "moneda": "GTQ",
+      "uso": "B2. TC-REQ12-001 (no debe aparecer en portal de Ana)",
+      "cliente": "Bruno Prueba",
+      "cliente_id": "29f57303-cfdf-5c62-883f-ac4372522b71"
+    },
+    {
+      "id": "6e68ac18-6765-559e-86bb-4931f89b74ce",
+      "numero_cuenta": "AH261002000203",
+      "tipo_cuenta": "AHORRO",
+      "estado": "ACTIVA",
+      "saldo": "500.00",
+      "saldo_disponible": "500.00",
+      "saldo_minimo": "100.00",
+      "limite_retiro_diario": "5000.00",
+      "monto_retirado_hoy": "0.00",
+      "moneda": "GTQ",
+      "uso": "TC-REQ07-002 (cierre con saldo Q500 → 422); TC-REQ11-003 (origen: Q400.01 dejaría Q99.99 < mínimo Q100)",
+      "cliente": "Bruno Prueba",
+      "cliente_id": "29f57303-cfdf-5c62-883f-ac4372522b71"
+    },
+    {
+      "id": "9dfa3756-c7af-5e3b-8cd6-c9d395a38482",
+      "numero_cuenta": "AH261002000204",
+      "tipo_cuenta": "AHORRO",
+      "estado": "ACTIVA",
+      "saldo": "0.00",
+      "saldo_disponible": "0.00",
+      "saldo_minimo": "0.00",
+      "limite_retiro_diario": "5000.00",
+      "monto_retirado_hoy": "0.00",
+      "moneda": "GTQ",
+      "uso": "TC-REQ07-002 (cierre con saldo Q0 → 200)",
+      "cliente": "Bruno Prueba",
+      "cliente_id": "29f57303-cfdf-5c62-883f-ac4372522b71"
+    },
+    {
+      "id": "95227470-cd90-549c-bb0f-d6eeb7984075",
+      "numero_cuenta": "AH261002000205",
+      "tipo_cuenta": "AHORRO",
+      "estado": "CERRADA",
+      "saldo": "0.00",
+      "saldo_disponible": "0.00",
+      "saldo_minimo": "0.00",
+      "limite_retiro_diario": "5000.00",
+      "monto_retirado_hoy": "0.00",
+      "moneda": "GTQ",
+      "uso": "TC-REQ07-003 (límite sobre cuenta CERRADA → 422)",
+      "cliente": "Bruno Prueba",
+      "cliente_id": "29f57303-cfdf-5c62-883f-ac4372522b71"
+    },
+    {
+      "id": "07348eb5-f467-5180-8b31-6f132bf70346",
+      "numero_cuenta": "AH261002000206",
+      "tipo_cuenta": "AHORRO",
+      "estado": "ACTIVA",
+      "saldo": "2500.00",
+      "saldo_disponible": "2500.00",
+      "saldo_minimo": "100.00",
+      "limite_retiro_diario": "5000.00",
+      "monto_retirado_hoy": "0.00",
+      "moneda": "GTQ",
+      "uso": "TC-REQ10-002 (retiro Q100)",
+      "cliente": "Bruno Prueba",
+      "cliente_id": "29f57303-cfdf-5c62-883f-ac4372522b71"
+    },
+    {
+      "id": "df2059a3-4c93-5208-a367-721f0ddb97fd",
+      "numero_cuenta": "AH261002000207",
+      "tipo_cuenta": "AHORRO",
+      "estado": "ACTIVA",
+      "saldo": "12000.00",
+      "saldo_disponible": "12000.00",
+      "saldo_minimo": "100.00",
+      "limite_retiro_diario": "5000.00",
+      "monto_retirado_hoy": "0.00",
+      "moneda": "GTQ",
+      "uso": "TC-REQ10-003 (frontera 5000.00 / 5000.01)",
+      "cliente": "Bruno Prueba",
+      "cliente_id": "29f57303-cfdf-5c62-883f-ac4372522b71"
+    },
+    {
+      "id": "ba3573bc-486e-5880-94a6-4130f5b93f37",
+      "numero_cuenta": "AH261002000208",
+      "tipo_cuenta": "AHORRO",
+      "estado": "ACTIVA",
+      "saldo": "3000.00",
+      "saldo_disponible": "3000.00",
+      "saldo_minimo": "100.00",
+      "limite_retiro_diario": "5000.00",
+      "monto_retirado_hoy": "0.00",
+      "moneda": "GTQ",
+      "uso": "TC-REQ11-002 (origen Q3000)",
+      "cliente": "Bruno Prueba",
+      "cliente_id": "29f57303-cfdf-5c62-883f-ac4372522b71"
+    },
+    {
+      "id": "08a54fa2-8eb8-5a36-81e6-eb71c7c47f1b",
+      "numero_cuenta": "AH261002000209",
+      "tipo_cuenta": "AHORRO",
+      "estado": "ACTIVA",
+      "saldo": "500.00",
+      "saldo_disponible": "500.00",
+      "saldo_minimo": "100.00",
+      "limite_retiro_diario": "5000.00",
+      "monto_retirado_hoy": "0.00",
+      "moneda": "GTQ",
+      "uso": "TC-REQ11-002 (destino Q500); TC-REQ11-003 (destino)",
+      "cliente": "Bruno Prueba",
+      "cliente_id": "29f57303-cfdf-5c62-883f-ac4372522b71"
+    },
+    {
+      "id": "b7c1cc0f-7631-53b1-82a7-8b09a8cc75da",
+      "numero_cuenta": "AH261002000210",
+      "tipo_cuenta": "AHORRO",
+      "estado": "ACTIVA",
+      "saldo": "1000.00",
+      "saldo_disponible": "1000.00",
+      "saldo_minimo": "100.00",
+      "limite_retiro_diario": "5000.00",
+      "monto_retirado_hoy": "0.00",
+      "moneda": "GTQ",
+      "uso": "TC-REQ07-001 (bloquear cuenta ACTIVA)",
+      "cliente": "Bruno Prueba",
+      "cliente_id": "29f57303-cfdf-5c62-883f-ac4372522b71"
+    },
+    {
+      "id": "f448814a-3b4e-53e9-a426-f8592316be4d",
+      "numero_cuenta": "AH261002000211",
+      "tipo_cuenta": "AHORRO",
+      "estado": "ACTIVA",
+      "saldo": "1000.00",
+      "saldo_disponible": "1000.00",
+      "saldo_minimo": "100.00",
+      "limite_retiro_diario": "5000.00",
+      "monto_retirado_hoy": "0.00",
+      "moneda": "GTQ",
+      "uso": "TC-REQ07-003 (límite -0.01 → 400; 0.00 → 200)",
+      "cliente": "Bruno Prueba",
+      "cliente_id": "29f57303-cfdf-5c62-883f-ac4372522b71"
+    }
+  ],
+  "datos_creados_por_casos": [
+    {
+      "caso": "TC-REQ04-001",
+      "primerNombre": "Diego",
+      "primerApellido": "Frontera",
+      "dpi": "2999999990199",
+      "fechaNacimiento": "2008-10-02",
+      "email": "diego.qa@nexus.test",
+      "telefono": "55778899",
+      "esperado": "HTTP 201; estado EN_REVISION"
+    },
+    {
+      "caso": "TC-REQ04-001 (variante menor)",
+      "primerNombre": "Mateo",
+      "primerApellido": "Menor",
+      "dpi": "2999999990195",
+      "fechaNacimiento": "2008-10-03",
+      "email": "mateo.menor@nexus.test",
+      "telefono": "55778800",
+      "esperado": "HTTP 400 por edad < 18"
+    },
+    {
+      "caso": "TC-REQ04-002",
+      "primerNombre": "Felipe",
+      "primerApellido": "Dpi",
+      "dpi": "2999999990198",
+      "fechaNacimiento": "1993-02-02",
+      "email": "felipe.dpi@nexus.test",
+      "telefono": "55334455",
+      "esperado": "13 dígitos nuevo: HTTP 201"
+    },
+    {
+      "caso": "TC-REQ05-001",
+      "primerNombre": "Elena",
+      "primerApellido": "Nueva",
+      "dpi": "2999999990197",
+      "fechaNacimiento": "1992-05-05",
+      "email": "elena.nueva@nexus.test",
+      "telefono": "55990011",
+      "esperado": "HTTP 201; estado EN_REVISION"
+    },
+    {
+      "caso": "TC-REQ04-003",
+      "primerNombre": "Hugo",
+      "primerApellido": "Formato",
+      "dpi": "2999999990196",
+      "fechaNacimiento": "1989-09-09",
+      "email": "correo.invalido",
+      "telefono": "5566778 / 556677889",
+      "esperado": "HTTP 400 por correo y por teléfono"
+    }
+  ],
+  "banco_ach": {
+    "nombre": "Banco QA Nexus",
+    "codigo": "QA_NEXUS",
+    "descripcion": "Banco sintético exclusivo QA E2 Nexus; sin integración real.",
+    "activo": true,
+    "apiBaseUrl": "http://mock-bank:8081",
+    "apiEndpoint": "/success/transferencias",
+    "httpMethod": "POST",
+    "authLoginEndpoint": null,
+    "authEmail": null,
+    "authPassword": null,
+    "headers": {},
+    "estructuraJsonFormulario": "{ \"numeroCuentaDestino\" : \"EXT-QA-0001\" }",
+    "estructuraJsonPayload": "{ }",
+    "lookupCuentaEndpoint": "/cuentas/search/{numeroCuenta}",
+    "lookupCuentasDisponiblesEndpoint": null,
+    "nota": "Lo crea TC-REQ13-001 vía API (POST /api/ach/bancos). No se precarga para no invalidar ese caso. Cuenta destino externa sintética: EXT-QA-0001 en el banco simulado (puerto local 18081)."
+  },
+  "ach_entrante": {
+    "codigo_confirmacion": "E2-EXT-20261002-001",
+    "banco_externo": "QA_NEXUS",
+    "cuenta_externa": "EXT-QA-0001",
+    "numeroCuentaDestino": "AH261002000101",
+    "monto": 500.0,
+    "moneda": "GTQ",
+    "referencia": "TC-REQ17-003 ACH entrante idempotente",
+    "tipo": "entrante"
+  },
+  "valores_frontera": {
+    "monto": [
+      "0.00",
+      "0.01",
+      "0.02"
+    ],
+    "diferencia_caja": [
+      "10.00",
+      "10.01",
+      "-10.00",
+      "-10.01"
+    ],
+    "limite_retiro": [
+      "4999.99",
+      "5000.00",
+      "5000.01"
+    ],
+    "restante_portal": [
+      "100.00",
+      "100.01"
+    ],
+    "restante_ach": [
+      "10.00",
+      "10.01"
+    ],
+    "dpi_longitud": [
+      "299999999010",
+      "2999999990198",
+      "29999999901012"
+    ],
+    "telefono_longitud": [
+      "5566778",
+      "55667788",
+      "556677889"
+    ],
+    "edad": [
+      "2008-10-02 (18 años exactos)",
+      "2008-10-03 (menor por 1 día)"
+    ],
+    "intentos_login": [
+      4,
+      5,
+      6
+    ]
+  },
+  "fixture_rep01": {
+    "base_datos": "bancoerp_e2_qa_rep01",
+    "clientes": [
+      {
+        "dpi": "2999999990301",
+        "nombre": "Rita Reporte",
+        "estado": "ACTIVO"
+      },
+      {
+        "dpi": "2999999990302",
+        "nombre": "Raul Reporte",
+        "estado": "EN_REVISION"
+      }
+    ],
+    "cuentas": [
+      {
+        "numero": "AH261002000301",
+        "estado": "ACTIVA",
+        "saldo_inicial": "2475.00"
+      },
+      {
+        "numero": "MO261002000302",
+        "estado": "ACTIVA",
+        "saldo_inicial": "1500.00"
+      },
+      {
+        "numero": "AH261002000303",
+        "estado": "CERRADA",
+        "saldo_inicial": "0.00"
+      }
+    ],
+    "operaciones": [
+      "Transferencia interna Q200.00 de AH261002000301 a MO261002000302 (POST /api/transacciones/transferencia)",
+      "ACH entrante aprobado Q25.00 a MO261002000302 (POST /api/external/ach/transferencias, código E2-REP01-ACH-001)"
+    ],
+    "esperado": {
+      "totalClientes": 2,
+      "clientesActivos": 1,
+      "clientesEnRevision": 1,
+      "totalCuentas": 3,
+      "cuentasActivas": 2,
+      "saldoTotalActivo": "4000.00",
+      "transferenciasInternas": 1,
+      "montoTransferenciasInternas": "200.00",
+      "achAprobadas": 1,
+      "montoAchAprobado": "25.00"
+    }
+  },
+  "test_data_matrix": [
+    {
+      "id": "TD-01",
+      "tipo": "Válido",
+      "descripcion": "Usuario qa_admin activo/no bloqueado con permisos administrativos",
+      "valores_exactos": "username=qa_admin; password=QaNexus2026",
+      "fuente": "MockData_Fixtures_Nexus.sql",
+      "disponibilidad": "Preparado",
+      "casos": "TC-REQ01-001, TC-REQ03-001, TC-REQ05-002, TC-REQ13-001, TC-REQ13-002, TC-REQ16-002"
+    },
+    {
+      "id": "TD-02",
+      "tipo": "Válido",
+      "descripcion": "Usuario qa_cajero con empleado activo asociado",
+      "valores_exactos": "username=qa_cajero; empleado 1881838a-ef70-5465-b2df-093b95388779 ACTIVO",
+      "fuente": "MockData_Sintetica.sql + fixtures",
+      "disponibilidad": "Preparado",
+      "casos": "TC-REQ02-001, TC-REQ02-002, TC-REQ06-001, TC-REQ08-001..003, TC-REQ09-001/002, TC-REQ10-001..003, TC-REQ11-001..003, TC-REQ15-002"
+    },
+    {
+      "id": "TD-03",
+      "tipo": "Inválido",
+      "descripcion": "Usuario qa_inactivo con estado=false",
+      "valores_exactos": "username=qa_inactivo; estado=false",
+      "fuente": "MockData_Sintetica.sql",
+      "disponibilidad": "Preparado",
+      "casos": "TC-REQ01-003"
+    },
+    {
+      "id": "TD-04",
+      "tipo": "Límite",
+      "descripcion": "Configuración MaxFailedAccessAttempts=5; secuencia 4/5/6 intentos",
+      "valores_exactos": "qa_bloqueo con intentos_fallidos=0; password errónea=Incorrecta9*",
+      "fuente": "docker-compose.qa.yml + fixtures",
+      "disponibilidad": "Preparado",
+      "casos": "TC-REQ01-002, TC-REQ15-001"
+    },
+    {
+      "id": "TD-05",
+      "tipo": "Válido",
+      "descripcion": "Cliente A ACTIVO, DPI 2999999990101, teléfono 55667788",
+      "valores_exactos": "Ana Prueba; ana.prueba@nexus.test; nac. 1995-01-15",
+      "fuente": "MockData_Fixtures_Nexus.sql",
+      "disponibilidad": "Preparado",
+      "casos": "TC-REQ04-002, TC-REQ06-001, TC-REQ12-001..003"
+    },
+    {
+      "id": "TD-06",
+      "tipo": "Válido",
+      "descripcion": "Cliente exactamente 18 años al 02/10/2026 (nacimiento 02/10/2008)",
+      "valores_exactos": "Diego Frontera; DPI 2999999990199; tel 55778899; diego.qa@nexus.test",
+      "fuente": "Generado (cuerpo Postman)",
+      "disponibilidad": "Preparado",
+      "casos": "TC-REQ04-001"
+    },
+    {
+      "id": "TD-07",
+      "tipo": "Inválido",
+      "descripcion": "Cliente menor por 1 día (nacimiento 03/10/2008)",
+      "valores_exactos": "Mateo Menor; DPI 2999999990195; tel 55778800",
+      "fuente": "Generado (cuerpo Postman)",
+      "disponibilidad": "Preparado",
+      "casos": "TC-REQ04-001 (variante)"
+    },
+    {
+      "id": "TD-08",
+      "tipo": "Límite",
+      "descripcion": "DPI 12/13/14 dígitos y DPI duplicado",
+      "valores_exactos": "299999999010 / 2999999990198 / 29999999901012 / 2999999990101",
+      "fuente": "Generado (cuerpo Postman)",
+      "disponibilidad": "Preparado",
+      "casos": "TC-REQ04-002"
+    },
+    {
+      "id": "TD-09",
+      "tipo": "Límite",
+      "descripcion": "Teléfono 7/8/9 dígitos; correo con/sin @",
+      "valores_exactos": "5566778 / 55667788 / 556677889; correo.invalido",
+      "fuente": "Generado (cuerpo Postman)",
+      "disponibilidad": "Preparado",
+      "casos": "TC-REQ04-003"
+    },
+    {
+      "id": "TD-10",
+      "tipo": "Válido",
+      "descripcion": "Cuenta A1 AHORRO ACTIVA: saldo Q7000, mínimo Q100, límite Q5000",
+      "valores_exactos": "AH261002000101 (Ana)",
+      "fuente": "MockData_Fixtures_Nexus.sql",
+      "disponibilidad": "Preparado",
+      "casos": "TC-REQ09-001, TC-REQ09-002, TC-REQ10-001, TC-REQ11-001, TC-REQ14-001, TC-REQ15-002, TC-REQ17-003"
+    },
+    {
+      "id": "TD-11",
+      "tipo": "Válido",
+      "descripcion": "Cuenta A2 MONETARIA ACTIVA: saldo Q1500",
+      "valores_exactos": "MO261002000102 (Ana)",
+      "fuente": "MockData_Fixtures_Nexus.sql",
+      "disponibilidad": "Preparado",
+      "casos": "TC-REQ12-001, TC-REQ12-002, TC-REQ14-002"
+    },
+    {
+      "id": "TD-12",
+      "tipo": "Seguridad",
+      "descripcion": "Cuenta B1 pertenece a Cliente B para acceso horizontal",
+      "valores_exactos": "AH261002000201 / MO261002000202 (Bruno)",
+      "fuente": "MockData_Fixtures_Nexus.sql",
+      "disponibilidad": "Preparado",
+      "casos": "TC-REQ12-001, TC-REQ12-002"
+    },
+    {
+      "id": "TD-13",
+      "tipo": "Inválido",
+      "descripcion": "Cuenta BLOQUEADA con saldo Q500",
+      "valores_exactos": "AH261002000103 (Ana)",
+      "fuente": "MockData_Fixtures_Nexus.sql",
+      "disponibilidad": "Preparado",
+      "casos": "TC-REQ09-003"
+    },
+    {
+      "id": "TD-14",
+      "tipo": "Límite",
+      "descripcion": "Montos Q0.00 y Q0.01",
+      "valores_exactos": "0.00 / 0.01",
+      "fuente": "Generado (cuerpo Postman)",
+      "disponibilidad": "Preparado",
+      "casos": "TC-REQ09-001, TC-REQ10-001"
+    },
+    {
+      "id": "TD-15",
+      "tipo": "Límite",
+      "descripcion": "Límite diario Q5000: 4999.99 / 5000.00 / 5000.01",
+      "valores_exactos": "AH261002000207 (retirado 0); AH261002000104 (retirado 4900); AH261002000105 (retirado 4990)",
+      "fuente": "MockData_Fixtures_Nexus.sql",
+      "disponibilidad": "Preparado",
+      "casos": "TC-REQ10-003, TC-REQ12-003, TC-REQ14-003"
+    },
+    {
+      "id": "TD-16",
+      "tipo": "Límite",
+      "descripcion": "Diferencia de caja ±Q10.00 y ±Q10.01",
+      "valores_exactos": "fondo 1000.00; efectivoContado 1010.00 / 1010.01 / 989.99",
+      "fuente": "Generado (cuerpo Postman)",
+      "disponibilidad": "Preparado",
+      "casos": "TC-REQ08-002, TC-REQ08-003"
+    },
+    {
+      "id": "TD-17",
+      "tipo": "Integración",
+      "descripcion": "Banco ACH QA_NEXUS activo apuntando al banco simulado QA",
+      "valores_exactos": "codigo=QA_NEXUS; apiBaseUrl=http://mock-bank:8081; destino EXT-QA-0001",
+      "fuente": "Postman TC-REQ13-001 (crea) + mock-bank",
+      "disponibilidad": "Preparado",
+      "casos": "TC-REQ13-001, TC-REQ14-001, TC-REQ14-003"
+    },
+    {
+      "id": "TD-18",
+      "tipo": "Inválido",
+      "descripcion": "Banco ACH QA_NEXUS marcado inactivo",
+      "valores_exactos": "PATCH activo=false",
+      "fuente": "Postman TC-REQ13-002",
+      "disponibilidad": "Preparado",
+      "casos": "TC-REQ13-002, TC-REQ14-002"
+    },
+    {
+      "id": "TD-19",
+      "tipo": "Integración",
+      "descripcion": "Respuesta ACH simulada válida para cuenta destino ACTIVA",
+      "valores_exactos": "mock-bank /success → HTTP 201 APROBADA (MOCK observado en RD-15)",
+      "fuente": "Banco simulado QA",
+      "disponibilidad": "Preparado",
+      "casos": "TC-REQ14-001"
+    },
+    {
+      "id": "TD-20",
+      "tipo": "Fallo externo",
+      "descripcion": "Respuesta ACH timeout / 5xx / rechazo",
+      "valores_exactos": "mock-bank /timeout, /http500, /invalid",
+      "fuente": "Banco simulado QA",
+      "disponibilidad": "Disponible; oráculo bloqueado por H-04",
+      "casos": "BC-03 (sin caso de aceptación)"
+    },
+    {
+      "id": "TD-21",
+      "tipo": "Válido",
+      "descripcion": "Banco externo con rol BANCO_EXTERNO y permisos públicos",
+      "valores_exactos": "qa.banco.externo@nexus.test / QaNexus2026",
+      "fuente": "MockData_Fixtures_Nexus.sql",
+      "disponibilidad": "Preparado",
+      "casos": "TC-REQ03-002, TC-REQ17-001, TC-REQ17-003"
+    },
+    {
+      "id": "TD-22",
+      "tipo": "Seguridad",
+      "descripcion": "Banco externo autenticado pero sin permiso puntual",
+      "valores_exactos": "Se retira temporalmente ach.public.cuentas.consultar y ach.public.transferencias.crear del rol (bloque TC-REQ17-002 del SQL)",
+      "fuente": "MockData_Fixtures_Nexus.sql (bloque por caso)",
+      "disponibilidad": "Preparado",
+      "casos": "TC-REQ17-002"
+    },
+    {
+      "id": "TD-23",
+      "tipo": "Reporte",
+      "descripcion": "Fixture REP-01 con totales conocidos para /api/reportes/resumen",
+      "valores_exactos": "BD bancoerp_e2_qa_rep01; totales esperados en REP01_Totales_Esperados.json",
+      "fuente": "MockData_Fixture_REP01.sql",
+      "disponibilidad": "Preparado (BD aislada)",
+      "casos": "TC-REQ16-001"
+    },
+    {
+      "id": "TD-24",
+      "tipo": "Dependencia",
+      "descripcion": "Catálogos EN_REVISION/ACTIVO, AHORRO/MONETARIA y plan 1101/2101/2102 activos",
+      "valores_exactos": "Consultas C-05..C-07 del checklist",
+      "fuente": "QA_Readiness_Check_Nexus.sql",
+      "disponibilidad": "Verificable",
+      "casos": "TC-REQ18-002"
+    },
+    {
+      "id": "TD-25",
+      "tipo": "Inválido",
+      "descripcion": "Plan contable con 2101 o 1101 inactivo en fixture aislado",
+      "valores_exactos": "UPDATE contabilidad.plan_cuentas SET activo=false WHERE codigo='1101' (y restauración)",
+      "fuente": "MockData_Fixtures_Nexus.sql (bloque por caso)",
+      "disponibilidad": "Solo ambiente aislado",
+      "casos": "TC-REQ18-002"
+    }
+  ]
+}
