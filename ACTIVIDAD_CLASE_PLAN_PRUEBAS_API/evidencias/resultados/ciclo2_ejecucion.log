@@ -1,0 +1,56 @@
+Ejecucion 20261003232621 contra http://localhost:5254 - 2026-10-03T23:26:21.962Z
+[PASS] TC-01 Disponibilidad /api/Home -> HTTP 200 (41 ms)
+[PASS] TC-02 Login con usuario tecnico valido -> HTTP 200 (130 ms)
+[PASS] TC-03 Login con contrasena incorrecta -> HTTP 401 (93 ms)
+[PASS] TC-04 Login con usuario inexistente -> HTTP 401 (2 ms)
+[PASS] TC-05 Login con campos vacios -> HTTP 400 (1 ms)
+[PASS] TC-06 Login con JSON malformado -> HTTP 400 (6 ms)
+        obs: Responde con ProblemDetails de ASP.NET (title/errors) en lugar del contrato {status,message,errors}.
+[PASS] TC-07 Login de usuario inactivo -> HTTP 403 (4 ms)
+[PASS] TC-08 Login de usuario sin rol BANCO_EXTERNO -> HTTP 403 (88 ms)
+[PASS] TC-09 Bloqueo tras 5 intentos fallidos -> HTTP 423 (2 ms)
+[PASS] TC-10 Login con intento de inyeccion SQL -> HTTP 401 (2 ms)
+[PASS] TC-11 Consulta de cuenta destino activa -> HTTP 200 (33 ms)
+[PASS] TC-12 Consulta de cuenta en minusculas (normalizacion) -> HTTP 200 (8 ms)
+[PASS] TC-13 Consulta de cuenta inexistente -> HTTP 404 (8 ms)
+[PASS] TC-14 Consulta de cuenta BLOQUEADA -> HTTP 422 (7 ms)
+[PASS] TC-15 Consulta de cuenta sin token -> HTTP 401 (1 ms)
+[PASS] TC-16 Consulta de cuenta con token alterado -> HTTP 401 (2 ms)
+[PASS] TC-17 Consulta con token de sesion revocada -> HTTP 401 (2 ms)
+[PASS] TC-18 Consulta con intento de inyeccion SQL -> HTTP 404 (8 ms)
+[FAIL] TC-19 Transferencia ACH entrante valida -> HTTP 500 (27 ms)
+        x HTTP 201 | 500
+        x estado APROBADA
+        x codigoConfirmacion y monto coinciden | {}
+        x BD: saldo acreditado +500.00 | 31256.91 -> 31256.91
+        x BD: movimiento ACH_IN registrado
+        x BD: asiento contable de partida doble (>= 2 lineas) | undefined lineas
+        x BD: evento de auditoria exitoso | 0
+        obs: Saldo MO260803936604: 31256.91 -> 31256.91.
+[FAIL] TC-20 Transferencia duplicada (idempotencia) -> HTTP 500 (9 ms)
+        x HTTP 409 | 500
+        x errors.codigo_confirmacion presente | null
+[PASS] TC-21 Transferencia con body vacio -> HTTP 400 (3 ms)
+[PASS] TC-22 Transferencia con monto 0 -> HTTP 400 (2 ms)
+[PASS] TC-23 Transferencia con monto negativo -> HTTP 400 (3 ms)
+[FAIL] TC-24 Transferencia con moneda no soportada (USD) -> HTTP 400 (2 ms)
+        x HTTP 422 (guia seccion 8: moneda invalida) | 400
+[PASS] TC-25 Transferencia con tipo distinto de entrante -> HTTP 400 (2 ms)
+[PASS] TC-26 Transferencia a cuenta inexistente -> HTTP 404 (8 ms)
+[PASS] TC-27 Transferencia a cuenta BLOQUEADA -> HTTP 422 (8 ms)
+[PASS] TC-28 Transferencia sin token -> HTTP 401 (1 ms)
+[FAIL] TC-29 Transferencia con monto como texto y moneda GTQ -> HTTP 500 (9 ms)
+        x HTTP 201 | 500
+        x monto 150.75 y moneda normalizada | null
+[PASS] TC-30 Transferencia con monto de 3 decimales -> HTTP 400 (2 ms)
+[PASS] TC-31 Transferencia con monto fuera de rango numerico -> HTTP 400 (2 ms)
+[FAIL] TC-32 Envio concurrente del mismo codigo (5 solicitudes) -> HTTP 500,500,500,500,500 (30 ms)
+        x exactamente una 201 | 500,500,500,500,500
+        x las demas 409 | 500,500,500,500,500
+        x BD: saldo acreditado una sola vez (+25.00) | delta=0
+[PASS] TC-33 Metodo HTTP no soportado -> HTTP 405 (1 ms)
+[PASS] TC-34 Content-Type no soportado -> HTTP 415 (2 ms)
+[PASS] TC-35 Tiempo de respuesta de consulta de cuenta (20 llamadas) -> HTTP 200 (7 ms)
+        obs: Promedio 7 ms, p95 7 ms, max 12 ms.
+
+Resumen: 35 ejecutados | 30 Pass | 5 Fail | 0 Blocked

@@ -1,0 +1,1576 @@
+{
+  "summary": {
+    "runId": "20261003232621",
+    "baseUrl": "http://localhost:5254",
+    "fecha": "2026-10-03T23:26:23.837Z",
+    "total": 35,
+    "pass": 30,
+    "fail": 5,
+    "blocked": 0
+  },
+  "results": [
+    {
+      "id": "TC-01",
+      "titulo": "Disponibilidad /api/Home",
+      "endpoint": "GET /api/Home",
+      "tipo": "Funcional",
+      "esperado": 200,
+      "checks": [
+        {
+          "description": "HTTP 200",
+          "ok": true,
+          "detail": "200"
+        },
+        {
+          "description": "estado = Conectado",
+          "ok": true,
+          "detail": "Conectado"
+        },
+        {
+          "description": "incluye fecha",
+          "ok": true
+        }
+      ],
+      "result": "Pass",
+      "observaciones": "",
+      "request": {
+        "method": "GET",
+        "url": "http://localhost:5254/api/Home",
+        "auth": "sin token"
+      },
+      "response": {
+        "status": 200,
+        "elapsedMs": 41,
+        "body": {
+          "mensaje": "¡Hola Mundo! Bienvenido a BancoERP Publica API",
+          "estado": "Conectado",
+          "fecha": "2026-10-03T23:26:22.0007783Z"
+        }
+      },
+      "actualStatus": 200,
+      "elapsedMs": 41
+    },
+    {
+      "id": "TC-02",
+      "titulo": "Login con usuario tecnico valido",
+      "endpoint": "POST /api/external/auth/login",
+      "tipo": "Funcional",
+      "esperado": 200,
+      "checks": [
+        {
+          "description": "HTTP 200",
+          "ok": true,
+          "detail": "200"
+        },
+        {
+          "description": "accessToken es JWT",
+          "ok": true
+        },
+        {
+          "description": "tokenType = Bearer",
+          "ok": true,
+          "detail": "Bearer"
+        },
+        {
+          "description": "expiresAt en el futuro (<= 60 min)",
+          "ok": true,
+          "detail": "60.0 min"
+        }
+      ],
+      "result": "Pass",
+      "observaciones": "",
+      "request": {
+        "method": "POST",
+        "url": "http://localhost:5254/api/external/auth/login",
+        "auth": "sin token",
+        "body": {
+          "email": "bancoexterno@nexus.com",
+          "password": "******"
+        }
+      },
+      "response": {
+        "status": 200,
+        "elapsedMs": 130,
+        "body": {
+          "accessToken": "eyJhbGciOiJIUzI1...(JWT 1083 chars)",
+          "expiresAt": "2026-10-04T00:26:22.1312888Z",
+          "tokenType": "Bearer"
+        }
+      },
+      "actualStatus": 200,
+      "elapsedMs": 130
+    },
+    {
+      "id": "TC-03",
+      "titulo": "Login con contrasena incorrecta",
+      "endpoint": "POST /api/external/auth/login",
+      "tipo": "Negativa / Seguridad",
+      "esperado": 401,
+      "checks": [
+        {
+          "description": "HTTP 401",
+          "ok": true,
+          "detail": "401"
+        },
+        {
+          "description": "status = false",
+          "ok": true
+        },
+        {
+          "description": "mensaje indica intento 1 de 5",
+          "ok": true,
+          "detail": "Credenciales incorrectas. Intento 1 de 5."
+        },
+        {
+          "description": "no devuelve token",
+          "ok": true
+        }
+      ],
+      "result": "Pass",
+      "observaciones": "",
+      "request": {
+        "method": "POST",
+        "url": "http://localhost:5254/api/external/auth/login",
+        "auth": "sin token",
+        "body": {
+          "email": "qa.externo.bloqueo@test.com",
+          "password": "******"
+        }
+      },
+      "response": {
+        "status": 401,
+        "elapsedMs": 93,
+        "body": {
+          "status": false,
+          "message": "Credenciales incorrectas. Intento 1 de 5.",
+          "data": null,
+          "errors": null
+        }
+      },
+      "actualStatus": 401,
+      "elapsedMs": 93
+    },
+    {
+      "id": "TC-04",
+      "titulo": "Login con usuario inexistente",
+      "endpoint": "POST /api/external/auth/login",
+      "tipo": "Negativa / Seguridad",
+      "esperado": 401,
+      "checks": [
+        {
+          "description": "HTTP 401",
+          "ok": true,
+          "detail": "401"
+        },
+        {
+          "description": "mensaje generico (no revela si el usuario existe)",
+          "ok": true,
+          "detail": "Credenciales incorrectas."
+        }
+      ],
+      "result": "Pass",
+      "observaciones": "",
+      "request": {
+        "method": "POST",
+        "url": "http://localhost:5254/api/external/auth/login",
+        "auth": "sin token",
+        "body": {
+          "email": "noexiste@banco.com",
+          "password": "******"
+        }
+      },
+      "response": {
+        "status": 401,
+        "elapsedMs": 2,
+        "body": {
+          "status": false,
+          "message": "Credenciales incorrectas.",
+          "data": null,
+          "errors": null
+        }
+      },
+      "actualStatus": 401,
+      "elapsedMs": 2
+    },
+    {
+      "id": "TC-05",
+      "titulo": "Login con campos vacios",
+      "endpoint": "POST /api/external/auth/login",
+      "tipo": "Negativa / Validacion",
+      "esperado": 400,
+      "checks": [
+        {
+          "description": "HTTP 400",
+          "ok": true,
+          "detail": "400"
+        },
+        {
+          "description": "mensaje de campos requeridos",
+          "ok": true,
+          "detail": "Email y contrasena son requeridos."
+        }
+      ],
+      "result": "Pass",
+      "observaciones": "",
+      "request": {
+        "method": "POST",
+        "url": "http://localhost:5254/api/external/auth/login",
+        "auth": "sin token",
+        "body": {
+          "email": "",
+          "password": ""
+        }
+      },
+      "response": {
+        "status": 400,
+        "elapsedMs": 1,
+        "body": {
+          "status": false,
+          "message": "Email y contrasena son requeridos.",
+          "data": null,
+          "errors": null
+        }
+      },
+      "actualStatus": 400,
+      "elapsedMs": 1
+    },
+    {
+      "id": "TC-06",
+      "titulo": "Login con JSON malformado",
+      "endpoint": "POST /api/external/auth/login",
+      "tipo": "Manejo de errores",
+      "esperado": 400,
+      "checks": [
+        {
+          "description": "HTTP 400",
+          "ok": true,
+          "detail": "400"
+        },
+        {
+          "description": "respuesta no expone stack trace",
+          "ok": true,
+          "detail": "{\"type\":\"https://tools.ietf.org/html/rfc9110#section-15.5.1\",\"title\":\"One or more validation errors occurred.\",\"status\":"
+        }
+      ],
+      "result": "Pass",
+      "observaciones": "Responde con ProblemDetails de ASP.NET (title/errors) en lugar del contrato {status,message,errors}.",
+      "request": {
+        "method": "POST",
+        "url": "http://localhost:5254/api/external/auth/login",
+        "auth": "sin token",
+        "body": "{\"email\": \"bancoexterno@nexus.com\", \"password\": "
+      },
+      "response": {
+        "status": 400,
+        "elapsedMs": 6,
+        "body": {
+          "type": "https://tools.ietf.org/html/rfc9110#section-15.5.1",
+          "title": "One or more validation errors occurred.",
+          "status": 400,
+          "errors": {
+            "request": [
+              "The request field is required."
+            ],
+            "$.password": [
+              "Expected depth to be zero at the end of the JSON payload. There is an open JSON object or array that should be closed. Path: $.password | LineNumber: 0 | BytePositionInLine: 48."
+            ]
+          },
+          "traceId": "00-f8cba88b9d9d2b7c681c6fcb5de3b844-78a07a9efb4dc3c8-00"
+        }
+      },
+      "actualStatus": 400,
+      "elapsedMs": 6
+    },
+    {
+      "id": "TC-07",
+      "titulo": "Login de usuario inactivo",
+      "endpoint": "POST /api/external/auth/login",
+      "tipo": "Seguridad (autorizacion)",
+      "esperado": 403,
+      "checks": [
+        {
+          "description": "HTTP 403",
+          "ok": true,
+          "detail": "403"
+        },
+        {
+          "description": "mensaje usuario inactivo",
+          "ok": true,
+          "detail": "El usuario se encuentra inactivo. Por favor comuniquese con soporte."
+        }
+      ],
+      "result": "Pass",
+      "observaciones": "",
+      "request": {
+        "method": "POST",
+        "url": "http://localhost:5254/api/external/auth/login",
+        "auth": "sin token",
+        "body": {
+          "email": "qa.externo.inactivo@test.com",
+          "password": "******"
+        }
+      },
+      "response": {
+        "status": 403,
+        "elapsedMs": 4,
+        "body": {
+          "status": false,
+          "message": "El usuario se encuentra inactivo. Por favor comuniquese con soporte.",
+          "data": null,
+          "errors": null
+        }
+      },
+      "actualStatus": 403,
+      "elapsedMs": 4
+    },
+    {
+      "id": "TC-08",
+      "titulo": "Login de usuario sin rol BANCO_EXTERNO",
+      "endpoint": "POST /api/external/auth/login",
+      "tipo": "Seguridad (autorizacion)",
+      "esperado": 403,
+      "checks": [
+        {
+          "description": "HTTP 403",
+          "ok": true,
+          "detail": "403"
+        },
+        {
+          "description": "mensaje no autorizado",
+          "ok": true,
+          "detail": "El usuario no esta autorizado para operar como banco externo."
+        },
+        {
+          "description": "no devuelve token",
+          "ok": true
+        }
+      ],
+      "result": "Pass",
+      "observaciones": "",
+      "request": {
+        "method": "POST",
+        "url": "http://localhost:5254/api/external/auth/login",
+        "auth": "sin token",
+        "body": {
+          "email": "qa.sin.rol@test.com",
+          "password": "******"
+        }
+      },
+      "response": {
+        "status": 403,
+        "elapsedMs": 88,
+        "body": {
+          "status": false,
+          "message": "El usuario no esta autorizado para operar como banco externo.",
+          "data": null,
+          "errors": null
+        }
+      },
+      "actualStatus": 403,
+      "elapsedMs": 88
+    },
+    {
+      "id": "TC-09",
+      "titulo": "Bloqueo tras 5 intentos fallidos",
+      "endpoint": "POST /api/external/auth/login",
+      "tipo": "Seguridad",
+      "esperado": 423,
+      "checks": [
+        {
+          "description": "5to intento informa bloqueo",
+          "ok": true,
+          "detail": "Credenciales incorrectas. El usuario se encuentra bloqueado. Por favor comuniquese con soporte."
+        },
+        {
+          "description": "intentos 2-5 devuelven 401",
+          "ok": true,
+          "detail": "401,401,401,401"
+        },
+        {
+          "description": "login con contrasena correcta devuelve 423",
+          "ok": true,
+          "detail": "423"
+        },
+        {
+          "description": "mensaje usuario bloqueado",
+          "ok": true,
+          "detail": "El usuario se encuentra bloqueado. Por favor comuniquese con soporte."
+        },
+        {
+          "description": "BD: usuario marcado como bloqueado con bloqueado_hasta",
+          "ok": true,
+          "detail": "true|2026-10-03 23:56:22.699552+00"
+        }
+      ],
+      "result": "Pass",
+      "observaciones": "",
+      "request": {
+        "method": "POST",
+        "url": "http://localhost:5254/api/external/auth/login",
+        "auth": "sin token",
+        "body": {
+          "email": "qa.externo.bloqueo@test.com",
+          "password": "******"
+        }
+      },
+      "response": {
+        "status": 423,
+        "elapsedMs": 2,
+        "body": {
+          "status": false,
+          "message": "El usuario se encuentra bloqueado. Por favor comuniquese con soporte.",
+          "data": null,
+          "errors": null
+        }
+      },
+      "actualStatus": 423,
+      "elapsedMs": 2
+    },
+    {
+      "id": "TC-10",
+      "titulo": "Login con intento de inyeccion SQL",
+      "endpoint": "POST /api/external/auth/login",
+      "tipo": "Seguridad",
+      "esperado": 401,
+      "checks": [
+        {
+          "description": "HTTP 401",
+          "ok": true,
+          "detail": "401"
+        },
+        {
+          "description": "no devuelve token",
+          "ok": true
+        }
+      ],
+      "result": "Pass",
+      "observaciones": "",
+      "request": {
+        "method": "POST",
+        "url": "http://localhost:5254/api/external/auth/login",
+        "auth": "sin token",
+        "body": {
+          "email": "' OR '1'='1' --",
+          "password": "******"
+        }
+      },
+      "response": {
+        "status": 401,
+        "elapsedMs": 2,
+        "body": {
+          "status": false,
+          "message": "Credenciales incorrectas.",
+          "data": null,
+          "errors": null
+        }
+      },
+      "actualStatus": 401,
+      "elapsedMs": 2
+    },
+    {
+      "id": "TC-11",
+      "titulo": "Consulta de cuenta destino activa",
+      "endpoint": "GET /api/external/ach/cuentas/search/{numeroCuenta}",
+      "tipo": "Funcional",
+      "esperado": 200,
+      "checks": [
+        {
+          "description": "HTTP 200",
+          "ok": true,
+          "detail": "200"
+        },
+        {
+          "description": "status = true y mensaje \"Cuenta encontrada.\"",
+          "ok": true,
+          "detail": "Cuenta encontrada."
+        },
+        {
+          "description": "esquema data completo",
+          "ok": true,
+          "detail": "numeroCuenta,nombreTitular,moneda,estado,puedeRecibirTransferencias"
+        },
+        {
+          "description": "estado ACTIVA, moneda Q, puedeRecibirTransferencias = true",
+          "ok": true,
+          "detail": "{\"numeroCuenta\":\"MO260803936604\",\"nombreTitular\":\"Ana Sofia Garcia Mendez\",\"moneda\":\"Q\",\"estado\":\"ACTIVA\",\"puedeRecibirTransferencias\":true}"
+        }
+      ],
+      "result": "Pass",
+      "observaciones": "",
+      "request": {
+        "method": "GET",
+        "url": "http://localhost:5254/api/external/ach/cuentas/search/MO260803936604",
+        "auth": "Bearer {token}"
+      },
+      "response": {
+        "status": 200,
+        "elapsedMs": 33,
+        "body": {
+          "status": true,
+          "message": "Cuenta encontrada.",
+          "data": {
+            "numeroCuenta": "MO260803936604",
+            "nombreTitular": "Ana Sofia Garcia Mendez",
+            "moneda": "Q",
+            "estado": "ACTIVA",
+            "puedeRecibirTransferencias": true
+          },
+          "errors": null
+        }
+      },
+      "actualStatus": 200,
+      "elapsedMs": 33
+    },
+    {
+      "id": "TC-12",
+      "titulo": "Consulta de cuenta en minusculas (normalizacion)",
+      "endpoint": "GET /api/external/ach/cuentas/search/{numeroCuenta}",
+      "tipo": "Funcional",
+      "esperado": 200,
+      "checks": [
+        {
+          "description": "HTTP 200",
+          "ok": true,
+          "detail": "200"
+        },
+        {
+          "description": "devuelve numero normalizado en mayusculas",
+          "ok": true,
+          "detail": "MO260803936604"
+        }
+      ],
+      "result": "Pass",
+      "observaciones": "",
+      "request": {
+        "method": "GET",
+        "url": "http://localhost:5254/api/external/ach/cuentas/search/mo260803936604",
+        "auth": "Bearer {token}"
+      },
+      "response": {
+        "status": 200,
+        "elapsedMs": 8,
+        "body": {
+          "status": true,
+          "message": "Cuenta encontrada.",
+          "data": {
+            "numeroCuenta": "MO260803936604",
+            "nombreTitular": "Ana Sofia Garcia Mendez",
+            "moneda": "Q",
+            "estado": "ACTIVA",
+            "puedeRecibirTransferencias": true
+          },
+          "errors": null
+        }
+      },
+      "actualStatus": 200,
+      "elapsedMs": 8
+    },
+    {
+      "id": "TC-13",
+      "titulo": "Consulta de cuenta inexistente",
+      "endpoint": "GET /api/external/ach/cuentas/search/{numeroCuenta}",
+      "tipo": "Negativa",
+      "esperado": 404,
+      "checks": [
+        {
+          "description": "HTTP 404",
+          "ok": true,
+          "detail": "404"
+        },
+        {
+          "description": "mensaje \"Cuenta no encontrada.\"",
+          "ok": true,
+          "detail": "Cuenta no encontrada."
+        }
+      ],
+      "result": "Pass",
+      "observaciones": "",
+      "request": {
+        "method": "GET",
+        "url": "http://localhost:5254/api/external/ach/cuentas/search/MO-2026-99999",
+        "auth": "Bearer {token}"
+      },
+      "response": {
+        "status": 404,
+        "elapsedMs": 8,
+        "body": {
+          "status": false,
+          "message": "Cuenta no encontrada.",
+          "data": null,
+          "errors": null
+        }
+      },
+      "actualStatus": 404,
+      "elapsedMs": 8
+    },
+    {
+      "id": "TC-14",
+      "titulo": "Consulta de cuenta BLOQUEADA",
+      "endpoint": "GET /api/external/ach/cuentas/search/{numeroCuenta}",
+      "tipo": "Negativa / Regla de negocio",
+      "esperado": 422,
+      "checks": [
+        {
+          "description": "HTTP 422",
+          "ok": true,
+          "detail": "422"
+        },
+        {
+          "description": "mensaje cuenta no apta",
+          "ok": true,
+          "detail": "La cuenta no puede recibir transferencias."
+        },
+        {
+          "description": "no expone datos del titular",
+          "ok": true
+        }
+      ],
+      "result": "Pass",
+      "observaciones": "",
+      "request": {
+        "method": "GET",
+        "url": "http://localhost:5254/api/external/ach/cuentas/search/AH260901838371",
+        "auth": "Bearer {token}"
+      },
+      "response": {
+        "status": 422,
+        "elapsedMs": 7,
+        "body": {
+          "status": false,
+          "message": "La cuenta no puede recibir transferencias.",
+          "data": null,
+          "errors": null
+        }
+      },
+      "actualStatus": 422,
+      "elapsedMs": 7
+    },
+    {
+      "id": "TC-15",
+      "titulo": "Consulta de cuenta sin token",
+      "endpoint": "GET /api/external/ach/cuentas/search/{numeroCuenta}",
+      "tipo": "Seguridad (autenticacion)",
+      "esperado": 401,
+      "checks": [
+        {
+          "description": "HTTP 401",
+          "ok": true,
+          "detail": "401"
+        },
+        {
+          "description": "no expone datos de la cuenta",
+          "ok": true
+        }
+      ],
+      "result": "Pass",
+      "observaciones": "",
+      "request": {
+        "method": "GET",
+        "url": "http://localhost:5254/api/external/ach/cuentas/search/MO260803936604",
+        "auth": "sin token"
+      },
+      "response": {
+        "status": 401,
+        "elapsedMs": 1,
+        "body": ""
+      },
+      "actualStatus": 401,
+      "elapsedMs": 1
+    },
+    {
+      "id": "TC-16",
+      "titulo": "Consulta de cuenta con token alterado",
+      "endpoint": "GET /api/external/ach/cuentas/search/{numeroCuenta}",
+      "tipo": "Seguridad (autenticacion)",
+      "esperado": 401,
+      "checks": [
+        {
+          "description": "HTTP 401",
+          "ok": true,
+          "detail": "401"
+        }
+      ],
+      "result": "Pass",
+      "observaciones": "",
+      "request": {
+        "method": "GET",
+        "url": "http://localhost:5254/api/external/ach/cuentas/search/MO260803936604",
+        "auth": "Bearer (token de prueba)"
+      },
+      "response": {
+        "status": 401,
+        "elapsedMs": 2,
+        "body": ""
+      },
+      "actualStatus": 401,
+      "elapsedMs": 2
+    },
+    {
+      "id": "TC-17",
+      "titulo": "Consulta con token de sesion revocada",
+      "endpoint": "GET /api/external/ach/cuentas/search/{numeroCuenta}",
+      "tipo": "Seguridad (autenticacion)",
+      "esperado": 401,
+      "checks": [
+        {
+          "description": "HTTP 401 con sesion revocada",
+          "ok": true,
+          "detail": "401"
+        }
+      ],
+      "result": "Pass",
+      "observaciones": "",
+      "request": {
+        "method": "GET",
+        "url": "http://localhost:5254/api/external/ach/cuentas/search/MO260803936604",
+        "auth": "Bearer (token de prueba)"
+      },
+      "response": {
+        "status": 401,
+        "elapsedMs": 2,
+        "body": ""
+      },
+      "actualStatus": 401,
+      "elapsedMs": 2
+    },
+    {
+      "id": "TC-18",
+      "titulo": "Consulta con intento de inyeccion SQL",
+      "endpoint": "GET /api/external/ach/cuentas/search/{numeroCuenta}",
+      "tipo": "Seguridad",
+      "esperado": 404,
+      "checks": [
+        {
+          "description": "HTTP 404",
+          "ok": true,
+          "detail": "404"
+        },
+        {
+          "description": "no devuelve datos de otra cuenta",
+          "ok": true
+        }
+      ],
+      "result": "Pass",
+      "observaciones": "",
+      "request": {
+        "method": "GET",
+        "url": "http://localhost:5254/api/external/ach/cuentas/search/X'%20OR%20'1'%3D'1",
+        "auth": "Bearer {token}"
+      },
+      "response": {
+        "status": 404,
+        "elapsedMs": 8,
+        "body": {
+          "status": false,
+          "message": "Cuenta no encontrada.",
+          "data": null,
+          "errors": null
+        }
+      },
+      "actualStatus": 404,
+      "elapsedMs": 8
+    },
+    {
+      "id": "TC-19",
+      "titulo": "Transferencia ACH entrante valida",
+      "endpoint": "POST /api/external/ach/transferencias",
+      "tipo": "Funcional",
+      "esperado": 201,
+      "checks": [
+        {
+          "description": "HTTP 201",
+          "ok": false,
+          "detail": "500"
+        },
+        {
+          "description": "estado APROBADA",
+          "ok": false
+        },
+        {
+          "description": "codigoConfirmacion y monto coinciden",
+          "ok": false,
+          "detail": "{}"
+        },
+        {
+          "description": "BD: saldo acreditado +500.00",
+          "ok": false,
+          "detail": "31256.91 -> 31256.91"
+        },
+        {
+          "description": "BD: movimiento ACH_IN registrado",
+          "ok": false,
+          "detail": ""
+        },
+        {
+          "description": "BD: asiento contable de partida doble (>= 2 lineas)",
+          "ok": false,
+          "detail": "undefined lineas"
+        },
+        {
+          "description": "BD: evento de auditoria exitoso",
+          "ok": false,
+          "detail": "0"
+        }
+      ],
+      "result": "Fail",
+      "observaciones": "Saldo MO260803936604: 31256.91 -> 31256.91.",
+      "request": {
+        "method": "POST",
+        "url": "http://localhost:5254/api/external/ach/transferencias",
+        "auth": "Bearer {token}",
+        "body": {
+          "codigo_confirmacion": "TRX-QA-20261003232621-0001",
+          "banco_externo": "DERBANCKS",
+          "cuenta_externa": "1234567890",
+          "numeroCuentaDestino": "MO260803936604",
+          "monto": 500,
+          "moneda": "Q",
+          "referencia": "Transferencia ACH entrante",
+          "tipo": "entrante"
+        }
+      },
+      "response": {
+        "status": 500,
+        "elapsedMs": 27,
+        "body": {
+          "status": false,
+          "message": "Ocurrio un error inesperado al procesar la transferencia.",
+          "data": null,
+          "errors": null
+        }
+      },
+      "actualStatus": 500,
+      "elapsedMs": 27
+    },
+    {
+      "id": "TC-20",
+      "titulo": "Transferencia duplicada (idempotencia)",
+      "endpoint": "POST /api/external/ach/transferencias",
+      "tipo": "Negativa / Regla de negocio",
+      "esperado": 409,
+      "checks": [
+        {
+          "description": "HTTP 409",
+          "ok": false,
+          "detail": "500"
+        },
+        {
+          "description": "errors.codigo_confirmacion presente",
+          "ok": false,
+          "detail": "null"
+        },
+        {
+          "description": "BD: saldo sin cambios",
+          "ok": true
+        }
+      ],
+      "result": "Fail",
+      "observaciones": "",
+      "request": {
+        "method": "POST",
+        "url": "http://localhost:5254/api/external/ach/transferencias",
+        "auth": "Bearer {token}",
+        "body": {
+          "codigo_confirmacion": "TRX-QA-20261003232621-0001",
+          "banco_externo": "DERBANCKS",
+          "cuenta_externa": "1234567890",
+          "numeroCuentaDestino": "MO260803936604",
+          "monto": 500,
+          "moneda": "Q",
+          "tipo": "entrante"
+        }
+      },
+      "response": {
+        "status": 500,
+        "elapsedMs": 9,
+        "body": {
+          "status": false,
+          "message": "Ocurrio un error inesperado al procesar la transferencia.",
+          "data": null,
+          "errors": null
+        }
+      },
+      "actualStatus": 500,
+      "elapsedMs": 9
+    },
+    {
+      "id": "TC-21",
+      "titulo": "Transferencia con body vacio",
+      "endpoint": "POST /api/external/ach/transferencias",
+      "tipo": "Negativa / Validacion",
+      "esperado": 400,
+      "checks": [
+        {
+          "description": "HTTP 400",
+          "ok": true,
+          "detail": "400"
+        },
+        {
+          "description": "errors lista los 6 campos obligatorios",
+          "ok": true,
+          "detail": "codigo_confirmacion,banco_externo,cuenta_externa,numeroCuentaDestino,monto,moneda"
+        }
+      ],
+      "result": "Pass",
+      "observaciones": "",
+      "request": {
+        "method": "POST",
+        "url": "http://localhost:5254/api/external/ach/transferencias",
+        "auth": "Bearer {token}",
+        "body": {}
+      },
+      "response": {
+        "status": 400,
+        "elapsedMs": 3,
+        "body": {
+          "status": false,
+          "message": "Solicitud invalida.",
+          "data": null,
+          "errors": {
+            "codigo_confirmacion": [
+              "El codigo de confirmacion es requerido."
+            ],
+            "banco_externo": [
+              "El banco externo es requerido."
+            ],
+            "cuenta_externa": [
+              "La cuenta externa es requerida."
+            ],
+            "numeroCuentaDestino": [
+              "El numero de cuenta destino es requerido."
+            ],
+            "monto": [
+              "El monto debe ser mayor a cero."
+            ],
+            "moneda": [
+              "La moneda soportada para ACH entrante es GTQ/Q."
+            ]
+          }
+        }
+      },
+      "actualStatus": 400,
+      "elapsedMs": 3
+    },
+    {
+      "id": "TC-22",
+      "titulo": "Transferencia con monto 0",
+      "endpoint": "POST /api/external/ach/transferencias",
+      "tipo": "Negativa / Validacion",
+      "esperado": 400,
+      "checks": [
+        {
+          "description": "HTTP 400",
+          "ok": true,
+          "detail": "400"
+        },
+        {
+          "description": "errors.monto presente",
+          "ok": true,
+          "detail": "{\"monto\":[\"El monto debe ser mayor a cero.\"]}"
+        }
+      ],
+      "result": "Pass",
+      "observaciones": "",
+      "request": {
+        "method": "POST",
+        "url": "http://localhost:5254/api/external/ach/transferencias",
+        "auth": "Bearer {token}",
+        "body": {
+          "codigo_confirmacion": "TRX-QA-20261003232621-0022",
+          "banco_externo": "DERBANCKS",
+          "cuenta_externa": "1234567890",
+          "numeroCuentaDestino": "MO260803936604",
+          "monto": 0,
+          "moneda": "Q"
+        }
+      },
+      "response": {
+        "status": 400,
+        "elapsedMs": 2,
+        "body": {
+          "status": false,
+          "message": "Solicitud invalida.",
+          "data": null,
+          "errors": {
+            "monto": [
+              "El monto debe ser mayor a cero."
+            ]
+          }
+        }
+      },
+      "actualStatus": 400,
+      "elapsedMs": 2
+    },
+    {
+      "id": "TC-23",
+      "titulo": "Transferencia con monto negativo",
+      "endpoint": "POST /api/external/ach/transferencias",
+      "tipo": "Negativa / Validacion",
+      "esperado": 400,
+      "checks": [
+        {
+          "description": "HTTP 400",
+          "ok": true,
+          "detail": "400"
+        },
+        {
+          "description": "BD: saldo sin cambios",
+          "ok": true
+        }
+      ],
+      "result": "Pass",
+      "observaciones": "",
+      "request": {
+        "method": "POST",
+        "url": "http://localhost:5254/api/external/ach/transferencias",
+        "auth": "Bearer {token}",
+        "body": {
+          "codigo_confirmacion": "TRX-QA-20261003232621-0023",
+          "banco_externo": "DERBANCKS",
+          "cuenta_externa": "1234567890",
+          "numeroCuentaDestino": "MO260803936604",
+          "monto": -100,
+          "moneda": "Q"
+        }
+      },
+      "response": {
+        "status": 400,
+        "elapsedMs": 3,
+        "body": {
+          "status": false,
+          "message": "Solicitud invalida.",
+          "data": null,
+          "errors": {
+            "monto": [
+              "El monto debe ser mayor a cero."
+            ]
+          }
+        }
+      },
+      "actualStatus": 400,
+      "elapsedMs": 3
+    },
+    {
+      "id": "TC-24",
+      "titulo": "Transferencia con moneda no soportada (USD)",
+      "endpoint": "POST /api/external/ach/transferencias",
+      "tipo": "Negativa / Regla de negocio",
+      "esperado": 422,
+      "checks": [
+        {
+          "description": "HTTP 422 (guia seccion 8: moneda invalida)",
+          "ok": false,
+          "detail": "400"
+        },
+        {
+          "description": "errors.moneda presente",
+          "ok": true,
+          "detail": "{\"moneda\":[\"La moneda soportada para ACH entrante es GTQ/Q.\"]}"
+        }
+      ],
+      "result": "Fail",
+      "observaciones": "",
+      "request": {
+        "method": "POST",
+        "url": "http://localhost:5254/api/external/ach/transferencias",
+        "auth": "Bearer {token}",
+        "body": {
+          "codigo_confirmacion": "TRX-QA-20261003232621-0024",
+          "banco_externo": "DERBANCKS",
+          "cuenta_externa": "1234567890",
+          "numeroCuentaDestino": "MO260803936604",
+          "monto": 100,
+          "moneda": "USD"
+        }
+      },
+      "response": {
+        "status": 400,
+        "elapsedMs": 2,
+        "body": {
+          "status": false,
+          "message": "Solicitud invalida.",
+          "data": null,
+          "errors": {
+            "moneda": [
+              "La moneda soportada para ACH entrante es GTQ/Q."
+            ]
+          }
+        }
+      },
+      "actualStatus": 400,
+      "elapsedMs": 2
+    },
+    {
+      "id": "TC-25",
+      "titulo": "Transferencia con tipo distinto de entrante",
+      "endpoint": "POST /api/external/ach/transferencias",
+      "tipo": "Negativa / Validacion",
+      "esperado": 400,
+      "checks": [
+        {
+          "description": "HTTP 400",
+          "ok": true,
+          "detail": "400"
+        },
+        {
+          "description": "errors.tipo presente",
+          "ok": true,
+          "detail": "{\"tipo\":[\"Solo se permiten transferencias ACH entrantes.\"]}"
+        }
+      ],
+      "result": "Pass",
+      "observaciones": "",
+      "request": {
+        "method": "POST",
+        "url": "http://localhost:5254/api/external/ach/transferencias",
+        "auth": "Bearer {token}",
+        "body": {
+          "codigo_confirmacion": "TRX-QA-20261003232621-0025",
+          "banco_externo": "DERBANCKS",
+          "cuenta_externa": "1234567890",
+          "numeroCuentaDestino": "MO260803936604",
+          "monto": 100,
+          "moneda": "Q",
+          "tipo": "saliente"
+        }
+      },
+      "response": {
+        "status": 400,
+        "elapsedMs": 2,
+        "body": {
+          "status": false,
+          "message": "Solicitud invalida.",
+          "data": null,
+          "errors": {
+            "tipo": [
+              "Solo se permiten transferencias ACH entrantes."
+            ]
+          }
+        }
+      },
+      "actualStatus": 400,
+      "elapsedMs": 2
+    },
+    {
+      "id": "TC-26",
+      "titulo": "Transferencia a cuenta inexistente",
+      "endpoint": "POST /api/external/ach/transferencias",
+      "tipo": "Negativa",
+      "esperado": 404,
+      "checks": [
+        {
+          "description": "HTTP 404",
+          "ok": true,
+          "detail": "404"
+        }
+      ],
+      "result": "Pass",
+      "observaciones": "",
+      "request": {
+        "method": "POST",
+        "url": "http://localhost:5254/api/external/ach/transferencias",
+        "auth": "Bearer {token}",
+        "body": {
+          "codigo_confirmacion": "TRX-QA-20261003232621-0026",
+          "banco_externo": "DERBANCKS",
+          "cuenta_externa": "1234567890",
+          "numeroCuentaDestino": "MO-2026-99999",
+          "monto": 100,
+          "moneda": "Q"
+        }
+      },
+      "response": {
+        "status": 404,
+        "elapsedMs": 8,
+        "body": {
+          "status": false,
+          "message": "Cuenta destino no encontrada.",
+          "data": null,
+          "errors": null
+        }
+      },
+      "actualStatus": 404,
+      "elapsedMs": 8
+    },
+    {
+      "id": "TC-27",
+      "titulo": "Transferencia a cuenta BLOQUEADA",
+      "endpoint": "POST /api/external/ach/transferencias",
+      "tipo": "Negativa / Regla de negocio",
+      "esperado": 422,
+      "checks": [
+        {
+          "description": "HTTP 422",
+          "ok": true,
+          "detail": "422"
+        },
+        {
+          "description": "BD: saldo de la cuenta bloqueada sin cambios",
+          "ok": true
+        }
+      ],
+      "result": "Pass",
+      "observaciones": "",
+      "request": {
+        "method": "POST",
+        "url": "http://localhost:5254/api/external/ach/transferencias",
+        "auth": "Bearer {token}",
+        "body": {
+          "codigo_confirmacion": "TRX-QA-20261003232621-0027",
+          "banco_externo": "DERBANCKS",
+          "cuenta_externa": "1234567890",
+          "numeroCuentaDestino": "AH260901838371",
+          "monto": 100,
+          "moneda": "Q"
+        }
+      },
+      "response": {
+        "status": 422,
+        "elapsedMs": 8,
+        "body": {
+          "status": false,
+          "message": "La cuenta destino no esta activa.",
+          "data": null,
+          "errors": null
+        }
+      },
+      "actualStatus": 422,
+      "elapsedMs": 8
+    },
+    {
+      "id": "TC-28",
+      "titulo": "Transferencia sin token",
+      "endpoint": "POST /api/external/ach/transferencias",
+      "tipo": "Seguridad (autenticacion)",
+      "esperado": 401,
+      "checks": [
+        {
+          "description": "HTTP 401",
+          "ok": true,
+          "detail": "401"
+        },
+        {
+          "description": "BD: saldo sin cambios",
+          "ok": true
+        }
+      ],
+      "result": "Pass",
+      "observaciones": "",
+      "request": {
+        "method": "POST",
+        "url": "http://localhost:5254/api/external/ach/transferencias",
+        "auth": "sin token",
+        "body": {
+          "codigo_confirmacion": "TRX-QA-20261003232621-0028",
+          "banco_externo": "DERBANCKS",
+          "cuenta_externa": "1234567890",
+          "numeroCuentaDestino": "MO260803936604",
+          "monto": 100,
+          "moneda": "Q"
+        }
+      },
+      "response": {
+        "status": 401,
+        "elapsedMs": 1,
+        "body": ""
+      },
+      "actualStatus": 401,
+      "elapsedMs": 1
+    },
+    {
+      "id": "TC-29",
+      "titulo": "Transferencia con monto como texto y moneda GTQ",
+      "endpoint": "POST /api/external/ach/transferencias",
+      "tipo": "Funcional",
+      "esperado": 201,
+      "checks": [
+        {
+          "description": "HTTP 201",
+          "ok": false,
+          "detail": "500"
+        },
+        {
+          "description": "monto 150.75 y moneda normalizada",
+          "ok": false,
+          "detail": "null"
+        }
+      ],
+      "result": "Fail",
+      "observaciones": "",
+      "request": {
+        "method": "POST",
+        "url": "http://localhost:5254/api/external/ach/transferencias",
+        "auth": "Bearer {token}",
+        "body": {
+          "codigo_confirmacion": "TRX-QA-20261003232621-0029",
+          "banco_externo": "DERBANCKS",
+          "cuenta_externa": "1234567890",
+          "numeroCuentaDestino": "AH260730742944",
+          "monto": "150.75",
+          "moneda": "GTQ"
+        }
+      },
+      "response": {
+        "status": 500,
+        "elapsedMs": 9,
+        "body": {
+          "status": false,
+          "message": "Ocurrio un error inesperado al procesar la transferencia.",
+          "data": null,
+          "errors": null
+        }
+      },
+      "actualStatus": 500,
+      "elapsedMs": 9
+    },
+    {
+      "id": "TC-30",
+      "titulo": "Transferencia con monto de 3 decimales",
+      "endpoint": "POST /api/external/ach/transferencias",
+      "tipo": "Negativa / Validacion",
+      "esperado": 400,
+      "checks": [
+        {
+          "description": "HTTP 400 (monto monetario con mas de 2 decimales)",
+          "ok": true,
+          "detail": "400"
+        },
+        {
+          "description": "BD: no se acredita un monto distinto al enviado",
+          "ok": true,
+          "detail": "delta=0"
+        }
+      ],
+      "result": "Pass",
+      "observaciones": "",
+      "request": {
+        "method": "POST",
+        "url": "http://localhost:5254/api/external/ach/transferencias",
+        "auth": "Bearer {token}",
+        "body": {
+          "codigo_confirmacion": "TRX-QA-20261003232621-0030",
+          "banco_externo": "DERBANCKS",
+          "cuenta_externa": "1234567890",
+          "numeroCuentaDestino": "AH260730742944",
+          "monto": 10.555,
+          "moneda": "Q"
+        }
+      },
+      "response": {
+        "status": 400,
+        "elapsedMs": 2,
+        "body": {
+          "status": false,
+          "message": "Solicitud invalida.",
+          "data": null,
+          "errors": {
+            "monto": [
+              "El monto admite como maximo 2 decimales."
+            ]
+          }
+        }
+      },
+      "actualStatus": 400,
+      "elapsedMs": 2
+    },
+    {
+      "id": "TC-31",
+      "titulo": "Transferencia con monto fuera de rango numerico",
+      "endpoint": "POST /api/external/ach/transferencias",
+      "tipo": "Manejo de errores",
+      "esperado": 400,
+      "checks": [
+        {
+          "description": "HTTP 400 controlado",
+          "ok": true,
+          "detail": "400"
+        },
+        {
+          "description": "no expone mensajes internos de base de datos",
+          "ok": true,
+          "detail": "{\"status\":false,\"message\":\"Solicitud invalida.\",\"data\":null,\"errors\":{\"monto\":[\"El monto excede el maximo permitido.\"]}}"
+        }
+      ],
+      "result": "Pass",
+      "observaciones": "",
+      "request": {
+        "method": "POST",
+        "url": "http://localhost:5254/api/external/ach/transferencias",
+        "auth": "Bearer {token}",
+        "body": {
+          "codigo_confirmacion": "TRX-QA-20261003232621-0031",
+          "banco_externo": "DERBANCKS",
+          "cuenta_externa": "1234567890",
+          "numeroCuentaDestino": "AH260730742944",
+          "monto": 100000000000000000,
+          "moneda": "Q"
+        }
+      },
+      "response": {
+        "status": 400,
+        "elapsedMs": 2,
+        "body": {
+          "status": false,
+          "message": "Solicitud invalida.",
+          "data": null,
+          "errors": {
+            "monto": [
+              "El monto excede el maximo permitido."
+            ]
+          }
+        }
+      },
+      "actualStatus": 400,
+      "elapsedMs": 2
+    },
+    {
+      "id": "TC-32",
+      "titulo": "Envio concurrente del mismo codigo (5 solicitudes)",
+      "endpoint": "POST /api/external/ach/transferencias",
+      "tipo": "Regla de negocio / Concurrencia",
+      "esperado": "1x201 + 4x409",
+      "checks": [
+        {
+          "description": "exactamente una 201",
+          "ok": false,
+          "detail": "500,500,500,500,500"
+        },
+        {
+          "description": "las demas 409",
+          "ok": false,
+          "detail": "500,500,500,500,500"
+        },
+        {
+          "description": "BD: saldo acreditado una sola vez (+25.00)",
+          "ok": false,
+          "detail": "delta=0"
+        }
+      ],
+      "result": "Fail",
+      "observaciones": "",
+      "request": {
+        "method": "POST",
+        "url": "http://localhost:5254/api/external/ach/transferencias",
+        "auth": "Bearer {token}",
+        "body": {
+          "codigo_confirmacion": "TRX-QA-20261003232621-0032",
+          "banco_externo": "DERBANCKS",
+          "cuenta_externa": "1234567890",
+          "numeroCuentaDestino": "AH260730742944",
+          "monto": 25,
+          "moneda": "Q"
+        }
+      },
+      "response": {
+        "status": "500,500,500,500,500",
+        "elapsedMs": 30,
+        "body": {
+          "statuses": [
+            500,
+            500,
+            500,
+            500,
+            500
+          ]
+        }
+      },
+      "actualStatus": "500,500,500,500,500",
+      "elapsedMs": 30
+    },
+    {
+      "id": "TC-33",
+      "titulo": "Metodo HTTP no soportado",
+      "endpoint": "DELETE /api/external/ach/transferencias",
+      "tipo": "Manejo de errores",
+      "esperado": 405,
+      "checks": [
+        {
+          "description": "HTTP 405",
+          "ok": true,
+          "detail": "405"
+        }
+      ],
+      "result": "Pass",
+      "observaciones": "",
+      "request": {
+        "method": "DELETE",
+        "url": "http://localhost:5254/api/external/ach/transferencias",
+        "auth": "Bearer {token}"
+      },
+      "response": {
+        "status": 405,
+        "elapsedMs": 1,
+        "body": ""
+      },
+      "actualStatus": 405,
+      "elapsedMs": 1
+    },
+    {
+      "id": "TC-34",
+      "titulo": "Content-Type no soportado",
+      "endpoint": "POST /api/external/ach/transferencias",
+      "tipo": "Manejo de errores",
+      "esperado": 415,
+      "checks": [
+        {
+          "description": "HTTP 415",
+          "ok": true,
+          "detail": "415"
+        }
+      ],
+      "result": "Pass",
+      "observaciones": "",
+      "request": {
+        "method": "POST",
+        "url": "http://localhost:5254/api/external/ach/transferencias",
+        "auth": "Bearer {token}",
+        "body": "monto=100"
+      },
+      "response": {
+        "status": 415,
+        "elapsedMs": 2,
+        "body": {
+          "type": "https://tools.ietf.org/html/rfc9110#section-15.5.16",
+          "title": "Unsupported Media Type",
+          "status": 415,
+          "traceId": "00-78195d5b284bc3c5a8054d0ed8a39738-0390251e33e238ad-00"
+        }
+      },
+      "actualStatus": 415,
+      "elapsedMs": 2
+    },
+    {
+      "id": "TC-35",
+      "titulo": "Tiempo de respuesta de consulta de cuenta (20 llamadas)",
+      "endpoint": "GET /api/external/ach/cuentas/search/{numeroCuenta}",
+      "tipo": "Rendimiento basico",
+      "esperado": "p95 < 500 ms",
+      "checks": [
+        {
+          "description": "p95 < 500 ms",
+          "ok": true,
+          "detail": "p95=7 ms, promedio=7 ms"
+        }
+      ],
+      "result": "Pass",
+      "observaciones": "Promedio 7 ms, p95 7 ms, max 12 ms.",
+      "request": {
+        "method": "GET",
+        "url": "http://localhost:5254/api/external/ach/cuentas/search/MO260803936604",
+        "auth": "Bearer {token}"
+      },
+      "response": {
+        "status": 200,
+        "elapsedMs": 7,
+        "body": {
+          "muestras": 20,
+          "promedioMs": 7,
+          "p95Ms": 7,
+          "maxMs": 12
+        }
+      },
+      "actualStatus": 200,
+      "elapsedMs": 7
+    }
+  ]
+}
