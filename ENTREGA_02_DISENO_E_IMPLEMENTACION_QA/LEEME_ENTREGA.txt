@@ -1,0 +1,109 @@
+BANCOERP · ENTREGA 2 · DISEÑO E IMPLEMENTACIÓN QA
+Versión 2.0 · 6 de octubre de 2026 · Guatemala (UTC-6)
+
+ENTREGABLE PRINCIPAL
+01_Documento_Consolidado_QA/E2_Documento_Diseno_Implementacion_EquipoXX.docx
+PDF equivalente y Excel de matrices incluidos.
+
+DEFINICIONES CERRADAS
+Las reglas funcionales, de seguridad/calidad y ACH saliente que la Entrega 1
+dejó pendientes se cerraron en la reunión de diseño del equipo QA del
+06-10-2026, con aprobación del Líder QA. Decisiones_Aprobadas.json conserva
+el registro y las precisiones técnicas. Las reglas no significan que el
+software ya las implemente. No se modificó el código de la aplicación.
+
+24 requerimientos originales de E1; 53 condiciones; 139 casos formales.
+Cero casos bloqueados por definición. Todos tienen oráculo declarado y pasos ejecutables (SQL/comandos exactos).
+E1 se conserva como historia y la RTM agrega el criterio vigente aprobado.
+Inventario de bitácora reconciliado: 20 eventos de la fuente vigente, cada uno
+con escenario y puntos de emisión. E1 indicaba 21; se actualiza con nota.
+Pairwise: 6 filas de 16 posibles; cobertura independiente de 24/24 pares.
+
+COMPROBACIONES EJECUTADAS
+15/15 controles de alistamiento APTO.
+12/12 controles del banco simulado y compuerta LOCAL OK.
+No se afirma ejecución integral de los 139 casos ni corrida de CI remoto.
+Dictamen de preparación: APTO CON RESTRICCIONES DE ACEPTACIÓN DEL PRODUCTO.
+H-03, H-05, H-09 y diferencias de ACH saliente se documentan para corregir;
+una diferencia del código es un defecto, no una definición pendiente.
+
+CONTENIDO
+Excel: Leer_primero, RTM, Casos_Prueba, Data_Matrix, Condiciones, Pairwise,
+Decision_Deposito, Transiciones, Readiness, Bloqueos, Decisiones, Eventos,
+Mock_y_Compuerta.
+Mock principal: 8 usuarios, 1000 clientes, 2000 cuentas, 10000 movimientos.
+Datos 100% sintéticos, sin copia de producción; cinco bancos mock locales.
+Postman: 139 peticiones (10 preparación y 129 plantillas de casos HTTP).
+Archivos de severidad son fixtures sintéticos, no CVE reales de paquetes.
+
+REPRODUCCIÓN
+Mantener la carpeta de entrega en la raíz del repositorio BancoERP.
+Requisitos: Docker activo y Python 3. Para Word/Excel: python-docx/openpyxl.
+Para validación PDF: PyMuPDF. Para capturas: Node, Chrome y playwright-core.
+
+Si faltan las imágenes locales, construirlas desde el repositorio:
+docker build -t bancoerp-dev-internal-api -f Backend/BancoERP.InternalAPI/Dockerfile.dev Backend
+docker build -t bancoerp-dev-public-api -f Backend/BancoERP.PublicAPI/Dockerfile.dev Backend
+docker build -t bancoerp-dev-frontend -f Frontend/Dockerfile.dev Frontend
+
+Desde la raíz del repositorio, en este orden:
+python3 ENTREGA_02_DISENO_E_IMPLEMENTACION_QA/03_Evidencias_y_MockData/scripts/preparar.py
+python3 ENTREGA_02_DISENO_E_IMPLEMENTACION_QA/03_Evidencias_y_MockData/scripts/disenar.py
+python3 ENTREGA_02_DISENO_E_IMPLEMENTACION_QA/03_Evidencias_y_MockData/scripts/coleccion.py
+docker compose -f ENTREGA_02_DISENO_E_IMPLEMENTACION_QA/03_Evidencias_y_MockData/docker-compose.qa.yml up -d
+python3 ENTREGA_02_DISENO_E_IMPLEMENTACION_QA/03_Evidencias_y_MockData/scripts/configurar_banco_mock.py
+python3 ENTREGA_02_DISENO_E_IMPLEMENTACION_QA/03_Evidencias_y_MockData/scripts/mock_smoke.py
+python3 ENTREGA_02_DISENO_E_IMPLEMENTACION_QA/03_Evidencias_y_MockData/scripts/readiness.py
+
+Un volumen nuevo se inicializa con scripts/init_all.sql. Un volumen existente
+no se inicializa otra vez. SQL es idempotente para insertar IDs faltantes,
+pero no restaura saldos/estados. preparar_escenario.py restaura las primeras
+tres cuentas; las demás precondiciones están detalladas por caso.
+--paginacion crea 110 registros adicionales para llegar a 120 en la cuenta
+objetivo; ejecutar después de los conteos iniciales de readiness.
+
+URLs QA (publicadas solo en loopback):
+Frontend http://localhost:13000/login
+Internal API http://localhost:15141/swagger
+Public API http://localhost:15254/swagger
+PostgreSQL 127.0.0.1:15433 / bancoerp_e2_qa
+MongoDB 127.0.0.1:17017 / bancoerp_e2_qa
+Banco mock http://localhost:18081/health (entre contenedores mock-bank:8081)
+Base, red y volúmenes exclusivos; no se afirma bloqueo de egreso por firewall.
+
+BANCO SIMULADO
+/health: disponibilidad y catálogo de escenarios.
+/cuentas/search/EXT-QA-0001: cuenta sintética activa.
+/success/transferencias: 201 una vez por código; repetido 409.
+/http500/transferencias: 500 sintético.
+/invalid/transferencias: 200 con JSON mal formado.
+/timeout/transferencias: demora 20 segundos, mayor al contrato de 15 s.
+/duplicate/transferencias: rechaza el código como ya procesado (409).
+/stats: intentos y acreditaciones sintéticas; POST /reset limpia solo ese ledger.
+El test de demora usa cliente de 0.5 s: verifica el fixture, no el timeout
+de 15 s de BancoERP. La suite de producto debe contrastar ese contrato.
+
+POSTMAN
+Importar Collection y Environment QA. Asignar runId nuevo por corrida.
+No usar Run All: cambian perfiles, cajas y fixtures.
+Los logins de preparación guardan variables separadas por perfil:
+token (cajero), accessToken (externo), token_admin, token_cliente_a,
+token_cliente_b, token_bloqueo, token_sin_permiso.
+Las peticiones de catálogo autenticadas como admin resuelven rolCajeroId
+y permisoDepositoId; recuperación guarda tokenRecuperacion y los logins
+correspondientes guardan refreshTokenCajero y refreshTokenBloqueo.
+La contraseña E2Qa2026* pertenece exclusivamente a datos QA sintéticos.
+Tokens iniciales vacíos; no se publican tokens reales en evidencias.
+Casos compuestos requieren pasos completos y consultas SQL de su ficha.
+Los oráculos nuevos pueden fallar con el código actual; registrar defecto.
+
+REGENERAR DOCUMENTOS
+Después de readiness y capturas:
+python3 ENTREGA_02_DISENO_E_IMPLEMENTACION_QA/03_Evidencias_y_MockData/scripts/documentar.py
+Exportar el Word a PDF (soffice --headless --convert-to pdf), luego:
+python3 ENTREGA_02_DISENO_E_IMPLEMENTACION_QA/03_Evidencias_y_MockData/scripts/validar.py
+
+Para capturas definir PLAYWRIGHT_MODULE con la ruta de playwright-core y:
+node ENTREGA_02_DISENO_E_IMPLEMENTACION_QA/03_Evidencias_y_MockData/scripts/capturar.cjs
+
+MANIFIESTO_SHA256.txt incluye huellas de la versión final.
