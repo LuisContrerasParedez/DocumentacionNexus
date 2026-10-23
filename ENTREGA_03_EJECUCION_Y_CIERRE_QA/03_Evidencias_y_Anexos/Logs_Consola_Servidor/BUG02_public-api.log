@@ -1,0 +1,16 @@
+public-api-1  | warn: Microsoft.AspNetCore.DataProtection.Repositories.FileSystemXmlRepository[60]
+public-api-1  |       Storing keys in a directory '/root/.aspnet/DataProtection-Keys' that may not be persisted outside of the container. Protected data will be unavailable when container is destroyed. For more information go to https://aka.ms/aspnet/dataprotectionwarning
+public-api-1  | warn: Microsoft.AspNetCore.DataProtection.KeyManagement.XmlKeyManager[35]
+public-api-1  |       No XML encryptor configured. Key {58ba2679-0567-45dd-9f12-03c8371b0486} may be persisted to storage in unencrypted form.
+public-api-1  | warn: Microsoft.AspNetCore.Hosting.Diagnostics[15]
+public-api-1  |       Overriding HTTP_PORTS '8080' and HTTPS_PORTS ''. Binding to values defined by URLS instead 'http://0.0.0.0:8080'.
+public-api-1  | info: Microsoft.Hosting.Lifetime[14]
+public-api-1  |       Now listening on: http://0.0.0.0:8080
+public-api-1  | info: Microsoft.Hosting.Lifetime[0]
+public-api-1  |       Application started. Press Ctrl+C to shut down.
+public-api-1  | info: Microsoft.Hosting.Lifetime[0]
+public-api-1  |       Hosting environment: QA
+public-api-1  | info: Microsoft.Hosting.Lifetime[0]
+public-api-1  |       Content root path: /src/BancoERP.PublicAPI
+public-api-1  | info: BancoERP.Application.Services.ExternalAchPublicService[0]
+public-api-1  |       Transferencia ACH publica acreditada. Banco qa_banco_externo, codigo E2-REP01-ACH-001, cuenta **********0302, monto 25.0

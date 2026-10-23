@@ -1,0 +1,43 @@
+ codigo_confirmacion | estado | monto | created_at 
+---------------------+--------+-------+------------
+(0 rows)
+
+================ TC-REQ17-003 — ANTES — 2026-10-19 18:49:12 CST ================
+ numero_cuenta  | estado |  saldo  | saldo_disponible | saldo_minimo | limite_retiro_diario | monto_retirado_hoy 
+----------------+--------+---------+------------------+--------------+----------------------+--------------------
+ AH261002000101 | ACTIVA | 7000.00 |          7000.00 |       100.00 |              5000.00 |               0.00
+(1 row)
+
+
+================ TC-REQ17-003 — DESPUES — 2026-10-19 18:49:13 CST ================
+ numero_cuenta  | estado |  saldo  | saldo_disponible | saldo_minimo | limite_retiro_diario | monto_retirado_hoy 
+----------------+--------+---------+------------------+--------------+----------------------+--------------------
+ AH261002000101 | ACTIVA | 7500.00 |          7500.00 |       100.00 |              5000.00 |               0.00
+(1 row)
+
+ numero_cuenta  |  tipo  | monto  | saldo_anterior | saldo_posterior |   estado   |               referencia               | canal |   hora   
+----------------+--------+--------+----------------+-----------------+------------+----------------------------------------+-------+----------
+ AH261002000101 | ACH_IN | 500.00 |        7000.00 |         7500.00 | COMPLETADA | ACHIN-27bef948b61144dcb82d5fd1964bc98b |       | 00:49:13
+(1 row)
+
+ username  |   fecha    | estado  | fondo_inicial | total_depositos | total_retiros | efectivo_esperado | efectivo_contado | diferencia |   abre   |  cierra  
+-----------+------------+---------+---------------+-----------------+---------------+-------------------+------------------+------------+----------+----------
+ qa_cajero | 2026-10-20 | CERRADA |       1000.00 |            0.00 |          0.00 |           1000.00 |                  |            | 00:42:22 | 00:43:32
+ qa_cajero | 2026-10-20 | CERRADA |       1000.00 |            0.00 |          0.00 |           1000.00 |          1010.00 |      10.00 | 00:43:49 | 00:43:50
+ qa_cajero | 2026-10-20 | CERRADA |       1000.00 |            0.00 |          0.00 |           1000.00 |          1010.01 |      10.01 | 00:43:50 | 00:43:51
+ qa_cajero | 2026-10-20 | CERRADA |       1000.00 |         2000.01 |       5100.01 |          -2100.00 |                  |            | 00:44:01 | 00:44:31
+ qa_cajero | 2026-10-20 | CERRADA |       1000.00 |           10.00 |          0.00 |           1010.00 |                  |            | 00:44:32 | 00:48:24
+ qa_cajero | 2026-10-20 | ABIERTA |       1000.00 |            0.00 |          0.00 |           1000.00 |                  |            | 00:48:47 | 
+(6 rows)
+
+   modulo   |         accion         |        entidad_tipo        | resultado |                   antes                   |                                                         despues                                                          |   hora   
+------------+------------------------+----------------------------+-----------+-------------------------------------------+--------------------------------------------------------------------------------------------------------------------------+----------
+ ACH_PUBLIC | TRANSFERENCIA_ENTRANTE | ACH_TRANSFERENCIA_ENTRANTE | EXITOSO   | {"saldo": 7000.00, "estado": "PENDIENTE"} | {"saldo": 7500.00, "movimiento_id": "a365d92b-ff12-42b2-adda-8bcdea23da74", "cuenta_destino": "AH261002000101", "nombre_ | 00:49:13
+(1 row)
+
+
+ codigo_confirmacion |  estado  | monto  | numero_cuenta_destino | con_movimiento | err 
+---------------------+----------+--------+-----------------------+----------------+-----
+ E2-EXT-20261002-001 | APROBADA | 500.00 | AH261002000101        | t              | 
+(1 row)
+

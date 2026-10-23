@@ -1,0 +1,61 @@
+== 2026-10-19 18:53:28 CST Recarga completa del fixture Nexus
+== 2026-10-19 18:53:29 CST fixture OK
+== 2026-10-19 18:53:29 CST Smoke
+   GET http://localhost:13000/login -> HTTP 200
+   GET http://localhost:15141/api/Ping -> HTTP 200
+   GET http://localhost:15254/api/Home -> HTTP 200
+   GET http://localhost:15141/swagger/v1/swagger.json -> HTTP 200
+   GET http://localhost:15254/swagger/v1/swagger.json -> HTTP 200
+== 00_Preparacion: requests=7 assertions=7 fallidas=0
+== TC-REQ01-001: requests=1 assertions=2 fallidas=0
+== 2026-10-19 18:53:32 CST PRE TC-REQ01-002: reset qa_bloqueo
+UPDATE 1
+== TC-REQ01-002: requests=6 assertions=10 fallidas=0
+== TC-REQ01-003: requests=2 assertions=6 fallidas=0
+== TC-REQ02-001: requests=3 assertions=4 fallidas=0
+== TC-REQ02-002: requests=4 assertions=4 fallidas=0
+== TC-REQ03-001: requests=1 assertions=1 fallidas=0
+== TC-REQ03-002: requests=4 assertions=4 fallidas=0
+== 2026-10-19 18:53:41 CST TC-REQ03-002 fila adicional P7 (BUG-NEX-01): GET /api/ach/bancos sin token -> HTTP 200
+== TC-REQ06-001: requests=3 assertions=6 fallidas=0
+== TC-REQ06-002: requests=4 assertions=5 fallidas=0
+== 2026-10-19 18:53:45 CST PRE TC-REQ08-001: sección 5 (cerrar cajas)
+UPDATE 1
+== TC-REQ08-001: requests=2 assertions=3 fallidas=0
+== TC-REQ08-002: requests=3 assertions=4 fallidas=0
+== TC-REQ08-003: requests=1 assertions=2 fallidas=0
+== TC-REQ09-001: requests=3 assertions=4 fallidas=0
+== TC-REQ09-002: requests=2 assertions=3 fallidas=0
+== TC-REQ09-003: requests=2 assertions=3 fallidas=0
+== TC-REQ10-001: requests=2 assertions=3 fallidas=0
+== TC-REQ10-002: requests=1 assertions=1 fallidas=0
+== TC-REQ10-003_parte1_Q5000.00: requests=1 assertions=1 fallidas=0
+== 2026-10-19 18:53:54 CST Reinicio secciones 4 y 5
+== TC-REQ09-001_precondicion_caja_REQ10: requests=1 assertions=1 fallidas=0
+== TC-REQ10-003_parte2_Q5000.01: requests=1 assertions=2 fallidas=0
+== TC-REQ11-001: requests=1 assertions=2 fallidas=0
+== TC-REQ11-002: requests=1 assertions=1 fallidas=0
+== TC-REQ11-003: requests=1 assertions=1 fallidas=0
+== TC-REQ12-001: requests=1 assertions=4 fallidas=0
+== TC-REQ12-002: requests=1 assertions=2 fallidas=0
+== TC-REQ12-003_parte1_Q100.00: requests=1 assertions=1 fallidas=0
+== 2026-10-19 18:53:59 CST Reinicio secciones 4 y 5
+== TC-REQ12-003_parte2_Q100.01: requests=1 assertions=2 fallidas=0
+== TC-REQ09-001_precondicion_caja_REQ14: requests=1 assertions=1 fallidas=0
+== TC-REQ14-001: requests=4 assertions=5 fallidas=0
+== TC-REQ14-002: requests=4 assertions=6 fallidas=0
+== TC-REQ14-003_parte1_Q10.00: requests=1 assertions=1 fallidas=0
+== 2026-10-19 18:54:05 CST Reinicio secciones 4 y 5
+== TC-REQ09-001_precondicion_caja_REQ14b: requests=1 assertions=1 fallidas=0
+== TC-REQ14-003_parte2_Q10.01: requests=1 assertions=2 fallidas=0
+== TC-REQ17-001: requests=2 assertions=4 fallidas=0
+== 2026-10-19 18:54:07 CST PRE TC-REQ17-002: retirar permisos
+SELECT 2
+DELETE 2
+== TC-REQ17-002: requests=3 assertions=3 fallidas=0
+== 2026-10-19 18:54:09 CST Restaurar permisos
+INSERT 0 2
+DROP TABLE
+== 2026-10-19 18:54:09 CST TC-REQ17-003 con código de confirmación nuevo (el original E2-EXT-20261002-001 ya fue procesado en la ejecución)
+== TC-REQ17-003_codigo_REG: requests=2 assertions=4 fallidas=0
+== 2026-10-19 18:54:10 CST Fin de regresión

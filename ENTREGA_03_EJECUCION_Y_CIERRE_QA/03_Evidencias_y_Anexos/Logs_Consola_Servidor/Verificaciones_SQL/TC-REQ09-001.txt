@@ -1,0 +1,34 @@
+================ TC-REQ09-001 — ANTES — 2026-10-19 18:44:00 CST ================
+ numero_cuenta  |  estado   |  saldo  | saldo_disponible | saldo_minimo | limite_retiro_diario | monto_retirado_hoy 
+----------------+-----------+---------+------------------+--------------+----------------------+--------------------
+ AH261002000101 | ACTIVA    | 7000.00 |          7000.00 |       100.00 |              5000.00 |               0.00
+ AH261002000103 | BLOQUEADA |  500.00 |           500.00 |       100.00 |              5000.00 |               0.00
+(2 rows)
+
+
+================ TC-REQ09-001 — DESPUES — 2026-10-19 18:44:01 CST ================
+ numero_cuenta  |  estado   |  saldo  | saldo_disponible | saldo_minimo | limite_retiro_diario | monto_retirado_hoy 
+----------------+-----------+---------+------------------+--------------+----------------------+--------------------
+ AH261002000101 | ACTIVA    | 7000.01 |          7000.01 |       100.00 |              5000.00 |               0.00
+ AH261002000103 | BLOQUEADA |  500.00 |           500.00 |       100.00 |              5000.00 |               0.00
+(2 rows)
+
+ numero_cuenta  |   tipo   | monto | saldo_anterior | saldo_posterior |   estado   |              referencia              | canal |   hora   
+----------------+----------+-------+----------------+-----------------+------------+--------------------------------------+-------+----------
+ AH261002000101 | DEPOSITO |  0.01 |        7000.00 |         7000.01 | COMPLETADA | DEP-2ac52f6dd5c94a53aa82dd91bea9c235 |       | 00:44:01
+(1 row)
+
+ username  |   fecha    | estado  | fondo_inicial | total_depositos | total_retiros | efectivo_esperado | efectivo_contado | diferencia |   abre   |  cierra  
+-----------+------------+---------+---------------+-----------------+---------------+-------------------+------------------+------------+----------+----------
+ qa_cajero | 2026-10-20 | CERRADA |       1000.00 |            0.00 |          0.00 |           1000.00 |                  |            | 00:42:22 | 00:43:32
+ qa_cajero | 2026-10-20 | CERRADA |       1000.00 |            0.00 |          0.00 |           1000.00 |          1010.00 |      10.00 | 00:43:49 | 00:43:50
+ qa_cajero | 2026-10-20 | CERRADA |       1000.00 |            0.00 |          0.00 |           1000.00 |          1010.01 |      10.01 | 00:43:50 | 00:43:51
+ qa_cajero | 2026-10-20 | ABIERTA |       1000.00 |            0.01 |          0.00 |           1000.01 |                  |            | 00:44:01 | 
+(4 rows)
+
+    modulo     |  accion  | entidad_tipo | resultado |       antes        |                                 despues                                  |   hora   
+---------------+----------+--------------+-----------+--------------------+--------------------------------------------------------------------------+----------
+ TRANSACCIONES | DEPOSITO | CUENTA       | EXITOSO   | {"saldo": 7000.00} | {"saldo": 7000.01, "referencia": "DEP-2ac52f6dd5c94a53aa82dd91bea9c235"} | 00:44:01
+(1 row)
+
+

@@ -1,0 +1,20 @@
+ sesiones_sin_empleado 
+-----------------------
+                     0
+(1 row)
+
+ cuentas_total 
+---------------
+          2018
+(1 row)
+
+ sesiones_sin_empleado 
+-----------------------
+                     0
+(1 row)
+
+ cuentas_total 
+---------------
+          2018
+(1 row)
+

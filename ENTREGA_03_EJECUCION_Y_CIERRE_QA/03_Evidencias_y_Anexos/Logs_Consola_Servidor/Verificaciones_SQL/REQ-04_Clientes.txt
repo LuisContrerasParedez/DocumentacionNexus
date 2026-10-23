@@ -1,0 +1,12 @@
+== REQ-04 efecto en BD — 2026-10-19 18:42:14 CST
+      dpi      | nombre_completo |   estado    | fecha_nacimiento |         email         | telefono 
+---------------+-----------------+-------------+------------------+-----------------------+----------
+ 2999999990198 | Felipe Dpi      | EN_REVISION | 1993-02-02       | felipe.dpi@nexus.test | 55334455
+ 2999999990199 | Diego Frontera  | EN_REVISION | 2008-10-20       | diego.qa@nexus.test   | 55778899
+(2 rows)
+
+ clientes_con_dpi_2999999990101 
+--------------------------------
+                              1
+(1 row)
+

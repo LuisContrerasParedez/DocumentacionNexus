@@ -1,0 +1,29 @@
+================ TC-REQ12-002 — ANTES — 2026-10-19 18:43:23 CST ================
+ numero_cuenta  | estado |  saldo  | saldo_disponible | saldo_minimo | limite_retiro_diario | monto_retirado_hoy 
+----------------+--------+---------+------------------+--------------+----------------------+--------------------
+ AH261002000201 | ACTIVA | 3000.00 |          3000.00 |       100.00 |              5000.00 |               0.00
+ MO261002000102 | ACTIVA | 1500.00 |          1500.00 |         0.00 |                      |               0.00
+(2 rows)
+
+
+================ TC-REQ12-002 — DESPUES — 2026-10-19 18:43:23 CST ================
+ numero_cuenta  | estado |  saldo  | saldo_disponible | saldo_minimo | limite_retiro_diario | monto_retirado_hoy 
+----------------+--------+---------+------------------+--------------+----------------------+--------------------
+ AH261002000201 | ACTIVA | 3000.00 |          3000.00 |       100.00 |              5000.00 |               0.00
+ MO261002000102 | ACTIVA | 1500.00 |          1500.00 |         0.00 |                      |               0.00
+(2 rows)
+
+ numero_cuenta | tipo | monto | saldo_anterior | saldo_posterior | estado | referencia | canal | hora 
+---------------+------+-------+----------------+-----------------+--------+------------+-------+------
+(0 rows)
+
+ username  |   fecha    | estado  | fondo_inicial | total_depositos | total_retiros | efectivo_esperado | efectivo_contado | diferencia |   abre   | cierra 
+-----------+------------+---------+---------------+-----------------+---------------+-------------------+------------------+------------+----------+--------
+ qa_cajero | 2026-10-20 | ABIERTA |       1000.00 |            0.00 |          0.00 |           1000.00 |                  |            | 00:42:22 | 
+(1 row)
+
+ modulo | accion | entidad_tipo | resultado | antes | despues | hora 
+--------+--------+--------------+-----------+-------+---------+------
+(0 rows)
+
+

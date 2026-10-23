@@ -1,0 +1,55 @@
+== 2026-10-19 18:49:02 CST PRE-REQUISITO TC-REQ17-002: retirar permisos (bloque del fixture)
+SELECT 2
+DELETE 2
+        codigo         
+-----------------------
+ ach.public.auth.login
+(1 row)
+
+================ TC-REQ17-002 — ANTES — 2026-10-19 18:49:02 CST ================
+ numero_cuenta  | estado |  saldo  | saldo_disponible | saldo_minimo | limite_retiro_diario | monto_retirado_hoy 
+----------------+--------+---------+------------------+--------------+----------------------+--------------------
+ AH261002000101 | ACTIVA | 7000.00 |          7000.00 |       100.00 |              5000.00 |               0.00
+(1 row)
+
+
+================ TC-REQ17-002 — DESPUES — 2026-10-19 18:49:03 CST ================
+ numero_cuenta  | estado |  saldo  | saldo_disponible | saldo_minimo | limite_retiro_diario | monto_retirado_hoy 
+----------------+--------+---------+------------------+--------------+----------------------+--------------------
+ AH261002000101 | ACTIVA | 7000.00 |          7000.00 |       100.00 |              5000.00 |               0.00
+(1 row)
+
+ numero_cuenta | tipo | monto | saldo_anterior | saldo_posterior | estado | referencia | canal | hora 
+---------------+------+-------+----------------+-----------------+--------+------------+-------+------
+(0 rows)
+
+ username  |   fecha    | estado  | fondo_inicial | total_depositos | total_retiros | efectivo_esperado | efectivo_contado | diferencia |   abre   |  cierra  
+-----------+------------+---------+---------------+-----------------+---------------+-------------------+------------------+------------+----------+----------
+ qa_cajero | 2026-10-20 | CERRADA |       1000.00 |            0.00 |          0.00 |           1000.00 |                  |            | 00:42:22 | 00:43:32
+ qa_cajero | 2026-10-20 | CERRADA |       1000.00 |            0.00 |          0.00 |           1000.00 |          1010.00 |      10.00 | 00:43:49 | 00:43:50
+ qa_cajero | 2026-10-20 | CERRADA |       1000.00 |            0.00 |          0.00 |           1000.00 |          1010.01 |      10.01 | 00:43:50 | 00:43:51
+ qa_cajero | 2026-10-20 | CERRADA |       1000.00 |         2000.01 |       5100.01 |          -2100.00 |                  |            | 00:44:01 | 00:44:31
+ qa_cajero | 2026-10-20 | CERRADA |       1000.00 |           10.00 |          0.00 |           1010.00 |                  |            | 00:44:32 | 00:48:24
+ qa_cajero | 2026-10-20 | ABIERTA |       1000.00 |            0.00 |          0.00 |           1000.00 |                  |            | 00:48:47 | 
+(6 rows)
+
+ modulo | accion | entidad_tipo | resultado | antes | despues | hora 
+--------+--------+--------------+-----------+-------+---------+------
+(0 rows)
+
+
+ entrantes_creadas 
+-------------------
+                 0
+(1 row)
+
+== 2026-10-19 18:49:03 CST Restauración de permisos
+INSERT 0 2
+DROP TABLE
+             codigo              
+---------------------------------
+ ach.public.auth.login
+ ach.public.cuentas.consultar
+ ach.public.transferencias.crear
+(3 rows)
+

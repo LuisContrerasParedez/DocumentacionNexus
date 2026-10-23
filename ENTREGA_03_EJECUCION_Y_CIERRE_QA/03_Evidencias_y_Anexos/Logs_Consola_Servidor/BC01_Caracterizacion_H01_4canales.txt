@@ -1,0 +1,43 @@
+BC-01 / H-01 — Caracterización del acumulado diario por canal — Luis Contreras — 2026-10-19 18:52:55 CST
+Cuenta: AH261002000206 (Bruno, AHORRO, límite Q5000) tras reiniciar fixture (secciones 4 y 5). Monto por canal: Q10.00
+Inicial: monto_retirado_hoy=0.00 saldo=2500.00
+
+$ 1) Ventanilla – retiro http://localhost:15141/api/transacciones/retiro  body={"numeroCuenta":"AH261002000206","monto":10.0,"descripcion":"BC-01 canal ventanilla retiro"}
+  {"referencia":"RET-b1edf929a5ae4499ab4ea24aa67b50e5","saldoNuevo":2490.00,"monto":10.0}
+    -> HTTP 200
+  BD: monto_retirado_hoy=10.00 saldo=2490.00
+
+$ 2) Ventanilla – transferencia interna http://localhost:15141/api/transacciones/transferencia  body={"numeroCuentaOrigen":"AH261002000206","numeroCuentaDestino":"AH261002000209","monto":10.0,"concepto":"BC-01 canal transferencia interna"}
+  {"referencia":"TRF-3ba77271f4d7483b8a196fbecc24e2a0","saldoOrigen":2480.00,"saldoDestino":510.00,"monto":10.0}
+    -> HTTP 200
+  BD: monto_retirado_hoy=10.00 saldo=2480.00
+
+$ 3) Portal del cliente – transferencia http://localhost:15141/api/portal/transferencias  body={"numeroCuentaOrigen":"AH261002000206","numeroCuentaDestino":"MO261002000202","monto":10.0,"concepto":"BC-01 canal portal"}
+  {"referencia":"WEB-20261020005255-43456F2D","saldoOrigen":2470.00,"saldoDestino":810.00,"monto":10.0}
+    -> HTTP 200
+  BD: monto_retirado_hoy=20.00 saldo=2470.00
+
+$ 4) ACH saliente http://localhost:15141/api/ach/transferencias/enviar  body={"bancoAchId":"6ad6ba31cf560ee3ce8d006e","cuentaOrigenId":"07348eb5-f467-5180-8b31-6f132bf70346","monto":10.0,"descripcion":"BC-01 canal ACH","datosFormulario":{"numeroCuentaDestino":"EXT-QA-0001"}}
+  {"id":"b064f0d7-e552-4fe0-a988-8f92e638543e","bancoAchId":"6ad6ba31cf560ee3ce8d006e","bancoCodigo":"QA_NEXUS","cuentaOrigenId":"07348eb5-f467-5180-8b31-6f132bf70346","monto":10.00,"descripcion":"BC-01 canal ACH","codigoConfirmacion":"TRX-20261019-000003","estado":1,"estadoNombre":"ENVIADA","requestJson":"{\"monto\": 10.0, \"referencia\": \"BC-01 canal ACH\", \"descripcion\": \"BC-01 canal ACH\", \"codigo_confirmacion\": \"TRX-20261019-000003\", \"numeroCuentaDestino\": \"EXT-QA-0001\"}","responseJson":"{\"data\": {\"monto\": 10, \"estado\": \"APROBADA\", \"codigo_confirmacion\": \"TRX-20261019-000003\"}, \"status\": true, \"message\": \"Transferencia sintetica aprobada.\"}","mensajeError":null,"usuarioId":"b6b6a2f5-73e0-58b6-8f78-d50f97d583ba","fechaCreacion":"2026-10-20T00:52:55.88876Z","fechaActualizacion":"2026-10-20T00:52:55.910299Z"}
+    -> HTTP 200
+  BD: monto_retirado_hoy=30.00 saldo=2460.00
+
+Movimientos generados:
+  tipo   | monto | saldo_anterior | saldo_posterior |                referencia                | canal  
+---------+-------+----------------+-----------------+------------------------------------------+--------
+ RETIRO  | 10.00 |        2500.00 |         2490.00 | RET-b1edf929a5ae4499ab4ea24aa67b50e5     | (null)
+ TRF_OUT | 10.00 |        2490.00 |         2480.00 | TRF-3ba77271f4d7483b8a196fbecc24e2a0-OUT | (null)
+ TRF_OUT | 10.00 |        2480.00 |         2470.00 | WEB-20261020005255-43456F2D-OUT          | (null)
+ ACH_OUT | 10.00 |        2470.00 |         2460.00 | ACH-20261020005255-B748B05F              | (null)
+(4 rows)
+
+
+RESULTADO DE LA CARACTERIZACIÓN (no es un caso Pass/Fail: H-01 sigue abierto)
+| Canal                               | Débito | Δ monto_retirado_hoy | ¿Consume límite diario? |
+| Ventanilla – retiro                 | Q10.00 | +Q10.00              | Sí                      |
+| Ventanilla – transferencia interna  | Q10.00 | +Q0.00               | NO                      |
+| Portal del cliente – transferencia  | Q10.00 | +Q10.00              | Sí                      |
+| ACH saliente                        | Q10.00 | +Q10.00              | Sí                      |
+Débito total Q40.00; acumulado diario registrado Q30.00. La transferencia interna de ventanilla no consume el límite
+diario, mientras que la transferencia equivalente por portal sí. Además, la columna transacciones.movimientos.canal queda
+NULL en los cuatro canales, por lo que no es posible distinguir el canal desde los datos. Se eleva al PO para cerrar H-01.

@@ -1,0 +1,58 @@
+================ TC-REQ14-001 — ANTES — 2026-10-19 18:48:06 CST ================
+ numero_cuenta  | estado |  saldo  | saldo_disponible | saldo_minimo | limite_retiro_diario | monto_retirado_hoy 
+----------------+--------+---------+------------------+--------------+----------------------+--------------------
+ AH261002000101 | ACTIVA | 7010.00 |          7010.00 |       100.00 |              5000.00 |               0.00
+ MO261002000102 | ACTIVA | 1500.00 |          1500.00 |         0.00 |                      |               0.00
+(2 rows)
+
+ numero_cuenta | tipo | monto | saldo_anterior | saldo_posterior | estado | referencia | canal | hora 
+---------------+------+-------+----------------+-----------------+--------+------------+-------+------
+(0 rows)
+
+ username  |   fecha    | estado  | fondo_inicial | total_depositos | total_retiros | efectivo_esperado | efectivo_contado | diferencia |   abre   |  cierra  
+-----------+------------+---------+---------------+-----------------+---------------+-------------------+------------------+------------+----------+----------
+ qa_cajero | 2026-10-20 | CERRADA |       1000.00 |            0.00 |          0.00 |           1000.00 |                  |            | 00:42:22 | 00:43:32
+ qa_cajero | 2026-10-20 | CERRADA |       1000.00 |            0.00 |          0.00 |           1000.00 |          1010.00 |      10.00 | 00:43:49 | 00:43:50
+ qa_cajero | 2026-10-20 | CERRADA |       1000.00 |            0.00 |          0.00 |           1000.00 |          1010.01 |      10.01 | 00:43:50 | 00:43:51
+ qa_cajero | 2026-10-20 | CERRADA |       1000.00 |         2000.01 |       5100.01 |          -2100.00 |                  |            | 00:44:01 | 00:44:31
+ qa_cajero | 2026-10-20 | ABIERTA |       1000.00 |           10.00 |          0.00 |           1010.00 |                  |            | 00:44:32 | 
+(5 rows)
+
+ modulo | accion | entidad_tipo | resultado | antes | despues | hora 
+--------+--------+--------------+-----------+-------+---------+------
+(0 rows)
+
+
+================ TC-REQ14-001 — DESPUES — 2026-10-19 18:48:08 CST ================
+ numero_cuenta  | estado |  saldo  | saldo_disponible | saldo_minimo | limite_retiro_diario | monto_retirado_hoy 
+----------------+--------+---------+------------------+--------------+----------------------+--------------------
+ AH261002000101 | ACTIVA | 6995.00 |          6995.00 |       100.00 |              5000.00 |              15.00
+ MO261002000102 | ACTIVA | 1500.00 |          1500.00 |         0.00 |                      |               0.00
+(2 rows)
+
+ numero_cuenta  |  tipo   | monto | saldo_anterior | saldo_posterior |   estado   |         referencia          | canal |   hora   
+----------------+---------+-------+----------------+-----------------+------------+-----------------------------+-------+----------
+ AH261002000101 | ACH_OUT | 15.00 |        7010.00 |         6995.00 | COMPLETADA | ACH-20261020004808-D43EE393 |       | 00:48:08
+(1 row)
+
+ username  |   fecha    | estado  | fondo_inicial | total_depositos | total_retiros | efectivo_esperado | efectivo_contado | diferencia |   abre   |  cierra  
+-----------+------------+---------+---------------+-----------------+---------------+-------------------+------------------+------------+----------+----------
+ qa_cajero | 2026-10-20 | CERRADA |       1000.00 |            0.00 |          0.00 |           1000.00 |                  |            | 00:42:22 | 00:43:32
+ qa_cajero | 2026-10-20 | CERRADA |       1000.00 |            0.00 |          0.00 |           1000.00 |          1010.00 |      10.00 | 00:43:49 | 00:43:50
+ qa_cajero | 2026-10-20 | CERRADA |       1000.00 |            0.00 |          0.00 |           1000.00 |          1010.01 |      10.01 | 00:43:50 | 00:43:51
+ qa_cajero | 2026-10-20 | CERRADA |       1000.00 |         2000.01 |       5100.01 |          -2100.00 |                  |            | 00:44:01 | 00:44:31
+ qa_cajero | 2026-10-20 | ABIERTA |       1000.00 |           10.00 |          0.00 |           1010.00 |                  |            | 00:44:32 | 
+(5 rows)
+
+ modulo |             accion              |   entidad_tipo    | resultado | antes |                                                         despues                                                          |   hora   
+--------+---------------------------------+-------------------+-----------+-------+--------------------------------------------------------------------------------------------------------------------------+----------
+ ACH    | REGISTRO_TRANSFERENCIA          | ACH_TRANSFERENCIA | EXITOSO   |       | {"Monto": 15.00, "Estado": 0, "BancoCodigo": "QA_NEXUS", "CuentaOrigenId": "60e12f09-f1be-5506-b494-5381502e3e75", "Codi | 00:48:08
+ ACH    | ACTUALIZAR_ESTADO_TRANSFERENCIA | ACH_TRANSFERENCIA | EXITOSO   |       | {"Monto": 15.00, "Estado": 1, "BancoCodigo": "QA_NEXUS", "MensajeError": null, "CuentaOrigenId": "60e12f09-f1be-5506-b49 | 00:48:08
+(2 rows)
+
+
+ banco_codigo | numero_cuenta  | monto | estado  | codigo_confirmacion | error |   hora   
+--------------+----------------+-------+---------+---------------------+-------+----------
+ QA_NEXUS     | AH261002000101 | 15.00 | ENVIADA | TRX-20261019-000001 |       | 00:48:08
+(1 row)
+

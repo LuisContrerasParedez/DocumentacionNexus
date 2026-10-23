@@ -1,0 +1,53 @@
+================ TC-REQ05-002 — ANTES — 2026-10-19 18:42:08 CST ================
+ numero_cuenta  | estado |  saldo  | saldo_disponible | saldo_minimo | limite_retiro_diario | monto_retirado_hoy 
+----------------+--------+---------+------------------+--------------+----------------------+--------------------
+ AH261002000101 | ACTIVA | 7000.00 |          7000.00 |       100.00 |              5000.00 |               0.00
+(1 row)
+
+ numero_cuenta | tipo | monto | saldo_anterior | saldo_posterior | estado | referencia | canal | hora 
+---------------+------+-------+----------------+-----------------+--------+------------+-------+------
+(0 rows)
+
+ username | fecha | estado | fondo_inicial | total_depositos | total_retiros | efectivo_esperado | efectivo_contado | diferencia | abre | cierra 
+----------+-------+--------+---------------+-----------------+---------------+-------------------+------------------+------------+------+--------
+(0 rows)
+
+ modulo | accion | entidad_tipo | resultado | antes | despues | hora 
+--------+--------+--------------+-----------+-------+---------+------
+(0 rows)
+
+
+================ TC-REQ05-002 — DESPUES — 2026-10-19 18:42:23 CST ================
+ numero_cuenta  | estado |  saldo  | saldo_disponible | saldo_minimo | limite_retiro_diario | monto_retirado_hoy 
+----------------+--------+---------+------------------+--------------+----------------------+--------------------
+ AH261002000101 | ACTIVA | 7000.00 |          7000.00 |       100.00 |              5000.00 |               0.00
+(1 row)
+
+ numero_cuenta | tipo | monto | saldo_anterior | saldo_posterior | estado | referencia | canal | hora 
+---------------+------+-------+----------------+-----------------+--------+------------+-------+------
+(0 rows)
+
+ username  |   fecha    | estado  | fondo_inicial | total_depositos | total_retiros | efectivo_esperado | efectivo_contado | diferencia |   abre   | cierra 
+-----------+------------+---------+---------------+-----------------+---------------+-------------------+------------------+------------+----------+--------
+ qa_cajero | 2026-10-20 | ABIERTA |       1000.00 |            0.00 |          0.00 |           1000.00 |                  |            | 00:42:22 | 
+(1 row)
+
+ modulo  |        accion         | entidad_tipo | resultado |                      antes                       |                                                         despues                                                          |   hora   
+---------+-----------------------+--------------+-----------+--------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------+----------
+ CRM     | REGISTRO_CLIENTE      | CLIENTE      | EXITOSO   |                                                  | {"dpi": "2999999990197", "estado": "EN_REVISION", "nombreCompleto": "Elena Nueva"}                                       | 00:42:21
+ CRM     | CAMBIO_ESTADO_CLIENTE | CLIENTE      | EXITOSO   | {"estado": "EN_REVISION", "observaciones": null} | {"estado": "ACTIVO", "observaciones": "Aprobación QA TC-REQ05-002"}                                                      | 00:42:23
+ CUENTAS | APERTURA              | CUENTA       | EXITOSO   |                                                  | {"cliente_id": "b5d182a8-d502-5b07-9a23-ab1276efa52e", "tipo_cuenta": "AHORRO", "saldo_minimo": 100.00, "numero_cuenta": | 00:42:23
+(3 rows)
+
+
+ numero_cuenta  | tipo_cuenta | estado | saldo | saldo_minimo |          created_at           
+----------------+-------------+--------+-------+--------------+-------------------------------
+ AH261020854073 | AHORRO      | ACTIVA |  0.00 |       100.00 | 2026-10-20 00:42:23.886785+00
+(1 row)
+
+      dpi      |   estado    
+---------------+-------------
+ 2999999990103 | ACTIVO
+ 2999999990197 | EN_REVISION
+(2 rows)
+

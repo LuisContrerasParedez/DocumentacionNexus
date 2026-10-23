@@ -1,0 +1,94 @@
+# BUG-NEX-01 — docker compose -f docker-compose.qa.yml logs internal-api --since 15m — capturado 2026-10-19 18:54:49 CST
+# Nota: el contenedor se recreó a las 00:51 UTC para TC-REQ16-001 (BD REP01) y de nuevo al volver a bancoerp_e2_qa; este log cubre la re-verificación de BUG-NEX-01 hecha al cierre.
+# La InternalAPI no registra en consola las peticiones anónimas a /api/ach/bancos (nivel Information sin logging de requests): no hay excepción ni rastro de autorización, lo que es coherente con un endpoint sin [Authorize].
+
+internal-api-1  | warn: Microsoft.AspNetCore.DataProtection.Repositories.FileSystemXmlRepository[60]
+internal-api-1  |       Storing keys in a directory '/root/.aspnet/DataProtection-Keys' that may not be persisted outside of the container. Protected data will be unavailable when container is destroyed. For more information go to https://aka.ms/aspnet/dataprotectionwarning
+internal-api-1  | warn: Microsoft.AspNetCore.DataProtection.KeyManagement.XmlKeyManager[35]
+internal-api-1  |       No XML encryptor configured. Key {c54b58ea-f5c6-4ec0-9d92-ea8a958c6e73} may be persisted to storage in unencrypted form.
+internal-api-1  | warn: Microsoft.AspNetCore.Hosting.Diagnostics[15]
+internal-api-1  |       Overriding HTTP_PORTS '8080' and HTTPS_PORTS ''. Binding to values defined by URLS instead 'http://0.0.0.0:8080'.
+internal-api-1  | info: Microsoft.Hosting.Lifetime[14]
+internal-api-1  |       Now listening on: http://0.0.0.0:8080
+internal-api-1  | info: Microsoft.Hosting.Lifetime[0]
+internal-api-1  |       Application started. Press Ctrl+C to shut down.
+internal-api-1  | info: Microsoft.Hosting.Lifetime[0]
+internal-api-1  |       Hosting environment: QA
+internal-api-1  | info: Microsoft.Hosting.Lifetime[0]
+internal-api-1  |       Content root path: /src/BancoERP.InternalAPI
+internal-api-1  | info: BancoERP.Application.Services.AchTransferenciaService[0]
+internal-api-1  |       ACH search cuenta externa URL: http://mock-bank:8081/cuentas/search/EXT-QA-0001
+internal-api-1  | info: System.Net.Http.HttpClient.Default.LogicalHandler[100]
+internal-api-1  |       Start processing HTTP request GET http://mock-bank:8081/cuentas/search/EXT-QA-0001
+internal-api-1  | info: System.Net.Http.HttpClient.Default.ClientHandler[100]
+internal-api-1  |       Sending HTTP request GET http://mock-bank:8081/cuentas/search/EXT-QA-0001
+internal-api-1  | info: System.Net.Http.HttpClient.Default.ClientHandler[101]
+internal-api-1  |       Received HTTP response headers after 6.8403ms - 200
+internal-api-1  | info: System.Net.Http.HttpClient.Default.LogicalHandler[101]
+internal-api-1  |       End processing HTTP request after 9.4145ms - 200
+internal-api-1  | info: BancoERP.Application.Services.AchTransferenciaService[0]
+internal-api-1  |       Enviando transferencia ACH. Banco QA_NEXUS, codigo_confirmacion TRX-20261019-000003, endpoint http://mock-bank:8081/success/transferencias
+internal-api-1  | info: System.Net.Http.HttpClient.Default.LogicalHandler[100]
+internal-api-1  |       Start processing HTTP request POST http://mock-bank:8081/success/transferencias
+internal-api-1  | info: System.Net.Http.HttpClient.Default.ClientHandler[100]
+internal-api-1  |       Sending HTTP request POST http://mock-bank:8081/success/transferencias
+internal-api-1  | info: System.Net.Http.HttpClient.Default.ClientHandler[101]
+internal-api-1  |       Received HTTP response headers after 0.6612ms - 201
+internal-api-1  | info: System.Net.Http.HttpClient.Default.LogicalHandler[101]
+internal-api-1  |       End processing HTTP request after 0.6936ms - 201
+internal-api-1  | info: BancoERP.Application.Services.AchTransferenciaService[0]
+internal-api-1  |       Respuesta ACH recibida. Banco QA_NEXUS, codigo_confirmacion TRX-20261019-000003, estado_http 201, body {"status":true,"message":"Transferencia sintetica aprobada.","data":{"estado":"APROBADA","codigo_confirmacion":"TRX-20261019-000003","monto":10}}
+internal-api-1  | info: BancoERP.Application.Services.AchTransferenciaService[0]
+internal-api-1  |       ACH search cuenta externa URL: http://mock-bank:8081/cuentas/search/EXT-QA-0001
+internal-api-1  | info: System.Net.Http.HttpClient.Default.LogicalHandler[100]
+internal-api-1  |       Start processing HTTP request GET http://mock-bank:8081/cuentas/search/EXT-QA-0001
+internal-api-1  | info: System.Net.Http.HttpClient.Default.ClientHandler[100]
+internal-api-1  |       Sending HTTP request GET http://mock-bank:8081/cuentas/search/EXT-QA-0001
+internal-api-1  | info: System.Net.Http.HttpClient.Default.ClientHandler[101]
+internal-api-1  |       Received HTTP response headers after 2.5134ms - 200
+internal-api-1  | info: System.Net.Http.HttpClient.Default.LogicalHandler[101]
+internal-api-1  |       End processing HTTP request after 2.6239ms - 200
+internal-api-1  | info: BancoERP.Application.Services.AchTransferenciaService[0]
+internal-api-1  |       ACH search cuenta externa URL: http://mock-bank:8081/cuentas/search/EXT-QA-0001
+internal-api-1  | info: System.Net.Http.HttpClient.Default.LogicalHandler[100]
+internal-api-1  |       Start processing HTTP request GET http://mock-bank:8081/cuentas/search/EXT-QA-0001
+internal-api-1  | info: System.Net.Http.HttpClient.Default.ClientHandler[100]
+internal-api-1  |       Sending HTTP request GET http://mock-bank:8081/cuentas/search/EXT-QA-0001
+internal-api-1  | info: System.Net.Http.HttpClient.Default.ClientHandler[101]
+internal-api-1  |       Received HTTP response headers after 0.7536ms - 200
+internal-api-1  | info: System.Net.Http.HttpClient.Default.LogicalHandler[101]
+internal-api-1  |       End processing HTTP request after 0.8414ms - 200
+internal-api-1  | info: BancoERP.Application.Services.AchTransferenciaService[0]
+internal-api-1  |       Enviando transferencia ACH. Banco QA_NEXUS, codigo_confirmacion TRX-20261019-000004, endpoint http://mock-bank:8081/success/transferencias
+internal-api-1  | info: System.Net.Http.HttpClient.Default.LogicalHandler[100]
+internal-api-1  |       Start processing HTTP request POST http://mock-bank:8081/success/transferencias
+internal-api-1  | info: System.Net.Http.HttpClient.Default.ClientHandler[100]
+internal-api-1  |       Sending HTTP request POST http://mock-bank:8081/success/transferencias
+internal-api-1  | info: System.Net.Http.HttpClient.Default.ClientHandler[101]
+internal-api-1  |       Received HTTP response headers after 0.6426ms - 201
+internal-api-1  | info: System.Net.Http.HttpClient.Default.LogicalHandler[101]
+internal-api-1  |       End processing HTTP request after 0.6909ms - 201
+internal-api-1  | info: BancoERP.Application.Services.AchTransferenciaService[0]
+internal-api-1  |       Respuesta ACH recibida. Banco QA_NEXUS, codigo_confirmacion TRX-20261019-000004, estado_http 201, body {"status":true,"message":"Transferencia sintetica aprobada.","data":{"estado":"APROBADA","codigo_confirmacion":"TRX-20261019-000004","monto":15}}
+internal-api-1  | info: BancoERP.Application.Services.AchTransferenciaService[0]
+internal-api-1  |       ACH search cuenta externa URL: http://mock-bank:8081/cuentas/search/EXT-QA-0001
+internal-api-1  | info: System.Net.Http.HttpClient.Default.LogicalHandler[100]
+internal-api-1  |       Start processing HTTP request GET http://mock-bank:8081/cuentas/search/EXT-QA-0001
+internal-api-1  | info: System.Net.Http.HttpClient.Default.ClientHandler[100]
+internal-api-1  |       Sending HTTP request GET http://mock-bank:8081/cuentas/search/EXT-QA-0001
+internal-api-1  | info: System.Net.Http.HttpClient.Default.ClientHandler[101]
+internal-api-1  |       Received HTTP response headers after 1.3428ms - 200
+internal-api-1  | info: System.Net.Http.HttpClient.Default.LogicalHandler[101]
+internal-api-1  |       End processing HTTP request after 1.4891ms - 200
+internal-api-1  | info: BancoERP.Application.Services.AchTransferenciaService[0]
+internal-api-1  |       Enviando transferencia ACH. Banco QA_NEXUS, codigo_confirmacion TRX-20261019-000005, endpoint http://mock-bank:8081/success/transferencias
+internal-api-1  | info: System.Net.Http.HttpClient.Default.LogicalHandler[100]
+internal-api-1  |       Start processing HTTP request POST http://mock-bank:8081/success/transferencias
+internal-api-1  | info: System.Net.Http.HttpClient.Default.ClientHandler[100]
+internal-api-1  |       Sending HTTP request POST http://mock-bank:8081/success/transferencias
+internal-api-1  | info: System.Net.Http.HttpClient.Default.ClientHandler[101]
+internal-api-1  |       Received HTTP response headers after 0.7392ms - 201
+internal-api-1  | info: System.Net.Http.HttpClient.Default.LogicalHandler[101]
+internal-api-1  |       End processing HTTP request after 0.8144ms - 201
+internal-api-1  | info: BancoERP.Application.Services.AchTransferenciaService[0]
+internal-api-1  |       Respuesta ACH recibida. Banco QA_NEXUS, codigo_confirmacion TRX-20261019-000005, estado_http 201, body {"status":true,"message":"Transferencia sintetica aprobada.","data":{"estado":"APROBADA","codigo_confirmacion":"TRX-20261019-000005","monto":10}}

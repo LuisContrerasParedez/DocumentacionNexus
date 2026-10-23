@@ -1,0 +1,101 @@
+== 2026-10-19 18:50:39 CST PRE-REQUISITO TC-REQ16-001: BD aislada bancoerp_e2_qa_rep01
+DROP DATABASE
+NOTICE:  database "bancoerp_e2_qa_rep01" does not exist, skipping
+CREATE DATABASE
+-- esquema/catálogos/SPs: scripts/init_all.sql líneas 1-4088 (sin la carga masiva)
+NOTICE:  column "username" of relation "usuarios" already exists, skipping
+NOTICE:  column "email" of relation "usuarios" already exists, skipping
+NOTICE:  column "password_hash" of relation "usuarios" already exists, skipping
+NOTICE:  column "nombres" of relation "usuarios" already exists, skipping
+NOTICE:  column "apellidos" of relation "usuarios" already exists, skipping
+NOTICE:  column "telefono" of relation "usuarios" already exists, skipping
+NOTICE:  column "fotografia_url" of relation "usuarios" already exists, skipping
+NOTICE:  column "estado" of relation "usuarios" already exists, skipping
+NOTICE:  column "bloqueado" of relation "usuarios" already exists, skipping
+NOTICE:  column "intentos_fallidos" of relation "usuarios" already exists, skipping
+NOTICE:  column "bloqueado_hasta" of relation "usuarios" already exists, skipping
+NOTICE:  column "debe_cambiar_password" of relation "usuarios" already exists, skipping
+NOTICE:  column "ultimo_login" of relation "usuarios" already exists, skipping
+NOTICE:  column "created_at" of relation "usuarios" already exists, skipping
+NOTICE:  column "updated_at" of relation "usuarios" already exists, skipping
+NOTICE:  column "created_by" of relation "usuarios" already exists, skipping
+NOTICE:  column "updated_by" of relation "usuarios" already exists, skipping
+NOTICE:  column "codigo" of relation "roles" already exists, skipping
+NOTICE:  column "nombre" of relation "roles" already exists, skipping
+NOTICE:  column "descripcion" of relation "roles" already exists, skipping
+-- MockData_Fixture_REP01.sql
+DO
+BEGIN
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+COMMIT
+-- Estado inicial REP01
+      dpi      | nombre_completo |   estado    
+---------------+-----------------+-------------
+ 2999999990301 | Rita Reporte    | ACTIVO
+ 2999999990302 | Raul Reporte    | EN_REVISION
+(2 rows)
+
+ numero_cuenta  | estado  |  saldo  
+----------------+---------+---------
+ AH261002000301 | ACTIVA  | 2475.00
+ AH261002000303 | CERRADA |    0.00
+ MO261002000302 | ACTIVA  | 1500.00
+(3 rows)
+
+ codigo | activo 
+--------+--------
+ 1101   | t
+ 2101   | t
+ 2102   | t
+(3 rows)
+
+ transf | ach_out | ach_in | movs 
+--------+---------+--------+------
+      0 |       0 |      0 |    0
+(1 row)
+
+== 2026-10-19 18:51:19 CST Consultas SQL de control REP01 (mismas reglas que ReporteService.cs)
+ total_clientes | activos | en_revision 
+----------------+---------+-------------
+              2 |       1 |           1
+(1 row)
+
+ total_cuentas | activas | saldo_total 
+---------------+---------+-------------
+             3 |       2 |     4000.00
+(1 row)
+
+ transferencias_internas | monto  
+-------------------------+--------
+                       1 | 200.00
+(1 row)
+
+ ach_salientes | monto 
+---------------+-------
+             0 |     0
+(1 row)
+
+ ach_entrantes | aprobadas | monto_aprobado 
+---------------+-----------+----------------
+             1 |         1 |          25.00
+(1 row)
+
+ numero_cuenta  | estado  |  saldo  
+----------------+---------+---------
+ AH261002000301 | ACTIVA  | 2275.00
+ AH261002000303 | CERRADA |    0.00
+ MO261002000302 | ACTIVA  | 1725.00
+(3 rows)
+
+== 2026-10-19 18:52:31 CST APIs devueltas a bancoerp_e2_qa (docker compose up -d internal-api public-api sin override)

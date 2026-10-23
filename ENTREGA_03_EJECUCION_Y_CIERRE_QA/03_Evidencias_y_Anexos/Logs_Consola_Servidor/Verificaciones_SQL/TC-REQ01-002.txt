@@ -1,0 +1,19 @@
+== 2026-10-19 18:45:21 CST PRE-REQUISITO TC-REQ01-002
+UPDATE 1
+== 2026-10-19 18:45:23 CST Estado qa_bloqueo y sesiones tras la secuencia
+  username  | estado | bloqueado |        bloqueado_hasta        | intentos_fallidos 
+------------+--------+-----------+-------------------------------+-------------------
+ qa_bloqueo | t      | t         | 2026-10-20 01:15:23.501211+00 |                 5
+(1 row)
+
+      evento       | exitoso |               descripcion                | ip_address |          ua           |   hora   
+-------------------+---------+------------------------------------------+------------+-----------------------+----------
+ LOGIN_FALLIDO     | f       | Password incorrecta. Intento 1 de 5.     | 172.22.0.1 | PostmanRuntime/7.39.1 | 00:45:22
+ LOGIN_FALLIDO     | f       | Password incorrecta. Intento 2 de 5.     | 172.22.0.1 | PostmanRuntime/7.39.1 | 00:45:22
+ LOGIN_FALLIDO     | f       | Password incorrecta. Intento 3 de 5.     | 172.22.0.1 | PostmanRuntime/7.39.1 | 00:45:22
+ LOGIN_FALLIDO     | f       | Password incorrecta. Intento 4 de 5.     | 172.22.0.1 | PostmanRuntime/7.39.1 | 00:45:23
+ LOGIN_FALLIDO     | f       | Password incorrecta. Intento 5 de 5.     | 172.22.0.1 | PostmanRuntime/7.39.1 | 00:45:23
+ USUARIO_BLOQUEADO | t       | Usuario bloqueado por intentos fallidos. | 172.22.0.1 | PostmanRuntime/7.39.1 | 00:45:23
+ LOGIN_FALLIDO     | f       | Usuario bloqueado.                       | 172.22.0.1 | PostmanRuntime/7.39.1 | 00:45:23
+(7 rows)
+

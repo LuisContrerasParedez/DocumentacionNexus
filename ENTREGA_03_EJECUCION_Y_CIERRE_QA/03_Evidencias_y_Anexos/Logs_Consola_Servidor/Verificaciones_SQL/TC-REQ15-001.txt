@@ -1,0 +1,18 @@
+== 2026-10-19 18:49:33 CST PRE-REQUISITO TC-REQ15-001
+UPDATE 1
+== Eventos en BD (sin contraseña en claro)
+      evento       | exitoso |               descripcion                | ip_address |          ua           |   hora   
+-------------------+---------+------------------------------------------+------------+-----------------------+----------
+ LOGIN_FALLIDO     | f       | Password incorrecta. Intento 1 de 5.     | 172.22.0.1 | PostmanRuntime/7.39.1 | 00:49:34
+ LOGIN_FALLIDO     | f       | Password incorrecta. Intento 2 de 5.     | 172.22.0.1 | PostmanRuntime/7.39.1 | 00:49:34
+ LOGIN_FALLIDO     | f       | Password incorrecta. Intento 3 de 5.     | 172.22.0.1 | PostmanRuntime/7.39.1 | 00:49:35
+ LOGIN_FALLIDO     | f       | Password incorrecta. Intento 4 de 5.     | 172.22.0.1 | PostmanRuntime/7.39.1 | 00:49:35
+ LOGIN_FALLIDO     | f       | Password incorrecta. Intento 5 de 5.     | 172.22.0.1 | PostmanRuntime/7.39.1 | 00:49:35
+ USUARIO_BLOQUEADO | t       | Usuario bloqueado por intentos fallidos. | 172.22.0.1 | PostmanRuntime/7.39.1 | 00:49:35
+(6 rows)
+
+ eventos_con_password_en_claro 
+-------------------------------
+                             0
+(1 row)
+

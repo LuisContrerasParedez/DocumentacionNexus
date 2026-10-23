@@ -1,0 +1,7 @@
+== 2026-10-19 18:45:38 CST Sesiones de qa_cajero creadas en REQ-02
+ estado |  inicio  |  cierre  
+--------+----------+----------
+ t      | 00:45:36 | 
+ f      | 00:45:37 | 00:45:38
+(2 rows)
+

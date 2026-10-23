@@ -1,0 +1,29 @@
+== 2026-10-19 18:47:58 CST Mongo tras REQ-13
+[
+  {
+    id: ObjectId('6ad6ba31cf560ee3ce8d006e'),
+    codigo: 'QA_NEXUS',
+    activo: false,
+    keys: [
+      '_id',
+      'nombre',
+      'codigo',
+      'descripcion',
+      'activo',
+      'api_base_url',
+      'api_endpoint',
+      'http_method',
+      'auth_login_endpoint',
+      'auth_email',
+      'auth_password',
+      'headers',
+      'estructura_json_formulario',
+      'estructura_json_payload',
+      'lookup_cuenta_endpoint',
+      'lookup_cuentas_disponibles_endpoint',
+      'fecha_creacion',
+      'fecha_actualizacion'
+    ]
+  }
+]
+-- re-verificación BUG-NEX-01 en REQ-13: GET /api/ach/bancos/activos sin token -> HTTP 200

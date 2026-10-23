@@ -1,0 +1,167 @@
+================ TC-REQ14-003 — ANTES — 2026-10-19 18:48:22 CST ================
+ numero_cuenta  | estado |  saldo  | saldo_disponible | saldo_minimo | limite_retiro_diario | monto_retirado_hoy 
+----------------+--------+---------+------------------+--------------+----------------------+--------------------
+ AH261002000105 | ACTIVA | 8000.00 |          8000.00 |       100.00 |              5000.00 |            4990.00
+(1 row)
+
+ numero_cuenta | tipo | monto | saldo_anterior | saldo_posterior | estado | referencia | canal | hora 
+---------------+------+-------+----------------+-----------------+--------+------------+-------+------
+(0 rows)
+
+ username  |   fecha    | estado  | fondo_inicial | total_depositos | total_retiros | efectivo_esperado | efectivo_contado | diferencia |   abre   |  cierra  
+-----------+------------+---------+---------------+-----------------+---------------+-------------------+------------------+------------+----------+----------
+ qa_cajero | 2026-10-20 | CERRADA |       1000.00 |            0.00 |          0.00 |           1000.00 |                  |            | 00:42:22 | 00:43:32
+ qa_cajero | 2026-10-20 | CERRADA |       1000.00 |            0.00 |          0.00 |           1000.00 |          1010.00 |      10.00 | 00:43:49 | 00:43:50
+ qa_cajero | 2026-10-20 | CERRADA |       1000.00 |            0.00 |          0.00 |           1000.00 |          1010.01 |      10.01 | 00:43:50 | 00:43:51
+ qa_cajero | 2026-10-20 | CERRADA |       1000.00 |         2000.01 |       5100.01 |          -2100.00 |                  |            | 00:44:01 | 00:44:31
+ qa_cajero | 2026-10-20 | ABIERTA |       1000.00 |           10.00 |          0.00 |           1010.00 |                  |            | 00:44:32 | 
+(5 rows)
+
+ modulo | accion | entidad_tipo | resultado | antes | despues | hora 
+--------+--------+--------------+-----------+-------+---------+------
+(0 rows)
+
+
+================ TC-REQ14-003 — DESPUES Q10.00 — 2026-10-19 18:48:23 CST ================
+ numero_cuenta  | estado |  saldo  | saldo_disponible | saldo_minimo | limite_retiro_diario | monto_retirado_hoy 
+----------------+--------+---------+------------------+--------------+----------------------+--------------------
+ AH261002000105 | ACTIVA | 7990.00 |          7990.00 |       100.00 |              5000.00 |            5000.00
+(1 row)
+
+ numero_cuenta  |  tipo   | monto | saldo_anterior | saldo_posterior |   estado   |         referencia          | canal |   hora   
+----------------+---------+-------+----------------+-----------------+------------+-----------------------------+-------+----------
+ AH261002000105 | ACH_OUT | 10.00 |        8000.00 |         7990.00 | COMPLETADA | ACH-20261020004823-F3618980 |       | 00:48:23
+(1 row)
+
+ username  |   fecha    | estado  | fondo_inicial | total_depositos | total_retiros | efectivo_esperado | efectivo_contado | diferencia |   abre   |  cierra  
+-----------+------------+---------+---------------+-----------------+---------------+-------------------+------------------+------------+----------+----------
+ qa_cajero | 2026-10-20 | CERRADA |       1000.00 |            0.00 |          0.00 |           1000.00 |                  |            | 00:42:22 | 00:43:32
+ qa_cajero | 2026-10-20 | CERRADA |       1000.00 |            0.00 |          0.00 |           1000.00 |          1010.00 |      10.00 | 00:43:49 | 00:43:50
+ qa_cajero | 2026-10-20 | CERRADA |       1000.00 |            0.00 |          0.00 |           1000.00 |          1010.01 |      10.01 | 00:43:50 | 00:43:51
+ qa_cajero | 2026-10-20 | CERRADA |       1000.00 |         2000.01 |       5100.01 |          -2100.00 |                  |            | 00:44:01 | 00:44:31
+ qa_cajero | 2026-10-20 | ABIERTA |       1000.00 |           10.00 |          0.00 |           1010.00 |                  |            | 00:44:32 | 
+(5 rows)
+
+ modulo |             accion              |   entidad_tipo    | resultado | antes |                                                         despues                                                          |   hora   
+--------+---------------------------------+-------------------+-----------+-------+--------------------------------------------------------------------------------------------------------------------------+----------
+ ACH    | REGISTRO_TRANSFERENCIA          | ACH_TRANSFERENCIA | EXITOSO   |       | {"Monto": 10.00, "Estado": 0, "BancoCodigo": "QA_NEXUS", "CuentaOrigenId": "1f2314cc-84d6-51f5-82e5-224bf6f4bea3", "Codi | 00:48:23
+ ACH    | ACTUALIZAR_ESTADO_TRANSFERENCIA | ACH_TRANSFERENCIA | EXITOSO   |       | {"Monto": 10.00, "Estado": 1, "BancoCodigo": "QA_NEXUS", "MensajeError": null, "CuentaOrigenId": "1f2314cc-84d6-51f5-82e | 00:48:23
+(2 rows)
+
+
+ banco_codigo | numero_cuenta  | monto | estado  | codigo_confirmacion |   hora   
+--------------+----------------+-------+---------+---------------------+----------
+ QA_NEXUS     | AH261002000105 | 10.00 | ENVIADA | TRX-20261019-000002 | 00:48:23
+(1 row)
+
+== 2026-10-19 18:48:24 CST Reinicio fixture secciones 4 y 5 (TC-REQ14-003)
+NOTICE:  Clientes creados por casos con dependencias; limpiar manualmente si se requiere
+COMMIT
+================ TC-REQ14-003 — ANTES Q10.01 (tras reinicio) — 2026-10-19 18:48:24 CST ================
+ numero_cuenta  | estado |  saldo  | saldo_disponible | saldo_minimo | limite_retiro_diario | monto_retirado_hoy 
+----------------+--------+---------+------------------+--------------+----------------------+--------------------
+ AH261002000105 | ACTIVA | 8000.00 |          8000.00 |       100.00 |              5000.00 |            4990.00
+(1 row)
+
+ numero_cuenta | tipo | monto | saldo_anterior | saldo_posterior | estado | referencia | canal | hora 
+---------------+------+-------+----------------+-----------------+--------+------------+-------+------
+(0 rows)
+
+ username  |   fecha    | estado  | fondo_inicial | total_depositos | total_retiros | efectivo_esperado | efectivo_contado | diferencia |   abre   |  cierra  
+-----------+------------+---------+---------------+-----------------+---------------+-------------------+------------------+------------+----------+----------
+ qa_cajero | 2026-10-20 | CERRADA |       1000.00 |            0.00 |          0.00 |           1000.00 |                  |            | 00:42:22 | 00:43:32
+ qa_cajero | 2026-10-20 | CERRADA |       1000.00 |            0.00 |          0.00 |           1000.00 |          1010.00 |      10.00 | 00:43:49 | 00:43:50
+ qa_cajero | 2026-10-20 | CERRADA |       1000.00 |            0.00 |          0.00 |           1000.00 |          1010.01 |      10.01 | 00:43:50 | 00:43:51
+ qa_cajero | 2026-10-20 | CERRADA |       1000.00 |         2000.01 |       5100.01 |          -2100.00 |                  |            | 00:44:01 | 00:44:31
+ qa_cajero | 2026-10-20 | CERRADA |       1000.00 |           10.00 |          0.00 |           1010.00 |                  |            | 00:44:32 | 00:48:24
+(5 rows)
+
+ modulo | accion | entidad_tipo | resultado | antes | despues | hora 
+--------+--------+--------------+-----------+-------+---------+------
+(0 rows)
+
+
+================ TC-REQ14-003 — DESPUES Q10.01 — 2026-10-19 18:48:25 CST ================
+ numero_cuenta  | estado |  saldo  | saldo_disponible | saldo_minimo | limite_retiro_diario | monto_retirado_hoy 
+----------------+--------+---------+------------------+--------------+----------------------+--------------------
+ AH261002000105 | ACTIVA | 8000.00 |          8000.00 |       100.00 |              5000.00 |            4990.00
+(1 row)
+
+ numero_cuenta | tipo | monto | saldo_anterior | saldo_posterior | estado | referencia | canal | hora 
+---------------+------+-------+----------------+-----------------+--------+------------+-------+------
+(0 rows)
+
+ username  |   fecha    | estado  | fondo_inicial | total_depositos | total_retiros | efectivo_esperado | efectivo_contado | diferencia |   abre   |  cierra  
+-----------+------------+---------+---------------+-----------------+---------------+-------------------+------------------+------------+----------+----------
+ qa_cajero | 2026-10-20 | CERRADA |       1000.00 |            0.00 |          0.00 |           1000.00 |                  |            | 00:42:22 | 00:43:32
+ qa_cajero | 2026-10-20 | CERRADA |       1000.00 |            0.00 |          0.00 |           1000.00 |          1010.00 |      10.00 | 00:43:49 | 00:43:50
+ qa_cajero | 2026-10-20 | CERRADA |       1000.00 |            0.00 |          0.00 |           1000.00 |          1010.01 |      10.01 | 00:43:50 | 00:43:51
+ qa_cajero | 2026-10-20 | CERRADA |       1000.00 |         2000.01 |       5100.01 |          -2100.00 |                  |            | 00:44:01 | 00:44:31
+ qa_cajero | 2026-10-20 | CERRADA |       1000.00 |           10.00 |          0.00 |           1010.00 |                  |            | 00:44:32 | 00:48:24
+(5 rows)
+
+ modulo | accion | entidad_tipo | resultado | antes | despues | hora 
+--------+--------+--------------+-----------+-------+---------+------
+(0 rows)
+
+
+ banco_codigo | numero_cuenta | monto | estado | codigo_confirmacion | hora 
+--------------+---------------+-------+--------+---------------------+------
+(0 rows)
+
+== 2026-10-19 18:48:47 CST Intento 1 de parte 2 INVÁLIDO: la sección 5 del reinicio cerró la caja de qa_cajero; EnviarAsync exige caja abierta (AchTransferenciaService.cs:447-450) y respondió 403. Se restablece la precondición (caja abierta) y se repite.
+================ TC-REQ14-003 — ANTES Q10.01 (reintento con caja abierta) — 2026-10-19 18:48:47 CST ================
+ numero_cuenta  | estado |  saldo  | saldo_disponible | saldo_minimo | limite_retiro_diario | monto_retirado_hoy 
+----------------+--------+---------+------------------+--------------+----------------------+--------------------
+ AH261002000105 | ACTIVA | 8000.00 |          8000.00 |       100.00 |              5000.00 |            4990.00
+(1 row)
+
+ numero_cuenta | tipo | monto | saldo_anterior | saldo_posterior | estado | referencia | canal | hora 
+---------------+------+-------+----------------+-----------------+--------+------------+-------+------
+(0 rows)
+
+ username  |   fecha    | estado  | fondo_inicial | total_depositos | total_retiros | efectivo_esperado | efectivo_contado | diferencia |   abre   |  cierra  
+-----------+------------+---------+---------------+-----------------+---------------+-------------------+------------------+------------+----------+----------
+ qa_cajero | 2026-10-20 | CERRADA |       1000.00 |            0.00 |          0.00 |           1000.00 |                  |            | 00:42:22 | 00:43:32
+ qa_cajero | 2026-10-20 | CERRADA |       1000.00 |            0.00 |          0.00 |           1000.00 |          1010.00 |      10.00 | 00:43:49 | 00:43:50
+ qa_cajero | 2026-10-20 | CERRADA |       1000.00 |            0.00 |          0.00 |           1000.00 |          1010.01 |      10.01 | 00:43:50 | 00:43:51
+ qa_cajero | 2026-10-20 | CERRADA |       1000.00 |         2000.01 |       5100.01 |          -2100.00 |                  |            | 00:44:01 | 00:44:31
+ qa_cajero | 2026-10-20 | CERRADA |       1000.00 |           10.00 |          0.00 |           1010.00 |                  |            | 00:44:32 | 00:48:24
+ qa_cajero | 2026-10-20 | ABIERTA |       1000.00 |            0.00 |          0.00 |           1000.00 |                  |            | 00:48:47 | 
+(6 rows)
+
+ modulo | accion | entidad_tipo | resultado | antes | despues | hora 
+--------+--------+--------------+-----------+-------+---------+------
+(0 rows)
+
+
+================ TC-REQ14-003 — DESPUES Q10.01 (reintento) — 2026-10-19 18:48:48 CST ================
+ numero_cuenta  | estado |  saldo  | saldo_disponible | saldo_minimo | limite_retiro_diario | monto_retirado_hoy 
+----------------+--------+---------+------------------+--------------+----------------------+--------------------
+ AH261002000105 | ACTIVA | 8000.00 |          8000.00 |       100.00 |              5000.00 |            4990.00
+(1 row)
+
+ numero_cuenta | tipo | monto | saldo_anterior | saldo_posterior | estado | referencia | canal | hora 
+---------------+------+-------+----------------+-----------------+--------+------------+-------+------
+(0 rows)
+
+ username  |   fecha    | estado  | fondo_inicial | total_depositos | total_retiros | efectivo_esperado | efectivo_contado | diferencia |   abre   |  cierra  
+-----------+------------+---------+---------------+-----------------+---------------+-------------------+------------------+------------+----------+----------
+ qa_cajero | 2026-10-20 | CERRADA |       1000.00 |            0.00 |          0.00 |           1000.00 |                  |            | 00:42:22 | 00:43:32
+ qa_cajero | 2026-10-20 | CERRADA |       1000.00 |            0.00 |          0.00 |           1000.00 |          1010.00 |      10.00 | 00:43:49 | 00:43:50
+ qa_cajero | 2026-10-20 | CERRADA |       1000.00 |            0.00 |          0.00 |           1000.00 |          1010.01 |      10.01 | 00:43:50 | 00:43:51
+ qa_cajero | 2026-10-20 | CERRADA |       1000.00 |         2000.01 |       5100.01 |          -2100.00 |                  |            | 00:44:01 | 00:44:31
+ qa_cajero | 2026-10-20 | CERRADA |       1000.00 |           10.00 |          0.00 |           1010.00 |                  |            | 00:44:32 | 00:48:24
+ qa_cajero | 2026-10-20 | ABIERTA |       1000.00 |            0.00 |          0.00 |           1000.00 |                  |            | 00:48:47 | 
+(6 rows)
+
+ modulo | accion | entidad_tipo | resultado | antes | despues | hora 
+--------+--------+--------------+-----------+-------+---------+------
+(0 rows)
+
+
+ ach_creadas 
+-------------
+           0
+(1 row)
+

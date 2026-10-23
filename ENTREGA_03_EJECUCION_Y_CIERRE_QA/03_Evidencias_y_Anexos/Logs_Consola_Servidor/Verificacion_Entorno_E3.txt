@@ -1,0 +1,25 @@
+=== Verificación del entorno QA Nexus — 2026-10-19 18:40:00 CST ===
+Compose: /Users/luisalejandrocontrerasparedez/Documents/Universidad/SEPTIMO Y NOVENO/AdminTec/ProyectoADM-info/ENTREGA_02_DISENO_E_IMPLEMENTACION_QA/03_Evidencias_y_MockData/docker-compose.qa.yml (proyecto bancoerp-e2-qa)
+
+$ docker compose -f docker-compose.qa.yml ps
+NAME                            IMAGE                              COMMAND                  SERVICE        CREATED              STATUS                        PORTS
+bancoerp-e2-qa-frontend-1       bancoerp-dev-frontend:latest       "docker-entrypoint.s…"   frontend       About a minute ago   Up About a minute             127.0.0.1:13000->3000/tcp
+bancoerp-e2-qa-internal-api-1   bancoerp-dev-internal-api:latest   "dotnet run --proper…"   internal-api   About a minute ago   Up About a minute             127.0.0.1:15141->8080/tcp
+bancoerp-e2-qa-mock-bank-1      bancoerp-dev-frontend:latest       "docker-entrypoint.s…"   mock-bank      About a minute ago   Up About a minute             127.0.0.1:18081->8081/tcp
+bancoerp-e2-qa-mongo-1          mongo:8.0                          "docker-entrypoint.s…"   mongo          About a minute ago   Up About a minute             127.0.0.1:17017->27017/tcp
+bancoerp-e2-qa-postgres-1       postgres:16-alpine                 "docker-entrypoint.s…"   postgres       About a minute ago   Up About a minute (healthy)   127.0.0.1:15433->5432/tcp
+bancoerp-e2-qa-public-api-1     bancoerp-dev-public-api:latest     "dotnet run --proper…"   public-api     About a minute ago   Up About a minute             127.0.0.1:15254->8080/tcp
+
+=== Ping de URLs ===
+GET http://localhost:13000/login -> HTTP 200
+GET http://localhost:15141/api/Ping -> HTTP 200
+GET http://localhost:15254/api/Home -> HTTP 200
+
+=== Cuerpos ===
+{"mensaje":"Frontend conectado con BancoERP Internal API","estado":"online","servicio":"BancoERP.InternalAPI","fechaUtc":"2026-10-20T00:40:00.5438257Z"}
+{"mensaje":"¡Hola Mundo! Bienvenido a BancoERP Publica API","estado":"Conectado","fecha":"2026-10-20T00:40:00.5513076Z"}
+
+=== Versiones ===
+PostgreSQL 16.15 on aarch64-unknown-linux-musl, compiled by gcc (Alpine 15.2.0) 15.2.0, 64-bit
+8.0.29
+newman 6.2.3

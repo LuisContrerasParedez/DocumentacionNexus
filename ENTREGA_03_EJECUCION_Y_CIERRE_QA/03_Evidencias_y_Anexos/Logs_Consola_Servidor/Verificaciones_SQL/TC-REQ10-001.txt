@@ -1,0 +1,50 @@
+================ TC-REQ10-001 — ANTES — 2026-10-19 18:44:13 CST ================
+ numero_cuenta  | estado |  saldo  | saldo_disponible | saldo_minimo | limite_retiro_diario | monto_retirado_hoy 
+----------------+--------+---------+------------------+--------------+----------------------+--------------------
+ AH261002000101 | ACTIVA | 9000.01 |          9000.01 |       100.00 |              5000.00 |               0.00
+ AH261002000206 | ACTIVA | 2500.00 |          2500.00 |       100.00 |              5000.00 |               0.00
+(2 rows)
+
+ numero_cuenta | tipo | monto | saldo_anterior | saldo_posterior | estado | referencia | canal | hora 
+---------------+------+-------+----------------+-----------------+--------+------------+-------+------
+(0 rows)
+
+ username  |   fecha    | estado  | fondo_inicial | total_depositos | total_retiros | efectivo_esperado | efectivo_contado | diferencia |   abre   |  cierra  
+-----------+------------+---------+---------------+-----------------+---------------+-------------------+------------------+------------+----------+----------
+ qa_cajero | 2026-10-20 | CERRADA |       1000.00 |            0.00 |          0.00 |           1000.00 |                  |            | 00:42:22 | 00:43:32
+ qa_cajero | 2026-10-20 | CERRADA |       1000.00 |            0.00 |          0.00 |           1000.00 |          1010.00 |      10.00 | 00:43:49 | 00:43:50
+ qa_cajero | 2026-10-20 | CERRADA |       1000.00 |            0.00 |          0.00 |           1000.00 |          1010.01 |      10.01 | 00:43:50 | 00:43:51
+ qa_cajero | 2026-10-20 | ABIERTA |       1000.00 |         2000.01 |          0.00 |           3000.01 |                  |            | 00:44:01 | 
+(4 rows)
+
+ modulo | accion | entidad_tipo | resultado | antes | despues | hora 
+--------+--------+--------------+-----------+-------+---------+------
+(0 rows)
+
+
+================ TC-REQ10-001 — DESPUES — 2026-10-19 18:44:14 CST ================
+ numero_cuenta  | estado |  saldo  | saldo_disponible | saldo_minimo | limite_retiro_diario | monto_retirado_hoy 
+----------------+--------+---------+------------------+--------------+----------------------+--------------------
+ AH261002000101 | ACTIVA | 9000.00 |          9000.00 |       100.00 |              5000.00 |               0.01
+ AH261002000206 | ACTIVA | 2500.00 |          2500.00 |       100.00 |              5000.00 |               0.00
+(2 rows)
+
+ numero_cuenta  |  tipo  | monto | saldo_anterior | saldo_posterior |   estado   |              referencia              | canal |   hora   
+----------------+--------+-------+----------------+-----------------+------------+--------------------------------------+-------+----------
+ AH261002000101 | RETIRO |  0.01 |        9000.01 |         9000.00 | COMPLETADA | RET-b906ea6523e84e698c263569eaed136e |       | 00:44:14
+(1 row)
+
+ username  |   fecha    | estado  | fondo_inicial | total_depositos | total_retiros | efectivo_esperado | efectivo_contado | diferencia |   abre   |  cierra  
+-----------+------------+---------+---------------+-----------------+---------------+-------------------+------------------+------------+----------+----------
+ qa_cajero | 2026-10-20 | CERRADA |       1000.00 |            0.00 |          0.00 |           1000.00 |                  |            | 00:42:22 | 00:43:32
+ qa_cajero | 2026-10-20 | CERRADA |       1000.00 |            0.00 |          0.00 |           1000.00 |          1010.00 |      10.00 | 00:43:49 | 00:43:50
+ qa_cajero | 2026-10-20 | CERRADA |       1000.00 |            0.00 |          0.00 |           1000.00 |          1010.01 |      10.01 | 00:43:50 | 00:43:51
+ qa_cajero | 2026-10-20 | ABIERTA |       1000.00 |         2000.01 |          0.01 |           3000.00 |                  |            | 00:44:01 | 
+(4 rows)
+
+    modulo     | accion | entidad_tipo | resultado |       antes        |                                 despues                                  |   hora   
+---------------+--------+--------------+-----------+--------------------+--------------------------------------------------------------------------+----------
+ TRANSACCIONES | RETIRO | CUENTA       | EXITOSO   | {"saldo": 9000.01} | {"saldo": 9000.00, "referencia": "RET-b906ea6523e84e698c263569eaed136e"} | 00:44:14
+(1 row)
+
+

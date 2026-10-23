@@ -1,0 +1,21 @@
+ cuentas_totales 
+-----------------
+            2017
+(1 row)
+
+== REQ-06 después — 2026-10-19 18:42:36 CST
+ cuentas_totales 
+-----------------
+            2018
+(1 row)
+
+ numero_cuenta  | nombre_completo | tipo_cuenta | estado | saldo | saldo_minimo | cajero_registrado |   hora   
+----------------+-----------------+-------------+--------+-------+--------------+-------------------+----------
+ AH261020969652 | Ana Prueba      | AHORRO      | ACTIVA |  0.00 |       100.00 | t                 | 00:42:34
+(1 row)
+
+ nombre_completo  | count 
+------------------+-------
+ Gabriel Revision |     0
+(1 row)
+

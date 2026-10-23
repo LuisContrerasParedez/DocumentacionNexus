@@ -1,0 +1,14 @@
+internal-api-1  | warn: Microsoft.AspNetCore.DataProtection.Repositories.FileSystemXmlRepository[60]
+internal-api-1  |       Storing keys in a directory '/root/.aspnet/DataProtection-Keys' that may not be persisted outside of the container. Protected data will be unavailable when container is destroyed. For more information go to https://aka.ms/aspnet/dataprotectionwarning
+internal-api-1  | warn: Microsoft.AspNetCore.DataProtection.KeyManagement.XmlKeyManager[35]
+internal-api-1  |       No XML encryptor configured. Key {2d9fed47-bf73-4851-9735-ee8224b967bb} may be persisted to storage in unencrypted form.
+internal-api-1  | warn: Microsoft.AspNetCore.Hosting.Diagnostics[15]
+internal-api-1  |       Overriding HTTP_PORTS '8080' and HTTPS_PORTS ''. Binding to values defined by URLS instead 'http://0.0.0.0:8080'.
+internal-api-1  | info: Microsoft.Hosting.Lifetime[14]
+internal-api-1  |       Now listening on: http://0.0.0.0:8080
+internal-api-1  | info: Microsoft.Hosting.Lifetime[0]
+internal-api-1  |       Application started. Press Ctrl+C to shut down.
+internal-api-1  | info: Microsoft.Hosting.Lifetime[0]
+internal-api-1  |       Hosting environment: QA
+internal-api-1  | info: Microsoft.Hosting.Lifetime[0]
+internal-api-1  |       Content root path: /src/BancoERP.InternalAPI

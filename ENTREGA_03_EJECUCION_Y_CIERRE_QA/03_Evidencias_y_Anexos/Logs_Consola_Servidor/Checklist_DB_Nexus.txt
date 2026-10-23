@@ -1,0 +1,106 @@
+-- Checklist_DB_Nexus — ejecutado 2026-10-19 18:40:22 CST (servidor UTC: 2026-10-20 00:40:22.519501+00)
+-- psql -h 127.0.0.1 -p 15433 -U e2qa -d bancoerp_e2_qa -f QA_Readiness_Check_Nexus.sql
+
+BEGIN
+== C-01 Base de datos QA aislada
+      base      | ok 
+----------------+----
+ bancoerp_e2_qa | t
+
+== C-02 Volumen de la carga base (RD-05: 8 / 1000 / 2000 / 10000 + capa Nexus)
+ usuarios | clientes | cuentas | movimientos | ok 
+----------+----------+---------+-------------+----
+       14 |     1004 |    2016 |       10000 | t
+
+== C-03 Usuarios de los casos (TD-01..TD-04, TD-21)
+     username     | estado | bloqueado | intentos_fallidos |     roles     | ok 
+------------------+--------+-----------+-------------------+---------------+----
+ qa_admin         | t      | f         |                 0 | ADMIN         | t
+ qa_banco_externo | t      | f         |                 0 | BANCO_EXTERNO | t
+ qa_bloqueado     | t      | t         |                 5 | CAJERO        | t
+ qa_bloqueo       | t      | f         |                 0 | CAJERO        | t
+ qa_cajero        | t      | f         |                 0 | CAJERO        | t
+ qa_cajero2       | t      | f         |                 0 | CAJERO        | t
+ qa_cliente_ana   | t      | f         |                 0 | CLIENTE       | t
+ qa_cliente_bruno | t      | f         |                 0 | CLIENTE       | t
+ qa_inactivo      | f      | f         |                 0 | CAJERO        | t
+ qa_sin_empleado  | t      | f         |                 0 | CAJERO        | t
+
+== C-04 Empleados: qa_cajero y qa_cajero2 con empleado ACTIVO; qa_sin_empleado sin empleado
+    username     | empleado | ok 
+-----------------+----------+----
+ qa_cajero       | ACTIVO   | t
+ qa_cajero2      | ACTIVO   | t
+ qa_sin_empleado |          | t
+
+== C-05 Clientes Nexus (TD-05, TC-REQ05-002, TC-REQ06-002)
+      dpi      | nombre_completo  |   estado    | ok 
+---------------+------------------+-------------+----
+ 2999999990101 | Ana Prueba       | ACTIVO      | t
+ 2999999990102 | Bruno Prueba     | ACTIVO      | t
+ 2999999990103 | Carla Revision   | EN_REVISION | t
+ 2999999990104 | Gabriel Revision | EN_REVISION | t
+
+== C-06 DPIs que crean los casos NO deben existir antes de ejecutar (TC-REQ04-001/002, TC-REQ05-001)
+ existentes | ok 
+------------+----
+          0 | t
+
+== C-07 Cuentas Nexus con saldos/estados del fixture (TD-10..TD-15)
+ numero_cuenta  | tipo_cuenta |  estado   |  saldo   | saldo_minimo | limite_retiro_diario | monto_retirado_hoy | ok 
+----------------+-------------+-----------+----------+--------------+----------------------+--------------------+----
+ AH261002000101 | AHORRO      | ACTIVA    |  7000.00 |       100.00 |              5000.00 |               0.00 | t
+ AH261002000103 | AHORRO      | BLOQUEADA |   500.00 |       100.00 |              5000.00 |               0.00 | t
+ AH261002000104 | AHORRO      | ACTIVA    |  6000.00 |       100.00 |              5000.00 |            4900.00 | t
+ AH261002000105 | AHORRO      | ACTIVA    |  8000.00 |       100.00 |              5000.00 |            4990.00 | t
+ AH261002000201 | AHORRO      | ACTIVA    |  3000.00 |       100.00 |              5000.00 |               0.00 | t
+ AH261002000203 | AHORRO      | ACTIVA    |   500.00 |       100.00 |              5000.00 |               0.00 | t
+ AH261002000204 | AHORRO      | ACTIVA    |     0.00 |         0.00 |              5000.00 |               0.00 | t
+ AH261002000205 | AHORRO      | CERRADA   |     0.00 |         0.00 |              5000.00 |               0.00 | t
+ AH261002000206 | AHORRO      | ACTIVA    |  2500.00 |       100.00 |              5000.00 |               0.00 | t
+ AH261002000207 | AHORRO      | ACTIVA    | 12000.00 |       100.00 |              5000.00 |               0.00 | t
+ AH261002000208 | AHORRO      | ACTIVA    |  3000.00 |       100.00 |              5000.00 |               0.00 | t
+ AH261002000209 | AHORRO      | ACTIVA    |   500.00 |       100.00 |              5000.00 |               0.00 | t
+ AH261002000210 | AHORRO      | ACTIVA    |  1000.00 |       100.00 |              5000.00 |               0.00 | t
+ AH261002000211 | AHORRO      | ACTIVA    |  1000.00 |       100.00 |              5000.00 |               0.00 | t
+ MO261002000102 | MONETARIA   | ACTIVA    |  1500.00 |         0.00 |                      |               0.00 | t
+ MO261002000202 | MONETARIA   | ACTIVA    |   800.00 |         0.00 |                      |               0.00 | t
+
+== C-08 Plan contable 1101 / 2101 / 2102 activo (TD-24, TC-REQ18-002)
+ codigo | activo | ok 
+--------+--------+----
+ 1101   | t      | t
+ 2101   | t      | t
+ 2102   | t      | t
+
+== C-09 Tipos de cuenta AHORRO / MONETARIA (TC-REQ06-001)
+  codigo   | saldo_minimo | limite_retiro_diario | ok 
+-----------+--------------+----------------------+----
+ AHORRO    |       100.00 |              5000.00 | t
+ MONETARIA |         0.00 |                      | t
+
+== C-10 Permisos públicos del rol BANCO_EXTERNO (TD-21 / TC-REQ17-001..003)
+             codigo              | ok 
+---------------------------------+----
+ ach.public.auth.login           | t
+ ach.public.cuentas.consultar    | t
+ ach.public.transferencias.crear | t
+
+== C-11 reportes.ver: CAJERO no lo tiene, ADMIN sí (TC-REQ16-002)
+  rol   | tiene_reportes_ver | ok 
+--------+--------------------+----
+ ADMIN  | f                  | t
+ CAJERO | f                  | t
+
+== C-12 Datos sintéticos: sin correos fuera de dominios reservados en la capa Nexus
+ correos_no_reservados | ok 
+-----------------------+----
+                     0 | t
+
+== C-13 Cajas abiertas de los operadores QA (debe ser 0 antes de TC-REQ08-001)
+ abiertas | ok 
+----------+----
+        0 | t
+
+COMMIT
+-- exit=0
