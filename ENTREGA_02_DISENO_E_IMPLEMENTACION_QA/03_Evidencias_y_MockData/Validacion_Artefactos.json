@@ -1,0 +1,136 @@
+{
+  "fecha": "2026-10-06",
+  "casos": 139,
+  "requerimientos": 24,
+  "condiciones": 53,
+  "bloqueados": 0,
+  "pairwise_pares": 24,
+  "peticiones": 139,
+  "controles": [
+    {
+      "control": "IDs de caso únicos",
+      "resultado": "OK"
+    },
+    {
+      "control": "24 requerimientos presentes",
+      "resultado": "OK"
+    },
+    {
+      "control": "Condiciones y casos pertenecen a la misma REQ",
+      "resultado": "OK"
+    },
+    {
+      "control": "Datos por caso únicos",
+      "resultado": "OK"
+    },
+    {
+      "control": "Campos mínimos y pasos presentes",
+      "resultado": "OK"
+    },
+    {
+      "control": "Prioridad normalizada",
+      "resultado": "OK"
+    },
+    {
+      "control": "Estados bloqueados coherentes",
+      "resultado": "OK"
+    },
+    {
+      "control": "Particiones, BVA, decisiones, estados y Pairwise presentes",
+      "resultado": "OK"
+    },
+    {
+      "control": "Cobertura Pairwise independiente 24/24",
+      "resultado": "OK"
+    },
+    {
+      "control": "FK cliente→cuenta válidas",
+      "resultado": "OK"
+    },
+    {
+      "control": "FK cuenta→movimiento válidas",
+      "resultado": "OK"
+    },
+    {
+      "control": "Volumen 8/1000/2000/10000",
+      "resultado": "OK"
+    },
+    {
+      "control": "Emails reservados de prueba",
+      "resultado": "OK"
+    },
+    {
+      "control": "Referencias/cuentas únicas",
+      "resultado": "OK"
+    },
+    {
+      "control": "Colección JSON v2.1",
+      "resultado": "OK"
+    },
+    {
+      "control": "Peticiones trazables",
+      "resultado": "OK"
+    },
+    {
+      "control": "Guard de URL QA presente",
+      "resultado": "OK"
+    },
+    {
+      "control": "Cuerpos JSON parseables",
+      "resultado": "OK"
+    },
+    {
+      "control": "15 evidencias reales de readiness",
+      "resultado": "OK"
+    },
+    {
+      "control": "Huella de colección coincide con evidencia",
+      "resultado": "OK"
+    },
+    {
+      "control": "Matrices completas",
+      "resultado": "OK"
+    },
+    {
+      "control": "Todos los casos incluidos en Word",
+      "resultado": "OK"
+    },
+    {
+      "control": "Todos los datos incluidos en Word",
+      "resultado": "OK"
+    },
+    {
+      "control": "Sin JWT expuestos en reportes",
+      "resultado": "OK"
+    },
+    {
+      "control": "Scripts Python válidos",
+      "resultado": "OK"
+    },
+    {
+      "control": "20 eventos únicos con casos y puntos de emisión",
+      "resultado": "OK"
+    },
+    {
+      "control": "Sin casos bloqueados por definición",
+      "resultado": "OK"
+    },
+    {
+      "control": "12 comprobaciones reales de mock y compuerta OK",
+      "resultado": "OK"
+    },
+    {
+      "control": "PDF contiene todos los IDs de caso",
+      "resultado": "OK"
+    },
+    {
+      "control": "PDF sin páginas vacías",
+      "resultado": "OK"
+    },
+    {
+      "control": "PDF sin texto fuera de margen horizontal",
+      "resultado": "OK"
+    }
+  ],
+  "errores": 0
+}

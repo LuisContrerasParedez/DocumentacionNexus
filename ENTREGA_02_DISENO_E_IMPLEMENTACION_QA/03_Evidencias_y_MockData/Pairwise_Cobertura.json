@@ -1,0 +1,74 @@
+{
+  "factores": {
+    "moneda": [
+      "Q",
+      "GTQ"
+    ],
+    "tipo": [
+      "<omitido>",
+      "entrante"
+    ],
+    "referencia": [
+      "<omitido>",
+      "E2 combinatorio"
+    ],
+    "monto": [
+      "0.01",
+      "100.00"
+    ]
+  },
+  "filas": [
+    {
+      "fila": "PW-01",
+      "moneda": "Q",
+      "tipo": "<omitido>",
+      "referencia": "<omitido>",
+      "monto": "0.01",
+      "caso": "TC-REQ19-009"
+    },
+    {
+      "fila": "PW-02",
+      "moneda": "Q",
+      "tipo": "entrante",
+      "referencia": "E2 combinatorio",
+      "monto": "100.00",
+      "caso": "TC-REQ19-010"
+    },
+    {
+      "fila": "PW-03",
+      "moneda": "GTQ",
+      "tipo": "<omitido>",
+      "referencia": "<omitido>",
+      "monto": "100.00",
+      "caso": "TC-REQ19-011"
+    },
+    {
+      "fila": "PW-04",
+      "moneda": "GTQ",
+      "tipo": "entrante",
+      "referencia": "E2 combinatorio",
+      "monto": "0.01",
+      "caso": "TC-REQ19-012"
+    },
+    {
+      "fila": "PW-05",
+      "moneda": "Q",
+      "tipo": "<omitido>",
+      "referencia": "E2 combinatorio",
+      "monto": "0.01",
+      "caso": "TC-REQ19-013"
+    },
+    {
+      "fila": "PW-06",
+      "moneda": "Q",
+      "tipo": "entrante",
+      "referencia": "<omitido>",
+      "monto": "0.01",
+      "caso": "TC-REQ19-014"
+    }
+  ],
+  "combinaciones_exhaustivas": 16,
+  "pares_totales": 24,
+  "pares_cubiertos": 24,
+  "pares_sin_cubrir": []
+}

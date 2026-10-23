@@ -1,0 +1,214 @@
+{
+  "eventos_E1": 21,
+  "eventos_vigentes": 20,
+  "aclaracion": "Inventario de E1 actualizado: la fuente vigente define 20 eventos.",
+  "eventos": [
+    {
+      "constante": "LoginExitoso",
+      "codigo": "LOGIN_EXITOSO",
+      "caso": "TC-REQ07-001",
+      "fuente": "Backend/BancoERP.Domain/Constants/EventosSeguridad.cs",
+      "puntos_emision": [
+        "Backend/BancoERP.Application/Services/AuthService.cs:81"
+      ]
+    },
+    {
+      "constante": "LoginFallido",
+      "codigo": "LOGIN_FALLIDO",
+      "caso": "TC-REQ07-002",
+      "fuente": "Backend/BancoERP.Domain/Constants/EventosSeguridad.cs",
+      "puntos_emision": [
+        "Backend/BancoERP.Application/Services/AuthService.cs:35",
+        "Backend/BancoERP.Application/Services/AuthService.cs:41",
+        "Backend/BancoERP.Application/Services/AuthService.cs:54",
+        "Backend/BancoERP.Application/Services/AuthService.cs:65"
+      ]
+    },
+    {
+      "constante": "Logout",
+      "codigo": "LOGOUT",
+      "caso": "TC-REQ07-004",
+      "fuente": "Backend/BancoERP.Domain/Constants/EventosSeguridad.cs",
+      "puntos_emision": [
+        "Backend/BancoERP.Application/Services/AuthService.cs:144"
+      ]
+    },
+    {
+      "constante": "CambioPassword",
+      "codigo": "CAMBIO_PASSWORD",
+      "caso": "TC-REQ07-005",
+      "fuente": "Backend/BancoERP.Domain/Constants/EventosSeguridad.cs",
+      "puntos_emision": [
+        "Backend/BancoERP.Application/Services/AuthService.cs:159",
+        "Backend/BancoERP.Application/Services/AuthService.cs:165",
+        "Backend/BancoERP.Application/Services/AuthService.cs:171",
+        "Backend/BancoERP.Application/Services/AuthService.cs:176"
+      ]
+    },
+    {
+      "constante": "CambioPasswordFallido",
+      "codigo": "CAMBIO_PASSWORD_FALLIDO",
+      "caso": "TC-REQ07-006",
+      "fuente": "Backend/BancoERP.Domain/Constants/EventosSeguridad.cs",
+      "puntos_emision": [
+        "Backend/BancoERP.Application/Services/AuthService.cs:159",
+        "Backend/BancoERP.Application/Services/AuthService.cs:165",
+        "Backend/BancoERP.Application/Services/AuthService.cs:171"
+      ]
+    },
+    {
+      "constante": "ResetPassword",
+      "codigo": "RESET_PASSWORD",
+      "caso": "TC-REQ07-007",
+      "fuente": "Backend/BancoERP.Domain/Constants/EventosSeguridad.cs",
+      "puntos_emision": [
+        "Backend/BancoERP.Application/Services/SeguridadService.cs:188",
+        "Backend/BancoERP.Application/Services/AuthService.cs:208",
+        "Backend/BancoERP.Application/Services/AuthService.cs:215",
+        "Backend/BancoERP.Application/Services/AuthService.cs:222",
+        "Backend/BancoERP.Application/Services/AuthService.cs:228",
+        "Backend/BancoERP.Application/Services/AuthService.cs:234"
+      ]
+    },
+    {
+      "constante": "SolicitudRecuperacionPassword",
+      "codigo": "SOLICITUD_RECUPERACION_PASSWORD",
+      "caso": "TC-REQ07-008",
+      "fuente": "Backend/BancoERP.Domain/Constants/EventosSeguridad.cs",
+      "puntos_emision": [
+        "Backend/BancoERP.Application/Services/AuthService.cs:192",
+        "Backend/BancoERP.Application/Services/AuthService.cs:200"
+      ]
+    },
+    {
+      "constante": "UsuarioCreado",
+      "codigo": "USUARIO_CREADO",
+      "caso": "TC-REQ07-009",
+      "fuente": "Backend/BancoERP.Domain/Constants/EventosSeguridad.cs",
+      "puntos_emision": [
+        "Backend/BancoERP.Application/Services/SeguridadService.cs:104"
+      ]
+    },
+    {
+      "constante": "UsuarioEditado",
+      "codigo": "USUARIO_EDITADO",
+      "caso": "TC-REQ07-010",
+      "fuente": "Backend/BancoERP.Domain/Constants/EventosSeguridad.cs",
+      "puntos_emision": [
+        "Backend/BancoERP.Application/Services/SeguridadService.cs:143",
+        "Backend/BancoERP.Application/Services/SeguridadService.cs:158"
+      ]
+    },
+    {
+      "constante": "UsuarioBloqueado",
+      "codigo": "USUARIO_BLOQUEADO",
+      "caso": "TC-REQ07-011",
+      "fuente": "Backend/BancoERP.Domain/Constants/EventosSeguridad.cs",
+      "puntos_emision": [
+        "Backend/BancoERP.Application/Services/SeguridadService.cs:173",
+        "Backend/BancoERP.Application/Services/AuthService.cs:70"
+      ]
+    },
+    {
+      "constante": "UsuarioDesbloqueado",
+      "codigo": "USUARIO_DESBLOQUEADO",
+      "caso": "TC-REQ07-012",
+      "fuente": "Backend/BancoERP.Domain/Constants/EventosSeguridad.cs",
+      "puntos_emision": [
+        "Backend/BancoERP.Application/Services/SeguridadService.cs:173"
+      ]
+    },
+    {
+      "constante": "AsignacionRol",
+      "codigo": "ASIGNACION_ROL",
+      "caso": "TC-REQ07-013",
+      "fuente": "Backend/BancoERP.Domain/Constants/EventosSeguridad.cs",
+      "puntos_emision": [
+        "Backend/BancoERP.Application/Services/SeguridadService.cs:198"
+      ]
+    },
+    {
+      "constante": "AsignacionPermiso",
+      "codigo": "ASIGNACION_PERMISO",
+      "caso": "TC-REQ07-014",
+      "fuente": "Backend/BancoERP.Domain/Constants/EventosSeguridad.cs",
+      "puntos_emision": [
+        "Backend/BancoERP.Application/Services/SeguridadService.cs:211",
+        "Backend/BancoERP.Application/Services/SeguridadService.cs:282"
+      ]
+    },
+    {
+      "constante": "AchPublicLoginExitoso",
+      "codigo": "ACH_PUBLIC_LOGIN_OK",
+      "caso": "TC-REQ07-015",
+      "fuente": "Backend/BancoERP.Domain/Constants/EventosSeguridad.cs",
+      "puntos_emision": [
+        "Backend/BancoERP.Application/Services/ExternalBankAuthService.cs:124"
+      ]
+    },
+    {
+      "constante": "AchPublicLoginFallido",
+      "codigo": "ACH_PUBLIC_LOGIN_FAIL",
+      "caso": "TC-REQ07-016",
+      "fuente": "Backend/BancoERP.Domain/Constants/EventosSeguridad.cs",
+      "puntos_emision": [
+        "Backend/BancoERP.Application/Services/ExternalBankAuthService.cs:36",
+        "Backend/BancoERP.Application/Services/ExternalBankAuthService.cs:42",
+        "Backend/BancoERP.Application/Services/ExternalBankAuthService.cs:55",
+        "Backend/BancoERP.Application/Services/ExternalBankAuthService.cs:70",
+        "Backend/BancoERP.Application/Services/ExternalBankAuthService.cs:92",
+        "Backend/BancoERP.Application/Services/ExternalBankAuthService.cs:99"
+      ]
+    },
+    {
+      "constante": "AchPublicCuentaConsulta",
+      "codigo": "ACH_PUBLIC_CTA_LOOKUP",
+      "caso": "TC-REQ07-017",
+      "fuente": "Backend/BancoERP.Domain/Constants/EventosSeguridad.cs",
+      "puntos_emision": [
+        "Backend/BancoERP.Application/Services/ExternalAchPublicService.cs:76",
+        "Backend/BancoERP.Application/Services/ExternalAchPublicService.cs:83",
+        "Backend/BancoERP.Application/Services/ExternalAchPublicService.cs:95"
+      ]
+    },
+    {
+      "constante": "AchPublicTransferenciaEntranteExitosa",
+      "codigo": "ACH_PUBLIC_TRX_IN_OK",
+      "caso": "TC-REQ07-018",
+      "fuente": "Backend/BancoERP.Domain/Constants/EventosSeguridad.cs",
+      "puntos_emision": [
+        "Backend/BancoERP.Application/Services/ExternalAchPublicService.cs:212"
+      ]
+    },
+    {
+      "constante": "AchPublicTransferenciaEntranteRechazada",
+      "codigo": "ACH_PUBLIC_TRX_IN_REJ",
+      "caso": "TC-REQ07-019",
+      "fuente": "Backend/BancoERP.Domain/Constants/EventosSeguridad.cs",
+      "puntos_emision": [
+        "Backend/BancoERP.Application/Services/ExternalAchPublicService.cs:107",
+        "Backend/BancoERP.Application/Services/ExternalAchPublicService.cs:262"
+      ]
+    },
+    {
+      "constante": "AchPublicTransferenciaEntranteDuplicada",
+      "codigo": "ACH_PUBLIC_TRX_IN_DUP",
+      "caso": "TC-REQ07-020",
+      "fuente": "Backend/BancoERP.Domain/Constants/EventosSeguridad.cs",
+      "puntos_emision": [
+        "Backend/BancoERP.Application/Services/ExternalAchPublicService.cs:136",
+        "Backend/BancoERP.Application/Services/ExternalAchPublicService.cs:231"
+      ]
+    },
+    {
+      "constante": "AchPublicTransferenciaEntranteError",
+      "codigo": "ACH_PUBLIC_TRX_IN_ERR",
+      "caso": "TC-REQ07-021",
+      "fuente": "Backend/BancoERP.Domain/Constants/EventosSeguridad.cs",
+      "puntos_emision": [
+        "Backend/BancoERP.Application/Services/ExternalAchPublicService.cs:262",
+        "Backend/BancoERP.Application/Services/ExternalAchPublicService.cs:282"
+      ]
+    }
+  ]
+}

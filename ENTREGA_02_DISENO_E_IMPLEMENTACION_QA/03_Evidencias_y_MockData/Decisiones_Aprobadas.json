@@ -1,0 +1,86 @@
+{
+  "fecha": "2026-10-06",
+  "version": "2.0",
+  "autoridad": "Reunión de diseño del equipo QA del 06-10-2026; aprobación del Líder QA como responsable de requerimientos del proyecto académico. No constituye aprobación de una entidad bancaria real ni implica que el software ya implemente las reglas.",
+  "reglas": [
+    {
+      "id": "D-01",
+      "reqs": [
+        "REQ-02"
+      ],
+      "regla": "5 fallos consecutivos; bloqueo de 30 minutos; desbloqueo temporal al vencer; login correcto reinicia contador."
+    },
+    {
+      "id": "D-02",
+      "reqs": [
+        "REQ-03",
+        "REQ-04",
+        "REQ-05"
+      ],
+      "regla": "Contraseña >=8 caracteres, mayúscula, minúscula y número; impedir últimas 5. Recuperación de un solo uso por 2 horas; token en respuesta exclusivamente en QA académico."
+    },
+    {
+      "id": "D-03",
+      "reqs": [
+        "REQ-09"
+      ],
+      "regla": "Registrar cualquier diferencia; |diferencia|<=Q10 permite cierre sin justificación; |diferencia|>Q10 requiere justificación; clasificar FALTANTE/SOBRANTE/CUADRE EXACTO."
+    },
+    {
+      "id": "D-04",
+      "reqs": [
+        "REQ-11",
+        "REQ-12",
+        "REQ-16"
+      ],
+      "regla": "Aplicar y acumular límite diario de AHORRO en retiro, transferencia interna y portal; rechazar excedente sin efectos. La divergencia actual es defecto, no excepción aprobada."
+    },
+    {
+      "id": "D-05",
+      "reqs": [
+        "REQ-06",
+        "REQ-17"
+      ],
+      "regla": "Configuración ACH requiere JWT y permiso administrativo; no devolver contraseñas; persistirlas cifradas con clave fuera de la base y del repositorio.",
+      "precision_tecnica": "Usar permiso efectivo existente catalogos.configuracion.editar como permiso administrativo de configuración; falta de JWT=401 y falta de permiso=403."
+    },
+    {
+      "id": "D-06",
+      "reqs": [
+        "REQ-23"
+      ],
+      "regla": "Bloquear liberación por vulnerabilidades Altas o Críticas; registrar Medias para seguimiento. La regla local ejecutable no equivale a integración CI remota realizada."
+    },
+    {
+      "id": "D-07",
+      "reqs": [
+        "REQ-24"
+      ],
+      "regla": "Login y navegación principal a 1366x768 y 390x844, temas claro y oscuro, sin superposición ni scroll horizontal."
+    },
+    {
+      "id": "D-08",
+      "reqs": [
+        "REQ-18"
+      ],
+      "regla": "Timeout 15 segundos; ante timeout ERROR y requiere conciliación, sin débito local ni reintento automático. HTTP500 o JSON inválido: ERROR, saldo intacto y mensaje controlado. Confirmación positiva válida: un único débito por código.",
+      "precision_tecnica": "Contrato objetivo: timeout HTTP504 y message='Tiempo de espera agotado; requiere conciliacion.'; falla HTTP500 externa HTTP502 y message='Banco externo no disponible.'; JSON inválido externo HTTP502 y message='Respuesta invalida del banco externo.'; confirmación válida HTTP200 y estadoNombre=ENVIADA; duplicado HTTP409, message='La transferencia ya fue procesada.' y delta saldo=0. Son oráculos de diseño aprobados, no respuestas verificadas del código actual."
+    }
+  ],
+  "reconciliacion_tecnica": {
+    "id": "D-09",
+    "reqs": [
+      "REQ-07"
+    ],
+    "eventos_E1": 21,
+    "eventos_fuente_actual": 20,
+    "regla": "Actualizar el inventario vigente a las 20 constantes de EventosSeguridad.cs y diseñar un escenario por evento. El criterio original de E1 (21 eventos) se conserva con nota de cambio, porque el código fuente vigente define 20."
+  },
+  "responsable": "Líder QA",
+  "participantes": [
+    "Líder QA",
+    "Analista de Pruebas",
+    "Tester Funcional",
+    "Tester de Seguridad e Integración"
+  ]
+}

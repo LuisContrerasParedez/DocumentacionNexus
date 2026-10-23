@@ -1,0 +1,74 @@
+name: bancoerp-e2-qa
+services:
+  postgres:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: e2qa
+      POSTGRES_PASSWORD: E2SoloQALocal2026
+      POSTGRES_DB: bancoerp_e2_qa
+    ports: ["127.0.0.1:15433:5432"]
+    volumes:
+      - e2-pg:/var/lib/postgresql/data
+      - ./:/qa:ro
+      - ./scripts/init_all.sql:/docker-entrypoint-initdb.d/01_qa.sql:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U e2qa -d bancoerp_e2_qa"]
+      interval: 3s
+      retries: 40
+  mongo:
+    image: mongo:8.0
+    ports: ["127.0.0.1:17017:27017"]
+    volumes: ["e2-mongo:/data/db"]
+  internal-api:
+    image: bancoerp-dev-internal-api:latest
+    working_dir: /src/BancoERP.InternalAPI
+    command: ["dotnet", "run", "--property:NuGetAudit=false", "--no-launch-profile", "--urls", "http://0.0.0.0:8080"]
+    environment: &qaenv
+      ASPNETCORE_ENVIRONMENT: QA
+      DOTNET_RUNNING_IN_CONTAINER: "true"
+      DOTNET_ARTIFACTS_ROOT: /tmp/e2-artifacts
+      ConnectionStrings__DefaultConnection: Host=postgres;Port=5432;Database=bancoerp_e2_qa;Username=e2qa;Password=E2SoloQALocal2026
+      MongoDb__ConnectionString: mongodb://mongo:27017
+      MongoDb__DatabaseName: bancoerp_e2_qa
+      MongoDb__BanksCollectionName: ach_banks_configurations
+      Jwt__SecretKey: E2_Clave_Solo_QA_2026_No_Produccion_123456789
+      Jwt__Issuer: BancoERP-E2-QA
+      Jwt__Audience: BancoERP-E2-QA
+      Jwt__ExpirationHours: "1"
+      Jwt__RefreshTokenDays: "7"
+      Security__RecoveryTokenHours: "2"
+      Security__MaxFailedAccessAttempts: "5"
+      Security__PasswordHistoryLimit: "5"
+      CORS_ALLOWED_ORIGINS: http://localhost:13000
+    ports: ["127.0.0.1:15141:8080"]
+    volumes: ["../../Backend:/src:ro"]
+    depends_on:
+      postgres: {condition: service_healthy}
+      mongo: {condition: service_started}
+  public-api:
+    image: bancoerp-dev-public-api:latest
+    working_dir: /src/BancoERP.PublicAPI
+    command: ["dotnet", "run", "--property:NuGetAudit=false", "--no-launch-profile", "--urls", "http://0.0.0.0:8080"]
+    environment: *qaenv
+    ports: ["127.0.0.1:15254:8080"]
+    volumes: ["../../Backend:/src:ro"]
+    depends_on:
+      postgres: {condition: service_healthy}
+  mock-bank:
+    image: bancoerp-dev-frontend:latest
+    command: ["node", "/qa/scripts/mock_bank.cjs"]
+    ports: ["127.0.0.1:18081:8081"]
+    volumes: ["./:/qa:ro"]
+  frontend:
+    image: bancoerp-dev-frontend:latest
+    environment:
+      VITE_API_URL: http://internal-api:8080
+      VITE_APP_HOST: 0.0.0.0
+      VITE_APP_PORT: "3000"
+    ports: ["127.0.0.1:13000:3000"]
+    volumes: ["../../Frontend:/app:ro", "e2-node:/app/node_modules"]
+    depends_on: [internal-api]
+volumes:
+  e2-pg:
+  e2-mongo:
+  e2-node:

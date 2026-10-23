@@ -1,0 +1,10 @@
+{
+  "origen": "Fixture sintético; no representa vulnerabilidad real de un paquete",
+  "vulnerabilidades": [
+    {
+      "id": "QA-HALLAZGO-ALTA",
+      "severidad": "ALTA",
+      "componente": "componente-sintetico"
+    }
+  ]
+}
