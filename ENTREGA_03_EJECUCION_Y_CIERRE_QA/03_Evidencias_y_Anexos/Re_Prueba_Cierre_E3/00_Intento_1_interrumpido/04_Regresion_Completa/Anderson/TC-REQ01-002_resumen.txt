@@ -1,0 +1,25 @@
+2026-10-22 18:24:55 CST  TC-REQ01-002
+- Intento 1 con contraseña errónea
+    POST http://localhost:15141/api/auth/login
+    HTTP 401 (33 ms) | ok=2 fail=0
+    body: {"message":"Credenciales incorrectas. Intento 1 de 5."}
+- Intento 2 con contraseña errónea
+    POST http://localhost:15141/api/auth/login
+    HTTP 401 (15 ms) | ok=2 fail=0
+    body: {"message":"Credenciales incorrectas. Intento 2 de 5."}
+- Intento 3 con contraseña errónea
+    POST http://localhost:15141/api/auth/login
+    HTTP 401 (14 ms) | ok=2 fail=0
+    body: {"message":"Credenciales incorrectas. Intento 3 de 5."}
+- Intento 4 con contraseña errónea
+    POST http://localhost:15141/api/auth/login
+    HTTP 401 (14 ms) | ok=2 fail=0
+    body: {"message":"Credenciales incorrectas. Intento 4 de 5."}
+- Intento 5 con contraseña errónea
+    POST http://localhost:15141/api/auth/login
+    HTTP 401 (17 ms) | ok=1 fail=0
+    body: {"message":"Credenciales incorrectas. El usuario se encuentra bloqueado. Por favor comuniquese con soporte."}
+- Intento posterior con contraseña correcta (bloqueo vigente)
+    POST http://localhost:15141/api/auth/login
+    HTTP 423 (7 ms) | ok=1 fail=0
+    body: {"message":"El usuario se encuentra bloqueado. Por favor comuniquese con soporte."}

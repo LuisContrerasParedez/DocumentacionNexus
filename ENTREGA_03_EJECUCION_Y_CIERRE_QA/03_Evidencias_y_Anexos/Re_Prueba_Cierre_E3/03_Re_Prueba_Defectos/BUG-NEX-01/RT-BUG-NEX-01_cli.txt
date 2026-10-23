@@ -1,0 +1,99 @@
+newman
+
+BancoERP Nexus · E2 Diseño e Implementación QA (46 casos) · v2 re-prueba cierre E3 · RT · Re-prueba (subconjunto)
+
+❏ RT · Re-prueba de defectos (cierre E3) / RT-BUG-NEX-01 · Sin token → 401
+↳ RT-01-01: sin token → GET /api/ach/bancos
+  GET http://localhost:15141/api/ach/bancos [401 Unauthorized, 128B, 28ms]
+  ✓  RT-01-01: HTTP 401
+
+↳ RT-01-02: sin token → GET /api/ach/bancos/activos
+  GET http://localhost:15141/api/ach/bancos/activos [401 Unauthorized, 128B, 8ms]
+  ✓  RT-01-02: HTTP 401
+
+↳ RT-01-03: sin token → GET /api/ach/bancos/{id}
+  GET http://localhost:15141/api/ach/bancos/e20000000000000000000001 [401 Unauthorized, 128B, 4ms]
+  ✓  RT-01-03: HTTP 401
+
+↳ RT-01-04: sin token → POST /api/ach/bancos
+  POST http://localhost:15141/api/ach/bancos [401 Unauthorized, 128B, 2ms]
+  ✓  RT-01-04: HTTP 401
+
+↳ RT-01-05: sin token → PUT /api/ach/bancos/{id}
+  PUT http://localhost:15141/api/ach/bancos/e20000000000000000000001 [401 Unauthorized, 128B, 2ms]
+  ✓  RT-01-05: HTTP 401
+
+↳ RT-01-06: sin token → PATCH /api/ach/bancos/{id}/estado
+  PATCH http://localhost:15141/api/ach/bancos/e20000000000000000000001/estado [401 Unauthorized, 128B, 3ms]
+  ✓  RT-01-06: HTTP 401
+
+↳ RT-01-07: sin token → DELETE /api/ach/bancos/{id}
+  DELETE http://localhost:15141/api/ach/bancos/e20000000000000000000005 [401 Unauthorized, 128B, 4ms]
+  ✓  RT-01-07: HTTP 401
+
+↳ RT-01-08: sin token → GET /api/ach/transferencias
+  GET http://localhost:15141/api/ach/transferencias [401 Unauthorized, 128B, 4ms]
+  ✓  RT-01-08: HTTP 401
+
+↳ RT-01-09: sin token → POST /api/ach/transferencias/enviar
+  POST http://localhost:15141/api/ach/transferencias/enviar [401 Unauthorized, 128B, 4ms]
+  ✓  RT-01-09: HTTP 401
+
+❏ RT · Re-prueba de defectos (cierre E3) / RT-BUG-NEX-01 · Rol sin permiso → 403
+↳ RT-01-10: CLIENTE → GET /api/ach/bancos
+  GET http://localhost:15141/api/ach/bancos [403 Forbidden, 99B, 37ms]
+  ✓  RT-01-10: HTTP 403
+
+↳ RT-01-11: CAJERO → POST /api/ach/bancos
+  POST http://localhost:15141/api/ach/bancos [403 Forbidden, 99B, 6ms]
+  ✓  RT-01-11: HTTP 403
+
+↳ RT-01-12: CAJERO → DELETE /api/ach/bancos/{id}
+  DELETE http://localhost:15141/api/ach/bancos/e20000000000000000000005 [403 Forbidden, 99B, 4ms]
+  ✓  RT-01-12: HTTP 403
+
+↳ RT-01-13: CLIENTE → PATCH /api/ach/bancos/{id}/estado
+  PATCH http://localhost:15141/api/ach/bancos/e20000000000000000000001/estado [403 Forbidden, 99B, 4ms]
+  ✓  RT-01-13: HTTP 403
+
+↳ RT-01-14: BANCO_EXTERNO (JWT público) → GET /api/ach/bancos
+  GET http://localhost:15141/api/ach/bancos [403 Forbidden, 99B, 4ms]
+  ✓  RT-01-14: HTTP 401/403
+
+❏ RT · Re-prueba de defectos (cierre E3) / RT-BUG-NEX-01 · Controles positivos (no regresión)
+↳ RT-01-15: ADMIN → GET /api/ach/bancos
+  GET http://localhost:15141/api/ach/bancos [200 OK, 3.35kB, 112ms]
+  ✓  RT-01-15: HTTP 200
+  ✓  RT-01-15: lista los 5 bancos simulados
+
+↳ RT-01-16: CAJERO → GET /api/ach/bancos/activos
+  GET http://localhost:15141/api/ach/bancos/activos [200 OK, 3.35kB, 8ms]
+  ✓  RT-01-16: HTTP 200
+
+↳ RT-01-17: CLIENTE (portal) → GET /api/ach/bancos/activos
+  GET http://localhost:15141/api/ach/bancos/activos [200 OK, 3.35kB, 6ms]
+  ✓  RT-01-17: HTTP 200
+
+↳ RT-01-18: CLIENTE (portal) → GET /api/ach/transferencias
+  GET http://localhost:15141/api/ach/transferencias [200 OK, 150B, 15ms]
+  ✓  RT-01-18: HTTP 200
+
+┌─────────────────────────┬───────────────────┬──────────────────┐
+│                         │          executed │           failed │
+├─────────────────────────┼───────────────────┼──────────────────┤
+│              iterations │                 1 │                0 │
+├─────────────────────────┼───────────────────┼──────────────────┤
+│                requests │                18 │                0 │
+├─────────────────────────┼───────────────────┼──────────────────┤
+│            test-scripts │                18 │                0 │
+├─────────────────────────┼───────────────────┼──────────────────┤
+│      prerequest-scripts │                18 │                0 │
+├─────────────────────────┼───────────────────┼──────────────────┤
+│              assertions │                19 │                0 │
+├─────────────────────────┴───────────────────┴──────────────────┤
+│ total run duration: 3.3s                                       │
+├────────────────────────────────────────────────────────────────┤
+│ total data received: 9.59kB (approx)                           │
+├────────────────────────────────────────────────────────────────┤
+│ average response time: 14ms [min: 2ms, max: 112ms, s.d.: 25ms] │
+└────────────────────────────────────────────────────────────────┘

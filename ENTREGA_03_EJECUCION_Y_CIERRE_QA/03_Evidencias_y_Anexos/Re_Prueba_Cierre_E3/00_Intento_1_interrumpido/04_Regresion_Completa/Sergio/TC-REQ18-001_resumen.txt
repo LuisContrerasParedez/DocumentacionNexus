@@ -1,0 +1,9 @@
+2026-10-22 18:24:48 CST  TC-REQ18-001
+- Abrir caja sin empleado activo
+    POST http://localhost:15141/api/cajas/abrir
+    HTTP 422 (20 ms) | ok=2 fail=0
+    body: {"message":"El usuario autenticado no tiene un empleado activo asociado."}
+- Abrir cuenta sin empleado activo
+    POST http://localhost:15141/api/cuentas
+    HTTP 422 (6 ms) | ok=2 fail=0
+    body: {"message":"El usuario autenticado no tiene un empleado activo asociado."}

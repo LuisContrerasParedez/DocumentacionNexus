@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="BancoERP Nexus · E2 Diseño e Implementación QA (46 casos) · v2 re-prueba cierre E3 · TC-REQ08-002 (subconjunto)" tests="3" time="0.048">
+  <testsuite name="TC-REQ08-002 · Frontera Q10.00/Q10.01 sin justificación / Cierre con diferencia +Q10.00 sin justificación" id="41a0b7eb-6d0e-4797-bbcc-c58a336c6626" timestamp="2026-10-23T00:30:08.139Z" tests="1" failures="0" errors="0" time="0.035">
+    <testcase name="TC-REQ08-002: HTTP 200" time="0.035" classname="TcReq08002FronteraQ1000Q1001SinJustificacionCierreConDiferenciaQ1000SinJustificacion"/>
+  </testsuite>
+  <testsuite name="TC-REQ08-002 · Frontera Q10.00/Q10.01 sin justificación / Fixture nuevo: reabrir caja fondo Q1000" id="1b4b4044-eeb8-43bf-a9cc-ff6458d0f4cd" timestamp="2026-10-23T00:30:08.139Z" tests="1" failures="0" errors="0" time="0.006">
+    <testcase name="TC-REQ08-002: HTTP 200/201" time="0.006" classname="TcReq08002FronteraQ1000Q1001SinJustificacionFixtureNuevoReabrirCajaFondoQ1000"/>
+  </testsuite>
+  <testsuite name="TC-REQ08-002 · Frontera Q10.00/Q10.01 sin justificación / Cierre con diferencia +Q10.01 sin justificación" id="a0c74db7-790c-431e-8bdd-658482d21d6f" timestamp="2026-10-23T00:30:08.139Z" tests="2" failures="0" errors="0" time="0.007">
+    <testcase name="TC-REQ08-002: HTTP 422" time="0.007" classname="TcReq08002FronteraQ1000Q1001SinJustificacionCierreConDiferenciaQ1001SinJustificacion"/>
+    <testcase name="mensaje contiene &quot;requiere justificacion&quot;" time="0.007" classname="TcReq08002FronteraQ1000Q1001SinJustificacionCierreConDiferenciaQ1001SinJustificacion"/>
+  </testsuite>
+</testsuites>

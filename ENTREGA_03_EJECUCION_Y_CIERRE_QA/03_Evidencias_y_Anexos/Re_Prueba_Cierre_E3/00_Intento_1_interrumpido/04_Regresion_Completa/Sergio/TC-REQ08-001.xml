@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="BancoERP Nexus · E2 Diseño e Implementación QA (46 casos) · v2 re-prueba cierre E3 · TC-REQ08-001 (subconjunto)" tests="2" time="0.030">
+  <testsuite name="TC-REQ08-001 · Una sola caja abierta por día / Primera apertura fondo Q1000" id="3c8cb4e1-925d-4c2f-995f-34f05509f41d" timestamp="2026-10-23T00:24:34.773Z" tests="1" failures="0" errors="0" time="0.025">
+    <testcase name="TC-REQ08-001: HTTP 200/201" time="0.025" classname="TcReq08001UnaSolaCajaAbiertaPorDiaPrimeraAperturaFondoQ1000"/>
+  </testsuite>
+  <testsuite name="TC-REQ08-001 · Una sola caja abierta por día / Segunda apertura el mismo día" id="53ed4817-c764-4ef7-a7cf-31bf05d21a70" timestamp="2026-10-23T00:24:34.773Z" tests="2" failures="0" errors="0" time="0.005">
+    <testcase name="TC-REQ08-001: HTTP 422" time="0.005" classname="TcReq08001UnaSolaCajaAbiertaPorDiaSegundaAperturaElMismoDia"/>
+    <testcase name="mensaje contiene &quot;abierta hoy&quot;" time="0.005" classname="TcReq08001UnaSolaCajaAbiertaPorDiaSegundaAperturaElMismoDia"/>
+  </testsuite>
+</testsuites>

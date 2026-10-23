@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="BancoERP Nexus · E2 Diseño e Implementación QA (46 casos) · v2 re-prueba cierre E3 · 00 · Preparación (subconjunto)" tests="7" time="0.126">
+  <testsuite name="00 · Preparación (tokens) / Login qa_admin" id="3454a8ee-f5b1-4bd7-a4b3-5a12dd820bd5" timestamp="2026-10-23T00:24:14.836Z" tests="1" failures="0" errors="0" time="0.032">
+    <testcase name="Prep: HTTP 200" time="0.032" classname="00PreparacionTokensLoginQaAdmin"/>
+  </testsuite>
+  <testsuite name="00 · Preparación (tokens) / Login qa_cajero" id="5c9bc65f-6158-4855-9f67-8153fef5548b" timestamp="2026-10-23T00:24:14.836Z" tests="1" failures="0" errors="0" time="0.015">
+    <testcase name="Prep: HTTP 200" time="0.015" classname="00PreparacionTokensLoginQaCajero"/>
+  </testsuite>
+  <testsuite name="00 · Preparación (tokens) / Login qa_cajero2" id="070187fc-5508-4f99-a3c1-9c7090a0d8c3" timestamp="2026-10-23T00:24:14.836Z" tests="1" failures="0" errors="0" time="0.008">
+    <testcase name="Prep: HTTP 200" time="0.008" classname="00PreparacionTokensLoginQaCajero2"/>
+  </testsuite>
+  <testsuite name="00 · Preparación (tokens) / Login qa_sin_empleado" id="d9234cc9-e370-4bcd-bd4c-2ac82c9d4ce3" timestamp="2026-10-23T00:24:14.836Z" tests="1" failures="0" errors="0" time="0.013">
+    <testcase name="Prep: HTTP 200" time="0.013" classname="00PreparacionTokensLoginQaSinEmpleado"/>
+  </testsuite>
+  <testsuite name="00 · Preparación (tokens) / Login qa_cliente_ana" id="693d37ca-1321-4f15-b19f-3a216cf3a4dd" timestamp="2026-10-23T00:24:14.836Z" tests="1" failures="0" errors="0" time="0.016">
+    <testcase name="Prep: HTTP 200" time="0.016" classname="00PreparacionTokensLoginQaClienteAna"/>
+  </testsuite>
+  <testsuite name="00 · Preparación (tokens) / Login qa_cliente_bruno" id="9bf3c194-1b44-47a1-a5ea-d054cf753a2f" timestamp="2026-10-23T00:24:14.836Z" tests="1" failures="0" errors="0" time="0.016">
+    <testcase name="Prep: HTTP 200" time="0.016" classname="00PreparacionTokensLoginQaClienteBruno"/>
+  </testsuite>
+  <testsuite name="00 · Preparación (tokens) / Login externo qa.banco.externo@nexus.test" id="393943b4-24f0-4b92-8027-92b273c77620" timestamp="2026-10-23T00:24:14.836Z" tests="1" failures="0" errors="0" time="0.026">
+    <testcase name="Prep: HTTP 200" time="0.026" classname="00PreparacionTokensLoginExternoQaBancoExternoNexusTest"/>
+  </testsuite>
+</testsuites>

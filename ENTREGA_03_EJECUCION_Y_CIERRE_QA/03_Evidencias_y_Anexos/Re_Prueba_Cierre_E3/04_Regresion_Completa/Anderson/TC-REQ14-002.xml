@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="BancoERP Nexus · E2 Diseño e Implementación QA (46 casos) · v2 re-prueba cierre E3 · TC-REQ14-002 (subconjunto)" tests="4" time="0.035">
+  <testsuite name="TC-REQ14-002 · ACH rechazada por banco inactivo o saldo insuficiente / Desactivar QA_NEXUS" id="b286e321-0f2a-40cc-a89b-c409012139c2" timestamp="2026-10-23T00:30:39.039Z" tests="1" failures="0" errors="0" time="0.013">
+    <testcase name="TC-REQ14-002: HTTP 200" time="0.013" classname="TcReq14002AchRechazadaPorBancoInactivoOSaldoInsuficienteDesactivarQaNexus"/>
+  </testsuite>
+  <testsuite name="TC-REQ14-002 · ACH rechazada por banco inactivo o saldo insuficiente / Enviar con banco inactivo" id="5164f435-f99b-49b3-8e96-2f38d9031ece" timestamp="2026-10-23T00:30:39.039Z" tests="2" failures="0" errors="0" time="0.008">
+    <testcase name="TC-REQ14-002: HTTP 422" time="0.008" classname="TcReq14002AchRechazadaPorBancoInactivoOSaldoInsuficienteEnviarConBancoInactivo"/>
+    <testcase name="mensaje contiene &quot;inactivo&quot;" time="0.008" classname="TcReq14002AchRechazadaPorBancoInactivoOSaldoInsuficienteEnviarConBancoInactivo"/>
+  </testsuite>
+  <testsuite name="TC-REQ14-002 · ACH rechazada por banco inactivo o saldo insuficiente / Reactivar QA_NEXUS" id="1db75206-2df3-4ceb-af1a-810ea84d2288" timestamp="2026-10-23T00:30:39.039Z" tests="1" failures="0" errors="0" time="0.006">
+    <testcase name="TC-REQ14-002: HTTP 200" time="0.006" classname="TcReq14002AchRechazadaPorBancoInactivoOSaldoInsuficienteReactivarQaNexus"/>
+  </testsuite>
+  <testsuite name="TC-REQ14-002 · ACH rechazada por banco inactivo o saldo insuficiente / Enviar Q1500.01 desde MO261002000102 (disponible Q1500)" id="eade1904-98ee-4794-bc94-3cad2e9b60f7" timestamp="2026-10-23T00:30:39.039Z" tests="2" failures="0" errors="0" time="0.008">
+    <testcase name="TC-REQ14-002: HTTP 422" time="0.008" classname="TcReq14002AchRechazadaPorBancoInactivoOSaldoInsuficienteEnviarQ150001DesdeMo261002000102DisponibleQ1500"/>
+    <testcase name="mensaje contiene &quot;insuficiente&quot;" time="0.008" classname="TcReq14002AchRechazadaPorBancoInactivoOSaldoInsuficienteEnviarQ150001DesdeMo261002000102DisponibleQ1500"/>
+  </testsuite>
+</testsuites>

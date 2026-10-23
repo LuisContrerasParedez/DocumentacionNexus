@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="BancoERP Nexus · E2 Diseño e Implementación QA (46 casos) · v2 re-prueba cierre E3 · TC-REQ13-002 (subconjunto)" tests="3" time="0.058">
+  <testsuite name="TC-REQ13-002 · Banco ACH inactivo no es utilizable / Desactivar QA_NEXUS" id="0234078c-a1ba-4584-b830-d8473fc73edd" timestamp="2026-10-23T00:30:35.429Z" tests="1" failures="0" errors="0" time="0.037">
+    <testcase name="TC-REQ13-002: HTTP 200" time="0.037" classname="TcReq13002BancoAchInactivoNoEsUtilizableDesactivarQaNexus"/>
+  </testsuite>
+  <testsuite name="TC-REQ13-002 · Banco ACH inactivo no es utilizable / Listado de activos" id="92b4356a-5874-43fa-917f-ff562614af2f" timestamp="2026-10-23T00:30:35.429Z" tests="2" failures="0" errors="0" time="0.008">
+    <testcase name="TC-REQ13-002: HTTP 200" time="0.008" classname="TcReq13002BancoAchInactivoNoEsUtilizableListadoDeActivos"/>
+    <testcase name="no contiene QA_NEXUS" time="0.008" classname="TcReq13002BancoAchInactivoNoEsUtilizableListadoDeActivos"/>
+  </testsuite>
+  <testsuite name="TC-REQ13-002 · Banco ACH inactivo no es utilizable / Validar destino con banco inactivo" id="59eaa1d7-548e-4e8b-a451-087697a1f3d3" timestamp="2026-10-23T00:30:35.429Z" tests="2" failures="0" errors="0" time="0.013">
+    <testcase name="TC-REQ13-002: HTTP 422" time="0.013" classname="TcReq13002BancoAchInactivoNoEsUtilizableValidarDestinoConBancoInactivo"/>
+    <testcase name="mensaje contiene &quot;inactivo&quot;" time="0.013" classname="TcReq13002BancoAchInactivoNoEsUtilizableValidarDestinoConBancoInactivo"/>
+  </testsuite>
+</testsuites>

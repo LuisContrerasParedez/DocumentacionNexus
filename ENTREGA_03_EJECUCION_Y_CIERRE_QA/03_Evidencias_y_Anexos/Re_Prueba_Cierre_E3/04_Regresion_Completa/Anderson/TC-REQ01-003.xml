@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="BancoERP Nexus · E2 Diseño e Implementación QA (46 casos) · v2 re-prueba cierre E3 · TC-REQ01-003 (subconjunto)" tests="2" time="0.027">
+  <testsuite name="TC-REQ01-003 · Rechazo de usuario inactivo o bloqueado / Login qa_inactivo" id="e8c2ae72-2bb5-498f-96aa-cfdf6a4575f0" timestamp="2026-10-23T00:30:28.232Z" tests="3" failures="0" errors="0" time="0.019">
+    <testcase name="TC-REQ01-003: HTTP 403" time="0.019" classname="TcReq01003RechazoDeUsuarioInactivoOBloqueadoLoginQaInactivo"/>
+    <testcase name="mensaje contiene &quot;inactivo&quot;" time="0.019" classname="TcReq01003RechazoDeUsuarioInactivoOBloqueadoLoginQaInactivo"/>
+    <testcase name="sin token" time="0.019" classname="TcReq01003RechazoDeUsuarioInactivoOBloqueadoLoginQaInactivo"/>
+  </testsuite>
+  <testsuite name="TC-REQ01-003 · Rechazo de usuario inactivo o bloqueado / Login qa_bloqueado" id="8f4659eb-2423-4ea8-81df-4afebd8378cf" timestamp="2026-10-23T00:30:28.232Z" tests="3" failures="0" errors="0" time="0.008">
+    <testcase name="TC-REQ01-003: HTTP 423" time="0.008" classname="TcReq01003RechazoDeUsuarioInactivoOBloqueadoLoginQaBloqueado"/>
+    <testcase name="mensaje contiene &quot;bloqueado&quot;" time="0.008" classname="TcReq01003RechazoDeUsuarioInactivoOBloqueadoLoginQaBloqueado"/>
+    <testcase name="sin token" time="0.008" classname="TcReq01003RechazoDeUsuarioInactivoOBloqueadoLoginQaBloqueado"/>
+  </testsuite>
+</testsuites>

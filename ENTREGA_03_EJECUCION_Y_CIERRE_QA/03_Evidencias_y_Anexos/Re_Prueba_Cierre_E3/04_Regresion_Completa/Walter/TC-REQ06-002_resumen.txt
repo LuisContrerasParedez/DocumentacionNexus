@@ -1,0 +1,17 @@
+2026-10-22 18:29:57 CST  TC-REQ06-002
+- R2: cliente no ACTIVO (Gabriel EN_REVISION)
+    POST http://localhost:15141/api/cuentas
+    HTTP 422 (23 ms) | ok=1 fail=0
+    body: {"message":"El cliente no esta activo. Estado: EN_REVISION"}
+- R3: tipo inválido
+    POST http://localhost:15141/api/cuentas
+    HTTP 400 (9 ms) | ok=1 fail=0
+    body: {"message":"Tipo de cuenta invalido. Tipos activos: AHORRO, MONETARIA"}
+- R4: usuario sin empleado activo
+    POST http://localhost:15141/api/cuentas
+    HTTP 422 (5 ms) | ok=1 fail=0
+    body: {"message":"El usuario autenticado no tiene un empleado activo asociado."}
+- R5: operador sin caja abierta (qa_cajero2)
+    POST http://localhost:15141/api/cuentas
+    HTTP 400 (5 ms) | ok=2 fail=0
+    body: {"message":"Abra su caja primero"}

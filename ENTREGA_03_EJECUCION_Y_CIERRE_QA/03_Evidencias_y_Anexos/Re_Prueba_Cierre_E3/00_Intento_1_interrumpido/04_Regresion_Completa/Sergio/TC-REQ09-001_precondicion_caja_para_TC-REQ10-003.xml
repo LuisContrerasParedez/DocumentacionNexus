@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="BancoERP Nexus · E2 Diseño e Implementación QA (46 casos) · v2 re-prueba cierre E3 · TC-REQ09-001_precondicion_caja_para_TC-REQ10-003 (subconjunto)" tests="1" time="0.021">
+  <testsuite name="TC-REQ09-001 · Monto mínimo de depósito / Precondición: caja ABIERTA de qa_cajero (acepta &quot;ya abierta&quot;)" id="fa36c483-fd63-4ec4-94d5-094e9087425a" timestamp="2026-10-23T00:24:43.979Z" tests="1" failures="0" errors="0" time="0.021">
+    <testcase name="TC-REQ09-001: HTTP 200/201/400/409/422" time="0.021" classname="TcReq09001MontoMinimoDeDepositoPrecondicionCajaAbiertaDeQaCajeroAceptaQuotYaAbiertaQuot"/>
+  </testsuite>
+</testsuites>

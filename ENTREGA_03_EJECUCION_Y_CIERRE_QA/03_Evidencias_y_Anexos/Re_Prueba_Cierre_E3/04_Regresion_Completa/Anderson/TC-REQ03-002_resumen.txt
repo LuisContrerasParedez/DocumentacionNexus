@@ -1,0 +1,21 @@
+2026-10-22 18:30:33 CST  TC-REQ03-002
+- P2: CLIENTE → /api/clientes
+    GET http://localhost:15141/api/clientes
+    HTTP 403 (21 ms) | ok=1 fail=0
+    body: 
+- P4: BANCO_EXTERNO (JWT público) → InternalAPI
+    GET http://localhost:15141/api/clientes
+    HTTP 403 (6 ms) | ok=1 fail=0
+    body: 
+- Sin permiso → endpoint mutable (POST cliente con token CLIENTE)
+    POST http://localhost:15141/api/clientes/natural
+    HTTP 403 (6 ms) | ok=1 fail=0
+    body: 
+- P7: sin token → endpoint protegido
+    GET http://localhost:15141/api/clientes
+    HTTP 401 (3 ms) | ok=1 fail=0
+    body: 
+- TC-REQ03-002 P7-ACH: sin token → GET /api/ach/bancos
+    GET http://localhost:15141/api/ach/bancos
+    HTTP 401 (1 ms) | ok=2 fail=0
+    body: 

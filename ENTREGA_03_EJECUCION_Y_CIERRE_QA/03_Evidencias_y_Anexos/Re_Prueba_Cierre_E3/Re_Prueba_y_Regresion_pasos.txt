@@ -1,0 +1,121 @@
+== 2026-10-22 18:29:39 CST Inicio del ciclo 2 (re-prueba y regresión) · proyecto Docker bancoerp-e3-retest · colección v2
+== 2026-10-22 18:29:39 CST Build bajo prueba: baseline 0453d06 + corrección BUG-NEX-01/02 (working tree montado en /src)
+== 2026-10-22 18:29:39 CST Smoke
+   GET http://localhost:13000/login -> HTTP 200
+   GET http://localhost:15141/api/Ping -> HTTP 200
+   GET http://localhost:15254/api/Home -> HTTP 200
+   GET http://localhost:15141/swagger/v1/swagger.json -> HTTP 200
+   GET http://localhost:15254/swagger/v1/swagger.json -> HTTP 200
+== 2026-10-22 18:29:41 CST 00_Preparacion: requests=7 assertions=7 fallidas=0
+== 2026-10-22 18:29:45 CST RT-BUG-NEX-01: requests=18 assertions=19 fallidas=0
+== 2026-10-22 18:29:46 CST TC-REQ03-002_con_P7-ACH: requests=5 assertions=6 fallidas=0
+== 2026-10-22 18:29:46 CST Mongo ach_banks_configurations sin cambios tras intentos denegados: True
+== 2026-10-22 18:29:48 CST 00_Preparacion: requests=7 assertions=7 fallidas=0
+== 2026-10-22 18:29:48 CST TC-REQ04-001: fechas ajustadas a la fecha UTC del servidor (2026-10-23): 18 años exactos=2008-10-23, menor por 1 día=2008-10-24
+== 2026-10-22 18:29:49 CST TC-REQ04-001: requests=3 assertions=4 fallidas=0
+== 2026-10-22 18:29:51 CST TC-REQ04-002: requests=4 assertions=7 fallidas=0
+== 2026-10-22 18:29:52 CST TC-REQ04-003: requests=3 assertions=6 fallidas=0
+== 2026-10-22 18:29:53 CST TC-REQ05-001: requests=2 assertions=3 fallidas=0
+== 2026-10-22 18:29:55 CST TC-REQ05-002: requests=4 assertions=4 fallidas=0
+== 2026-10-22 18:29:56 CST TC-REQ06-001: requests=3 assertions=6 fallidas=0
+== 2026-10-22 18:29:57 CST TC-REQ06-002: requests=4 assertions=5 fallidas=0
+== 2026-10-22 18:29:58 CST TC-REQ07-001: requests=2 assertions=4 fallidas=0
+== 2026-10-22 18:29:59 CST TC-REQ07-002: requests=3 assertions=5 fallidas=0
+== 2026-10-22 18:30:01 CST TC-REQ07-003: requests=3 assertions=5 fallidas=0
+== 2026-10-22 18:30:02 CST TC-REQ12-001: requests=1 assertions=4 fallidas=0
+== 2026-10-22 18:30:02 CST TC-REQ12-002: requests=1 assertions=2 fallidas=0
+== 2026-10-22 18:30:03 CST TC-REQ12-003_parte1_Q100.00: requests=1 assertions=1 fallidas=0
+== 2026-10-22 18:30:03 CST Reinicio secciones 4 y 5
+   UPDATE 1
+   DO
+   COMMIT
+== 2026-10-22 18:30:04 CST TC-REQ12-003_parte2_Q100.01: requests=1 assertions=2 fallidas=0
+== 2026-10-22 18:30:06 CST 00_Preparacion: requests=7 assertions=7 fallidas=0
+== 2026-10-22 18:30:06 CST PRE TC-REQ08-001: sección 5 (cerrar cajas)
+   UPDATE 0
+   DO
+   COMMIT
+== 2026-10-22 18:30:07 CST TC-REQ08-001: requests=2 assertions=3 fallidas=0
+== 2026-10-22 18:30:08 CST TC-REQ08-002: requests=3 assertions=4 fallidas=0
+== 2026-10-22 18:30:09 CST TC-REQ08-003: requests=1 assertions=2 fallidas=0
+== 2026-10-22 18:30:10 CST TC-REQ09-001: requests=3 assertions=4 fallidas=0
+== 2026-10-22 18:30:11 CST TC-REQ09-002: requests=2 assertions=3 fallidas=0
+== 2026-10-22 18:30:12 CST TC-REQ09-003: requests=2 assertions=3 fallidas=0
+== 2026-10-22 18:30:13 CST TC-REQ10-001: requests=2 assertions=3 fallidas=0
+== 2026-10-22 18:30:14 CST TC-REQ10-002: requests=1 assertions=1 fallidas=0
+== 2026-10-22 18:30:15 CST TC-REQ10-003_parte1_Q5000.00: requests=1 assertions=1 fallidas=0
+== 2026-10-22 18:30:15 CST Reinicio secciones 4 y 5
+   UPDATE 1
+   DO
+   COMMIT
+== 2026-10-22 18:30:16 CST TC-REQ09-001_precondicion_caja_para_TC-REQ10-003: requests=1 assertions=1 fallidas=0
+== 2026-10-22 18:30:17 CST TC-REQ10-003_parte2_Q5000.01: requests=1 assertions=2 fallidas=0
+== 2026-10-22 18:30:18 CST TC-REQ11-001: requests=1 assertions=2 fallidas=0
+== 2026-10-22 18:30:19 CST TC-REQ11-002: requests=1 assertions=1 fallidas=0
+== 2026-10-22 18:30:20 CST TC-REQ11-003: requests=1 assertions=1 fallidas=0
+== 2026-10-22 18:30:21 CST TC-REQ18-001: requests=2 assertions=4 fallidas=0
+== 2026-10-22 18:30:22 CST TC-REQ18-002_parte1_plan_completo: requests=2 assertions=2 fallidas=0
+== 2026-10-22 18:30:22 CST PRE TC-REQ18-002 parte 2: cuenta contable 1101 inactiva
+   UPDATE 1
+== 2026-10-22 18:30:23 CST TC-REQ18-002_parte2_1101_inactiva: requests=1 assertions=2 fallidas=0
+== 2026-10-22 18:30:23 CST POST TC-REQ18-002: restaurar cuenta contable 1101
+   UPDATE 1
+== 2026-10-22 18:30:24 CST 00_Preparacion: requests=7 assertions=7 fallidas=0
+== 2026-10-22 18:30:25 CST TC-REQ01-001: requests=1 assertions=2 fallidas=0
+== 2026-10-22 18:30:25 CST PRE TC-REQ01-002: reset qa_bloqueo
+   UPDATE 1
+== 2026-10-22 18:30:27 CST TC-REQ01-002: requests=6 assertions=10 fallidas=0
+== 2026-10-22 18:30:28 CST TC-REQ01-003: requests=2 assertions=6 fallidas=0
+== 2026-10-22 18:30:29 CST TC-REQ02-001: requests=3 assertions=4 fallidas=0
+== 2026-10-22 18:30:31 CST TC-REQ02-002: requests=4 assertions=4 fallidas=0
+== 2026-10-22 18:30:32 CST TC-REQ03-001: requests=1 assertions=1 fallidas=0
+== 2026-10-22 18:30:33 CST TC-REQ03-002: requests=5 assertions=6 fallidas=0
+== 2026-10-22 18:30:34 CST TC-REQ13-001: requests=2 assertions=3 fallidas=0
+== 2026-10-22 18:30:36 CST TC-REQ13-002: requests=3 assertions=5 fallidas=0
+== 2026-10-22 18:30:36 CST TC-REQ09-001_precondicion_caja_para_TC-REQ14-001: requests=1 assertions=1 fallidas=0
+== 2026-10-22 18:30:38 CST TC-REQ14-001: requests=4 assertions=5 fallidas=0
+== 2026-10-22 18:30:39 CST TC-REQ14-002: requests=4 assertions=6 fallidas=0
+== 2026-10-22 18:30:40 CST TC-REQ14-003_parte1_Q10.00: requests=1 assertions=1 fallidas=0
+== 2026-10-22 18:30:40 CST Reinicio secciones 4 y 5
+   UPDATE 1
+   DO
+   COMMIT
+== 2026-10-22 18:30:41 CST TC-REQ09-001_precondicion_caja_para_TC-REQ14-003: requests=1 assertions=1 fallidas=0
+== 2026-10-22 18:30:42 CST TC-REQ14-003_parte2_Q10.01: requests=1 assertions=2 fallidas=0
+== 2026-10-22 18:30:43 CST TC-REQ17-001: requests=2 assertions=4 fallidas=0
+== 2026-10-22 18:30:43 CST PRE TC-REQ17-002: retirar permisos públicos de BANCO_EXTERNO
+   (1 row)
+   
+   DELETE 2
+== 2026-10-22 18:30:44 CST TC-REQ17-002: requests=3 assertions=3 fallidas=0
+== 2026-10-22 18:30:44 CST POST TC-REQ17-002: restaurar permisos
+   INSERT 0 2
+   DROP TABLE
+== 2026-10-22 18:30:46 CST TC-REQ17-003: requests=2 assertions=4 fallidas=0
+== 2026-10-22 18:30:47 CST 00_Preparacion: requests=7 assertions=7 fallidas=0
+== 2026-10-22 18:30:47 CST PRE TC-REQ15-001: reset qa_bloqueo
+   UPDATE 1
+== 2026-10-22 18:30:49 CST TC-REQ15-001: requests=7 assertions=10 fallidas=0
+== 2026-10-22 18:30:50 CST TC-REQ15-002: requests=2 assertions=2 fallidas=0
+== 2026-10-22 18:30:51 CST TC-REQ16-002: requests=2 assertions=2 fallidas=0
+== 2026-10-22 18:30:52 CST REP-01: BD aislada bancoerp_e2_qa_rep01 (esquema init_all.sql + MockData_Fixture_REP01.sql)
+   REP-01: esquema + fixture REP01 + 009_ach_seed.sql aplicados
+   REP-01 GET http://localhost:15142/api/Ping -> HTTP 200
+   REP-01 GET http://localhost:15255/api/Home -> HTTP 200
+== 2026-10-22 18:37:00 CST 00_Preparacion_REP01: requests=0 assertions=0 fallidas=0
+== 2026-10-22 18:37:01 CST TC-REQ09-001_precondicion_caja_REP01: requests=0 assertions=0 fallidas=0
+== 2026-10-22 18:37:02 CST TC-REQ16-001: requests=0 assertions=0 fallidas=0
+== 2026-10-22 18:37:02 CST Control cruzado reporte vs SQL (BD principal): COINCIDE
+== 2026-10-22 18:37:02 CST Fin del ciclo 2: ejecuciones=62 requests=177 assertions=239 fallidas=0
+== 2026-10-22 18:38:53 CST Repetición de la fase REP-01 (--solo-rep01): el intento anterior no envió peticiones (guarda de URLs de la colección)
+== 2026-10-22 18:38:53 CST REP-01: BD aislada bancoerp_e2_qa_rep01 (esquema scripts/schema + MockData_Fixture_REP01.sql + 009)
+   REP-01: esquema + fixture REP01 + 009_ach_seed.sql aplicados
+   REP-01: internal-api y public-api principales detenidas; se levantan apuntando a bancoerp_e2_qa_rep01 (secuencial)
+   REP-01 internal-api: GET http://localhost:15141/api/Ping -> HTTP 200
+   REP-01 public-api: GET http://localhost:15254/api/Home -> HTTP 200
+== 2026-10-22 18:39:07 CST 00_Preparacion_REP01: requests=3 assertions=3 fallidas=0
+== 2026-10-22 18:39:08 CST TC-REQ09-001_precondicion_caja_REP01: requests=1 assertions=1 fallidas=0
+== 2026-10-22 18:39:09 CST TC-REQ16-001: requests=3 assertions=14 fallidas=0
+   internal-api principal restaurada: GET http://localhost:15141/api/Ping -> HTTP 200
+   public-api principal restaurada: GET http://localhost:15254/api/Home -> HTTP 200
+== 2026-10-22 18:39:13 CST Fin del ciclo 2: ejecuciones=62 requests=184 assertions=257 fallidas=0

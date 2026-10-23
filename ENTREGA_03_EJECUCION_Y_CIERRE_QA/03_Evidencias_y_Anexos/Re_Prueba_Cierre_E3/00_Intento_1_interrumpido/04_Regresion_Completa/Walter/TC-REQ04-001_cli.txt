@@ -1,0 +1,37 @@
+newman
+
+BancoERP Nexus · E2 Diseño e Implementación QA (46 casos) · v2 re-prueba cierre E3 · TC-REQ04-001 (subconjunto)
+
+❏ TC-REQ04-001 · Registro válido en frontera exacta de 18 años
+↳ Registro 18 años exactos (Diego)
+  POST http://localhost:15141/api/clientes/natural [201 Created, 241B, 66ms]
+  ✓  TC-REQ04-001: HTTP 201
+
+↳ Consultar cliente creado
+  GET http://localhost:15141/api/clientes/d79a7356-0752-41a4-8d68-63dc467c088f [200 OK, 610B, 17ms]
+  ✓  TC-REQ04-001: HTTP 200
+  ✓  estado EN_REVISION
+
+↳ Variante menor por 1 día (Mateo, 2008-10-24)
+  POST http://localhost:15141/api/clientes/natural [400 Bad Request, 207B, 10ms]
+  ✓  TC-REQ04-001: HTTP 400
+
+┌─────────────────────────┬───────────────────┬──────────────────┐
+│                         │          executed │           failed │
+├─────────────────────────┼───────────────────┼──────────────────┤
+│              iterations │                 1 │                0 │
+├─────────────────────────┼───────────────────┼──────────────────┤
+│                requests │                 3 │                0 │
+├─────────────────────────┼───────────────────┼──────────────────┤
+│            test-scripts │                 3 │                0 │
+├─────────────────────────┼───────────────────┼──────────────────┤
+│      prerequest-scripts │                 3 │                0 │
+├─────────────────────────┼───────────────────┼──────────────────┤
+│              assertions │                 4 │                0 │
+├─────────────────────────┴───────────────────┴──────────────────┤
+│ total run duration: 631ms                                      │
+├────────────────────────────────────────────────────────────────┤
+│ total data received: 600B (approx)                             │
+├────────────────────────────────────────────────────────────────┤
+│ average response time: 31ms [min: 10ms, max: 66ms, s.d.: 24ms] │
+└────────────────────────────────────────────────────────────────┘

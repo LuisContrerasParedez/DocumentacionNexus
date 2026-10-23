@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="BancoERP Nexus · E2 Diseño e Implementación QA (46 casos) · v2 re-prueba cierre E3 · TC-REQ11-003 (subconjunto)" tests="1" time="0.026">
+  <testsuite name="TC-REQ11-003 · Fallo de validación no deja débito parcial / Transferir Q400.01 desde AH261002000203 (dejaría Q99.99 &lt; mínimo)" id="5dbded19-bf08-4421-9762-98fb6095df8c" timestamp="2026-10-23T00:24:47.396Z" tests="1" failures="0" errors="0" time="0.026">
+    <testcase name="TC-REQ11-003: HTTP 422" time="0.026" classname="TcReq11003FalloDeValidacionNoDejaDebitoParcialTransferirQ40001DesdeAh261002000203DejariaQ9999LtMinimo"/>
+  </testsuite>
+</testsuites>

@@ -1,0 +1,42 @@
+newman
+
+BancoERP Nexus · E2 Diseño e Implementación QA (46 casos) · v2 re-prueba cierre E3 · TC-REQ14-002 (subconjunto)
+
+❏ TC-REQ14-002 · ACH rechazada por banco inactivo o saldo insuficiente
+↳ Desactivar QA_NEXUS
+  PATCH http://localhost:15141/api/ach/bancos/6adaaaaab61888635cf90e26/estado [200 OK, 801B, 13ms]
+  ✓  TC-REQ14-002: HTTP 200
+
+↳ Enviar con banco inactivo
+  POST http://localhost:15141/api/ach/transferencias/enviar [422 Unprocessable Entity, 220B, 8ms]
+  ✓  TC-REQ14-002: HTTP 422
+  ✓  mensaje contiene "inactivo"
+
+↳ Reactivar QA_NEXUS
+  PATCH http://localhost:15141/api/ach/bancos/6adaaaaab61888635cf90e26/estado [200 OK, 800B, 6ms]
+  ✓  TC-REQ14-002: HTTP 200
+
+↳ Enviar Q1500.01 desde MO261002000102 (disponible Q1500)
+  POST http://localhost:15141/api/ach/transferencias/enviar [422 Unprocessable Entity, 246B, 8ms]
+  ✓  TC-REQ14-002: HTTP 422
+  ✓  mensaje contiene "insuficiente"
+
+┌─────────────────────────┬─────────────────┬─────────────────┐
+│                         │        executed │          failed │
+├─────────────────────────┼─────────────────┼─────────────────┤
+│              iterations │               1 │               0 │
+├─────────────────────────┼─────────────────┼─────────────────┤
+│                requests │               4 │               0 │
+├─────────────────────────┼─────────────────┼─────────────────┤
+│            test-scripts │               4 │               0 │
+├─────────────────────────┼─────────────────┼─────────────────┤
+│      prerequest-scripts │               4 │               0 │
+├─────────────────────────┼─────────────────┼─────────────────┤
+│              assertions │               6 │               0 │
+├─────────────────────────┴─────────────────┴─────────────────┤
+│ total run duration: 723ms                                   │
+├─────────────────────────────────────────────────────────────┤
+│ total data received: 1.44kB (approx)                        │
+├─────────────────────────────────────────────────────────────┤
+│ average response time: 8ms [min: 6ms, max: 13ms, s.d.: 2ms] │
+└─────────────────────────────────────────────────────────────┘

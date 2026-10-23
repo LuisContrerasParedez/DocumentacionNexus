@@ -1,0 +1,5 @@
+2026-10-22 18:30:23 CST  TC-REQ18-002_parte2_1101_inactiva
+- Depósito Q10 con cuenta contable 1101 inactiva
+    POST http://localhost:15141/api/transacciones/deposito
+    HTTP 422 (25 ms) | ok=2 fail=0
+    body: {"message":"No existe cuenta contable activa con codigo 1101 en contabilidad.plan_cuentas."}

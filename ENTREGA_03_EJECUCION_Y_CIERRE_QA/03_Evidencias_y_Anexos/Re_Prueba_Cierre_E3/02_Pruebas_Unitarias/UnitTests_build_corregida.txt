@@ -1,0 +1,41 @@
+=== 2026-10-22 18:24:17 CST dotnet test BancoERP.UnitTests — build CORREGIDA (baseline 0453d06 + corrección) ===
+  Todos los proyectos están actualizados para la restauración.
+Serie de pruebas para /Users/luisalejandrocontrerasparedez/Documents/Universidad/SEPTIMO Y NOVENO/AdminTec/ProyectoADM-info/Backend/BancoERP.UnitTests/bin/Debug/net10.0/BancoERP.UnitTests.dll (.NETCoreApp,Version=v10.0)
+1 archivos de prueba en total coincidieron con el patrón especificado.
+[xUnit.net 00:00:00.00] xUnit.net VSTest Adapter v3.1.4+50e68bbb8b (64-bit .NET 10.0.8)
+[xUnit.net 00:00:00.04]   Discovering: BancoERP.UnitTests
+[xUnit.net 00:00:00.06]   Discovered:  BancoERP.UnitTests
+[xUnit.net 00:00:00.07]   Starting:    BancoERP.UnitTests
+  Correctas BancoERP.UnitTests.AchTransferenciaServiceTests.IsCodigoConfirmacionField_RecognizesExpectedNames(fieldName: "codigo-confirmacion") [2 ms]
+  Correctas BancoERP.UnitTests.AchTransferenciaServiceTests.IsCodigoConfirmacionField_RecognizesExpectedNames(fieldName: "codigo_confirmacion") [< 1 ms]
+  Correctas BancoERP.UnitTests.AchTransferenciaServiceTests.IsCodigoConfirmacionField_RecognizesExpectedNames(fieldName: "codigoConfirmacion") [< 1 ms]
+  Correctas BancoERP.UnitTests.InternalApiAuthorizationTests.AchBancosController_AccionesAdministrativas_ExigenPermisoAch(accion: "Actualizar", permiso: "ach.bancos.editar") [10 ms]
+  Correctas BancoERP.UnitTests.InternalApiAuthorizationTests.AchBancosController_AccionesAdministrativas_ExigenPermisoAch(accion: "Obtener", permiso: "ach.bancos.ver") [< 1 ms]
+  Correctas BancoERP.UnitTests.InternalApiAuthorizationTests.AchBancosController_AccionesAdministrativas_ExigenPermisoAch(accion: "Eliminar", permiso: "ach.bancos.eliminar") [< 1 ms]
+  Correctas BancoERP.UnitTests.InternalApiAuthorizationTests.AchBancosController_AccionesAdministrativas_ExigenPermisoAch(accion: "Crear", permiso: "ach.bancos.crear") [< 1 ms]
+  Correctas BancoERP.UnitTests.InternalApiAuthorizationTests.AchBancosController_AccionesAdministrativas_ExigenPermisoAch(accion: "CambiarEstado", permiso: "ach.bancos.estado.cambiar") [< 1 ms]
+  Correctas BancoERP.UnitTests.InternalApiAuthorizationTests.AchBancosController_AccionesAdministrativas_ExigenPermisoAch(accion: "Listar", permiso: "ach.bancos.listar") [< 1 ms]
+  Correctas BancoERP.UnitTests.InternalApiAuthorizationTests.InternalApi_TodosLosEndpoints_RequierenAutenticacionSalvoLosPublicosDeclarados [9 ms]
+  Correctas BancoERP.UnitTests.InternalApiAuthorizationTests.AchBancosController_ExigeAutenticacionEnTodasSusAcciones [1 ms]
+  Correctas BancoERP.UnitTests.InternalApiAuthorizationTests.AchBancosController_ListarActivos_SoloExigeSesionParaCajerosYClientes [< 1 ms]
+  Correctas BancoERP.UnitTests.InternalApiAuthorizationTests.AchTransferenciasController_ExigeAutenticacion [< 1 ms]
+  Correctas BancoERP.UnitTests.AchTransferenciaServiceTests.BuildPayload_AddsCodigoConfirmacionWhenMissing [32 ms]
+  Correctas BancoERP.UnitTests.AchTransferenciaServiceTests.FormatCodigoConfirmacion_UsesReadableIncrementalFormat [2 ms]
+  Correctas BancoERP.UnitTests.AchTransferenciaServiceTests.BuildPayload_ReplacesCodigoConfirmacionFromUserAndBaseConfig [< 1 ms]
+  Correctas BancoERP.UnitTests.AchTransferenciaServiceTests.BuildPayload_ResolvesCodigoConfirmacionInsideTemplateFields [1 ms]
+  Correctas BancoERP.UnitTests.ExternalPublicApiTests.ExternalBankAuthService_LoginAsync_RejectsUserWithoutBancoExternoRole [356 ms]
+  Correctas BancoERP.UnitTests.ExternalPublicApiTests.ExternalAchPublicValidators_RejectsMontoOutOfPrecision(monto: "10.555") [4 ms]
+  Correctas BancoERP.UnitTests.ExternalPublicApiTests.ExternalAchPublicValidators_RejectsMontoOutOfPrecision(monto: "100000000000000000") [< 1 ms]
+  Correctas BancoERP.UnitTests.ExternalPublicApiTests.ExternalAchPublicValidators_RejectsInvalidPayload [1 ms]
+  Correctas BancoERP.UnitTests.ExternalPublicApiTests.ExternalBankPermissionAuthorizationHandler_DeniesBancoExternoWithoutPermission [2 ms]
+  Correctas BancoERP.UnitTests.ExternalPublicApiTests.ExternalBankAuthService_LoginAsync_ReturnsJwtForBancoExterno [261 ms]
+  Correctas BancoERP.UnitTests.ExternalPublicApiTests.ExternalBankPermissionAuthorizationHandler_AllowsOnlyBancoExternoWithPermission [< 1 ms]
+  Correctas BancoERP.UnitTests.ExternalPublicApiTests.ExternalBankPermissionAuthorizationHandler_DeniesInternalUsers [< 1 ms]
+[xUnit.net 00:00:00.72]   Finished:    BancoERP.UnitTests
+  Correctas BancoERP.UnitTests.ExternalPublicApiTests.ExternalAchPublicValidators_AcceptsMontoWithTwoDecimals [< 1 ms]
+Archivo de resultados: /Users/luisalejandrocontrerasparedez/Downloads/ENTREGA_03_EJECUCION_Y_CIERRE_QA/03_Evidencias_y_Anexos/Re_Prueba_Cierre_E3/02_Pruebas_Unitarias/UnitTests_build_corregida.trx
+
+La serie de pruebas se ejecutó correctamente.
+Pruebas totales: 26
+     Correcto: 26
+ Tiempo total: 1.0063 Segundos

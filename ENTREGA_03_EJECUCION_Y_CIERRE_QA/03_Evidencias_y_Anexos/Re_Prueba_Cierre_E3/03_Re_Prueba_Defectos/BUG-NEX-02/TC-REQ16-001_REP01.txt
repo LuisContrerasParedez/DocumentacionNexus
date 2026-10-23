@@ -1,0 +1,52 @@
+================ TC-REQ16-001_REP01 — ANTES — 2026-10-22 18:39:08 CST ================
+numero_cuenta | estado | saldo | saldo_disponible | saldo_minimo | limite_retiro_diario | monto_retirado_hoy 
+---------------+--------+-------+------------------+--------------+----------------------+--------------------
+(0 rows)
+
+ username  |   fecha    | estado  | fondo_inicial | total_depositos | total_retiros | efectivo_esperado | efectivo_contado | diferencia |   abre   | cierra 
+-----------+------------+---------+---------------+-----------------+---------------+-------------------+------------------+------------+----------+--------
+ qa_cajero | 2026-10-23 | ABIERTA |       1000.00 |            0.00 |          0.00 |           1000.00 |                  |            | 00:39:08 | 
+(1 row)
+
+================ TC-REQ16-001_REP01 — DESPUES — 2026-10-22 18:39:09 CST ================
+numero_cuenta | estado | saldo | saldo_disponible | saldo_minimo | limite_retiro_diario | monto_retirado_hoy 
+---------------+--------+-------+------------------+--------------+----------------------+--------------------
+(0 rows)
+
+ username  |   fecha    | estado  | fondo_inicial | total_depositos | total_retiros | efectivo_esperado | efectivo_contado | diferencia |   abre   | cierra 
+-----------+------------+---------+---------------+-----------------+---------------+-------------------+------------------+------------+----------+--------
+ qa_cajero | 2026-10-23 | ABIERTA |       1000.00 |            0.00 |          0.00 |           1000.00 |                  |            | 00:39:08 | 
+(1 row)
+
+-- Movimientos generados durante el caso
+ numero_cuenta  |  tipo   | monto  | saldo_anterior | saldo_posterior |   estado   |                referencia                | canal |   hora   
+----------------+---------+--------+----------------+-----------------+------------+------------------------------------------+-------+----------
+ AH261002000301 | TRF_OUT | 200.00 |        2475.00 |         2275.00 | COMPLETADA | TRF-c0c42c64b53349e78b2a1ac73abd99ba-OUT |       | 00:39:09
+ MO261002000302 | TRF_IN  | 200.00 |        1500.00 |         1700.00 | COMPLETADA | TRF-c0c42c64b53349e78b2a1ac73abd99ba-IN  |       | 00:39:09
+ MO261002000302 | ACH_IN  |  25.00 |        1700.00 |         1725.00 | COMPLETADA | ACHIN-22d15cc4e05d4cacac463e8633fe1369   |       | 00:39:09
+(3 rows)
+
+-- Auditoría de operaciones durante el caso
+    modulo     |         accion         |        entidad_tipo        | resultado |                        antes                        |                                                    despues                                                     |   hora   
+---------------+------------------------+----------------------------+-----------+-----------------------------------------------------+----------------------------------------------------------------------------------------------------------------+----------
+ TRANSACCIONES | TRANSFERENCIA          | CUENTA                     | EXITOSO   | {"saldo_origen": 2475.00, "saldo_destino": 1500.00} | {"referencia": "TRF-c0c42c64b53349e78b2a1ac73abd99ba", "saldo_origen": 2275.00, "saldo_destino": 1700.00}      | 00:39:09
+ ACH_PUBLIC    | TRANSFERENCIA_ENTRANTE | ACH_TRANSFERENCIA_ENTRANTE | EXITOSO   | {"saldo": 1700.00, "estado": "PENDIENTE"}           | {"saldo": 1725.00, "movimiento_id": "ffe57c14-ac5a-4ced-a677-c28fdb2230bf", "cuenta_destino": "MO261002000302" | 00:39:09
+(2 rows)
+
+-- Eventos de seguridad durante el caso
+ username_intentado |        evento        | exitoso |                                  descripcion                                   |   hora   
+--------------------+----------------------+---------+--------------------------------------------------------------------------------+----------
+ qa_banco_externo   | ACH_PUBLIC_TRX_IN_OK | t       | Transferencia E2-REP01-ACH-001 acreditada en cuenta **********0302 por Q25.00. | 00:39:09
+(1 row)
+
+-- Clientes creados o modificados durante el caso
+ dpi | nombre_completo | estado | fecha_nacimiento 
+-----+-----------------+--------+------------------
+(0 rows)
+
+-- ACH saliente / entrante durante el caso
+ sentido  |  banco   | monto |  estado  | codigo_confirmacion |   hora   
+----------+----------+-------+----------+---------------------+----------
+ ENTRANTE | QA_NEXUS | 25.00 | APROBADA | E2-REP01-ACH-001    | 00:39:09
+(1 row)
+

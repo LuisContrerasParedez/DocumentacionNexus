@@ -1,0 +1,9 @@
+2026-10-22 18:24:26 CST  TC-REQ07-001
+- Bloquear AH261002000210
+    PATCH http://localhost:15141/api/cuentas/b7c1cc0f-7631-53b1-82a7-8b09a8cc75da/bloquear
+    HTTP 200 (30 ms) | ok=2 fail=0
+    body: {"message":"Cuenta bloqueada","estado":"BLOQUEADA"}
+- Consultar estado
+    GET http://localhost:15141/api/cuentas/b7c1cc0f-7631-53b1-82a7-8b09a8cc75da
+    HTTP 200 (9 ms) | ok=2 fail=0
+    body: {"id":"b7c1cc0f-7631-53b1-82a7-8b09a8cc75da","numeroCuenta":"AH261002000210","tipoCuenta":"AHORRO","clienteId":"29f57303-cfdf-5c62-883f-ac4372522b71","clienteNombre":"Bruno Prueba","estado":"BLOQUEADA","saldo":1000.00,"saldoDisponible":1000.00,"saldoRetenido":0.00,"saldoMinimo":100.00,"limiteRetiroDiario":5000.00,"montoRetiradoHoy":0.00,"tasaInteresAnual":0.0000,"permiteCheques":false,"fechaApertura":"2026-10-23T00:18:37.555869Z"}

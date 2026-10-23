@@ -1,0 +1,9 @@
+2026-10-22 18:24:39 CST  TC-REQ09-002
+- Depósito Q2000 a AH261002000101
+    POST http://localhost:15141/api/transacciones/deposito
+    HTTP 200 (20 ms) | ok=1 fail=0
+    body: {"referencia":"DEP-71cc5757b7a448f39e9f5281a1b15792","saldoNuevo":9000.01,"monto":2000.0}
+- Historial de la cuenta
+    GET http://localhost:15141/api/transacciones/historial/60e12f09-f1be-5506-b494-5381502e3e75
+    HTTP 200 (15 ms) | ok=2 fail=0
+    body: [{"id":"c1548110-f1f9-4c67-80a5-3dafdf0455c6","tipo":"DEPOSITO","monto":2000.00,"saldoAntes":7000.01,"saldoDespues":9000.01,"descripcion":"TC-REQ09-002","referencia":"DEP-71cc5757b7a448f39e9f5281a1b15792","estado":"COMPLETADA","creadoEn":"2026-10-23T00:24:39.250009Z"},{"id":"dbb1c62f-9cd9-48d4-b61c-a0b5c83c71c7","tipo":"DEPOSITO","monto":0.01,"saldoAntes":7000.00,"saldoDespues":7000.01,"descripcion":"TC-REQ09-001","referencia":"DEP-7fb1d99d0a33494ca348dcfcec9c4fa3","estado":"COMPLETADA","creadoEn":"2026-10-23T00:24:38.374937Z"}]

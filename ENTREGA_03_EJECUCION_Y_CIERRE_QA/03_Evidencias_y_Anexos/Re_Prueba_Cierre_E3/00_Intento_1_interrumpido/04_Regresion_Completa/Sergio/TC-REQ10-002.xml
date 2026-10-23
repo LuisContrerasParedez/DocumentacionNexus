@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="BancoERP Nexus · E2 Diseño e Implementación QA (46 casos) · v2 re-prueba cierre E3 · TC-REQ10-002 (subconjunto)" tests="1" time="0.026">
+  <testsuite name="TC-REQ10-002 · Retiro válido actualiza saldo, caja y acumulado diario / Retiro Q100 de AH261002000206" id="39d3e4b4-477a-4215-a5ee-06e4041a3afc" timestamp="2026-10-23T00:24:42.221Z" tests="1" failures="0" errors="0" time="0.026">
+    <testcase name="TC-REQ10-002: HTTP 200" time="0.026" classname="TcReq10002RetiroValidoActualizaSaldoCajaYAcumuladoDiarioRetiroQ100DeAh261002000206"/>
+  </testsuite>
+</testsuites>

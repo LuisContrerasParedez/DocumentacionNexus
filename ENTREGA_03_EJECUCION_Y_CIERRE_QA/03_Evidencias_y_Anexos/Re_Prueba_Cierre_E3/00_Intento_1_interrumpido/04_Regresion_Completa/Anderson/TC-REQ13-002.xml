@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="BancoERP Nexus · E2 Diseño e Implementación QA (46 casos) · v2 re-prueba cierre E3 · TC-REQ13-002 (subconjunto)" tests="3" time="0.047">
+  <testsuite name="TC-REQ13-002 · Banco ACH inactivo no es utilizable / Desactivar QA_NEXUS" id="8a4f5162-c79d-4254-ace9-2db55cba4e8f" timestamp="2026-10-23T00:25:03.108Z" tests="1" failures="1" errors="0" time="0.021">
+    <testcase name="TC-REQ13-002: HTTP 200" time="0.021" classname="TcReq13002BancoAchInactivoNoEsUtilizableDesactivarQaNexus">
+      <failure type="AssertionFailure" message="expected 404 to be one of [ 200 ]">
+        <![CDATA[Failed 1 times.]]>
+        <![CDATA[Collection JSON ID: d0fedf10-dc1c-5a4c-bedf-1d9611853c68.]]>
+        <![CDATA[Collection name: BancoERP Nexus · E2 Diseño e Implementación QA (46 casos) · v2 re-prueba cierre E3 · TC-REQ13-002 (subconjunto).]]>
+        <![CDATA[Request name: TC-REQ13-002 · Banco ACH inactivo no es utilizable / Desactivar QA_NEXUS.]]>
+        <![CDATA[Test description: TC-REQ13-002: HTTP 200.]]>
+        <![CDATA[Error message: expected 404 to be one of [ 200 ].]]>
+        <![CDATA[Stacktrace: AssertionError: expected 404 to be one of [ 200 ]
+   at Object.eval sandbox-script.js:1:1).]]>
+      </failure>
+    </testcase>
+  </testsuite>
+  <testsuite name="TC-REQ13-002 · Banco ACH inactivo no es utilizable / Listado de activos" id="361ab034-726f-4463-ade8-5c01dde805a7" timestamp="2026-10-23T00:25:03.108Z" tests="2" failures="0" errors="0" time="0.012">
+    <testcase name="TC-REQ13-002: HTTP 200" time="0.012" classname="TcReq13002BancoAchInactivoNoEsUtilizableListadoDeActivos"/>
+    <testcase name="no contiene QA_NEXUS" time="0.012" classname="TcReq13002BancoAchInactivoNoEsUtilizableListadoDeActivos"/>
+  </testsuite>
+  <testsuite name="TC-REQ13-002 · Banco ACH inactivo no es utilizable / Validar destino con banco inactivo" id="9b05f308-a1bc-47be-a747-239e1025a733" timestamp="2026-10-23T00:25:03.108Z" tests="2" failures="2" errors="0" time="0.014">
+    <testcase name="TC-REQ13-002: HTTP 422" time="0.014" classname="TcReq13002BancoAchInactivoNoEsUtilizableValidarDestinoConBancoInactivo">
+      <failure type="AssertionFailure" message="expected 400 to be one of [ 422 ]">
+        <![CDATA[Failed 1 times.]]>
+        <![CDATA[Collection JSON ID: d0fedf10-dc1c-5a4c-bedf-1d9611853c68.]]>
+        <![CDATA[Collection name: BancoERP Nexus · E2 Diseño e Implementación QA (46 casos) · v2 re-prueba cierre E3 · TC-REQ13-002 (subconjunto).]]>
+        <![CDATA[Request name: TC-REQ13-002 · Banco ACH inactivo no es utilizable / Validar destino con banco inactivo.]]>
+        <![CDATA[Test description: TC-REQ13-002: HTTP 422.]]>
+        <![CDATA[Error message: expected 400 to be one of [ 422 ].]]>
+        <![CDATA[Stacktrace: AssertionError: expected 400 to be one of [ 422 ]
+   at Object.eval sandbox-script.js:1:3).]]>
+      </failure>
+    </testcase>
+    <testcase name="mensaje contiene &quot;inactivo&quot;" time="0.014" classname="TcReq13002BancoAchInactivoNoEsUtilizableValidarDestinoConBancoInactivo">
+      <failure type="AssertionFailure" message="expected '{&quot;message&quot;:&quot;banco ach requerido.&quot;}' to include 'inactivo'">
+        <![CDATA[Failed 1 times.]]>
+        <![CDATA[Collection JSON ID: d0fedf10-dc1c-5a4c-bedf-1d9611853c68.]]>
+        <![CDATA[Collection name: BancoERP Nexus · E2 Diseño e Implementación QA (46 casos) · v2 re-prueba cierre E3 · TC-REQ13-002 (subconjunto).]]>
+        <![CDATA[Request name: TC-REQ13-002 · Banco ACH inactivo no es utilizable / Validar destino con banco inactivo.]]>
+        <![CDATA[Test description: mensaje contiene "inactivo".]]>
+        <![CDATA[Error message: expected '{"message":"banco ach requerido."}' to include 'inactivo'.]]>
+        <![CDATA[Stacktrace: AssertionError: expected '{"message":"banco ach requerido."}' to include 'inactivo'
+   at Object.eval sandbox-script.js:2:3).]]>
+      </failure>
+    </testcase>
+  </testsuite>
+</testsuites>

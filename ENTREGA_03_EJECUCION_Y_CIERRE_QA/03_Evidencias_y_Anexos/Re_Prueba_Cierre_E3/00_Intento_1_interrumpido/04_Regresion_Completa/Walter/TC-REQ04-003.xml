@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="BancoERP Nexus · E2 Diseño e Implementación QA (46 casos) · v2 re-prueba cierre E3 · TC-REQ04-003 (subconjunto)" tests="3" time="0.031">
+  <testsuite name="TC-REQ04-003 · Validación de correo y teléfono / Correo sin @" id="5866352f-e72e-42b0-a486-b7cf5d003cb9" timestamp="2026-10-23T00:24:19.464Z" tests="2" failures="0" errors="0" time="0.021">
+    <testcase name="TC-REQ04-003: HTTP 400" time="0.021" classname="TcReq04003ValidacionDeCorreoYTelefonoCorreoSin"/>
+    <testcase name="mensaje contiene &quot;Email&quot;" time="0.021" classname="TcReq04003ValidacionDeCorreoYTelefonoCorreoSin"/>
+  </testsuite>
+  <testsuite name="TC-REQ04-003 · Validación de correo y teléfono / Teléfono 7 dígitos" id="258abf34-e232-4f3d-9bd0-526b4df595f4" timestamp="2026-10-23T00:24:19.464Z" tests="2" failures="0" errors="0" time="0.006">
+    <testcase name="TC-REQ04-003: HTTP 400" time="0.006" classname="TcReq04003ValidacionDeCorreoYTelefonoTelefono7Digitos"/>
+    <testcase name="mensaje contiene &quot;8 digitos&quot;" time="0.006" classname="TcReq04003ValidacionDeCorreoYTelefonoTelefono7Digitos"/>
+  </testsuite>
+  <testsuite name="TC-REQ04-003 · Validación de correo y teléfono / Teléfono 9 dígitos" id="9d680d3d-0883-4650-a51d-af9bb4df00ba" timestamp="2026-10-23T00:24:19.464Z" tests="2" failures="0" errors="0" time="0.004">
+    <testcase name="TC-REQ04-003: HTTP 400" time="0.004" classname="TcReq04003ValidacionDeCorreoYTelefonoTelefono9Digitos"/>
+    <testcase name="mensaje contiene &quot;8 digitos&quot;" time="0.004" classname="TcReq04003ValidacionDeCorreoYTelefonoTelefono9Digitos"/>
+  </testsuite>
+</testsuites>

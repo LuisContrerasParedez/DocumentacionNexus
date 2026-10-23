@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="BancoERP Nexus · E2 Diseño e Implementación QA (46 casos) · v2 re-prueba cierre E3 · TC-REQ17-003 (subconjunto)" tests="2" time="0.079">
+  <testsuite name="TC-REQ17-003 · ACH entrante idempotente por código de confirmación / ACH entrante Q500 (primera vez)" id="15c6e431-9e6b-4595-ad93-1c5c22922027" timestamp="2026-10-23T00:30:45.592Z" tests="2" failures="0" errors="0" time="0.070">
+    <testcase name="TC-REQ17-003: HTTP 201" time="0.070" classname="TcReq17003AchEntranteIdempotentePorCodigoDeConfirmacionAchEntranteQ500PrimeraVez"/>
+    <testcase name="APROBADA" time="0.070" classname="TcReq17003AchEntranteIdempotentePorCodigoDeConfirmacionAchEntranteQ500PrimeraVez"/>
+  </testsuite>
+  <testsuite name="TC-REQ17-003 · ACH entrante idempotente por código de confirmación / Repetir el mismo código de confirmación" id="7dd55049-cd0e-421f-9404-fc9cdb066686" timestamp="2026-10-23T00:30:45.592Z" tests="2" failures="0" errors="0" time="0.009">
+    <testcase name="TC-REQ17-003: HTTP 409" time="0.009" classname="TcReq17003AchEntranteIdempotentePorCodigoDeConfirmacionRepetirElMismoCodigoDeConfirmacion"/>
+    <testcase name="mensaje contiene &quot;ya fue procesada&quot;" time="0.009" classname="TcReq17003AchEntranteIdempotentePorCodigoDeConfirmacionRepetirElMismoCodigoDeConfirmacion"/>
+  </testsuite>
+</testsuites>

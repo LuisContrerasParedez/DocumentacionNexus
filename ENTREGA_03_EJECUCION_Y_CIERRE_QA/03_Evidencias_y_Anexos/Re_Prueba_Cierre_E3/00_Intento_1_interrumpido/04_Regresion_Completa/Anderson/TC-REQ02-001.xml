@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="BancoERP Nexus · E2 Diseño e Implementación QA (46 casos) · v2 re-prueba cierre E3 · TC-REQ02-001 (subconjunto)" tests="3" time="0.054">
+  <testsuite name="TC-REQ02-001 · Rotación de refresh token / Login qa_cajero" id="a12c7239-8f33-4bd2-bf27-29905bdbcc32" timestamp="2026-10-23T00:24:56.878Z" tests="1" failures="0" errors="0" time="0.035">
+    <testcase name="TC-REQ02-001: HTTP 200" time="0.035" classname="TcReq02001RotacionDeRefreshTokenLoginQaCajero"/>
+  </testsuite>
+  <testsuite name="TC-REQ02-001 · Rotación de refresh token / Refresh con refresh_v1" id="abe174cb-f50c-4a3a-bd6c-fa0f93112a0a" timestamp="2026-10-23T00:24:56.878Z" tests="2" failures="0" errors="0" time="0.015">
+    <testcase name="TC-REQ02-001: HTTP 200" time="0.015" classname="TcReq02001RotacionDeRefreshTokenRefreshConRefreshV1"/>
+    <testcase name="refresh nuevo distinto" time="0.015" classname="TcReq02001RotacionDeRefreshTokenRefreshConRefreshV1"/>
+  </testsuite>
+  <testsuite name="TC-REQ02-001 · Rotación de refresh token / Reutilizar refresh_v1 (rotado)" id="c987d4f3-0325-426b-b67c-11ca47daeceb" timestamp="2026-10-23T00:24:56.878Z" tests="1" failures="0" errors="0" time="0.004">
+    <testcase name="TC-REQ02-001: HTTP 401" time="0.004" classname="TcReq02001RotacionDeRefreshTokenReutilizarRefreshV1Rotado"/>
+  </testsuite>
+</testsuites>

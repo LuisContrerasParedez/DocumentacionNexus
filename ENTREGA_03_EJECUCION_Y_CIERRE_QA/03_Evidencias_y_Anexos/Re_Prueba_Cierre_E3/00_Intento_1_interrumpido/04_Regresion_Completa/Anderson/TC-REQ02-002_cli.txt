@@ -1,0 +1,40 @@
+newman
+
+BancoERP Nexus · E2 Diseño e Implementación QA (46 casos) · v2 re-prueba cierre E3 · TC-REQ02-002 (subconjunto)
+
+❏ TC-REQ02-002 · Logout revoca la sesión activa
+↳ Login qa_cajero
+  POST http://localhost:15141/api/auth/login [200 OK, 7.43kB, 33ms]
+  ✓  TC-REQ02-002: HTTP 200
+
+↳ Logout
+  POST http://localhost:15141/api/auth/logout [200 OK, 196B, 15ms]
+  ✓  TC-REQ02-002: HTTP 200/204
+
+↳ Reutilizar access token en /api/auth/me
+  GET http://localhost:15141/api/auth/me [401 Unauthorized, 150B, 7ms]
+  ✓  TC-REQ02-002: HTTP 401
+
+↳ Refresh de la sesión revocada
+  POST http://localhost:15141/api/auth/refresh-token [401 Unauthorized, 206B, 4ms]
+  ✓  TC-REQ02-002: HTTP 401
+
+┌─────────────────────────┬──────────────────┬──────────────────┐
+│                         │         executed │           failed │
+├─────────────────────────┼──────────────────┼──────────────────┤
+│              iterations │                1 │                0 │
+├─────────────────────────┼──────────────────┼──────────────────┤
+│                requests │                4 │                0 │
+├─────────────────────────┼──────────────────┼──────────────────┤
+│            test-scripts │                4 │                0 │
+├─────────────────────────┼──────────────────┼──────────────────┤
+│      prerequest-scripts │                4 │                0 │
+├─────────────────────────┼──────────────────┼──────────────────┤
+│              assertions │                4 │                0 │
+├─────────────────────────┴──────────────────┴──────────────────┤
+│ total run duration: 751ms                                     │
+├───────────────────────────────────────────────────────────────┤
+│ total data received: 7.37kB (approx)                          │
+├───────────────────────────────────────────────────────────────┤
+│ average response time: 14ms [min: 4ms, max: 33ms, s.d.: 11ms] │
+└───────────────────────────────────────────────────────────────┘

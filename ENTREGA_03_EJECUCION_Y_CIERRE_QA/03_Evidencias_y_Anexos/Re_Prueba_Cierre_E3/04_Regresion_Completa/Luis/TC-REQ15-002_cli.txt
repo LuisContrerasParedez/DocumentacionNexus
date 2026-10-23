@@ -1,0 +1,32 @@
+newman
+
+BancoERP Nexus · E2 Diseño e Implementación QA (46 casos) · v2 re-prueba cierre E3 · TC-REQ15-002 (subconjunto)
+
+❏ TC-REQ15-002 · Operación financiera genera auditoría de antes/después
+↳ Depósito Q100 a AH261002000101
+  POST http://localhost:15141/api/transacciones/deposito [200 OK, 236B, 28ms]
+  ✓  TC-REQ15-002: HTTP 200
+
+↳ Transferencia Q50 AH261002000101 → AH261002000209
+  POST http://localhost:15141/api/transacciones/transferencia [200 OK, 258B, 11ms]
+  ✓  TC-REQ15-002: HTTP 200
+
+┌─────────────────────────┬──────────────────┬──────────────────┐
+│                         │         executed │           failed │
+├─────────────────────────┼──────────────────┼──────────────────┤
+│              iterations │                1 │                0 │
+├─────────────────────────┼──────────────────┼──────────────────┤
+│                requests │                2 │                0 │
+├─────────────────────────┼──────────────────┼──────────────────┤
+│            test-scripts │                2 │                0 │
+├─────────────────────────┼──────────────────┼──────────────────┤
+│      prerequest-scripts │                2 │                0 │
+├─────────────────────────┼──────────────────┼──────────────────┤
+│              assertions │                2 │                0 │
+├─────────────────────────┴──────────────────┴──────────────────┤
+│ total run duration: 393ms                                     │
+├───────────────────────────────────────────────────────────────┤
+│ total data received: 198B (approx)                            │
+├───────────────────────────────────────────────────────────────┤
+│ average response time: 19ms [min: 11ms, max: 28ms, s.d.: 8ms] │
+└───────────────────────────────────────────────────────────────┘

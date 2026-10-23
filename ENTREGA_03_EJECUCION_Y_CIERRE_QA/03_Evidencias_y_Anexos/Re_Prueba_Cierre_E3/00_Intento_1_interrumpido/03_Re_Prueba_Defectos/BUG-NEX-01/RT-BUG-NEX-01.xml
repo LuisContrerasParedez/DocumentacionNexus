@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="BancoERP Nexus · E2 Diseño e Implementación QA (46 casos) · v2 re-prueba cierre E3 · RT · Re-prueba (subconjunto)" tests="18" time="0.223">
+  <testsuite name="RT · Re-prueba de defectos (cierre E3) / RT-BUG-NEX-01 · Sin token → 401 / RT-01-01: sin token → GET /api/ach/bancos" id="ffe3164e-38f8-49d8-aa77-271b1da9ce88" timestamp="2026-10-23T00:24:09.710Z" tests="1" failures="0" errors="0" time="0.021">
+    <testcase name="RT-01-01: HTTP 401" time="0.021" classname="RtRePruebaDeDefectosCierreE3RtBugNex01SinToken401Rt0101SinTokenGetApiAchBancos"/>
+  </testsuite>
+  <testsuite name="RT · Re-prueba de defectos (cierre E3) / RT-BUG-NEX-01 · Sin token → 401 / RT-01-02: sin token → GET /api/ach/bancos/activos" id="0709c244-604b-49ad-9315-79e407ac61e9" timestamp="2026-10-23T00:24:09.710Z" tests="1" failures="0" errors="0" time="0.005">
+    <testcase name="RT-01-02: HTTP 401" time="0.005" classname="RtRePruebaDeDefectosCierreE3RtBugNex01SinToken401Rt0102SinTokenGetApiAchBancosActivos"/>
+  </testsuite>
+  <testsuite name="RT · Re-prueba de defectos (cierre E3) / RT-BUG-NEX-01 · Sin token → 401 / RT-01-03: sin token → GET /api/ach/bancos/{id}" id="68f6db60-8d15-4546-8fa4-00011e923e19" timestamp="2026-10-23T00:24:09.710Z" tests="1" failures="0" errors="0" time="0.003">
+    <testcase name="RT-01-03: HTTP 401" time="0.003" classname="RtRePruebaDeDefectosCierreE3RtBugNex01SinToken401Rt0103SinTokenGetApiAchBancosId"/>
+  </testsuite>
+  <testsuite name="RT · Re-prueba de defectos (cierre E3) / RT-BUG-NEX-01 · Sin token → 401 / RT-01-04: sin token → POST /api/ach/bancos" id="e420d899-9387-4bbc-a317-cf7015aefe8b" timestamp="2026-10-23T00:24:09.710Z" tests="1" failures="0" errors="0" time="0.004">
+    <testcase name="RT-01-04: HTTP 401" time="0.004" classname="RtRePruebaDeDefectosCierreE3RtBugNex01SinToken401Rt0104SinTokenPostApiAchBancos"/>
+  </testsuite>
+  <testsuite name="RT · Re-prueba de defectos (cierre E3) / RT-BUG-NEX-01 · Sin token → 401 / RT-01-05: sin token → PUT /api/ach/bancos/{id}" id="7224ff8b-4dcf-4e40-bf90-017d4890629e" timestamp="2026-10-23T00:24:09.710Z" tests="1" failures="0" errors="0" time="0.003">
+    <testcase name="RT-01-05: HTTP 401" time="0.003" classname="RtRePruebaDeDefectosCierreE3RtBugNex01SinToken401Rt0105SinTokenPutApiAchBancosId"/>
+  </testsuite>
+  <testsuite name="RT · Re-prueba de defectos (cierre E3) / RT-BUG-NEX-01 · Sin token → 401 / RT-01-06: sin token → PATCH /api/ach/bancos/{id}/estado" id="cc7e9c05-6f5d-4b90-8659-e9b9c8cb807d" timestamp="2026-10-23T00:24:09.710Z" tests="1" failures="0" errors="0" time="0.004">
+    <testcase name="RT-01-06: HTTP 401" time="0.004" classname="RtRePruebaDeDefectosCierreE3RtBugNex01SinToken401Rt0106SinTokenPatchApiAchBancosIdEstado"/>
+  </testsuite>
+  <testsuite name="RT · Re-prueba de defectos (cierre E3) / RT-BUG-NEX-01 · Sin token → 401 / RT-01-07: sin token → DELETE /api/ach/bancos/{id}" id="92e8cfbe-5e42-4e0f-802f-198de3983a2c" timestamp="2026-10-23T00:24:09.710Z" tests="1" failures="0" errors="0" time="0.003">
+    <testcase name="RT-01-07: HTTP 401" time="0.003" classname="RtRePruebaDeDefectosCierreE3RtBugNex01SinToken401Rt0107SinTokenDeleteApiAchBancosId"/>
+  </testsuite>
+  <testsuite name="RT · Re-prueba de defectos (cierre E3) / RT-BUG-NEX-01 · Sin token → 401 / RT-01-08: sin token → GET /api/ach/transferencias" id="6524ee58-eb77-4e39-8951-8be3d12f7611" timestamp="2026-10-23T00:24:09.710Z" tests="1" failures="0" errors="0" time="0.001">
+    <testcase name="RT-01-08: HTTP 401" time="0.001" classname="RtRePruebaDeDefectosCierreE3RtBugNex01SinToken401Rt0108SinTokenGetApiAchTransferencias"/>
+  </testsuite>
+  <testsuite name="RT · Re-prueba de defectos (cierre E3) / RT-BUG-NEX-01 · Sin token → 401 / RT-01-09: sin token → POST /api/ach/transferencias/enviar" id="61b18a2e-f6a3-4c1a-9f18-20b26d69b70c" timestamp="2026-10-23T00:24:09.710Z" tests="1" failures="0" errors="0" time="0.003">
+    <testcase name="RT-01-09: HTTP 401" time="0.003" classname="RtRePruebaDeDefectosCierreE3RtBugNex01SinToken401Rt0109SinTokenPostApiAchTransferenciasEnviar"/>
+  </testsuite>
+  <testsuite name="RT · Re-prueba de defectos (cierre E3) / RT-BUG-NEX-01 · Rol sin permiso → 403 / RT-01-10: CLIENTE → GET /api/ach/bancos" id="41cfb979-ac0c-43d3-9022-272202fad775" timestamp="2026-10-23T00:24:09.710Z" tests="1" failures="0" errors="0" time="0.020">
+    <testcase name="RT-01-10: HTTP 403" time="0.020" classname="RtRePruebaDeDefectosCierreE3RtBugNex01RolSinPermiso403Rt0110ClienteGetApiAchBancos"/>
+  </testsuite>
+  <testsuite name="RT · Re-prueba de defectos (cierre E3) / RT-BUG-NEX-01 · Rol sin permiso → 403 / RT-01-11: CAJERO → POST /api/ach/bancos" id="759d735e-0d82-483a-875a-10c52df180fe" timestamp="2026-10-23T00:24:09.710Z" tests="1" failures="0" errors="0" time="0.006">
+    <testcase name="RT-01-11: HTTP 403" time="0.006" classname="RtRePruebaDeDefectosCierreE3RtBugNex01RolSinPermiso403Rt0111CajeroPostApiAchBancos"/>
+  </testsuite>
+  <testsuite name="RT · Re-prueba de defectos (cierre E3) / RT-BUG-NEX-01 · Rol sin permiso → 403 / RT-01-12: CAJERO → DELETE /api/ach/bancos/{id}" id="1755a642-7f69-46d4-9758-df1a6ff01883" timestamp="2026-10-23T00:24:09.710Z" tests="1" failures="0" errors="0" time="0.006">
+    <testcase name="RT-01-12: HTTP 403" time="0.006" classname="RtRePruebaDeDefectosCierreE3RtBugNex01RolSinPermiso403Rt0112CajeroDeleteApiAchBancosId"/>
+  </testsuite>
+  <testsuite name="RT · Re-prueba de defectos (cierre E3) / RT-BUG-NEX-01 · Rol sin permiso → 403 / RT-01-13: CLIENTE → PATCH /api/ach/bancos/{id}/estado" id="809ab236-c660-4ae0-9477-56ff68d6a2ad" timestamp="2026-10-23T00:24:09.710Z" tests="1" failures="0" errors="0" time="0.006">
+    <testcase name="RT-01-13: HTTP 403" time="0.006" classname="RtRePruebaDeDefectosCierreE3RtBugNex01RolSinPermiso403Rt0113ClientePatchApiAchBancosIdEstado"/>
+  </testsuite>
+  <testsuite name="RT · Re-prueba de defectos (cierre E3) / RT-BUG-NEX-01 · Rol sin permiso → 403 / RT-01-14: BANCO_EXTERNO (JWT público) → GET /api/ach/bancos" id="9e2ce714-b3e9-4e62-8a5e-496113008001" timestamp="2026-10-23T00:24:09.710Z" tests="1" failures="0" errors="0" time="0.003">
+    <testcase name="RT-01-14: HTTP 401/403" time="0.003" classname="RtRePruebaDeDefectosCierreE3RtBugNex01RolSinPermiso403Rt0114BancoExternoJwtPublicoGetApiAchBancos"/>
+  </testsuite>
+  <testsuite name="RT · Re-prueba de defectos (cierre E3) / RT-BUG-NEX-01 · Controles positivos (no regresión) / RT-01-15: ADMIN → GET /api/ach/bancos" id="2e3273d8-aabf-484a-a67a-e9a836c40e8e" timestamp="2026-10-23T00:24:09.710Z" tests="2" failures="2" errors="0" time="0.009">
+    <testcase name="RT-01-15: HTTP 200" time="0.009" classname="RtRePruebaDeDefectosCierreE3RtBugNex01ControlesPositivosNoRegresionRt0115AdminGetApiAchBancos">
+      <failure type="AssertionFailure" message="expected 403 to be one of [ 200 ]">
+        <![CDATA[Failed 1 times.]]>
+        <![CDATA[Collection JSON ID: d0fedf10-dc1c-5a4c-bedf-1d9611853c68.]]>
+        <![CDATA[Collection name: BancoERP Nexus · E2 Diseño e Implementación QA (46 casos) · v2 re-prueba cierre E3 · RT · Re-prueba (subconjunto).]]>
+        <![CDATA[Request name: RT · Re-prueba de defectos (cierre E3) / RT-BUG-NEX-01 · Controles positivos (no regresión) / RT-01-15: ADMIN → GET /api/ach/bancos.]]>
+        <![CDATA[Test description: RT-01-15: HTTP 200.]]>
+        <![CDATA[Error message: expected 403 to be one of [ 200 ].]]>
+        <![CDATA[Stacktrace: AssertionError: expected 403 to be one of [ 200 ]
+   at Object.eval sandbox-script.js:1:15).]]>
+      </failure>
+    </testcase>
+    <testcase name="RT-01-15: lista los 5 bancos simulados" time="0.009" classname="RtRePruebaDeDefectosCierreE3RtBugNex01ControlesPositivosNoRegresionRt0115AdminGetApiAchBancos">
+      <failure type="AssertionFailure" message="j.filter is not a function">
+        <![CDATA[Failed 1 times.]]>
+        <![CDATA[Collection JSON ID: d0fedf10-dc1c-5a4c-bedf-1d9611853c68.]]>
+        <![CDATA[Collection name: BancoERP Nexus · E2 Diseño e Implementación QA (46 casos) · v2 re-prueba cierre E3 · RT · Re-prueba (subconjunto).]]>
+        <![CDATA[Request name: RT · Re-prueba de defectos (cierre E3) / RT-BUG-NEX-01 · Controles positivos (no regresión) / RT-01-15: ADMIN → GET /api/ach/bancos.]]>
+        <![CDATA[Test description: RT-01-15: lista los 5 bancos simulados.]]>
+        <![CDATA[Error message: j.filter is not a function.]]>
+        <![CDATA[Stacktrace: TypeError: j.filter is not a function
+   at Object.eval sandbox-script.js:2:15).]]>
+      </failure>
+    </testcase>
+  </testsuite>
+  <testsuite name="RT · Re-prueba de defectos (cierre E3) / RT-BUG-NEX-01 · Controles positivos (no regresión) / RT-01-16: CAJERO → GET /api/ach/bancos/activos" id="1472848c-0ab5-459f-9c57-9d2aa2344eaa" timestamp="2026-10-23T00:24:09.710Z" tests="1" failures="0" errors="0" time="0.092">
+    <testcase name="RT-01-16: HTTP 200" time="0.092" classname="RtRePruebaDeDefectosCierreE3RtBugNex01ControlesPositivosNoRegresionRt0116CajeroGetApiAchBancosActivos"/>
+  </testsuite>
+  <testsuite name="RT · Re-prueba de defectos (cierre E3) / RT-BUG-NEX-01 · Controles positivos (no regresión) / RT-01-17: CLIENTE (portal) → GET /api/ach/bancos/activos" id="30b3bdef-a2c6-4901-a262-712c045ea968" timestamp="2026-10-23T00:24:09.710Z" tests="1" failures="0" errors="0" time="0.004">
+    <testcase name="RT-01-17: HTTP 200" time="0.004" classname="RtRePruebaDeDefectosCierreE3RtBugNex01ControlesPositivosNoRegresionRt0117ClientePortalGetApiAchBancosActivos"/>
+  </testsuite>
+  <testsuite name="RT · Re-prueba de defectos (cierre E3) / RT-BUG-NEX-01 · Controles positivos (no regresión) / RT-01-18: CLIENTE (portal) → GET /api/ach/transferencias" id="6a4448f8-6cbb-4dc2-b368-b942c7839205" timestamp="2026-10-23T00:24:09.710Z" tests="1" failures="0" errors="0" time="0.030">
+    <testcase name="RT-01-18: HTTP 200" time="0.030" classname="RtRePruebaDeDefectosCierreE3RtBugNex01ControlesPositivosNoRegresionRt0118ClientePortalGetApiAchTransferencias"/>
+  </testsuite>
+</testsuites>

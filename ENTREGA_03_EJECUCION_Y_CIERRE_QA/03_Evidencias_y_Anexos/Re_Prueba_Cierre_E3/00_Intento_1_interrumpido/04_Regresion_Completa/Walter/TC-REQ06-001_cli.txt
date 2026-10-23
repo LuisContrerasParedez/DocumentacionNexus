@@ -1,0 +1,39 @@
+newman
+
+BancoERP Nexus · E2 Diseño e Implementación QA (46 casos) · v2 re-prueba cierre E3 · TC-REQ06-001 (subconjunto)
+
+❏ TC-REQ06-001 · Apertura de cuenta con todas las precondiciones
+↳ Precondición: caja ABIERTA de qa_cajero (acepta "ya abierta")
+  POST http://localhost:15141/api/cajas/abrir [422 Unprocessable Entity, 219B, 24ms]
+  ✓  TC-REQ06-001: HTTP 200/201/400/409/422
+
+↳ Apertura AHORRO para Ana
+  POST http://localhost:15141/api/cuentas [201 Created, 314B, 11ms]
+  ✓  TC-REQ06-001: HTTP 201
+  ✓  mensaje contiene "Cuenta abierta correctamente"
+  ✓  prefijo AH
+
+↳ Consultar cuenta creada
+  GET http://localhost:15141/api/cuentas/fc5b5e6f-392b-496e-96b2-52b0761a8cc1 [200 OK, 571B, 22ms]
+  ✓  TC-REQ06-001: HTTP 200
+  ✓  ACTIVA
+
+┌─────────────────────────┬──────────────────┬──────────────────┐
+│                         │         executed │           failed │
+├─────────────────────────┼──────────────────┼──────────────────┤
+│              iterations │                1 │                0 │
+├─────────────────────────┼──────────────────┼──────────────────┤
+│                requests │                3 │                0 │
+├─────────────────────────┼──────────────────┼──────────────────┤
+│            test-scripts │                3 │                0 │
+├─────────────────────────┼──────────────────┼──────────────────┤
+│      prerequest-scripts │                3 │                0 │
+├─────────────────────────┼──────────────────┼──────────────────┤
+│              assertions │                6 │                0 │
+├─────────────────────────┴──────────────────┴──────────────────┤
+│ total run duration: 583ms                                     │
+├───────────────────────────────────────────────────────────────┤
+│ total data received: 637B (approx)                            │
+├───────────────────────────────────────────────────────────────┤
+│ average response time: 19ms [min: 11ms, max: 24ms, s.d.: 5ms] │
+└───────────────────────────────────────────────────────────────┘

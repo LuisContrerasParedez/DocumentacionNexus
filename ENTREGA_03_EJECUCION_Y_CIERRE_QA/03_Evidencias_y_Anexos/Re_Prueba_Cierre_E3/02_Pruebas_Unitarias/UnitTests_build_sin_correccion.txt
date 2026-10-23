@@ -1,0 +1,167 @@
+=== 2026-10-22 18:24:30 CST dotnet test BancoERP.UnitTests — build SIN corrección (controladores de HEAD 0453d06, mismas pruebas) ===
+Serie de pruebas para /private/tmp/claude-501/-Users-luisalejandrocontrerasparedez-Documents-Universidad-SEPTIMO-Y-NOVENO-AdminTec-ProyectoADM-info/f04bf89d-d4d5-4d8d-8bfb-8ddb15e3e86c/scratchpad/wt_head/Backend/BancoERP.UnitTests/bin/Debug/net10.0/BancoERP.UnitTests.dll (.NETCoreApp,Version=v10.0)
+1 archivos de prueba en total coincidieron con el patrón especificado.
+[xUnit.net 00:00:00.00] xUnit.net VSTest Adapter v3.1.4+50e68bbb8b (64-bit .NET 10.0.8)
+[xUnit.net 00:00:00.04]   Discovering: BancoERP.UnitTests
+[xUnit.net 00:00:00.06]   Discovered:  BancoERP.UnitTests
+[xUnit.net 00:00:00.07]   Starting:    BancoERP.UnitTests
+[xUnit.net 00:00:00.09]     BancoERP.UnitTests.InternalApiAuthorizationTests.AchBancosController_AccionesAdministrativas_ExigenPermisoAch(accion: "Actualizar", permiso: "ach.bancos.editar") [FAIL]
+[xUnit.net 00:00:00.09]       Assert.NotNull() Failure: Value is null
+[xUnit.net 00:00:00.09]       Stack Trace:
+[xUnit.net 00:00:00.09]         /private/tmp/claude-501/-Users-luisalejandrocontrerasparedez-Documents-Universidad-SEPTIMO-Y-NOVENO-AdminTec-ProyectoADM-info/f04bf89d-d4d5-4d8d-8bfb-8ddb15e3e86c/scratchpad/wt_head/Backend/BancoERP.UnitTests/InternalApiAuthorizationTests.cs(55,0): at BancoERP.UnitTests.InternalApiAuthorizationTests.AchBancosController_AccionesAdministrativas_ExigenPermisoAch(String accion, String permiso)
+[xUnit.net 00:00:00.09]            at System.Reflection.MethodBaseInvoker.InterpretedInvoke_Method(Object obj, IntPtr* args)
+[xUnit.net 00:00:00.09]            at System.Reflection.MethodBaseInvoker.InvokeDirectByRefWithFewArgs(Object obj, Span`1 copyOfArgs, BindingFlags invokeAttr)
+[xUnit.net 00:00:00.09]     BancoERP.UnitTests.InternalApiAuthorizationTests.AchBancosController_AccionesAdministrativas_ExigenPermisoAch(accion: "Obtener", permiso: "ach.bancos.ver") [FAIL]
+[xUnit.net 00:00:00.09]       Assert.NotNull() Failure: Value is null
+[xUnit.net 00:00:00.09]       Stack Trace:
+[xUnit.net 00:00:00.09]         /private/tmp/claude-501/-Users-luisalejandrocontrerasparedez-Documents-Universidad-SEPTIMO-Y-NOVENO-AdminTec-ProyectoADM-info/f04bf89d-d4d5-4d8d-8bfb-8ddb15e3e86c/scratchpad/wt_head/Backend/BancoERP.UnitTests/InternalApiAuthorizationTests.cs(55,0): at BancoERP.UnitTests.InternalApiAuthorizationTests.AchBancosController_AccionesAdministrativas_ExigenPermisoAch(String accion, String permiso)
+[xUnit.net 00:00:00.09]            at InvokeStub_InternalApiAuthorizationTests.AchBancosController_AccionesAdministrativas_ExigenPermisoAch(Object, Span`1)
+[xUnit.net 00:00:00.09]            at System.Reflection.MethodBaseInvoker.InvokeWithFewArgs(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+[xUnit.net 00:00:00.09]     BancoERP.UnitTests.InternalApiAuthorizationTests.AchBancosController_AccionesAdministrativas_ExigenPermisoAch(accion: "Eliminar", permiso: "ach.bancos.eliminar") [FAIL]
+[xUnit.net 00:00:00.09]       Assert.NotNull() Failure: Value is null
+[xUnit.net 00:00:00.09]       Stack Trace:
+[xUnit.net 00:00:00.09]         /private/tmp/claude-501/-Users-luisalejandrocontrerasparedez-Documents-Universidad-SEPTIMO-Y-NOVENO-AdminTec-ProyectoADM-info/f04bf89d-d4d5-4d8d-8bfb-8ddb15e3e86c/scratchpad/wt_head/Backend/BancoERP.UnitTests/InternalApiAuthorizationTests.cs(55,0): at BancoERP.UnitTests.InternalApiAuthorizationTests.AchBancosController_AccionesAdministrativas_ExigenPermisoAch(String accion, String permiso)
+[xUnit.net 00:00:00.09]            at InvokeStub_InternalApiAuthorizationTests.AchBancosController_AccionesAdministrativas_ExigenPermisoAch(Object, Span`1)
+[xUnit.net 00:00:00.09]            at System.Reflection.MethodBaseInvoker.InvokeWithFewArgs(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+[xUnit.net 00:00:00.09]     BancoERP.UnitTests.InternalApiAuthorizationTests.AchBancosController_AccionesAdministrativas_ExigenPermisoAch(accion: "Crear", permiso: "ach.bancos.crear") [FAIL]
+[xUnit.net 00:00:00.09]       Assert.NotNull() Failure: Value is null
+[xUnit.net 00:00:00.09]       Stack Trace:
+[xUnit.net 00:00:00.09]         /private/tmp/claude-501/-Users-luisalejandrocontrerasparedez-Documents-Universidad-SEPTIMO-Y-NOVENO-AdminTec-ProyectoADM-info/f04bf89d-d4d5-4d8d-8bfb-8ddb15e3e86c/scratchpad/wt_head/Backend/BancoERP.UnitTests/InternalApiAuthorizationTests.cs(55,0): at BancoERP.UnitTests.InternalApiAuthorizationTests.AchBancosController_AccionesAdministrativas_ExigenPermisoAch(String accion, String permiso)
+[xUnit.net 00:00:00.09]            at InvokeStub_InternalApiAuthorizationTests.AchBancosController_AccionesAdministrativas_ExigenPermisoAch(Object, Span`1)
+[xUnit.net 00:00:00.09]            at System.Reflection.MethodBaseInvoker.InvokeWithFewArgs(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+  Correctas BancoERP.UnitTests.AchTransferenciaServiceTests.IsCodigoConfirmacionField_RecognizesExpectedNames(fieldName: "codigo-confirmacion") [3 ms]
+  Correctas BancoERP.UnitTests.AchTransferenciaServiceTests.IsCodigoConfirmacionField_RecognizesExpectedNames(fieldName: "codigo_confirmacion") [< 1 ms]
+  Correctas BancoERP.UnitTests.AchTransferenciaServiceTests.IsCodigoConfirmacionField_RecognizesExpectedNames(fieldName: "codigoConfirmacion") [< 1 ms]
+  Con error BancoERP.UnitTests.InternalApiAuthorizationTests.AchBancosController_AccionesAdministrativas_ExigenPermisoAch(accion: "Actualizar", permiso: "ach.bancos.editar") [9 ms]
+  Mensaje de error:
+   Assert.NotNull() Failure: Value is null
+  Seguimiento de la pila:
+     at BancoERP.UnitTests.InternalApiAuthorizationTests.AchBancosController_AccionesAdministrativas_ExigenPermisoAch(String accion, String permiso) in /private/tmp/claude-501/-Users-luisalejandrocontrerasparedez-Documents-Universidad-SEPTIMO-Y-NOVENO-AdminTec-ProyectoADM-info/f04bf89d-d4d5-4d8d-8bfb-8ddb15e3e86c/scratchpad/wt_head/Backend/BancoERP.UnitTests/InternalApiAuthorizationTests.cs:line 55
+   at System.Reflection.MethodBaseInvoker.InterpretedInvoke_Method(Object obj, IntPtr* args)
+   at System.Reflection.MethodBaseInvoker.InvokeDirectByRefWithFewArgs(Object obj, Span`1 copyOfArgs, BindingFlags invokeAttr)
+  Con error BancoERP.UnitTests.InternalApiAuthorizationTests.AchBancosController_AccionesAdministrativas_ExigenPermisoAch(accion: "Obtener", permiso: "ach.bancos.ver") [< 1 ms]
+  Mensaje de error:
+   Assert.NotNull() Failure: Value is null
+  Seguimiento de la pila:
+     at BancoERP.UnitTests.InternalApiAuthorizationTests.AchBancosController_AccionesAdministrativas_ExigenPermisoAch(String accion, String permiso) in /private/tmp/claude-501/-Users-luisalejandrocontrerasparedez-Documents-Universidad-SEPTIMO-Y-NOVENO-AdminTec-ProyectoADM-info/f04bf89d-d4d5-4d8d-8bfb-8ddb15e3e86c/scratchpad/wt_head/Backend/BancoERP.UnitTests/InternalApiAuthorizationTests.cs:line 55
+   at InvokeStub_InternalApiAuthorizationTests.AchBancosController_AccionesAdministrativas_ExigenPermisoAch(Object, Span`1)
+   at System.Reflection.MethodBaseInvoker.InvokeWithFewArgs(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+  Con error BancoERP.UnitTests.InternalApiAuthorizationTests.AchBancosController_AccionesAdministrativas_ExigenPermisoAch(accion: "Eliminar", permiso: "ach.bancos.eliminar") [< 1 ms]
+  Mensaje de error:
+   Assert.NotNull() Failure: Value is null
+  Seguimiento de la pila:
+     at BancoERP.UnitTests.InternalApiAuthorizationTests.AchBancosController_AccionesAdministrativas_ExigenPermisoAch(String accion, String permiso) in /private/tmp/claude-501/-Users-luisalejandrocontrerasparedez-Documents-Universidad-SEPTIMO-Y-NOVENO-AdminTec-ProyectoADM-info/f04bf89d-d4d5-4d8d-8bfb-8ddb15e3e86c/scratchpad/wt_head/Backend/BancoERP.UnitTests/InternalApiAuthorizationTests.cs:line 55
+   at InvokeStub_InternalApiAuthorizationTests.AchBancosController_AccionesAdministrativas_ExigenPermisoAch(Object, Span`1)
+   at System.Reflection.MethodBaseInvoker.InvokeWithFewArgs(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+  Con error BancoERP.UnitTests.InternalApiAuthorizationTests.AchBancosController_AccionesAdministrativas_ExigenPermisoAch(accion: "Crear", permiso: "ach.bancos.crear") [< 1 ms]
+  Mensaje de error:
+   Assert.NotNull() Failure: Value is null
+  Seguimiento de la pila:
+     at BancoERP.UnitTests.InternalApiAuthorizationTests.AchBancosController_AccionesAdministrativas_ExigenPermisoAch(String accion, String permiso) in /private/tmp/claude-501/-Users-luisalejandrocontrerasparedez-Documents-Universidad-SEPTIMO-Y-NOVENO-AdminTec-ProyectoADM-info/f04bf89d-d4d5-4d8d-8bfb-8ddb15e3e86c/scratchpad/wt_head/Backend/BancoERP.UnitTests/InternalApiAuthorizationTests.cs:line 55
+   at InvokeStub_InternalApiAuthorizationTests.AchBancosController_AccionesAdministrativas_ExigenPermisoAch(Object, Span`1)
+   at System.Reflection.MethodBaseInvoker.InvokeWithFewArgs(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+[xUnit.net 00:00:00.11]     BancoERP.UnitTests.InternalApiAuthorizationTests.AchBancosController_AccionesAdministrativas_ExigenPermisoAch(accion: "CambiarEstado", permiso: "ach.bancos.estado.cambiar") [FAIL]
+[xUnit.net 00:00:00.11]       Assert.NotNull() Failure: Value is null
+[xUnit.net 00:00:00.11]       Stack Trace:
+[xUnit.net 00:00:00.11]         /private/tmp/claude-501/-Users-luisalejandrocontrerasparedez-Documents-Universidad-SEPTIMO-Y-NOVENO-AdminTec-ProyectoADM-info/f04bf89d-d4d5-4d8d-8bfb-8ddb15e3e86c/scratchpad/wt_head/Backend/BancoERP.UnitTests/InternalApiAuthorizationTests.cs(55,0): at BancoERP.UnitTests.InternalApiAuthorizationTests.AchBancosController_AccionesAdministrativas_ExigenPermisoAch(String accion, String permiso)
+[xUnit.net 00:00:00.11]            at InvokeStub_InternalApiAuthorizationTests.AchBancosController_AccionesAdministrativas_ExigenPermisoAch(Object, Span`1)
+[xUnit.net 00:00:00.11]            at System.Reflection.MethodBaseInvoker.InvokeWithFewArgs(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+[xUnit.net 00:00:00.11]     BancoERP.UnitTests.InternalApiAuthorizationTests.AchBancosController_AccionesAdministrativas_ExigenPermisoAch(accion: "Listar", permiso: "ach.bancos.listar") [FAIL]
+[xUnit.net 00:00:00.11]       Assert.NotNull() Failure: Value is null
+[xUnit.net 00:00:00.11]       Stack Trace:
+[xUnit.net 00:00:00.11]         /private/tmp/claude-501/-Users-luisalejandrocontrerasparedez-Documents-Universidad-SEPTIMO-Y-NOVENO-AdminTec-ProyectoADM-info/f04bf89d-d4d5-4d8d-8bfb-8ddb15e3e86c/scratchpad/wt_head/Backend/BancoERP.UnitTests/InternalApiAuthorizationTests.cs(55,0): at BancoERP.UnitTests.InternalApiAuthorizationTests.AchBancosController_AccionesAdministrativas_ExigenPermisoAch(String accion, String permiso)
+[xUnit.net 00:00:00.11]            at InvokeStub_InternalApiAuthorizationTests.AchBancosController_AccionesAdministrativas_ExigenPermisoAch(Object, Span`1)
+[xUnit.net 00:00:00.11]            at System.Reflection.MethodBaseInvoker.InvokeWithFewArgs(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+[xUnit.net 00:00:00.11]     BancoERP.UnitTests.InternalApiAuthorizationTests.InternalApi_TodosLosEndpoints_RequierenAutenticacionSalvoLosPublicosDeclarados [FAIL]
+[xUnit.net 00:00:00.11]       Assert.Empty() Failure: Collection was not empty
+[xUnit.net 00:00:00.11]       Collection: ["AchBancosController.Listar", "AchBancosController.ListarActivos", "AchBancosController.Obtener", "AchBancosController.Crear", "AchBancosController.Actualizar", ···]
+[xUnit.net 00:00:00.11]       Stack Trace:
+[xUnit.net 00:00:00.11]         /private/tmp/claude-501/-Users-luisalejandrocontrerasparedez-Documents-Universidad-SEPTIMO-Y-NOVENO-AdminTec-ProyectoADM-info/f04bf89d-d4d5-4d8d-8bfb-8ddb15e3e86c/scratchpad/wt_head/Backend/BancoERP.UnitTests/InternalApiAuthorizationTests.cs(32,0): at BancoERP.UnitTests.InternalApiAuthorizationTests.InternalApi_TodosLosEndpoints_RequierenAutenticacionSalvoLosPublicosDeclarados()
+[xUnit.net 00:00:00.11]            at System.Reflection.MethodBaseInvoker.InterpretedInvoke_Method(Object obj, IntPtr* args)
+[xUnit.net 00:00:00.11]            at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)
+[xUnit.net 00:00:00.11]     BancoERP.UnitTests.InternalApiAuthorizationTests.AchBancosController_ExigeAutenticacionEnTodasSusAcciones [FAIL]
+[xUnit.net 00:00:00.11]       Assert.NotNull() Failure: Value is null
+[xUnit.net 00:00:00.11]       Stack Trace:
+[xUnit.net 00:00:00.11]         /private/tmp/claude-501/-Users-luisalejandrocontrerasparedez-Documents-Universidad-SEPTIMO-Y-NOVENO-AdminTec-ProyectoADM-info/f04bf89d-d4d5-4d8d-8bfb-8ddb15e3e86c/scratchpad/wt_head/Backend/BancoERP.UnitTests/InternalApiAuthorizationTests.cs(38,0): at BancoERP.UnitTests.InternalApiAuthorizationTests.AchBancosController_ExigeAutenticacionEnTodasSusAcciones()
+[xUnit.net 00:00:00.11]            at System.Reflection.MethodBaseInvoker.InterpretedInvoke_Method(Object obj, IntPtr* args)
+[xUnit.net 00:00:00.11]            at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)
+[xUnit.net 00:00:00.11]     BancoERP.UnitTests.InternalApiAuthorizationTests.AchBancosController_ListarActivos_SoloExigeSesionParaCajerosYClientes [FAIL]
+[xUnit.net 00:00:00.11]       Assert.True() Failure
+[xUnit.net 00:00:00.11]       Expected: True
+[xUnit.net 00:00:00.11]       Actual:   False
+[xUnit.net 00:00:00.11]       Stack Trace:
+[xUnit.net 00:00:00.11]         /private/tmp/claude-501/-Users-luisalejandrocontrerasparedez-Documents-Universidad-SEPTIMO-Y-NOVENO-AdminTec-ProyectoADM-info/f04bf89d-d4d5-4d8d-8bfb-8ddb15e3e86c/scratchpad/wt_head/Backend/BancoERP.UnitTests/InternalApiAuthorizationTests.cs(65,0): at BancoERP.UnitTests.InternalApiAuthorizationTests.AchBancosController_ListarActivos_SoloExigeSesionParaCajerosYClientes()
+[xUnit.net 00:00:00.11]            at System.Reflection.MethodBaseInvoker.InterpretedInvoke_Method(Object obj, IntPtr* args)
+[xUnit.net 00:00:00.11]            at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)
+[xUnit.net 00:00:00.11]     BancoERP.UnitTests.InternalApiAuthorizationTests.AchTransferenciasController_ExigeAutenticacion [FAIL]
+[xUnit.net 00:00:00.11]       Assert.NotNull() Failure: Value is null
+[xUnit.net 00:00:00.11]       Stack Trace:
+[xUnit.net 00:00:00.11]         /private/tmp/claude-501/-Users-luisalejandrocontrerasparedez-Documents-Universidad-SEPTIMO-Y-NOVENO-AdminTec-ProyectoADM-info/f04bf89d-d4d5-4d8d-8bfb-8ddb15e3e86c/scratchpad/wt_head/Backend/BancoERP.UnitTests/InternalApiAuthorizationTests.cs(71,0): at BancoERP.UnitTests.InternalApiAuthorizationTests.AchTransferenciasController_ExigeAutenticacion()
+[xUnit.net 00:00:00.11]            at System.Reflection.MethodBaseInvoker.InterpretedInvoke_Method(Object obj, IntPtr* args)
+[xUnit.net 00:00:00.11]            at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)
+  Con error BancoERP.UnitTests.InternalApiAuthorizationTests.AchBancosController_AccionesAdministrativas_ExigenPermisoAch(accion: "CambiarEstado", permiso: "ach.bancos.estado.cambiar") [< 1 ms]
+  Mensaje de error:
+   Assert.NotNull() Failure: Value is null
+  Seguimiento de la pila:
+     at BancoERP.UnitTests.InternalApiAuthorizationTests.AchBancosController_AccionesAdministrativas_ExigenPermisoAch(String accion, String permiso) in /private/tmp/claude-501/-Users-luisalejandrocontrerasparedez-Documents-Universidad-SEPTIMO-Y-NOVENO-AdminTec-ProyectoADM-info/f04bf89d-d4d5-4d8d-8bfb-8ddb15e3e86c/scratchpad/wt_head/Backend/BancoERP.UnitTests/InternalApiAuthorizationTests.cs:line 55
+   at InvokeStub_InternalApiAuthorizationTests.AchBancosController_AccionesAdministrativas_ExigenPermisoAch(Object, Span`1)
+   at System.Reflection.MethodBaseInvoker.InvokeWithFewArgs(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+  Con error BancoERP.UnitTests.InternalApiAuthorizationTests.AchBancosController_AccionesAdministrativas_ExigenPermisoAch(accion: "Listar", permiso: "ach.bancos.listar") [< 1 ms]
+  Mensaje de error:
+   Assert.NotNull() Failure: Value is null
+  Seguimiento de la pila:
+     at BancoERP.UnitTests.InternalApiAuthorizationTests.AchBancosController_AccionesAdministrativas_ExigenPermisoAch(String accion, String permiso) in /private/tmp/claude-501/-Users-luisalejandrocontrerasparedez-Documents-Universidad-SEPTIMO-Y-NOVENO-AdminTec-ProyectoADM-info/f04bf89d-d4d5-4d8d-8bfb-8ddb15e3e86c/scratchpad/wt_head/Backend/BancoERP.UnitTests/InternalApiAuthorizationTests.cs:line 55
+   at InvokeStub_InternalApiAuthorizationTests.AchBancosController_AccionesAdministrativas_ExigenPermisoAch(Object, Span`1)
+   at System.Reflection.MethodBaseInvoker.InvokeWithFewArgs(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+  Con error BancoERP.UnitTests.InternalApiAuthorizationTests.InternalApi_TodosLosEndpoints_RequierenAutenticacionSalvoLosPublicosDeclarados [8 ms]
+  Mensaje de error:
+   Assert.Empty() Failure: Collection was not empty
+Collection: ["AchBancosController.Listar", "AchBancosController.ListarActivos", "AchBancosController.Obtener", "AchBancosController.Crear", "AchBancosController.Actualizar", ···]
+  Seguimiento de la pila:
+     at BancoERP.UnitTests.InternalApiAuthorizationTests.InternalApi_TodosLosEndpoints_RequierenAutenticacionSalvoLosPublicosDeclarados() in /private/tmp/claude-501/-Users-luisalejandrocontrerasparedez-Documents-Universidad-SEPTIMO-Y-NOVENO-AdminTec-ProyectoADM-info/f04bf89d-d4d5-4d8d-8bfb-8ddb15e3e86c/scratchpad/wt_head/Backend/BancoERP.UnitTests/InternalApiAuthorizationTests.cs:line 32
+   at System.Reflection.MethodBaseInvoker.InterpretedInvoke_Method(Object obj, IntPtr* args)
+   at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)
+  Con error BancoERP.UnitTests.InternalApiAuthorizationTests.AchBancosController_ExigeAutenticacionEnTodasSusAcciones [< 1 ms]
+  Mensaje de error:
+   Assert.NotNull() Failure: Value is null
+  Seguimiento de la pila:
+     at BancoERP.UnitTests.InternalApiAuthorizationTests.AchBancosController_ExigeAutenticacionEnTodasSusAcciones() in /private/tmp/claude-501/-Users-luisalejandrocontrerasparedez-Documents-Universidad-SEPTIMO-Y-NOVENO-AdminTec-ProyectoADM-info/f04bf89d-d4d5-4d8d-8bfb-8ddb15e3e86c/scratchpad/wt_head/Backend/BancoERP.UnitTests/InternalApiAuthorizationTests.cs:line 38
+   at System.Reflection.MethodBaseInvoker.InterpretedInvoke_Method(Object obj, IntPtr* args)
+   at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)
+  Con error BancoERP.UnitTests.InternalApiAuthorizationTests.AchBancosController_ListarActivos_SoloExigeSesionParaCajerosYClientes [< 1 ms]
+  Mensaje de error:
+   Assert.True() Failure
+Expected: True
+Actual:   False
+  Seguimiento de la pila:
+     at BancoERP.UnitTests.InternalApiAuthorizationTests.AchBancosController_ListarActivos_SoloExigeSesionParaCajerosYClientes() in /private/tmp/claude-501/-Users-luisalejandrocontrerasparedez-Documents-Universidad-SEPTIMO-Y-NOVENO-AdminTec-ProyectoADM-info/f04bf89d-d4d5-4d8d-8bfb-8ddb15e3e86c/scratchpad/wt_head/Backend/BancoERP.UnitTests/InternalApiAuthorizationTests.cs:line 65
+   at System.Reflection.MethodBaseInvoker.InterpretedInvoke_Method(Object obj, IntPtr* args)
+   at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)
+  Con error BancoERP.UnitTests.InternalApiAuthorizationTests.AchTransferenciasController_ExigeAutenticacion [< 1 ms]
+  Mensaje de error:
+   Assert.NotNull() Failure: Value is null
+  Seguimiento de la pila:
+     at BancoERP.UnitTests.InternalApiAuthorizationTests.AchTransferenciasController_ExigeAutenticacion() in /private/tmp/claude-501/-Users-luisalejandrocontrerasparedez-Documents-Universidad-SEPTIMO-Y-NOVENO-AdminTec-ProyectoADM-info/f04bf89d-d4d5-4d8d-8bfb-8ddb15e3e86c/scratchpad/wt_head/Backend/BancoERP.UnitTests/InternalApiAuthorizationTests.cs:line 71
+   at System.Reflection.MethodBaseInvoker.InterpretedInvoke_Method(Object obj, IntPtr* args)
+   at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)
+  Correctas BancoERP.UnitTests.AchTransferenciaServiceTests.BuildPayload_AddsCodigoConfirmacionWhenMissing [28 ms]
+  Correctas BancoERP.UnitTests.AchTransferenciaServiceTests.FormatCodigoConfirmacion_UsesReadableIncrementalFormat [1 ms]
+  Correctas BancoERP.UnitTests.AchTransferenciaServiceTests.BuildPayload_ReplacesCodigoConfirmacionFromUserAndBaseConfig [< 1 ms]
+  Correctas BancoERP.UnitTests.AchTransferenciaServiceTests.BuildPayload_ResolvesCodigoConfirmacionInsideTemplateFields [1 ms]
+  Correctas BancoERP.UnitTests.ExternalPublicApiTests.ExternalBankAuthService_LoginAsync_RejectsUserWithoutBancoExternoRole [286 ms]
+  Correctas BancoERP.UnitTests.ExternalPublicApiTests.ExternalAchPublicValidators_RejectsMontoOutOfPrecision(monto: "10.555") [2 ms]
+  Correctas BancoERP.UnitTests.ExternalPublicApiTests.ExternalAchPublicValidators_RejectsMontoOutOfPrecision(monto: "100000000000000000") [< 1 ms]
+  Correctas BancoERP.UnitTests.ExternalPublicApiTests.ExternalAchPublicValidators_RejectsInvalidPayload [< 1 ms]
+  Correctas BancoERP.UnitTests.ExternalPublicApiTests.ExternalBankPermissionAuthorizationHandler_DeniesBancoExternoWithoutPermission [1 ms]
+  Correctas BancoERP.UnitTests.ExternalPublicApiTests.ExternalBankAuthService_LoginAsync_ReturnsJwtForBancoExterno [230 ms]
+  Correctas BancoERP.UnitTests.ExternalPublicApiTests.ExternalBankPermissionAuthorizationHandler_AllowsOnlyBancoExternoWithPermission [< 1 ms]
+  Correctas BancoERP.UnitTests.ExternalPublicApiTests.ExternalBankPermissionAuthorizationHandler_DeniesInternalUsers [< 1 ms]
+[xUnit.net 00:00:00.60]   Finished:    BancoERP.UnitTests
+  Correctas BancoERP.UnitTests.ExternalPublicApiTests.ExternalAchPublicValidators_AcceptsMontoWithTwoDecimals [< 1 ms]
+Archivo de resultados: /Users/luisalejandrocontrerasparedez/Downloads/ENTREGA_03_EJECUCION_Y_CIERRE_QA/03_Evidencias_y_Anexos/Re_Prueba_Cierre_E3/02_Pruebas_Unitarias/UnitTests_build_sin_correccion.trx
+
+No se pudo ejecutar la serie de pruebas.
+Pruebas totales: 26
+     Correcto: 16
+     Incorrecto: 10
+ Tiempo total: 0.8428 Segundos

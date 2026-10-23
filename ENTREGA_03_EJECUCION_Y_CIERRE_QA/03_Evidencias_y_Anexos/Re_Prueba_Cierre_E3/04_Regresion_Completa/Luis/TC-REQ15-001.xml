@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="BancoERP Nexus · E2 Diseño e Implementación QA (46 casos) · v2 re-prueba cierre E3 · TC-REQ15-001 (subconjunto)" tests="7" time="0.110">
+  <testsuite name="TC-REQ15-001 · Eventos de login fallido y bloqueo quedan trazables / Login fallido 1/5 qa_bloqueo" id="6c5142ec-cf17-4a8b-9025-f2668c2f2770" timestamp="2026-10-23T00:30:48.460Z" tests="1" failures="0" errors="0" time="0.026">
+    <testcase name="TC-REQ15-001: HTTP 401" time="0.026" classname="TcReq15001EventosDeLoginFallidoYBloqueoQuedanTrazablesLoginFallido15QaBloqueo"/>
+  </testsuite>
+  <testsuite name="TC-REQ15-001 · Eventos de login fallido y bloqueo quedan trazables / Login fallido 2/5 qa_bloqueo" id="041d82f3-d9ce-46f7-b5c5-119291242556" timestamp="2026-10-23T00:30:48.460Z" tests="1" failures="0" errors="0" time="0.013">
+    <testcase name="TC-REQ15-001: HTTP 401" time="0.013" classname="TcReq15001EventosDeLoginFallidoYBloqueoQuedanTrazablesLoginFallido25QaBloqueo"/>
+  </testsuite>
+  <testsuite name="TC-REQ15-001 · Eventos de login fallido y bloqueo quedan trazables / Login fallido 3/5 qa_bloqueo" id="9820bf45-c005-4b7e-820e-9da2459512d9" timestamp="2026-10-23T00:30:48.460Z" tests="1" failures="0" errors="0" time="0.013">
+    <testcase name="TC-REQ15-001: HTTP 401" time="0.013" classname="TcReq15001EventosDeLoginFallidoYBloqueoQuedanTrazablesLoginFallido35QaBloqueo"/>
+  </testsuite>
+  <testsuite name="TC-REQ15-001 · Eventos de login fallido y bloqueo quedan trazables / Login fallido 4/5 qa_bloqueo" id="5edb01b5-b1f8-4c09-a952-3f350f8e98b7" timestamp="2026-10-23T00:30:48.460Z" tests="1" failures="0" errors="0" time="0.013">
+    <testcase name="TC-REQ15-001: HTTP 401" time="0.013" classname="TcReq15001EventosDeLoginFallidoYBloqueoQuedanTrazablesLoginFallido45QaBloqueo"/>
+  </testsuite>
+  <testsuite name="TC-REQ15-001 · Eventos de login fallido y bloqueo quedan trazables / Login fallido 5/5 qa_bloqueo" id="43639014-8ec4-48a3-a4c8-0ccb1dec919e" timestamp="2026-10-23T00:30:48.460Z" tests="1" failures="0" errors="0" time="0.014">
+    <testcase name="TC-REQ15-001: HTTP 401" time="0.014" classname="TcReq15001EventosDeLoginFallidoYBloqueoQuedanTrazablesLoginFallido55QaBloqueo"/>
+  </testsuite>
+  <testsuite name="TC-REQ15-001 · Eventos de login fallido y bloqueo quedan trazables / Eventos LOGIN_FALLIDO de qa_bloqueo" id="a0e2c227-00d8-4a2c-9db1-3b106309da9b" timestamp="2026-10-23T00:30:48.460Z" tests="3" failures="0" errors="0" time="0.023">
+    <testcase name="TC-REQ15-001: HTTP 200" time="0.023" classname="TcReq15001EventosDeLoginFallidoYBloqueoQuedanTrazablesEventosLoginFallidoDeQaBloqueo"/>
+    <testcase name="hay eventos" time="0.023" classname="TcReq15001EventosDeLoginFallidoYBloqueoQuedanTrazablesEventosLoginFallidoDeQaBloqueo"/>
+    <testcase name="sin contraseña en claro" time="0.023" classname="TcReq15001EventosDeLoginFallidoYBloqueoQuedanTrazablesEventosLoginFallidoDeQaBloqueo"/>
+  </testsuite>
+  <testsuite name="TC-REQ15-001 · Eventos de login fallido y bloqueo quedan trazables / Evento USUARIO_BLOQUEADO" id="2f0ee7d2-761b-4a68-87ea-6edde8fda3c5" timestamp="2026-10-23T00:30:48.460Z" tests="2" failures="0" errors="0" time="0.008">
+    <testcase name="TC-REQ15-001: HTTP 200" time="0.008" classname="TcReq15001EventosDeLoginFallidoYBloqueoQuedanTrazablesEventoUsuarioBloqueado"/>
+    <testcase name="evento de bloqueo" time="0.008" classname="TcReq15001EventosDeLoginFallidoYBloqueoQuedanTrazablesEventoUsuarioBloqueado"/>
+  </testsuite>
+</testsuites>

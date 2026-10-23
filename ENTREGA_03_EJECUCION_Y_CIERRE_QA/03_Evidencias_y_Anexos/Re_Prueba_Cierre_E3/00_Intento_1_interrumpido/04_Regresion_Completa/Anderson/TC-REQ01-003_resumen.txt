@@ -1,0 +1,9 @@
+2026-10-22 18:24:56 CST  TC-REQ01-003
+- Login qa_inactivo
+    POST http://localhost:15141/api/auth/login
+    HTTP 403 (14 ms) | ok=3 fail=0
+    body: {"message":"El usuario se encuentra inactivo. Por favor comuniquese con soporte."}
+- Login qa_bloqueado
+    POST http://localhost:15141/api/auth/login
+    HTTP 423 (13 ms) | ok=3 fail=0
+    body: {"message":"El usuario se encuentra bloqueado. Por favor comuniquese con soporte."}

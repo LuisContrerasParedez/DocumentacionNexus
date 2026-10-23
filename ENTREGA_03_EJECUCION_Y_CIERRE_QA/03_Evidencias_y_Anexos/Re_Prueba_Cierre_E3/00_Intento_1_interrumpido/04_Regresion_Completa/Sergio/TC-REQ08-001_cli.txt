@@ -1,0 +1,33 @@
+newman
+
+BancoERP Nexus · E2 Diseño e Implementación QA (46 casos) · v2 re-prueba cierre E3 · TC-REQ08-001 (subconjunto)
+
+❏ TC-REQ08-001 · Una sola caja abierta por día
+↳ Primera apertura fondo Q1000
+  POST http://localhost:15141/api/cajas/abrir [200 OK, 254B, 25ms]
+  ✓  TC-REQ08-001: HTTP 200/201
+
+↳ Segunda apertura el mismo día
+  POST http://localhost:15141/api/cajas/abrir [422 Unprocessable Entity, 219B, 5ms]
+  ✓  TC-REQ08-001: HTTP 422
+  ✓  mensaje contiene "abierta hoy"
+
+┌─────────────────────────┬──────────────────┬──────────────────┐
+│                         │         executed │           failed │
+├─────────────────────────┼──────────────────┼──────────────────┤
+│              iterations │                1 │                0 │
+├─────────────────────────┼──────────────────┼──────────────────┤
+│                requests │                2 │                0 │
+├─────────────────────────┼──────────────────┼──────────────────┤
+│            test-scripts │                2 │                0 │
+├─────────────────────────┼──────────────────┼──────────────────┤
+│      prerequest-scripts │                2 │                0 │
+├─────────────────────────┼──────────────────┼──────────────────┤
+│              assertions │                3 │                0 │
+├─────────────────────────┴──────────────────┴──────────────────┤
+│ total run duration: 376ms                                     │
+├───────────────────────────────────────────────────────────────┤
+│ total data received: 159B (approx)                            │
+├───────────────────────────────────────────────────────────────┤
+│ average response time: 15ms [min: 5ms, max: 25ms, s.d.: 10ms] │
+└───────────────────────────────────────────────────────────────┘

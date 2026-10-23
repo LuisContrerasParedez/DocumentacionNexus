@@ -1,0 +1,13 @@
+2026-10-22 18:39:09 CST  TC-REQ16-001
+- REP-01: transferencia interna Q200
+    POST http://localhost:15141/api/transacciones/transferencia
+    HTTP 200 (41 ms) | ok=1 fail=0
+    body: {"referencia":"TRF-c0c42c64b53349e78b2a1ac73abd99ba","saldoOrigen":2275.00,"saldoDestino":1700.00,"monto":200.0}
+- REP-01: ACH entrante aprobado Q25
+    POST http://localhost:15254/api/external/ach/transferencias
+    HTTP 201 (77 ms) | ok=1 fail=0
+    body: {"status":true,"message":"Transferencia recibida correctamente.","data":{"codigoConfirmacion":"E2-REP01-ACH-001","numeroCuentaDestino":"MO261002000302","monto":25.0,"moneda":"Q","estado":"APROBADA","fechaProcesamiento":"2026-10-23T00:39:09.293213Z"},"errors":null}
+- GET /api/reportes/resumen
+    GET http://localhost:15141/api/reportes/resumen
+    HTTP 200 (16 ms) | ok=12 fail=0
+    body: {"totalClientes":2,"clientesActivos":1,"clientesEnRevision":1,"totalCuentas":3,"cuentasActivas":2,"saldoTotal":4000.00,"totalTransferenciasInternas":1,"montoTransferenciasInternas":200.00,"totalMovimientosHoy":0,"montoMovimientosHoy":0,"totalAch":1,"achPendientes":0,"achAprobadas":1,"achRechazadas":0,"montoAch":25.00,"clientesPorEstado":[{"codigo":"ACTIVO","total":1},{"codigo":"EN_REVISION","total":1}],"cuentasPorEstado":[{"codigo":"ACTIVA","total":2},{"codigo":"CERRADA","total":1}],"montosUltimos7Dias":[{"fecha":"2026-10-17","montoDepositos":0,"montoRetiros":0,"montoTransferenciasInternas":0,"montoAch":0},{"fecha":"2026-10-18","montoDepositos":0,"montoRetiros":0,"montoTransferenciasInternas":0,"montoAch":0},{"fecha":"2026-10-19","montoDepositos":0,"montoRetiros":0,"montoTransferenciasInternas":0,"montoAch":0},{"fecha":"2026-10-20","montoDepositos":0,"montoRetiros":0,"montoTransferenciasInternas":0,"montoAch":0},{"fecha":"2026-10-21","montoDepositos":0,"montoRetiros":0,"montoTransferenciasInternas":0,"montoAch":0},{"fecha":"2026-10-22","montoDepositos":0,"montoRetiros":0,"montoTransferenciasInternas":200.00,"montoAch":25.00},{"fecha":"2026-10-23","montoDepositos":0,"montoRetiros":0

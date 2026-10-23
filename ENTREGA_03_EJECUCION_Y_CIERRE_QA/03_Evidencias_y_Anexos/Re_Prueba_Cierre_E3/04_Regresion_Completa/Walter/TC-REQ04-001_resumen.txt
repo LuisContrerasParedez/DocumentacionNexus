@@ -1,0 +1,13 @@
+2026-10-22 18:29:49 CST  TC-REQ04-001
+- Registro 18 años exactos (Diego)
+    POST http://localhost:15141/api/clientes/natural
+    HTTP 201 (63 ms) | ok=1 fail=0
+    body: {"id":"21bf3eca-d116-4485-982f-23a9d762817e","message":"Cliente registrado en revision"}
+- Consultar cliente creado
+    GET http://localhost:15141/api/clientes/21bf3eca-d116-4485-982f-23a9d762817e
+    HTTP 200 (20 ms) | ok=2 fail=0
+    body: {"id":"21bf3eca-d116-4485-982f-23a9d762817e","tipoCliente":"NATURAL","nombreCompleto":"Diego Frontera","dpi":"2999999990199","email":"diego.qa@nexus.test","telefono":"55778899","observaciones":null,"estado":"EN_REVISION","primerNombre":"Diego","segundoNombre":null,"primerApellido":"Frontera","segundoApellido":null,"fechaNacimiento":"2008-10-23","totalCuentas":0,"cuentasActivas":0,"saldoTotal":0,"creadoEn":"2026-10-23T00:29:49.424Z","fechaAprobacion":null}
+- Variante menor por 1 día (Mateo, 2008-10-24)
+    POST http://localhost:15141/api/clientes/natural
+    HTTP 400 (8 ms) | ok=1 fail=0
+    body: {"message":"El cliente tiene 17 anos. Minimo: 18"}

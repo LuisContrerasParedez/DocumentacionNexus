@@ -1,0 +1,77 @@
+{
+  "info": {
+    "_postman_id": "d0fedf10-dc1c-5a4c-bedf-1d9611853c68",
+    "name": "BancoERP Nexus · E2 Diseño e Implementación QA (46 casos) · v2 re-prueba cierre E3 · TC-REQ09-001_precondicion_caja_para_TC-REQ14-003 (subconjunto)",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": "Colección trazable a los 46 casos del Documento E2 (E2_Documento_Diseno_Implementacion_Nexus.docx). Una carpeta por requerimiento y una subcarpeta por caso TC-REQxx-xxx con sus pasos. Requiere el entorno QA aislado (docker-compose.qa.yml) y MockData_Fixtures_Nexus.sql. Plantillas de diseño: NO equivale a una ejecución; los resultados formales se registran en la Entrega 3."
+  },
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "exec": [
+          "for (const k of [\"baseInterna\",\"basePublica\"]) {",
+          "  const v=pm.variables.get(k);",
+          "  if (![\"http://localhost:15141\",\"http://localhost:15254\"].includes(v)) {",
+          "    pm.execution.skipRequest(); throw new Error(\"Solo URLs del entorno QA aislado (docker-compose.qa.yml)\");",
+          "  }",
+          "}"
+        ]
+      }
+    }
+  ],
+  "item": [
+    {
+      "name": "TC-REQ09-001 · Monto mínimo de depósito",
+      "description": "TC-REQ09-001 → REQ-09 | Técnica: Análisis de Valores Límite | Prioridad: Alta\nPrecondiciones: Cuenta ACTIVA y caja abierta.\nDatos de entrada: AH261002000101: monto 0.00 / 0.01\nPasos (Word): 1. Depositar Q0.00. 2. Depositar Q0.01.\nResultado esperado (Word): Q0.00→HTTP 400 'El monto debe ser mayor a cero.'. Q0.01 entra al flujo transaccional y, con dependencias válidas, debe completarse.",
+      "item": [
+        {
+          "name": "Precondición: caja ABIERTA de qa_cajero (acepta \"ya abierta\")",
+          "request": {
+            "method": "POST",
+            "url": "{{baseInterna}}/api/cajas/abrir",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"fondoInicial\": 1000.0\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{token_cajero}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "description": "TC-REQ09-001 — paso del Documento E2 (sección 4)."
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "let j={}; try { j=pm.response.json(); } catch(e) { j={}; }",
+                  "pm.test(\"TC-REQ09-001: HTTP 200/201/400/409/422\", ()=>pm.expect(pm.response.code).to.be.oneOf([200, 201, 400, 409, 422]));"
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

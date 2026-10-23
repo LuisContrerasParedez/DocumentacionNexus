@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="BancoERP Nexus · E2 Diseño e Implementación QA (46 casos) · v2 re-prueba cierre E3 · TC-REQ05-002 (subconjunto)" tests="4" time="0.096">
+  <testsuite name="TC-REQ05-002 · EN_REVISION no abre cuenta; ACTIVO sí puede continuar / Precondición: caja ABIERTA de qa_cajero (acepta &quot;ya abierta&quot;)" id="c710c4e8-2de9-4625-8d76-a8ad0765ea32" timestamp="2026-10-23T00:29:54.189Z" tests="1" failures="0" errors="0" time="0.034">
+    <testcase name="TC-REQ05-002: HTTP 200/201/400/409/422" time="0.034" classname="TcReq05002EnRevisionNoAbreCuentaActivoSiPuedeContinuarPrecondicionCajaAbiertaDeQaCajeroAceptaQuotYaAbiertaQuot"/>
+  </testsuite>
+  <testsuite name="TC-REQ05-002 · EN_REVISION no abre cuenta; ACTIVO sí puede continuar / Apertura con cliente EN_REVISION (Carla)" id="f8f01961-8b1f-45e7-8ef5-1c8f1bcd512a" timestamp="2026-10-23T00:29:54.189Z" tests="1" failures="0" errors="0" time="0.018">
+    <testcase name="TC-REQ05-002: HTTP 422" time="0.018" classname="TcReq05002EnRevisionNoAbreCuentaActivoSiPuedeContinuarAperturaConClienteEnRevisionCarla"/>
+  </testsuite>
+  <testsuite name="TC-REQ05-002 · EN_REVISION no abre cuenta; ACTIVO sí puede continuar / PATCH cliente a ACTIVO" id="e583c5a1-386a-46d4-b3e9-1d412cd2ac3b" timestamp="2026-10-23T00:29:54.189Z" tests="1" failures="0" errors="0" time="0.029">
+    <testcase name="TC-REQ05-002: HTTP 200" time="0.029" classname="TcReq05002EnRevisionNoAbreCuentaActivoSiPuedeContinuarPatchClienteAActivo"/>
+  </testsuite>
+  <testsuite name="TC-REQ05-002 · EN_REVISION no abre cuenta; ACTIVO sí puede continuar / Repetir apertura (cliente ACTIVO)" id="a79fc94f-3d2f-4ee8-95f6-f9427a67ea47" timestamp="2026-10-23T00:29:54.189Z" tests="1" failures="0" errors="0" time="0.015">
+    <testcase name="TC-REQ05-002: HTTP 201" time="0.015" classname="TcReq05002EnRevisionNoAbreCuentaActivoSiPuedeContinuarRepetirAperturaClienteActivo"/>
+  </testsuite>
+</testsuites>

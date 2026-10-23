@@ -1,0 +1,627 @@
+{
+  "info": {
+    "_postman_id": "d0fedf10-dc1c-5a4c-bedf-1d9611853c68",
+    "name": "BancoERP Nexus · E2 Diseño e Implementación QA (46 casos) · v2 re-prueba cierre E3 · RT · Re-prueba (subconjunto)",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": "Colección trazable a los 46 casos del Documento E2 (E2_Documento_Diseno_Implementacion_Nexus.docx). Una carpeta por requerimiento y una subcarpeta por caso TC-REQxx-xxx con sus pasos. Requiere el entorno QA aislado (docker-compose.qa.yml) y MockData_Fixtures_Nexus.sql. Plantillas de diseño: NO equivale a una ejecución; los resultados formales se registran en la Entrega 3."
+  },
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "exec": [
+          "for (const k of [\"baseInterna\",\"basePublica\"]) {",
+          "  const v=pm.variables.get(k);",
+          "  if (![\"http://localhost:15141\",\"http://localhost:15254\"].includes(v)) {",
+          "    pm.execution.skipRequest(); throw new Error(\"Solo URLs del entorno QA aislado (docker-compose.qa.yml)\");",
+          "  }",
+          "}"
+        ]
+      }
+    }
+  ],
+  "item": [
+    {
+      "name": "RT · Re-prueba de defectos (cierre E3)",
+      "description": "Confirmación de la corrección de BUG-NEX-01 (9 accesos sin token, 5 con rol sin permiso, 4 controles positivos). BUG-NEX-02 se re-prueba con TC-REQ16-001 (oráculo completo) sobre bancoerp_e2_qa_rep01.",
+      "item": [
+        {
+          "name": "RT-BUG-NEX-01 · Sin token → 401",
+          "item": [
+            {
+              "name": "RT-01-01: sin token → GET /api/ach/bancos",
+              "request": {
+                "method": "GET",
+                "url": "{{baseInterna}}/api/ach/bancos",
+                "header": [],
+                "auth": {
+                  "type": "noauth"
+                },
+                "description": ""
+              },
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "type": "text/javascript",
+                    "exec": [
+                      "let j={}; try { j=pm.response.json(); } catch(e) { j={}; }",
+                      "pm.test(\"RT-01-01: HTTP 401\", ()=>pm.expect(pm.response.code).to.be.oneOf([401]));"
+                    ]
+                  }
+                }
+              ]
+            },
+            {
+              "name": "RT-01-02: sin token → GET /api/ach/bancos/activos",
+              "request": {
+                "method": "GET",
+                "url": "{{baseInterna}}/api/ach/bancos/activos",
+                "header": [],
+                "auth": {
+                  "type": "noauth"
+                },
+                "description": ""
+              },
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "type": "text/javascript",
+                    "exec": [
+                      "let j={}; try { j=pm.response.json(); } catch(e) { j={}; }",
+                      "pm.test(\"RT-01-02: HTTP 401\", ()=>pm.expect(pm.response.code).to.be.oneOf([401]));"
+                    ]
+                  }
+                }
+              ]
+            },
+            {
+              "name": "RT-01-03: sin token → GET /api/ach/bancos/{id}",
+              "request": {
+                "method": "GET",
+                "url": "{{baseInterna}}/api/ach/bancos/e20000000000000000000001",
+                "header": [],
+                "auth": {
+                  "type": "noauth"
+                },
+                "description": ""
+              },
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "type": "text/javascript",
+                    "exec": [
+                      "let j={}; try { j=pm.response.json(); } catch(e) { j={}; }",
+                      "pm.test(\"RT-01-03: HTTP 401\", ()=>pm.expect(pm.response.code).to.be.oneOf([401]));"
+                    ]
+                  }
+                }
+              ]
+            },
+            {
+              "name": "RT-01-04: sin token → POST /api/ach/bancos",
+              "request": {
+                "method": "POST",
+                "url": "{{baseInterna}}/api/ach/bancos",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "auth": {
+                  "type": "noauth"
+                },
+                "description": "",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"nombre\": \"Banco anonimo\",\n  \"codigo\": \"RT_ANONIMO\",\n  \"apiBaseUrl\": \"http://mock-bank:8081\",\n  \"apiEndpoint\": \"/success/transferencias\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "type": "text/javascript",
+                    "exec": [
+                      "let j={}; try { j=pm.response.json(); } catch(e) { j={}; }",
+                      "pm.test(\"RT-01-04: HTTP 401\", ()=>pm.expect(pm.response.code).to.be.oneOf([401]));"
+                    ]
+                  }
+                }
+              ]
+            },
+            {
+              "name": "RT-01-05: sin token → PUT /api/ach/bancos/{id}",
+              "request": {
+                "method": "PUT",
+                "url": "{{baseInterna}}/api/ach/bancos/e20000000000000000000001",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "auth": {
+                  "type": "noauth"
+                },
+                "description": "",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"nombre\": \"Alterado sin token\",\n  \"codigo\": \"E2_QA_SUCCESS\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "type": "text/javascript",
+                    "exec": [
+                      "let j={}; try { j=pm.response.json(); } catch(e) { j={}; }",
+                      "pm.test(\"RT-01-05: HTTP 401\", ()=>pm.expect(pm.response.code).to.be.oneOf([401]));"
+                    ]
+                  }
+                }
+              ]
+            },
+            {
+              "name": "RT-01-06: sin token → PATCH /api/ach/bancos/{id}/estado",
+              "request": {
+                "method": "PATCH",
+                "url": "{{baseInterna}}/api/ach/bancos/e20000000000000000000001/estado",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "auth": {
+                  "type": "noauth"
+                },
+                "description": "",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"activo\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "type": "text/javascript",
+                    "exec": [
+                      "let j={}; try { j=pm.response.json(); } catch(e) { j={}; }",
+                      "pm.test(\"RT-01-06: HTTP 401\", ()=>pm.expect(pm.response.code).to.be.oneOf([401]));"
+                    ]
+                  }
+                }
+              ]
+            },
+            {
+              "name": "RT-01-07: sin token → DELETE /api/ach/bancos/{id}",
+              "request": {
+                "method": "DELETE",
+                "url": "{{baseInterna}}/api/ach/bancos/e20000000000000000000005",
+                "header": [],
+                "auth": {
+                  "type": "noauth"
+                },
+                "description": ""
+              },
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "type": "text/javascript",
+                    "exec": [
+                      "let j={}; try { j=pm.response.json(); } catch(e) { j={}; }",
+                      "pm.test(\"RT-01-07: HTTP 401\", ()=>pm.expect(pm.response.code).to.be.oneOf([401]));"
+                    ]
+                  }
+                }
+              ]
+            },
+            {
+              "name": "RT-01-08: sin token → GET /api/ach/transferencias",
+              "request": {
+                "method": "GET",
+                "url": "{{baseInterna}}/api/ach/transferencias",
+                "header": [],
+                "auth": {
+                  "type": "noauth"
+                },
+                "description": ""
+              },
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "type": "text/javascript",
+                    "exec": [
+                      "let j={}; try { j=pm.response.json(); } catch(e) { j={}; }",
+                      "pm.test(\"RT-01-08: HTTP 401\", ()=>pm.expect(pm.response.code).to.be.oneOf([401]));"
+                    ]
+                  }
+                }
+              ]
+            },
+            {
+              "name": "RT-01-09: sin token → POST /api/ach/transferencias/enviar",
+              "request": {
+                "method": "POST",
+                "url": "{{baseInterna}}/api/ach/transferencias/enviar",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "auth": {
+                  "type": "noauth"
+                },
+                "description": "",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"bancoAchId\": \"e20000000000000000000001\",\n  \"cuentaOrigenId\": \"60e12f09-f1be-5506-b494-5381502e3e75\",\n  \"numeroCuentaDestino\": \"EXT-QA-0001\",\n  \"monto\": 1,\n  \"descripcion\": \"RT sin token\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "type": "text/javascript",
+                    "exec": [
+                      "let j={}; try { j=pm.response.json(); } catch(e) { j={}; }",
+                      "pm.test(\"RT-01-09: HTTP 401\", ()=>pm.expect(pm.response.code).to.be.oneOf([401]));"
+                    ]
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "RT-BUG-NEX-01 · Rol sin permiso → 403",
+          "item": [
+            {
+              "name": "RT-01-10: CLIENTE → GET /api/ach/bancos",
+              "request": {
+                "method": "GET",
+                "url": "{{baseInterna}}/api/ach/bancos",
+                "header": [],
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{token_ana}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "description": ""
+              },
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "type": "text/javascript",
+                    "exec": [
+                      "let j={}; try { j=pm.response.json(); } catch(e) { j={}; }",
+                      "pm.test(\"RT-01-10: HTTP 403\", ()=>pm.expect(pm.response.code).to.be.oneOf([403]));"
+                    ]
+                  }
+                }
+              ]
+            },
+            {
+              "name": "RT-01-11: CAJERO → POST /api/ach/bancos",
+              "request": {
+                "method": "POST",
+                "url": "{{baseInterna}}/api/ach/bancos",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{token_cajero}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "description": "",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"nombre\": \"Banco cajero\",\n  \"codigo\": \"RT_CAJERO\",\n  \"apiBaseUrl\": \"http://mock-bank:8081\",\n  \"apiEndpoint\": \"/success/transferencias\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "type": "text/javascript",
+                    "exec": [
+                      "let j={}; try { j=pm.response.json(); } catch(e) { j={}; }",
+                      "pm.test(\"RT-01-11: HTTP 403\", ()=>pm.expect(pm.response.code).to.be.oneOf([403]));"
+                    ]
+                  }
+                }
+              ]
+            },
+            {
+              "name": "RT-01-12: CAJERO → DELETE /api/ach/bancos/{id}",
+              "request": {
+                "method": "DELETE",
+                "url": "{{baseInterna}}/api/ach/bancos/e20000000000000000000005",
+                "header": [],
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{token_cajero}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "description": ""
+              },
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "type": "text/javascript",
+                    "exec": [
+                      "let j={}; try { j=pm.response.json(); } catch(e) { j={}; }",
+                      "pm.test(\"RT-01-12: HTTP 403\", ()=>pm.expect(pm.response.code).to.be.oneOf([403]));"
+                    ]
+                  }
+                }
+              ]
+            },
+            {
+              "name": "RT-01-13: CLIENTE → PATCH /api/ach/bancos/{id}/estado",
+              "request": {
+                "method": "PATCH",
+                "url": "{{baseInterna}}/api/ach/bancos/e20000000000000000000001/estado",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{token_ana}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "description": "",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"activo\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "type": "text/javascript",
+                    "exec": [
+                      "let j={}; try { j=pm.response.json(); } catch(e) { j={}; }",
+                      "pm.test(\"RT-01-13: HTTP 403\", ()=>pm.expect(pm.response.code).to.be.oneOf([403]));"
+                    ]
+                  }
+                }
+              ]
+            },
+            {
+              "name": "RT-01-14: BANCO_EXTERNO (JWT público) → GET /api/ach/bancos",
+              "request": {
+                "method": "GET",
+                "url": "{{baseInterna}}/api/ach/bancos",
+                "header": [],
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{token_externo}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "description": ""
+              },
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "type": "text/javascript",
+                    "exec": [
+                      "let j={}; try { j=pm.response.json(); } catch(e) { j={}; }",
+                      "pm.test(\"RT-01-14: HTTP 401/403\", ()=>pm.expect(pm.response.code).to.be.oneOf([401, 403]));"
+                    ]
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "RT-BUG-NEX-01 · Controles positivos (no regresión)",
+          "item": [
+            {
+              "name": "RT-01-15: ADMIN → GET /api/ach/bancos",
+              "request": {
+                "method": "GET",
+                "url": "{{baseInterna}}/api/ach/bancos",
+                "header": [],
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{token_admin}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "description": ""
+              },
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "type": "text/javascript",
+                    "exec": [
+                      "let j={}; try { j=pm.response.json(); } catch(e) { j={}; }",
+                      "pm.test(\"RT-01-15: HTTP 200\", ()=>pm.expect(pm.response.code).to.be.oneOf([200]));",
+                      "pm.test(\"RT-01-15: lista los 5 bancos simulados\", ()=>pm.expect(j.filter(b=>String(b.codigo).startsWith(\"E2_QA_\")).length).to.eql(5));"
+                    ]
+                  }
+                }
+              ]
+            },
+            {
+              "name": "RT-01-16: CAJERO → GET /api/ach/bancos/activos",
+              "request": {
+                "method": "GET",
+                "url": "{{baseInterna}}/api/ach/bancos/activos",
+                "header": [],
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{token_cajero}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "description": ""
+              },
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "type": "text/javascript",
+                    "exec": [
+                      "let j={}; try { j=pm.response.json(); } catch(e) { j={}; }",
+                      "pm.test(\"RT-01-16: HTTP 200\", ()=>pm.expect(pm.response.code).to.be.oneOf([200]));"
+                    ]
+                  }
+                }
+              ]
+            },
+            {
+              "name": "RT-01-17: CLIENTE (portal) → GET /api/ach/bancos/activos",
+              "request": {
+                "method": "GET",
+                "url": "{{baseInterna}}/api/ach/bancos/activos",
+                "header": [],
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{token_ana}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "description": ""
+              },
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "type": "text/javascript",
+                    "exec": [
+                      "let j={}; try { j=pm.response.json(); } catch(e) { j={}; }",
+                      "pm.test(\"RT-01-17: HTTP 200\", ()=>pm.expect(pm.response.code).to.be.oneOf([200]));"
+                    ]
+                  }
+                }
+              ]
+            },
+            {
+              "name": "RT-01-18: CLIENTE (portal) → GET /api/ach/transferencias",
+              "request": {
+                "method": "GET",
+                "url": "{{baseInterna}}/api/ach/transferencias",
+                "header": [],
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{token_ana}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "description": ""
+              },
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "type": "text/javascript",
+                    "exec": [
+                      "let j={}; try { j=pm.response.json(); } catch(e) { j={}; }",
+                      "pm.test(\"RT-01-18: HTTP 200\", ()=>pm.expect(pm.response.code).to.be.oneOf([200]));"
+                    ]
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

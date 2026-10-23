@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="BancoERP Nexus · E2 Diseño e Implementación QA (46 casos) · v2 re-prueba cierre E3 · TC-REQ06-001 (subconjunto)" tests="3" time="0.048">
+  <testsuite name="TC-REQ06-001 · Apertura de cuenta con todas las precondiciones / Precondición: caja ABIERTA de qa_cajero (acepta &quot;ya abierta&quot;)" id="65e3382f-162f-45aa-9fe2-d7dedcdbdad2" timestamp="2026-10-23T00:29:55.649Z" tests="1" failures="0" errors="0" time="0.022">
+    <testcase name="TC-REQ06-001: HTTP 200/201/400/409/422" time="0.022" classname="TcReq06001AperturaDeCuentaConTodasLasPrecondicionesPrecondicionCajaAbiertaDeQaCajeroAceptaQuotYaAbiertaQuot"/>
+  </testsuite>
+  <testsuite name="TC-REQ06-001 · Apertura de cuenta con todas las precondiciones / Apertura AHORRO para Ana" id="0753d43c-4c7f-48ce-b9d3-59c335f4d4f8" timestamp="2026-10-23T00:29:55.649Z" tests="3" failures="0" errors="0" time="0.009">
+    <testcase name="TC-REQ06-001: HTTP 201" time="0.009" classname="TcReq06001AperturaDeCuentaConTodasLasPrecondicionesAperturaAhorroParaAna"/>
+    <testcase name="mensaje contiene &quot;Cuenta abierta correctamente&quot;" time="0.009" classname="TcReq06001AperturaDeCuentaConTodasLasPrecondicionesAperturaAhorroParaAna"/>
+    <testcase name="prefijo AH" time="0.009" classname="TcReq06001AperturaDeCuentaConTodasLasPrecondicionesAperturaAhorroParaAna"/>
+  </testsuite>
+  <testsuite name="TC-REQ06-001 · Apertura de cuenta con todas las precondiciones / Consultar cuenta creada" id="3f08c351-e1ae-42a9-a5d6-0a75ffb3a9ad" timestamp="2026-10-23T00:29:55.649Z" tests="2" failures="0" errors="0" time="0.017">
+    <testcase name="TC-REQ06-001: HTTP 200" time="0.017" classname="TcReq06001AperturaDeCuentaConTodasLasPrecondicionesConsultarCuentaCreada"/>
+    <testcase name="ACTIVA" time="0.017" classname="TcReq06001AperturaDeCuentaConTodasLasPrecondicionesConsultarCuentaCreada"/>
+  </testsuite>
+</testsuites>

@@ -1,0 +1,17 @@
+2026-10-22 18:29:51 CST  TC-REQ04-002
+- DPI 12 dígitos
+    POST http://localhost:15141/api/clientes/natural
+    HTTP 400 (23 ms) | ok=2 fail=0
+    body: {"message":"DPI invalido. Debe tener 13 digitos"}
+- DPI 13 dígitos nuevo
+    POST http://localhost:15141/api/clientes/natural
+    HTTP 201 (9 ms) | ok=1 fail=0
+    body: {"id":"ade6c246-3f92-4dd1-8dbb-dcf35d449ec3","message":"Cliente registrado en revision"}
+- DPI 14 dígitos
+    POST http://localhost:15141/api/clientes/natural
+    HTTP 400 (6 ms) | ok=2 fail=0
+    body: {"message":"DPI invalido. Debe tener 13 digitos"}
+- DPI duplicado (Ana)
+    POST http://localhost:15141/api/clientes/natural
+    HTTP 409 (3 ms) | ok=2 fail=0
+    body: {"message":"Ya existe cliente con ese DPI"}

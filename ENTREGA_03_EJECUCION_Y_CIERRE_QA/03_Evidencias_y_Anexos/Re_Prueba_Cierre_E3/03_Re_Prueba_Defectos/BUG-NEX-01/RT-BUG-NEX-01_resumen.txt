@@ -1,0 +1,73 @@
+2026-10-22 18:29:45 CST  RT-BUG-NEX-01
+- RT-01-01: sin token → GET /api/ach/bancos
+    GET http://localhost:15141/api/ach/bancos
+    HTTP 401 (28 ms) | ok=1 fail=0
+    body: 
+- RT-01-02: sin token → GET /api/ach/bancos/activos
+    GET http://localhost:15141/api/ach/bancos/activos
+    HTTP 401 (8 ms) | ok=1 fail=0
+    body: 
+- RT-01-03: sin token → GET /api/ach/bancos/{id}
+    GET http://localhost:15141/api/ach/bancos/e20000000000000000000001
+    HTTP 401 (4 ms) | ok=1 fail=0
+    body: 
+- RT-01-04: sin token → POST /api/ach/bancos
+    POST http://localhost:15141/api/ach/bancos
+    HTTP 401 (2 ms) | ok=1 fail=0
+    body: 
+- RT-01-05: sin token → PUT /api/ach/bancos/{id}
+    PUT http://localhost:15141/api/ach/bancos/e20000000000000000000001
+    HTTP 401 (2 ms) | ok=1 fail=0
+    body: 
+- RT-01-06: sin token → PATCH /api/ach/bancos/{id}/estado
+    PATCH http://localhost:15141/api/ach/bancos/e20000000000000000000001/estado
+    HTTP 401 (3 ms) | ok=1 fail=0
+    body: 
+- RT-01-07: sin token → DELETE /api/ach/bancos/{id}
+    DELETE http://localhost:15141/api/ach/bancos/e20000000000000000000005
+    HTTP 401 (4 ms) | ok=1 fail=0
+    body: 
+- RT-01-08: sin token → GET /api/ach/transferencias
+    GET http://localhost:15141/api/ach/transferencias
+    HTTP 401 (4 ms) | ok=1 fail=0
+    body: 
+- RT-01-09: sin token → POST /api/ach/transferencias/enviar
+    POST http://localhost:15141/api/ach/transferencias/enviar
+    HTTP 401 (4 ms) | ok=1 fail=0
+    body: 
+- RT-01-10: CLIENTE → GET /api/ach/bancos
+    GET http://localhost:15141/api/ach/bancos
+    HTTP 403 (37 ms) | ok=1 fail=0
+    body: 
+- RT-01-11: CAJERO → POST /api/ach/bancos
+    POST http://localhost:15141/api/ach/bancos
+    HTTP 403 (6 ms) | ok=1 fail=0
+    body: 
+- RT-01-12: CAJERO → DELETE /api/ach/bancos/{id}
+    DELETE http://localhost:15141/api/ach/bancos/e20000000000000000000005
+    HTTP 403 (4 ms) | ok=1 fail=0
+    body: 
+- RT-01-13: CLIENTE → PATCH /api/ach/bancos/{id}/estado
+    PATCH http://localhost:15141/api/ach/bancos/e20000000000000000000001/estado
+    HTTP 403 (4 ms) | ok=1 fail=0
+    body: 
+- RT-01-14: BANCO_EXTERNO (JWT público) → GET /api/ach/bancos
+    GET http://localhost:15141/api/ach/bancos
+    HTTP 403 (4 ms) | ok=1 fail=0
+    body: 
+- RT-01-15: ADMIN → GET /api/ach/bancos
+    GET http://localhost:15141/api/ach/bancos
+    HTTP 200 (112 ms) | ok=2 fail=0
+    body: [{"id":"e20000000000000000000005","nombre":"Banco Sintetico duplicate","codigo":"E2_QA_DUPLICATE","descripcion":"Fixture exclusivamente QA; sin integración real.","activo":true,"apiBaseUrl":"http://mock-bank:8081","apiEndpoint":"/duplicate/transferencias","httpMethod":"POST","authLoginEndpoint":null,"authEmail":null,"authPassword":null,"headers":{},"estructuraJsonFormulario":"{ \"numeroCuentaDestino\" : \"EXT-QA-0001\" }","estructuraJsonPayload":"{ }","lookupCuentaEndpoint":"/cuentas/search/{numeroCuenta}","lookupCuentasDisponiblesEndpoint":null,"fechaCreacion":"2026-10-23T00:29:28.137Z","fechaActualizacion":"2026-10-23T00:29:28.136Z"},{"id":"e20000000000000000000003","nombre":"Banco Sintetico invalid","codigo":"E2_QA_INVALID","descripcion":"Fixture exclusivamente QA; sin integración real.","activo":true,"apiBaseUrl":"http://mock-bank:8081","apiEndpoint":"/invalid/transferencias","httpMethod":"POST","authLoginEndpoint":null,"authEmail":null,"authPassword":null,"headers":{},"estructuraJsonFormulario":"{ \"numeroCuentaDestino\" : \"EXT-QA-0001\" }","estructuraJsonPayload":"{ }","lookupCuentaEndpoint":"/cuentas/search/{numeroCuenta}","lookupCuentasDisponiblesEndpoint":null,"fechaCreac
+- RT-01-16: CAJERO → GET /api/ach/bancos/activos
+    GET http://localhost:15141/api/ach/bancos/activos
+    HTTP 200 (8 ms) | ok=1 fail=0
+    body: [{"id":"e20000000000000000000005","nombre":"Banco Sintetico duplicate","codigo":"E2_QA_DUPLICATE","descripcion":"Fixture exclusivamente QA; sin integración real.","activo":true,"apiBaseUrl":"http://mock-bank:8081","apiEndpoint":"/duplicate/transferencias","httpMethod":"POST","authLoginEndpoint":null,"authEmail":null,"authPassword":null,"headers":{},"estructuraJsonFormulario":"{ \"numeroCuentaDestino\" : \"EXT-QA-0001\" }","estructuraJsonPayload":"{ }","lookupCuentaEndpoint":"/cuentas/search/{numeroCuenta}","lookupCuentasDisponiblesEndpoint":null,"fechaCreacion":"2026-10-23T00:29:28.137Z","fechaActualizacion":"2026-10-23T00:29:28.136Z"},{"id":"e20000000000000000000003","nombre":"Banco Sintetico invalid","codigo":"E2_QA_INVALID","descripcion":"Fixture exclusivamente QA; sin integración real.","activo":true,"apiBaseUrl":"http://mock-bank:8081","apiEndpoint":"/invalid/transferencias","httpMethod":"POST","authLoginEndpoint":null,"authEmail":null,"authPassword":null,"headers":{},"estructuraJsonFormulario":"{ \"numeroCuentaDestino\" : \"EXT-QA-0001\" }","estructuraJsonPayload":"{ }","lookupCuentaEndpoint":"/cuentas/search/{numeroCuenta}","lookupCuentasDisponiblesEndpoint":null,"fechaCreac
+- RT-01-17: CLIENTE (portal) → GET /api/ach/bancos/activos
+    GET http://localhost:15141/api/ach/bancos/activos
+    HTTP 200 (6 ms) | ok=1 fail=0
+    body: [{"id":"e20000000000000000000005","nombre":"Banco Sintetico duplicate","codigo":"E2_QA_DUPLICATE","descripcion":"Fixture exclusivamente QA; sin integración real.","activo":true,"apiBaseUrl":"http://mock-bank:8081","apiEndpoint":"/duplicate/transferencias","httpMethod":"POST","authLoginEndpoint":null,"authEmail":null,"authPassword":null,"headers":{},"estructuraJsonFormulario":"{ \"numeroCuentaDestino\" : \"EXT-QA-0001\" }","estructuraJsonPayload":"{ }","lookupCuentaEndpoint":"/cuentas/search/{numeroCuenta}","lookupCuentasDisponiblesEndpoint":null,"fechaCreacion":"2026-10-23T00:29:28.137Z","fechaActualizacion":"2026-10-23T00:29:28.136Z"},{"id":"e20000000000000000000003","nombre":"Banco Sintetico invalid","codigo":"E2_QA_INVALID","descripcion":"Fixture exclusivamente QA; sin integración real.","activo":true,"apiBaseUrl":"http://mock-bank:8081","apiEndpoint":"/invalid/transferencias","httpMethod":"POST","authLoginEndpoint":null,"authEmail":null,"authPassword":null,"headers":{},"estructuraJsonFormulario":"{ \"numeroCuentaDestino\" : \"EXT-QA-0001\" }","estructuraJsonPayload":"{ }","lookupCuentaEndpoint":"/cuentas/search/{numeroCuenta}","lookupCuentasDisponiblesEndpoint":null,"fechaCreac
+- RT-01-18: CLIENTE (portal) → GET /api/ach/transferencias
+    GET http://localhost:15141/api/ach/transferencias
+    HTTP 200 (15 ms) | ok=1 fail=0
+    body: []

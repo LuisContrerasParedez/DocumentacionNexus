@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="BancoERP Nexus · E2 Diseño e Implementación QA (46 casos) · v2 re-prueba cierre E3 · TC-REQ11-001 (subconjunto)" tests="1" time="0.027">
+  <testsuite name="TC-REQ11-001 · Origen y destino no pueden ser la misma cuenta / Transferencia origen = destino" id="fda05663-0352-40a0-bf1b-150412162077" timestamp="2026-10-23T00:24:45.698Z" tests="2" failures="0" errors="0" time="0.027">
+    <testcase name="TC-REQ11-001: HTTP 400" time="0.027" classname="TcReq11001OrigenYDestinoNoPuedenSerLaMismaCuentaTransferenciaOrigenDestino"/>
+    <testcase name="mensaje contiene &quot;misma&quot;" time="0.027" classname="TcReq11001OrigenYDestinoNoPuedenSerLaMismaCuentaTransferenciaOrigenDestino"/>
+  </testsuite>
+</testsuites>

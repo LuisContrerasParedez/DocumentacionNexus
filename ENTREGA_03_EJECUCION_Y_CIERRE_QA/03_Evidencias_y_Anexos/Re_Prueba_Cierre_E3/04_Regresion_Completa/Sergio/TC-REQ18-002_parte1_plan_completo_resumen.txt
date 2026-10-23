@@ -1,0 +1,9 @@
+2026-10-22 18:30:22 CST  TC-REQ18-002_parte1_plan_completo
+- Precondición: caja ABIERTA de qa_cajero (acepta "ya abierta")
+    POST http://localhost:15141/api/cajas/abrir
+    HTTP 422 (21 ms) | ok=1 fail=0
+    body: {"message":"Ya tiene una sesion de caja abierta hoy"}
+- Depósito Q10 con plan contable completo
+    POST http://localhost:15141/api/transacciones/deposito
+    HTTP 200 (10 ms) | ok=1 fail=0
+    body: {"referencia":"DEP-c9ecb1fd1c7144199531e97f16c888c2","saldoNuevo":7010.00,"monto":10.0}

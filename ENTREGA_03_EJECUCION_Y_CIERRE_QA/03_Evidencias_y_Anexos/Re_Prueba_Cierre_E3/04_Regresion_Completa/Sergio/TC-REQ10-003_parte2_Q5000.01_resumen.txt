@@ -1,0 +1,5 @@
+2026-10-22 18:30:17 CST  TC-REQ10-003_parte2_Q5000.01
+- Retiro Q5000.01 tras reiniciar fixture
+    POST http://localhost:15141/api/transacciones/retiro
+    HTTP 422 (30 ms) | ok=2 fail=0
+    body: {"message":"Limite diario excedido. Retirado hoy: Q0.00. Limite: Q5000.00. Puede retirar maximo: Q5000.00"}

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="BancoERP Nexus · E2 Diseño e Implementación QA (46 casos) · v2 re-prueba cierre E3 · TC-REQ18-002_parte2_1101_inactiva (subconjunto)" tests="1" time="0.024">
+  <testsuite name="TC-REQ18-002 · Dependencias de catálogo/plan contable determinan readiness / Depósito Q10 con cuenta contable 1101 inactiva" id="c40dde55-4265-4128-b8e3-c9736e1a8cb8" timestamp="2026-10-23T00:24:50.454Z" tests="2" failures="0" errors="0" time="0.024">
+    <testcase name="TC-REQ18-002: HTTP 422" time="0.024" classname="TcReq18002DependenciasDeCatalogoPlanContableDeterminanReadinessDepositoQ10ConCuentaContable1101Inactiva"/>
+    <testcase name="mensaje contiene &quot;cuenta contable&quot;" time="0.024" classname="TcReq18002DependenciasDeCatalogoPlanContableDeterminanReadinessDepositoQ10ConCuentaContable1101Inactiva"/>
+  </testsuite>
+</testsuites>

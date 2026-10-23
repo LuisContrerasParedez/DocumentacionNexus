@@ -1,0 +1,5 @@
+2026-10-22 18:24:47 CST  TC-REQ11-003
+- Transferir Q400.01 desde AH261002000203 (dejaría Q99.99 < mínimo)
+    POST http://localhost:15141/api/transacciones/transferencia
+    HTTP 422 (26 ms) | ok=1 fail=0
+    body: {"message":"El retiro dejaria el saldo por debajo del minimo requerido"}

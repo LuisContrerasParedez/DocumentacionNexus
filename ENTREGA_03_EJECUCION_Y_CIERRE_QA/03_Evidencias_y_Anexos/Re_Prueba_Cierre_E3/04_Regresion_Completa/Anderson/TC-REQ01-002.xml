@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="BancoERP Nexus · E2 Diseño e Implementación QA (46 casos) · v2 re-prueba cierre E3 · TC-REQ01-002 (subconjunto)" tests="6" time="0.089">
+  <testsuite name="TC-REQ01-002 · Bloqueo en frontera de intentos fallidos / Intento 1 con contraseña errónea" id="b64907df-bc14-4847-9833-cf8d5ff6c327" timestamp="2026-10-23T00:30:26.405Z" tests="2" failures="0" errors="0" time="0.026">
+    <testcase name="TC-REQ01-002: HTTP 401" time="0.026" classname="TcReq01002BloqueoEnFronteraDeIntentosFallidosIntento1ConContrasenaErronea"/>
+    <testcase name="mensaje contiene &quot;Intento 1 de 5&quot;" time="0.026" classname="TcReq01002BloqueoEnFronteraDeIntentosFallidosIntento1ConContrasenaErronea"/>
+  </testsuite>
+  <testsuite name="TC-REQ01-002 · Bloqueo en frontera de intentos fallidos / Intento 2 con contraseña errónea" id="fbf114e1-05a0-4f37-90b5-be217e60a297" timestamp="2026-10-23T00:30:26.405Z" tests="2" failures="0" errors="0" time="0.015">
+    <testcase name="TC-REQ01-002: HTTP 401" time="0.015" classname="TcReq01002BloqueoEnFronteraDeIntentosFallidosIntento2ConContrasenaErronea"/>
+    <testcase name="mensaje contiene &quot;Intento 2 de 5&quot;" time="0.015" classname="TcReq01002BloqueoEnFronteraDeIntentosFallidosIntento2ConContrasenaErronea"/>
+  </testsuite>
+  <testsuite name="TC-REQ01-002 · Bloqueo en frontera de intentos fallidos / Intento 3 con contraseña errónea" id="44e65038-ce5d-4eeb-9079-ed4ff5cc81f5" timestamp="2026-10-23T00:30:26.405Z" tests="2" failures="0" errors="0" time="0.013">
+    <testcase name="TC-REQ01-002: HTTP 401" time="0.013" classname="TcReq01002BloqueoEnFronteraDeIntentosFallidosIntento3ConContrasenaErronea"/>
+    <testcase name="mensaje contiene &quot;Intento 3 de 5&quot;" time="0.013" classname="TcReq01002BloqueoEnFronteraDeIntentosFallidosIntento3ConContrasenaErronea"/>
+  </testsuite>
+  <testsuite name="TC-REQ01-002 · Bloqueo en frontera de intentos fallidos / Intento 4 con contraseña errónea" id="e1752805-a311-4b60-96a6-6b7c725ceefe" timestamp="2026-10-23T00:30:26.405Z" tests="2" failures="0" errors="0" time="0.014">
+    <testcase name="TC-REQ01-002: HTTP 401" time="0.014" classname="TcReq01002BloqueoEnFronteraDeIntentosFallidosIntento4ConContrasenaErronea"/>
+    <testcase name="mensaje contiene &quot;Intento 4 de 5&quot;" time="0.014" classname="TcReq01002BloqueoEnFronteraDeIntentosFallidosIntento4ConContrasenaErronea"/>
+  </testsuite>
+  <testsuite name="TC-REQ01-002 · Bloqueo en frontera de intentos fallidos / Intento 5 con contraseña errónea" id="c3bbb0aa-c081-445c-bc38-63ae69bd3fb7" timestamp="2026-10-23T00:30:26.405Z" tests="1" failures="0" errors="0" time="0.015">
+    <testcase name="TC-REQ01-002: HTTP 401" time="0.015" classname="TcReq01002BloqueoEnFronteraDeIntentosFallidosIntento5ConContrasenaErronea"/>
+  </testsuite>
+  <testsuite name="TC-REQ01-002 · Bloqueo en frontera de intentos fallidos / Intento posterior con contraseña correcta (bloqueo vigente)" id="620c5ab9-64e2-432b-9255-47cab18b82f5" timestamp="2026-10-23T00:30:26.405Z" tests="1" failures="0" errors="0" time="0.006">
+    <testcase name="TC-REQ01-002: HTTP 423" time="0.006" classname="TcReq01002BloqueoEnFronteraDeIntentosFallidosIntentoPosteriorConContrasenaCorrectaBloqueoVigente"/>
+  </testsuite>
+</testsuites>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="BancoERP Nexus · E2 Diseño e Implementación QA (46 casos) · v2 re-prueba cierre E3 · TC-REQ09-001 (subconjunto)" tests="3" time="0.051">
+  <testsuite name="TC-REQ09-001 · Monto mínimo de depósito / Precondición: caja ABIERTA de qa_cajero (acepta &quot;ya abierta&quot;)" id="a93a7392-abe3-4e27-8686-e5621bb3c3fc" timestamp="2026-10-23T00:30:10.235Z" tests="1" failures="0" errors="0" time="0.019">
+    <testcase name="TC-REQ09-001: HTTP 200/201/400/409/422" time="0.019" classname="TcReq09001MontoMinimoDeDepositoPrecondicionCajaAbiertaDeQaCajeroAceptaQuotYaAbiertaQuot"/>
+  </testsuite>
+  <testsuite name="TC-REQ09-001 · Monto mínimo de depósito / Depósito Q0.00" id="56d292f6-de70-45cf-86f0-1fde73c95656" timestamp="2026-10-23T00:30:10.235Z" tests="2" failures="0" errors="0" time="0.014">
+    <testcase name="TC-REQ09-001: HTTP 400" time="0.014" classname="TcReq09001MontoMinimoDeDepositoDepositoQ000"/>
+    <testcase name="mensaje contiene &quot;mayor a cero&quot;" time="0.014" classname="TcReq09001MontoMinimoDeDepositoDepositoQ000"/>
+  </testsuite>
+  <testsuite name="TC-REQ09-001 · Monto mínimo de depósito / Depósito Q0.01" id="46256190-d9a7-4fd9-84ff-77c697e97992" timestamp="2026-10-23T00:30:10.235Z" tests="1" failures="0" errors="0" time="0.018">
+    <testcase name="TC-REQ09-001: HTTP 200" time="0.018" classname="TcReq09001MontoMinimoDeDepositoDepositoQ001"/>
+  </testsuite>
+</testsuites>

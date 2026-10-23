@@ -1,0 +1,5 @@
+2026-10-22 18:30:18 CST  TC-REQ11-001
+- Transferencia origen = destino
+    POST http://localhost:15141/api/transacciones/transferencia
+    HTTP 400 (25 ms) | ok=2 fail=0
+    body: {"message":"La cuenta origen y destino no pueden ser la misma"}

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="BancoERP Nexus · E2 Diseño e Implementación QA (46 casos) · v2 re-prueba cierre E3 · TC-REQ04-002 (subconjunto)" tests="4" time="0.041">
+  <testsuite name="TC-REQ04-002 · Fronteras y duplicidad de DPI / DPI 12 dígitos" id="1385cda1-cf14-46be-a833-aea30890a4cc" timestamp="2026-10-23T00:29:50.449Z" tests="2" failures="0" errors="0" time="0.023">
+    <testcase name="TC-REQ04-002: HTTP 400" time="0.023" classname="TcReq04002FronterasYDuplicidadDeDpiDpi12Digitos"/>
+    <testcase name="mensaje contiene &quot;13 digitos&quot;" time="0.023" classname="TcReq04002FronterasYDuplicidadDeDpiDpi12Digitos"/>
+  </testsuite>
+  <testsuite name="TC-REQ04-002 · Fronteras y duplicidad de DPI / DPI 13 dígitos nuevo" id="ee69fbc5-ad7a-427b-b583-8f0d8e328555" timestamp="2026-10-23T00:29:50.449Z" tests="1" failures="0" errors="0" time="0.009">
+    <testcase name="TC-REQ04-002: HTTP 201" time="0.009" classname="TcReq04002FronterasYDuplicidadDeDpiDpi13DigitosNuevo"/>
+  </testsuite>
+  <testsuite name="TC-REQ04-002 · Fronteras y duplicidad de DPI / DPI 14 dígitos" id="fb62acb7-a8f4-45d2-9775-53f043ca3f58" timestamp="2026-10-23T00:29:50.449Z" tests="2" failures="0" errors="0" time="0.006">
+    <testcase name="TC-REQ04-002: HTTP 400" time="0.006" classname="TcReq04002FronterasYDuplicidadDeDpiDpi14Digitos"/>
+    <testcase name="mensaje contiene &quot;13 digitos&quot;" time="0.006" classname="TcReq04002FronterasYDuplicidadDeDpiDpi14Digitos"/>
+  </testsuite>
+  <testsuite name="TC-REQ04-002 · Fronteras y duplicidad de DPI / DPI duplicado (Ana)" id="a9c7179b-b647-4ec9-b502-086e532edd5f" timestamp="2026-10-23T00:29:50.449Z" tests="2" failures="0" errors="0" time="0.003">
+    <testcase name="TC-REQ04-002: HTTP 409" time="0.003" classname="TcReq04002FronterasYDuplicidadDeDpiDpiDuplicadoAna"/>
+    <testcase name="mensaje contiene &quot;DPI&quot;" time="0.003" classname="TcReq04002FronterasYDuplicidadDeDpiDpiDuplicadoAna"/>
+  </testsuite>
+</testsuites>

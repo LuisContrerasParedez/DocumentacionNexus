@@ -1,0 +1,41 @@
+newman
+
+BancoERP Nexus · E2 Diseño e Implementación QA (46 casos) · v2 re-prueba cierre E3 · TC-REQ06-002 (subconjunto)
+
+❏ TC-REQ06-002 · Negativas de apertura por precondición
+↳ R2: cliente no ACTIVO (Gabriel EN_REVISION)
+  POST http://localhost:15141/api/cuentas [422 Unprocessable Entity, 226B, 23ms]
+  ✓  TC-REQ06-002: HTTP 422
+
+↳ R3: tipo inválido
+  POST http://localhost:15141/api/cuentas [400 Bad Request, 228B, 9ms]
+  ✓  TC-REQ06-002: HTTP 400
+
+↳ R4: usuario sin empleado activo
+  POST http://localhost:15141/api/cuentas [422 Unprocessable Entity, 240B, 5ms]
+  ✓  TC-REQ06-002: HTTP 422
+
+↳ R5: operador sin caja abierta (qa_cajero2)
+  POST http://localhost:15141/api/cuentas [400 Bad Request, 191B, 5ms]
+  ✓  TC-REQ06-002: HTTP 400
+  ✓  mensaje contiene "Abra su caja primero"
+
+┌─────────────────────────┬──────────────────┬─────────────────┐
+│                         │         executed │          failed │
+├─────────────────────────┼──────────────────┼─────────────────┤
+│              iterations │                1 │               0 │
+├─────────────────────────┼──────────────────┼─────────────────┤
+│                requests │                4 │               0 │
+├─────────────────────────┼──────────────────┼─────────────────┤
+│            test-scripts │                4 │               0 │
+├─────────────────────────┼──────────────────┼─────────────────┤
+│      prerequest-scripts │                4 │               0 │
+├─────────────────────────┼──────────────────┼─────────────────┤
+│              assertions │                5 │               0 │
+├─────────────────────────┴──────────────────┴─────────────────┤
+│ total run duration: 735ms                                    │
+├──────────────────────────────────────────────────────────────┤
+│ total data received: 239B (approx)                           │
+├──────────────────────────────────────────────────────────────┤
+│ average response time: 10ms [min: 5ms, max: 23ms, s.d.: 7ms] │
+└──────────────────────────────────────────────────────────────┘

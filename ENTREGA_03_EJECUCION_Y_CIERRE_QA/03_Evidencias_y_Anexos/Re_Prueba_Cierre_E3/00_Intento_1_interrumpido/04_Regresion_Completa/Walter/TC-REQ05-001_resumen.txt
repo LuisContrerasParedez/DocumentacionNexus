@@ -1,0 +1,9 @@
+2026-10-22 18:24:21 CST  TC-REQ05-001
+- Registrar cliente nuevo (Elena)
+    POST http://localhost:15141/api/clientes/natural
+    HTTP 201 (25 ms) | ok=1 fail=0
+    body: {"id":"e779c9cb-422e-4d2f-9a26-36df390420fa","message":"Cliente registrado en revision"}
+- GET cliente: estado inicial
+    GET http://localhost:15141/api/clientes/e779c9cb-422e-4d2f-9a26-36df390420fa
+    HTTP 200 (6 ms) | ok=2 fail=0
+    body: {"id":"e779c9cb-422e-4d2f-9a26-36df390420fa","tipoCliente":"NATURAL","nombreCompleto":"Elena Nueva","dpi":"2999999990197","email":"elena.nueva@nexus.test","telefono":"55990011","observaciones":null,"estado":"EN_REVISION","primerNombre":"Elena","segundoNombre":null,"primerApellido":"Nueva","segundoApellido":null,"fechaNacimiento":"1992-05-05","totalCuentas":0,"cuentasActivas":0,"saldoTotal":0,"creadoEn":"2026-10-23T00:24:21.037629Z","fechaAprobacion":null}

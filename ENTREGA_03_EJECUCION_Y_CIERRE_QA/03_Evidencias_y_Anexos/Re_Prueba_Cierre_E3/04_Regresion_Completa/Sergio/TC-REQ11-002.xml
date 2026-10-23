@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="BancoERP Nexus · E2 Diseño e Implementación QA (46 casos) · v2 re-prueba cierre E3 · TC-REQ11-002 (subconjunto)" tests="1" time="0.019">
+  <testsuite name="TC-REQ11-002 · Transferencia interna atómica válida / Transferir Q1000 AH261002000208 → AH261002000209" id="63e11e14-7157-44e8-89de-465e4d3d6474" timestamp="2026-10-23T00:30:19.030Z" tests="1" failures="0" errors="0" time="0.019">
+    <testcase name="TC-REQ11-002: HTTP 200" time="0.019" classname="TcReq11002TransferenciaInternaAtomicaValidaTransferirQ1000Ah261002000208Ah261002000209"/>
+  </testsuite>
+</testsuites>

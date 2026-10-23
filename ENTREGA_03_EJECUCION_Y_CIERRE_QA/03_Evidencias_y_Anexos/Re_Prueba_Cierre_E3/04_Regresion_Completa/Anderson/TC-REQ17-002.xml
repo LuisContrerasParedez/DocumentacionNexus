@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="BancoERP Nexus · E2 Diseño e Implementación QA (46 casos) · v2 re-prueba cierre E3 · TC-REQ17-002 (subconjunto)" tests="3" time="0.085">
+  <testsuite name="TC-REQ17-002 · Permiso externo obligatorio en PublicAPI / Login externo qa.banco.externo@nexus.test" id="bc594e3d-7399-47d7-a8e6-e65e3f65f08c" timestamp="2026-10-23T00:30:44.258Z" tests="1" failures="0" errors="0" time="0.035">
+    <testcase name="TC-REQ17-002: HTTP 200" time="0.035" classname="TcReq17002PermisoExternoObligatorioEnPublicApiLoginExternoQaBancoExternoNexusTest"/>
+  </testsuite>
+  <testsuite name="TC-REQ17-002 · Permiso externo obligatorio en PublicAPI / Búsqueda de cuenta sin ach.public.cuentas.consultar" id="182941d8-a4b0-48d5-b67f-6ba6fdf01411" timestamp="2026-10-23T00:30:44.258Z" tests="1" failures="0" errors="0" time="0.039">
+    <testcase name="TC-REQ17-002: HTTP 403" time="0.039" classname="TcReq17002PermisoExternoObligatorioEnPublicApiBusquedaDeCuentaSinAchPublicCuentasConsultar"/>
+  </testsuite>
+  <testsuite name="TC-REQ17-002 · Permiso externo obligatorio en PublicAPI / Transferencia entrante sin ach.public.transferencias.crear" id="428e5b49-abf5-4be6-a208-c4027c7dc150" timestamp="2026-10-23T00:30:44.258Z" tests="1" failures="0" errors="0" time="0.011">
+    <testcase name="TC-REQ17-002: HTTP 403" time="0.011" classname="TcReq17002PermisoExternoObligatorioEnPublicApiTransferenciaEntranteSinAchPublicTransferenciasCrear"/>
+  </testsuite>
+</testsuites>

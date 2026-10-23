@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="BancoERP Nexus · E2 Diseño e Implementación QA (46 casos) · v2 re-prueba cierre E3 · TC-REQ02-002 (subconjunto)" tests="4" time="0.063">
+  <testsuite name="TC-REQ02-002 · Logout revoca la sesión activa / Login qa_cajero" id="f77b66b8-e9de-4dcc-a773-72bff4ccb887" timestamp="2026-10-23T00:30:30.560Z" tests="1" failures="0" errors="0" time="0.033">
+    <testcase name="TC-REQ02-002: HTTP 200" time="0.033" classname="TcReq02002LogoutRevocaLaSesionActivaLoginQaCajero"/>
+  </testsuite>
+  <testsuite name="TC-REQ02-002 · Logout revoca la sesión activa / Logout" id="6ff8938b-6982-4846-8328-5304d8d325a6" timestamp="2026-10-23T00:30:30.560Z" tests="1" failures="0" errors="0" time="0.017">
+    <testcase name="TC-REQ02-002: HTTP 200/204" time="0.017" classname="TcReq02002LogoutRevocaLaSesionActivaLogout"/>
+  </testsuite>
+  <testsuite name="TC-REQ02-002 · Logout revoca la sesión activa / Reutilizar access token en /api/auth/me" id="ab87bb4c-67a9-40ac-9725-e7190aa36775" timestamp="2026-10-23T00:30:30.560Z" tests="1" failures="0" errors="0" time="0.010">
+    <testcase name="TC-REQ02-002: HTTP 401" time="0.010" classname="TcReq02002LogoutRevocaLaSesionActivaReutilizarAccessTokenEnApiAuthMe"/>
+  </testsuite>
+  <testsuite name="TC-REQ02-002 · Logout revoca la sesión activa / Refresh de la sesión revocada" id="2dd1eb06-3c05-4734-9efa-e73c7650566f" timestamp="2026-10-23T00:30:30.560Z" tests="1" failures="0" errors="0" time="0.003">
+    <testcase name="TC-REQ02-002: HTTP 401" time="0.003" classname="TcReq02002LogoutRevocaLaSesionActivaRefreshDeLaSesionRevocada"/>
+  </testsuite>
+</testsuites>

@@ -1,0 +1,436 @@
+[
+  {
+    "fase": "Re-prueba",
+    "tag": "00_Preparacion",
+    "requests": 7,
+    "assertions": 7,
+    "fallidas": 0
+  },
+  {
+    "fase": "Re-prueba",
+    "tag": "RT-BUG-NEX-01",
+    "requests": 18,
+    "assertions": 19,
+    "fallidas": 0
+  },
+  {
+    "fase": "Re-prueba",
+    "tag": "TC-REQ03-002_con_P7-ACH",
+    "requests": 5,
+    "assertions": 6,
+    "fallidas": 0
+  },
+  {
+    "fase": "Regresión",
+    "tag": "00_Preparacion",
+    "requests": 7,
+    "assertions": 7,
+    "fallidas": 0
+  },
+  {
+    "fase": "Regresión",
+    "tag": "TC-REQ04-001",
+    "requests": 3,
+    "assertions": 4,
+    "fallidas": 0
+  },
+  {
+    "fase": "Regresión",
+    "tag": "TC-REQ04-002",
+    "requests": 4,
+    "assertions": 7,
+    "fallidas": 0
+  },
+  {
+    "fase": "Regresión",
+    "tag": "TC-REQ04-003",
+    "requests": 3,
+    "assertions": 6,
+    "fallidas": 0
+  },
+  {
+    "fase": "Regresión",
+    "tag": "TC-REQ05-001",
+    "requests": 2,
+    "assertions": 3,
+    "fallidas": 0
+  },
+  {
+    "fase": "Regresión",
+    "tag": "TC-REQ05-002",
+    "requests": 4,
+    "assertions": 4,
+    "fallidas": 0
+  },
+  {
+    "fase": "Regresión",
+    "tag": "TC-REQ06-001",
+    "requests": 3,
+    "assertions": 6,
+    "fallidas": 0
+  },
+  {
+    "fase": "Regresión",
+    "tag": "TC-REQ06-002",
+    "requests": 4,
+    "assertions": 5,
+    "fallidas": 0
+  },
+  {
+    "fase": "Regresión",
+    "tag": "TC-REQ07-001",
+    "requests": 2,
+    "assertions": 4,
+    "fallidas": 0
+  },
+  {
+    "fase": "Regresión",
+    "tag": "TC-REQ07-002",
+    "requests": 3,
+    "assertions": 5,
+    "fallidas": 0
+  },
+  {
+    "fase": "Regresión",
+    "tag": "TC-REQ07-003",
+    "requests": 3,
+    "assertions": 5,
+    "fallidas": 0
+  },
+  {
+    "fase": "Regresión",
+    "tag": "TC-REQ12-001",
+    "requests": 1,
+    "assertions": 4,
+    "fallidas": 0
+  },
+  {
+    "fase": "Regresión",
+    "tag": "TC-REQ12-002",
+    "requests": 1,
+    "assertions": 2,
+    "fallidas": 0
+  },
+  {
+    "fase": "Regresión",
+    "tag": "TC-REQ12-003_parte1_Q100.00",
+    "requests": 1,
+    "assertions": 1,
+    "fallidas": 0
+  },
+  {
+    "fase": "Regresión",
+    "tag": "TC-REQ12-003_parte2_Q100.01",
+    "requests": 1,
+    "assertions": 2,
+    "fallidas": 0
+  },
+  {
+    "fase": "Regresión",
+    "tag": "00_Preparacion",
+    "requests": 7,
+    "assertions": 7,
+    "fallidas": 0
+  },
+  {
+    "fase": "Regresión",
+    "tag": "TC-REQ08-001",
+    "requests": 2,
+    "assertions": 3,
+    "fallidas": 0
+  },
+  {
+    "fase": "Regresión",
+    "tag": "TC-REQ08-002",
+    "requests": 3,
+    "assertions": 4,
+    "fallidas": 0
+  },
+  {
+    "fase": "Regresión",
+    "tag": "TC-REQ08-003",
+    "requests": 1,
+    "assertions": 2,
+    "fallidas": 0
+  },
+  {
+    "fase": "Regresión",
+    "tag": "TC-REQ09-001",
+    "requests": 3,
+    "assertions": 4,
+    "fallidas": 0
+  },
+  {
+    "fase": "Regresión",
+    "tag": "TC-REQ09-002",
+    "requests": 2,
+    "assertions": 3,
+    "fallidas": 0
+  },
+  {
+    "fase": "Regresión",
+    "tag": "TC-REQ09-003",
+    "requests": 2,
+    "assertions": 3,
+    "fallidas": 0
+  },
+  {
+    "fase": "Regresión",
+    "tag": "TC-REQ10-001",
+    "requests": 2,
+    "assertions": 3,
+    "fallidas": 0
+  },
+  {
+    "fase": "Regresión",
+    "tag": "TC-REQ10-002",
+    "requests": 1,
+    "assertions": 1,
+    "fallidas": 0
+  },
+  {
+    "fase": "Regresión",
+    "tag": "TC-REQ10-003_parte1_Q5000.00",
+    "requests": 1,
+    "assertions": 1,
+    "fallidas": 0
+  },
+  {
+    "fase": "Regresión",
+    "tag": "TC-REQ09-001_precondicion_caja_para_TC-REQ10-003",
+    "requests": 1,
+    "assertions": 1,
+    "fallidas": 0
+  },
+  {
+    "fase": "Regresión",
+    "tag": "TC-REQ10-003_parte2_Q5000.01",
+    "requests": 1,
+    "assertions": 2,
+    "fallidas": 0
+  },
+  {
+    "fase": "Regresión",
+    "tag": "TC-REQ11-001",
+    "requests": 1,
+    "assertions": 2,
+    "fallidas": 0
+  },
+  {
+    "fase": "Regresión",
+    "tag": "TC-REQ11-002",
+    "requests": 1,
+    "assertions": 1,
+    "fallidas": 0
+  },
+  {
+    "fase": "Regresión",
+    "tag": "TC-REQ11-003",
+    "requests": 1,
+    "assertions": 1,
+    "fallidas": 0
+  },
+  {
+    "fase": "Regresión",
+    "tag": "TC-REQ18-001",
+    "requests": 2,
+    "assertions": 4,
+    "fallidas": 0
+  },
+  {
+    "fase": "Regresión",
+    "tag": "TC-REQ18-002_parte1_plan_completo",
+    "requests": 2,
+    "assertions": 2,
+    "fallidas": 0
+  },
+  {
+    "fase": "Regresión",
+    "tag": "TC-REQ18-002_parte2_1101_inactiva",
+    "requests": 1,
+    "assertions": 2,
+    "fallidas": 0
+  },
+  {
+    "fase": "Regresión",
+    "tag": "00_Preparacion",
+    "requests": 7,
+    "assertions": 7,
+    "fallidas": 0
+  },
+  {
+    "fase": "Regresión",
+    "tag": "TC-REQ01-001",
+    "requests": 1,
+    "assertions": 2,
+    "fallidas": 0
+  },
+  {
+    "fase": "Regresión",
+    "tag": "TC-REQ01-002",
+    "requests": 6,
+    "assertions": 10,
+    "fallidas": 0
+  },
+  {
+    "fase": "Regresión",
+    "tag": "TC-REQ01-003",
+    "requests": 2,
+    "assertions": 6,
+    "fallidas": 0
+  },
+  {
+    "fase": "Regresión",
+    "tag": "TC-REQ02-001",
+    "requests": 3,
+    "assertions": 4,
+    "fallidas": 0
+  },
+  {
+    "fase": "Regresión",
+    "tag": "TC-REQ02-002",
+    "requests": 4,
+    "assertions": 4,
+    "fallidas": 0
+  },
+  {
+    "fase": "Regresión",
+    "tag": "TC-REQ03-001",
+    "requests": 1,
+    "assertions": 1,
+    "fallidas": 0
+  },
+  {
+    "fase": "Regresión",
+    "tag": "TC-REQ03-002",
+    "requests": 5,
+    "assertions": 6,
+    "fallidas": 0
+  },
+  {
+    "fase": "Regresión",
+    "tag": "TC-REQ13-001",
+    "requests": 2,
+    "assertions": 3,
+    "fallidas": 0
+  },
+  {
+    "fase": "Regresión",
+    "tag": "TC-REQ13-002",
+    "requests": 3,
+    "assertions": 5,
+    "fallidas": 0
+  },
+  {
+    "fase": "Regresión",
+    "tag": "TC-REQ09-001_precondicion_caja_para_TC-REQ14-001",
+    "requests": 1,
+    "assertions": 1,
+    "fallidas": 0
+  },
+  {
+    "fase": "Regresión",
+    "tag": "TC-REQ14-001",
+    "requests": 4,
+    "assertions": 5,
+    "fallidas": 0
+  },
+  {
+    "fase": "Regresión",
+    "tag": "TC-REQ14-002",
+    "requests": 4,
+    "assertions": 6,
+    "fallidas": 0
+  },
+  {
+    "fase": "Regresión",
+    "tag": "TC-REQ14-003_parte1_Q10.00",
+    "requests": 1,
+    "assertions": 1,
+    "fallidas": 0
+  },
+  {
+    "fase": "Regresión",
+    "tag": "TC-REQ09-001_precondicion_caja_para_TC-REQ14-003",
+    "requests": 1,
+    "assertions": 1,
+    "fallidas": 0
+  },
+  {
+    "fase": "Regresión",
+    "tag": "TC-REQ14-003_parte2_Q10.01",
+    "requests": 1,
+    "assertions": 2,
+    "fallidas": 0
+  },
+  {
+    "fase": "Regresión",
+    "tag": "TC-REQ17-001",
+    "requests": 2,
+    "assertions": 4,
+    "fallidas": 0
+  },
+  {
+    "fase": "Regresión",
+    "tag": "TC-REQ17-002",
+    "requests": 3,
+    "assertions": 3,
+    "fallidas": 0
+  },
+  {
+    "fase": "Regresión",
+    "tag": "TC-REQ17-003",
+    "requests": 2,
+    "assertions": 4,
+    "fallidas": 0
+  },
+  {
+    "fase": "Regresión",
+    "tag": "00_Preparacion",
+    "requests": 7,
+    "assertions": 7,
+    "fallidas": 0
+  },
+  {
+    "fase": "Regresión",
+    "tag": "TC-REQ15-001",
+    "requests": 7,
+    "assertions": 10,
+    "fallidas": 0
+  },
+  {
+    "fase": "Regresión",
+    "tag": "TC-REQ15-002",
+    "requests": 2,
+    "assertions": 2,
+    "fallidas": 0
+  },
+  {
+    "fase": "Regresión",
+    "tag": "TC-REQ16-002",
+    "requests": 2,
+    "assertions": 2,
+    "fallidas": 0
+  },
+  {
+    "fase": "Re-prueba",
+    "tag": "00_Preparacion_REP01",
+    "requests": 3,
+    "assertions": 3,
+    "fallidas": 0
+  },
+  {
+    "fase": "Re-prueba",
+    "tag": "TC-REQ09-001_precondicion_caja_REP01",
+    "requests": 1,
+    "assertions": 1,
+    "fallidas": 0
+  },
+  {
+    "fase": "Re-prueba",
+    "tag": "TC-REQ16-001",
+    "requests": 3,
+    "assertions": 14,
+    "fallidas": 0
+  }
+]

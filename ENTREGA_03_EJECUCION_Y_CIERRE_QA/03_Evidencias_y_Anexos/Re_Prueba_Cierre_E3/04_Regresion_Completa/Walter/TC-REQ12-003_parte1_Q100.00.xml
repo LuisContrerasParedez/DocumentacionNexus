@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="BancoERP Nexus · E2 Diseño e Implementación QA (46 casos) · v2 re-prueba cierre E3 · TC-REQ12-003_parte1_Q100.00 (subconjunto)" tests="1" time="0.029">
+  <testsuite name="TC-REQ12-003 · Límite diario del portal en frontera / Portal Q100.00 (restante exacto)" id="04bf1c16-772a-4fc8-8505-310889d903fc" timestamp="2026-10-23T00:30:03.565Z" tests="1" failures="0" errors="0" time="0.029">
+    <testcase name="TC-REQ12-003: HTTP 200" time="0.029" classname="TcReq12003LimiteDiarioDelPortalEnFronteraPortalQ10000RestanteExacto"/>
+  </testsuite>
+</testsuites>

@@ -1,0 +1,29 @@
+newman
+
+BancoERP Nexus · E2 Diseño e Implementación QA (46 casos) · v2 re-prueba cierre E3 · TC-REQ18-002_parte2_1101_inactiva (subconjunto)
+
+❏ TC-REQ18-002 · Dependencias de catálogo/plan contable determinan readiness
+↳ Depósito Q10 con cuenta contable 1101 inactiva
+  POST http://localhost:15141/api/transacciones/deposito [422 Unprocessable Entity, 258B, 24ms]
+  ✓  TC-REQ18-002: HTTP 422
+  ✓  mensaje contiene "cuenta contable"
+
+┌─────────────────────────┬──────────────────┬──────────────────┐
+│                         │         executed │           failed │
+├─────────────────────────┼──────────────────┼──────────────────┤
+│              iterations │                1 │                0 │
+├─────────────────────────┼──────────────────┼──────────────────┤
+│                requests │                1 │                0 │
+├─────────────────────────┼──────────────────┼──────────────────┤
+│            test-scripts │                1 │                0 │
+├─────────────────────────┼──────────────────┼──────────────────┤
+│      prerequest-scripts │                1 │                0 │
+├─────────────────────────┼──────────────────┼──────────────────┤
+│              assertions │                2 │                0 │
+├─────────────────────────┴──────────────────┴──────────────────┤
+│ total run duration: 204ms                                     │
+├───────────────────────────────────────────────────────────────┤
+│ total data received: 92B (approx)                             │
+├───────────────────────────────────────────────────────────────┤
+│ average response time: 24ms [min: 24ms, max: 24ms, s.d.: 0µs] │
+└───────────────────────────────────────────────────────────────┘

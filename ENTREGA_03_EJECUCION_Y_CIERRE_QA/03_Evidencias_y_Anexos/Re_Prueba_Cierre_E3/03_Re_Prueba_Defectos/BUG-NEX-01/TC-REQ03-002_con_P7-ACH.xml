@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="BancoERP Nexus · E2 Diseño e Implementación QA (46 casos) · v2 re-prueba cierre E3 · TC-REQ03-002 (subconjunto)" tests="5" time="0.048">
+  <testsuite name="TC-REQ03-002 · Denegación por rol/permiso insuficiente / P2: CLIENTE → /api/clientes" id="5282e9e0-62e4-4ab2-bab3-60145afdbce6" timestamp="2026-10-23T00:29:45.692Z" tests="1" failures="0" errors="0" time="0.025">
+    <testcase name="TC-REQ03-002: HTTP 403" time="0.025" classname="TcReq03002DenegacionPorRolPermisoInsuficienteP2ClienteApiClientes"/>
+  </testsuite>
+  <testsuite name="TC-REQ03-002 · Denegación por rol/permiso insuficiente / P4: BANCO_EXTERNO (JWT público) → InternalAPI" id="8dbc11fd-038f-49d6-ba12-73d15b90d810" timestamp="2026-10-23T00:29:45.692Z" tests="1" failures="0" errors="0" time="0.007">
+    <testcase name="TC-REQ03-002: HTTP 401/403" time="0.007" classname="TcReq03002DenegacionPorRolPermisoInsuficienteP4BancoExternoJwtPublicoInternalApi"/>
+  </testsuite>
+  <testsuite name="TC-REQ03-002 · Denegación por rol/permiso insuficiente / Sin permiso → endpoint mutable (POST cliente con token CLIENTE)" id="431cce3b-698a-438c-bb47-0ea5d4437333" timestamp="2026-10-23T00:29:45.692Z" tests="1" failures="0" errors="0" time="0.008">
+    <testcase name="TC-REQ03-002: HTTP 403" time="0.008" classname="TcReq03002DenegacionPorRolPermisoInsuficienteSinPermisoEndpointMutablePostClienteConTokenCliente"/>
+  </testsuite>
+  <testsuite name="TC-REQ03-002 · Denegación por rol/permiso insuficiente / P7: sin token → endpoint protegido" id="d430ab8c-2f1e-41d2-992e-afde019102e0" timestamp="2026-10-23T00:29:45.692Z" tests="1" failures="0" errors="0" time="0.005">
+    <testcase name="TC-REQ03-002: HTTP 401" time="0.005" classname="TcReq03002DenegacionPorRolPermisoInsuficienteP7SinTokenEndpointProtegido"/>
+  </testsuite>
+  <testsuite name="TC-REQ03-002 · Denegación por rol/permiso insuficiente / TC-REQ03-002 P7-ACH: sin token → GET /api/ach/bancos" id="9a59f163-e552-4d79-81cb-300b5b8bc74f" timestamp="2026-10-23T00:29:45.692Z" tests="2" failures="0" errors="0" time="0.003">
+    <testcase name="TC-REQ03-002 P7-ACH: HTTP 401" time="0.003" classname="TcReq03002DenegacionPorRolPermisoInsuficienteTcReq03002P7AchSinTokenGetApiAchBancos"/>
+    <testcase name="TC-REQ03-002 P7-ACH: no expone configuración ACH" time="0.003" classname="TcReq03002DenegacionPorRolPermisoInsuficienteTcReq03002P7AchSinTokenGetApiAchBancos"/>
+  </testsuite>
+</testsuites>

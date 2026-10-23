@@ -1,0 +1,28 @@
+newman
+
+BancoERP Nexus · E2 Diseño e Implementación QA (46 casos) · v2 re-prueba cierre E3 · TC-REQ11-003 (subconjunto)
+
+❏ TC-REQ11-003 · Fallo de validación no deja débito parcial
+↳ Transferir Q400.01 desde AH261002000203 (dejaría Q99.99 < mínimo)
+  POST http://localhost:15141/api/transacciones/transferencia [422 Unprocessable Entity, 238B, 26ms]
+  ✓  TC-REQ11-003: HTTP 422
+
+┌─────────────────────────┬──────────────────┬──────────────────┐
+│                         │         executed │           failed │
+├─────────────────────────┼──────────────────┼──────────────────┤
+│              iterations │                1 │                0 │
+├─────────────────────────┼──────────────────┼──────────────────┤
+│                requests │                1 │                0 │
+├─────────────────────────┼──────────────────┼──────────────────┤
+│            test-scripts │                1 │                0 │
+├─────────────────────────┼──────────────────┼──────────────────┤
+│      prerequest-scripts │                1 │                0 │
+├─────────────────────────┼──────────────────┼──────────────────┤
+│              assertions │                1 │                0 │
+├─────────────────────────┴──────────────────┴──────────────────┤
+│ total run duration: 214ms                                     │
+├───────────────────────────────────────────────────────────────┤
+│ total data received: 72B (approx)                             │
+├───────────────────────────────────────────────────────────────┤
+│ average response time: 26ms [min: 26ms, max: 26ms, s.d.: 0µs] │
+└───────────────────────────────────────────────────────────────┘

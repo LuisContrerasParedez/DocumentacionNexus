@@ -1,0 +1,34 @@
+newman
+
+BancoERP Nexus · E2 Diseño e Implementación QA (46 casos) · v2 re-prueba cierre E3 · TC-REQ07-001 (subconjunto)
+
+❏ TC-REQ07-001 · Bloqueo de cuenta activa
+↳ Bloquear AH261002000210
+  PATCH http://localhost:15141/api/cuentas/b7c1cc0f-7631-53b1-82a7-8b09a8cc75da/bloquear [200 OK, 199B, 30ms]
+  ✓  TC-REQ07-001: HTTP 200
+  ✓  mensaje contiene "Cuenta bloqueada"
+
+↳ Consultar estado
+  GET http://localhost:15141/api/cuentas/b7c1cc0f-7631-53b1-82a7-8b09a8cc75da [200 OK, 582B, 9ms]
+  ✓  TC-REQ07-001: HTTP 200
+  ✓  BLOQUEADA
+
+┌─────────────────────────┬──────────────────┬──────────────────┐
+│                         │         executed │           failed │
+├─────────────────────────┼──────────────────┼──────────────────┤
+│              iterations │                1 │                0 │
+├─────────────────────────┼──────────────────┼──────────────────┤
+│                requests │                2 │                0 │
+├─────────────────────────┼──────────────────┼──────────────────┤
+│            test-scripts │                2 │                0 │
+├─────────────────────────┼──────────────────┼──────────────────┤
+│      prerequest-scripts │                2 │                0 │
+├─────────────────────────┼──────────────────┼──────────────────┤
+│              assertions │                4 │                0 │
+├─────────────────────────┴──────────────────┴──────────────────┤
+│ total run duration: 391ms                                     │
+├───────────────────────────────────────────────────────────────┤
+│ total data received: 485B (approx)                            │
+├───────────────────────────────────────────────────────────────┤
+│ average response time: 19ms [min: 9ms, max: 30ms, s.d.: 10ms] │
+└───────────────────────────────────────────────────────────────┘

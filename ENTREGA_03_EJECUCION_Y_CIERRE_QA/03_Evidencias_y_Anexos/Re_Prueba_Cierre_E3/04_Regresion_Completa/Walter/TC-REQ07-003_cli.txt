@@ -1,0 +1,38 @@
+newman
+
+BancoERP Nexus · E2 Diseño e Implementación QA (46 casos) · v2 re-prueba cierre E3 · TC-REQ07-003 (subconjunto)
+
+❏ TC-REQ07-003 · Actualización de límite no negativo y no modificable al cerrar
+↳ Límite -0.01 en cuenta ACTIVA
+  PATCH http://localhost:15141/api/cuentas/f448814a-3b4e-53e9-a426-f8592316be4d/limite-retiro [400 Bad Request, 211B, 25ms]
+  ✓  TC-REQ07-003: HTTP 400
+  ✓  mensaje contiene "negativo"
+
+↳ Límite 0.00 en cuenta ACTIVA
+  PATCH http://localhost:15141/api/cuentas/f448814a-3b4e-53e9-a426-f8592316be4d/limite-retiro [200 OK, 222B, 11ms]
+  ✓  TC-REQ07-003: HTTP 200
+
+↳ Límite en cuenta CERRADA
+  PATCH http://localhost:15141/api/cuentas/95227470-cd90-549c-bb0f-d6eeb7984075/limite-retiro [422 Unprocessable Entity, 236B, 3ms]
+  ✓  TC-REQ07-003: HTTP 422
+  ✓  mensaje contiene "cerrada"
+
+┌─────────────────────────┬──────────────────┬─────────────────┐
+│                         │         executed │          failed │
+├─────────────────────────┼──────────────────┼─────────────────┤
+│              iterations │                1 │               0 │
+├─────────────────────────┼──────────────────┼─────────────────┤
+│                requests │                3 │               0 │
+├─────────────────────────┼──────────────────┼─────────────────┤
+│            test-scripts │                3 │               0 │
+├─────────────────────────┼──────────────────┼─────────────────┤
+│      prerequest-scripts │                3 │               0 │
+├─────────────────────────┼──────────────────┼─────────────────┤
+│              assertions │                5 │               0 │
+├─────────────────────────┴──────────────────┴─────────────────┤
+│ total run duration: 553ms                                    │
+├──────────────────────────────────────────────────────────────┤
+│ total data received: 198B (approx)                           │
+├──────────────────────────────────────────────────────────────┤
+│ average response time: 13ms [min: 3ms, max: 25ms, s.d.: 9ms] │
+└──────────────────────────────────────────────────────────────┘

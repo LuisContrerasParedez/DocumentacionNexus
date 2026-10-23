@@ -1,0 +1,35 @@
+=== Verificación del entorno de re-prueba — 2026-10-22 18:29:38 CST ===
+Compose: /Users/luisalejandrocontrerasparedez/Documents/Universidad/SEPTIMO Y NOVENO/AdminTec/ProyectoADM-info/ENTREGA_02_DISENO_E_IMPLEMENTACION_QA/03_Evidencias_y_MockData/docker-compose.qa.yml (proyecto bancoerp-e3-retest)
+
+NAME                                IMAGE                              COMMAND                  SERVICE        CREATED          STATUS                    PORTS
+bancoerp-e3-retest-frontend-1       bancoerp-dev-frontend:latest       "docker-entrypoint.s…"   frontend       16 seconds ago   Up 12 seconds             127.0.0.1:13000->3000/tcp
+bancoerp-e3-retest-internal-api-1   bancoerp-dev-internal-api:latest   "dotnet run --proper…"   internal-api   16 seconds ago   Up 12 seconds             127.0.0.1:15141->8080/tcp
+bancoerp-e3-retest-mock-bank-1      bancoerp-dev-frontend:latest       "docker-entrypoint.s…"   mock-bank      16 seconds ago   Up 15 seconds             127.0.0.1:18081->8081/tcp
+bancoerp-e3-retest-mongo-1          mongo:8.0                          "docker-entrypoint.s…"   mongo          16 seconds ago   Up 15 seconds             127.0.0.1:17017->27017/tcp
+bancoerp-e3-retest-postgres-1       postgres:16-alpine                 "docker-entrypoint.s…"   postgres       16 seconds ago   Up 15 seconds (healthy)   127.0.0.1:15433->5432/tcp
+bancoerp-e3-retest-public-api-1     bancoerp-dev-public-api:latest     "dotnet run --proper…"   public-api     16 seconds ago   Up 12 seconds             127.0.0.1:15254->8080/tcp
+
+=== Versiones ===
+PostgreSQL 16.15 on aarch64-unknown-linux-musl, compiled by gcc (Alpine 15.2.0) 15.2.0, 64-bit
+db version v8.0.29
+newman 6.2.3
+dotnet SDK host 10.0.300
+
+=== Build montada (/src) ===
+baseline 0453d06 Agregando documentacion de pruebas (2026-09-15 10:54:00 -0600)
+   M BancoERP.Application/Services/CatalogoSupport.cs
+   M BancoERP.Application/Services/ExternalAchPublicService.cs
+   M BancoERP.Application/Services/ExternalAchPublicValidators.cs
+   M BancoERP.Application/Services/ReporteService.cs
+   M BancoERP.Domain/Constants/PermisosSeguridad.cs
+   M BancoERP.InternalAPI/Controllers/AchBancosController.cs
+   M BancoERP.InternalAPI/Controllers/AchTransferenciasController.cs
+   M BancoERP.UnitTests/BancoERP.UnitTests.csproj
+   M BancoERP.UnitTests/ExternalPublicApiTests.cs
+   M database/deploy/production/013_external_public_ach.sql
+   M database/deploy/production/README_PRODUCTION_DEPLOY.md
+   M database/scripts/seed_crm_bpm_demo.sql
+  ?? BancoERP.UnitTests/InternalApiAuthorizationTests.cs
+  ?? database/deploy/production/016_fix_ach_transferencia_entrante.sql
+  ?? database/docker-init/
+  ?? database/seeds/demo_data_seed.sql

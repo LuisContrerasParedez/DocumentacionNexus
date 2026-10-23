@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="BancoERP Nexus · E2 Diseño e Implementación QA (46 casos) · v2 re-prueba cierre E3 · TC-REQ09-003 (subconjunto)" tests="2" time="0.030">
+  <testsuite name="TC-REQ09-003 · Depósito rechazado por estado/caja / Depósito a cuenta BLOQUEADA AH261002000103" id="eedfd7fe-307a-4c43-9562-3ac0b124f358" timestamp="2026-10-23T00:24:40.150Z" tests="1" failures="0" errors="0" time="0.026">
+    <testcase name="TC-REQ09-003: HTTP 422" time="0.026" classname="TcReq09003DepositoRechazadoPorEstadoCajaDepositoACuentaBloqueadaAh261002000103"/>
+  </testsuite>
+  <testsuite name="TC-REQ09-003 · Depósito rechazado por estado/caja / Depósito con operador sin caja (qa_cajero2)" id="7915e070-e4d3-4c8e-a388-a9b3f12f46ef" timestamp="2026-10-23T00:24:40.150Z" tests="2" failures="0" errors="0" time="0.004">
+    <testcase name="TC-REQ09-003: HTTP 422" time="0.004" classname="TcReq09003DepositoRechazadoPorEstadoCajaDepositoConOperadorSinCajaQaCajero2"/>
+    <testcase name="mensaje contiene &quot;caja abierta&quot;" time="0.004" classname="TcReq09003DepositoRechazadoPorEstadoCajaDepositoConOperadorSinCajaQaCajero2"/>
+  </testsuite>
+</testsuites>

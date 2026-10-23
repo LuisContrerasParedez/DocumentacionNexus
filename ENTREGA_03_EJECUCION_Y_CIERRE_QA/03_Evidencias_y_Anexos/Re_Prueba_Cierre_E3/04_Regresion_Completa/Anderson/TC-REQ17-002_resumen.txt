@@ -1,0 +1,13 @@
+2026-10-22 18:30:44 CST  TC-REQ17-002
+- Login externo qa.banco.externo@nexus.test
+    POST http://localhost:15254/api/external/auth/login
+    HTTP 200 (35 ms) | ok=1 fail=0
+    body: {"accessToken":"<JWT-redactado>","expiresAt":"2026-10-23T01:30:44.4597062Z","tokenType":"Bearer"}
+- Búsqueda de cuenta sin ach.public.cuentas.consultar
+    GET http://localhost:15254/api/external/ach/cuentas/search/AH261002000101
+    HTTP 403 (39 ms) | ok=1 fail=0
+    body: 
+- Transferencia entrante sin ach.public.transferencias.crear
+    POST http://localhost:15254/api/external/ach/transferencias
+    HTTP 403 (11 ms) | ok=1 fail=0
+    body: 

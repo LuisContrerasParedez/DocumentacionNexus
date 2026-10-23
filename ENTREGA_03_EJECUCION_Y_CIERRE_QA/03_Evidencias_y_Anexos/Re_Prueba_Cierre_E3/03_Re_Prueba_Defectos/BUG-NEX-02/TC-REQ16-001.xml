@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="BancoERP Nexus · E2 Diseño e Implementación QA (46 casos) · v2 re-prueba cierre E3 · TC-REQ16-001 (subconjunto)" tests="3" time="0.134">
+  <testsuite name="TC-REQ16-001 · Reporte resumen coincide con dataset controlado / REP-01: transferencia interna Q200" id="696d9978-c39c-420d-8e40-ac4222e0f73e" timestamp="2026-10-23T00:39:08.866Z" tests="1" failures="0" errors="0" time="0.041">
+    <testcase name="TC-REQ16-001: HTTP 200" time="0.041" classname="TcReq16001ReporteResumenCoincideConDatasetControladoRep01TransferenciaInternaQ200"/>
+  </testsuite>
+  <testsuite name="TC-REQ16-001 · Reporte resumen coincide con dataset controlado / REP-01: ACH entrante aprobado Q25" id="f45bfe0b-af2b-4ea0-b07f-37ac3bf13915" timestamp="2026-10-23T00:39:08.866Z" tests="1" failures="0" errors="0" time="0.077">
+    <testcase name="TC-REQ16-001: HTTP 201" time="0.077" classname="TcReq16001ReporteResumenCoincideConDatasetControladoRep01AchEntranteAprobadoQ25"/>
+  </testsuite>
+  <testsuite name="TC-REQ16-001 · Reporte resumen coincide con dataset controlado / GET /api/reportes/resumen" id="ed2cab07-ae09-41ea-8f57-5fa400bc2a16" timestamp="2026-10-23T00:39:08.866Z" tests="12" failures="0" errors="0" time="0.016">
+    <testcase name="TC-REQ16-001: HTTP 200" time="0.016" classname="TcReq16001ReporteResumenCoincideConDatasetControladoGetApiReportesResumen"/>
+    <testcase name="TC-REQ16-001: totalClientes = 2" time="0.016" classname="TcReq16001ReporteResumenCoincideConDatasetControladoGetApiReportesResumen"/>
+    <testcase name="TC-REQ16-001: clientesActivos = 1" time="0.016" classname="TcReq16001ReporteResumenCoincideConDatasetControladoGetApiReportesResumen"/>
+    <testcase name="TC-REQ16-001: clientesEnRevision = 1" time="0.016" classname="TcReq16001ReporteResumenCoincideConDatasetControladoGetApiReportesResumen"/>
+    <testcase name="TC-REQ16-001: totalCuentas = 3" time="0.016" classname="TcReq16001ReporteResumenCoincideConDatasetControladoGetApiReportesResumen"/>
+    <testcase name="TC-REQ16-001: cuentasActivas = 2" time="0.016" classname="TcReq16001ReporteResumenCoincideConDatasetControladoGetApiReportesResumen"/>
+    <testcase name="TC-REQ16-001: saldoTotal = 4000" time="0.016" classname="TcReq16001ReporteResumenCoincideConDatasetControladoGetApiReportesResumen"/>
+    <testcase name="TC-REQ16-001: totalTransferenciasInternas = 1" time="0.016" classname="TcReq16001ReporteResumenCoincideConDatasetControladoGetApiReportesResumen"/>
+    <testcase name="TC-REQ16-001: montoTransferenciasInternas = 200" time="0.016" classname="TcReq16001ReporteResumenCoincideConDatasetControladoGetApiReportesResumen"/>
+    <testcase name="TC-REQ16-001: totalAch = 1" time="0.016" classname="TcReq16001ReporteResumenCoincideConDatasetControladoGetApiReportesResumen"/>
+    <testcase name="TC-REQ16-001: achAprobadas = 1" time="0.016" classname="TcReq16001ReporteResumenCoincideConDatasetControladoGetApiReportesResumen"/>
+    <testcase name="TC-REQ16-001: montoAch = 25" time="0.016" classname="TcReq16001ReporteResumenCoincideConDatasetControladoGetApiReportesResumen"/>
+  </testsuite>
+</testsuites>

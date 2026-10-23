@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="BancoERP Nexus · E2 Diseño e Implementación QA (46 casos) · v2 re-prueba cierre E3 · TC-REQ14-003_parte1_Q10.00 (subconjunto)" tests="1" time="0.029">
+  <testsuite name="TC-REQ14-003 · ACH respeta límite diario / Enviar Q10.00 (restante exacto)" id="f7ab42dc-aa66-4881-bce3-c17bab029076" timestamp="2026-10-23T00:30:40.454Z" tests="1" failures="0" errors="0" time="0.029">
+    <testcase name="TC-REQ14-003: HTTP 200" time="0.029" classname="TcReq14003AchRespetaLimiteDiarioEnviarQ1000RestanteExacto"/>
+  </testsuite>
+</testsuites>

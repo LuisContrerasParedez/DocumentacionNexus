@@ -1,0 +1,9 @@
+2026-10-22 18:30:50 CST  TC-REQ15-002
+- Depósito Q100 a AH261002000101
+    POST http://localhost:15141/api/transacciones/deposito
+    HTTP 200 (28 ms) | ok=1 fail=0
+    body: {"referencia":"DEP-0b53eb7f49c040e3b88513b51304c966","saldoNuevo":7600.00,"monto":100.0}
+- Transferencia Q50 AH261002000101 → AH261002000209
+    POST http://localhost:15141/api/transacciones/transferencia
+    HTTP 200 (11 ms) | ok=1 fail=0
+    body: {"referencia":"TRF-babb5254e6d74ca2a9bb97eb5d70a875","saldoOrigen":7550.00,"saldoDestino":550.00,"monto":50.0}

@@ -1,0 +1,52 @@
+newman
+
+BancoERP Nexus · E2 Diseño e Implementación QA (46 casos) · v2 re-prueba cierre E3 · TC-REQ01-002 (subconjunto)
+
+❏ TC-REQ01-002 · Bloqueo en frontera de intentos fallidos
+↳ Intento 1 con contraseña errónea
+  POST http://localhost:15141/api/auth/login [401 Unauthorized, 213B, 33ms]
+  ✓  TC-REQ01-002: HTTP 401
+  ✓  mensaje contiene "Intento 1 de 5"
+
+↳ Intento 2 con contraseña errónea
+  POST http://localhost:15141/api/auth/login [401 Unauthorized, 213B, 15ms]
+  ✓  TC-REQ01-002: HTTP 401
+  ✓  mensaje contiene "Intento 2 de 5"
+
+↳ Intento 3 con contraseña errónea
+  POST http://localhost:15141/api/auth/login [401 Unauthorized, 213B, 14ms]
+  ✓  TC-REQ01-002: HTTP 401
+  ✓  mensaje contiene "Intento 3 de 5"
+
+↳ Intento 4 con contraseña errónea
+  POST http://localhost:15141/api/auth/login [401 Unauthorized, 213B, 14ms]
+  ✓  TC-REQ01-002: HTTP 401
+  ✓  mensaje contiene "Intento 4 de 5"
+
+↳ Intento 5 con contraseña errónea
+  POST http://localhost:15141/api/auth/login [401 Unauthorized, 267B, 17ms]
+  ✓  TC-REQ01-002: HTTP 401
+
+↳ Intento posterior con contraseña correcta (bloqueo vigente)
+  POST http://localhost:15141/api/auth/login [423 Locked, 235B, 7ms]
+  ✓  TC-REQ01-002: HTTP 423
+
+┌─────────────────────────┬──────────────────┬─────────────────┐
+│                         │         executed │          failed │
+├─────────────────────────┼──────────────────┼─────────────────┤
+│              iterations │                1 │               0 │
+├─────────────────────────┼──────────────────┼─────────────────┤
+│                requests │                6 │               0 │
+├─────────────────────────┼──────────────────┼─────────────────┤
+│            test-scripts │                6 │               0 │
+├─────────────────────────┼──────────────────┼─────────────────┤
+│      prerequest-scripts │                6 │               0 │
+├─────────────────────────┼──────────────────┼─────────────────┤
+│              assertions │               10 │               0 │
+├─────────────────────────┴──────────────────┴─────────────────┤
+│ total run duration: 1131ms                                   │
+├──────────────────────────────────────────────────────────────┤
+│ total data received: 412B (approx)                           │
+├──────────────────────────────────────────────────────────────┤
+│ average response time: 16ms [min: 7ms, max: 33ms, s.d.: 7ms] │
+└──────────────────────────────────────────────────────────────┘

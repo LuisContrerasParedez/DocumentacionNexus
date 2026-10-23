@@ -1,0 +1,41 @@
+newman
+
+BancoERP Nexus · E2 Diseño e Implementación QA (46 casos) · v2 re-prueba cierre E3 · TC-REQ14-001 (subconjunto)
+
+❏ TC-REQ14-001 · Transferencia ACH saliente válida
+↳ Precondición: reactivar QA_NEXUS
+  PATCH http://localhost:15141/api/ach/bancos/6adaaaaab61888635cf90e26/estado [200 OK, 800B, 22ms]
+  ✓  TC-REQ14-001: HTTP 200
+
+↳ Validar destino EXT-QA-0001
+  POST http://localhost:15141/api/ach/transferencias/validar-destino [200 OK, 674B, 51ms]
+  ✓  TC-REQ14-001: HTTP 200
+
+↳ Enviar ACH Q15
+  POST http://localhost:15141/api/ach/transferencias/enviar [200 OK, 993B, 45ms]
+  ✓  TC-REQ14-001: HTTP 200
+  ✓  ENVIADA o PENDIENTE
+
+↳ Historial ACH de la cuenta
+  GET http://localhost:15141/api/ach/transferencias/cuenta/60e12f09-f1be-5506-b494-5381502e3e75 [200 OK, 995B, 14ms]
+  ✓  TC-REQ14-001: HTTP 200
+
+┌─────────────────────────┬───────────────────┬──────────────────┐
+│                         │          executed │           failed │
+├─────────────────────────┼───────────────────┼──────────────────┤
+│              iterations │                 1 │                0 │
+├─────────────────────────┼───────────────────┼──────────────────┤
+│                requests │                 4 │                0 │
+├─────────────────────────┼───────────────────┼──────────────────┤
+│            test-scripts │                 4 │                0 │
+├─────────────────────────┼───────────────────┼──────────────────┤
+│      prerequest-scripts │                 4 │                0 │
+├─────────────────────────┼───────────────────┼──────────────────┤
+│              assertions │                 5 │                0 │
+├─────────────────────────┴───────────────────┴──────────────────┤
+│ total run duration: 826ms                                      │
+├────────────────────────────────────────────────────────────────┤
+│ total data received: 2.87kB (approx)                           │
+├────────────────────────────────────────────────────────────────┤
+│ average response time: 33ms [min: 14ms, max: 51ms, s.d.: 15ms] │
+└────────────────────────────────────────────────────────────────┘

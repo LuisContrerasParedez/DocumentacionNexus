@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="BancoERP Nexus · E2 Diseño e Implementación QA (46 casos) · v2 re-prueba cierre E3 · TC-REQ07-003 (subconjunto)" tests="3" time="0.039">
+  <testsuite name="TC-REQ07-003 · Actualización de límite no negativo y no modificable al cerrar / Límite -0.01 en cuenta ACTIVA" id="d578f68e-a4e4-4802-a201-b35c231e8f57" timestamp="2026-10-23T00:30:00.609Z" tests="2" failures="0" errors="0" time="0.025">
+    <testcase name="TC-REQ07-003: HTTP 400" time="0.025" classname="TcReq07003ActualizacionDeLimiteNoNegativoYNoModificableAlCerrarLimite001EnCuentaActiva"/>
+    <testcase name="mensaje contiene &quot;negativo&quot;" time="0.025" classname="TcReq07003ActualizacionDeLimiteNoNegativoYNoModificableAlCerrarLimite001EnCuentaActiva"/>
+  </testsuite>
+  <testsuite name="TC-REQ07-003 · Actualización de límite no negativo y no modificable al cerrar / Límite 0.00 en cuenta ACTIVA" id="cad78af3-fc75-4725-8e41-e0ffa60dfc56" timestamp="2026-10-23T00:30:00.609Z" tests="1" failures="0" errors="0" time="0.011">
+    <testcase name="TC-REQ07-003: HTTP 200" time="0.011" classname="TcReq07003ActualizacionDeLimiteNoNegativoYNoModificableAlCerrarLimite000EnCuentaActiva"/>
+  </testsuite>
+  <testsuite name="TC-REQ07-003 · Actualización de límite no negativo y no modificable al cerrar / Límite en cuenta CERRADA" id="9ae2e02c-eeb1-4c77-abc6-fa7bf3e3251d" timestamp="2026-10-23T00:30:00.609Z" tests="2" failures="0" errors="0" time="0.003">
+    <testcase name="TC-REQ07-003: HTTP 422" time="0.003" classname="TcReq07003ActualizacionDeLimiteNoNegativoYNoModificableAlCerrarLimiteEnCuentaCerrada"/>
+    <testcase name="mensaje contiene &quot;cerrada&quot;" time="0.003" classname="TcReq07003ActualizacionDeLimiteNoNegativoYNoModificableAlCerrarLimiteEnCuentaCerrada"/>
+  </testsuite>
+</testsuites>

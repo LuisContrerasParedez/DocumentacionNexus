@@ -1,0 +1,9 @@
+2026-10-22 18:30:46 CST  TC-REQ17-003
+- ACH entrante Q500 (primera vez)
+    POST http://localhost:15254/api/external/ach/transferencias
+    HTTP 201 (70 ms) | ok=2 fail=0
+    body: {"status":true,"message":"Transferencia recibida correctamente.","data":{"codigoConfirmacion":"E2-EXT-20261002-001","numeroCuentaDestino":"AH261002000101","monto":500.0,"moneda":"Q","estado":"APROBADA","fechaProcesamiento":"2026-10-23T00:30:45.808042Z"},"errors":null}
+- Repetir el mismo código de confirmación
+    POST http://localhost:15254/api/external/ach/transferencias
+    HTTP 409 (9 ms) | ok=2 fail=0
+    body: {"status":false,"message":"La transferencia ya fue procesada.","data":null,"errors":{"codigo_confirmacion":["El codigo de confirmacion ya existe."]}}

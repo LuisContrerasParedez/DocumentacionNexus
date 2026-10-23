@@ -1,0 +1,4 @@
+CSC : error CS2021: File name '**/*.cs' is empty, contains invalid characters, has a drive specification without an absolute path, or is too long [/src/BancoERP.Domain/BancoERP.Domain.csproj]
+CSC : error CS2001: Source file '**/*.cs' could not be found. [/src/BancoERP.Domain/BancoERP.Domain.csproj]
+
+The build failed. Fix the build errors and run again.

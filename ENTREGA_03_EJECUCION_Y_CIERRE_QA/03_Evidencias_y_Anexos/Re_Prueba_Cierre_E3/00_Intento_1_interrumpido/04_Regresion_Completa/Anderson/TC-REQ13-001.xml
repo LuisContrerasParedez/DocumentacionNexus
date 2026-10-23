@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="BancoERP Nexus · E2 Diseño e Implementación QA (46 casos) · v2 re-prueba cierre E3 · TC-REQ13-001 (subconjunto)" tests="2" time="0.030">
+  <testsuite name="TC-REQ13-001 · Código de banco ACH único / Crear banco QA_NEXUS" id="001d0aee-7292-43dc-b9de-37103aeea934" timestamp="2026-10-23T00:25:02.042Z" tests="1" failures="1" errors="0" time="0.022">
+    <testcase name="TC-REQ13-001: HTTP 200/201" time="0.022" classname="TcReq13001CodigoDeBancoAchUnicoCrearBancoQaNexus">
+      <failure type="AssertionFailure" message="expected 403 to be one of [ 200, 201 ]">
+        <![CDATA[Failed 1 times.]]>
+        <![CDATA[Collection JSON ID: d0fedf10-dc1c-5a4c-bedf-1d9611853c68.]]>
+        <![CDATA[Collection name: BancoERP Nexus · E2 Diseño e Implementación QA (46 casos) · v2 re-prueba cierre E3 · TC-REQ13-001 (subconjunto).]]>
+        <![CDATA[Request name: TC-REQ13-001 · Código de banco ACH único / Crear banco QA_NEXUS.]]>
+        <![CDATA[Test description: TC-REQ13-001: HTTP 200/201.]]>
+        <![CDATA[Error message: expected 403 to be one of [ 200, 201 ].]]>
+        <![CDATA[Stacktrace: AssertionError: expected 403 to be one of [ 200, 201 ]
+   at Object.eval sandbox-script.js:1:1).]]>
+      </failure>
+    </testcase>
+  </testsuite>
+  <testsuite name="TC-REQ13-001 · Código de banco ACH único / Crear QA_NEXUS duplicado" id="df25f48f-2077-46f1-97e1-f47a979bb7b4" timestamp="2026-10-23T00:25:02.042Z" tests="2" failures="2" errors="0" time="0.008">
+    <testcase name="TC-REQ13-001: HTTP 409" time="0.008" classname="TcReq13001CodigoDeBancoAchUnicoCrearQaNexusDuplicado">
+      <failure type="AssertionFailure" message="expected 403 to be one of [ 409 ]">
+        <![CDATA[Failed 1 times.]]>
+        <![CDATA[Collection JSON ID: d0fedf10-dc1c-5a4c-bedf-1d9611853c68.]]>
+        <![CDATA[Collection name: BancoERP Nexus · E2 Diseño e Implementación QA (46 casos) · v2 re-prueba cierre E3 · TC-REQ13-001 (subconjunto).]]>
+        <![CDATA[Request name: TC-REQ13-001 · Código de banco ACH único / Crear QA_NEXUS duplicado.]]>
+        <![CDATA[Test description: TC-REQ13-001: HTTP 409.]]>
+        <![CDATA[Error message: expected 403 to be one of [ 409 ].]]>
+        <![CDATA[Stacktrace: AssertionError: expected 403 to be one of [ 409 ]
+   at Object.eval sandbox-script.js:1:2).]]>
+      </failure>
+    </testcase>
+    <testcase name="mensaje contiene &quot;mismo codigo&quot;" time="0.008" classname="TcReq13001CodigoDeBancoAchUnicoCrearQaNexusDuplicado">
+      <failure type="AssertionFailure" message="expected '{}' to include 'mismo codigo'">
+        <![CDATA[Failed 1 times.]]>
+        <![CDATA[Collection JSON ID: d0fedf10-dc1c-5a4c-bedf-1d9611853c68.]]>
+        <![CDATA[Collection name: BancoERP Nexus · E2 Diseño e Implementación QA (46 casos) · v2 re-prueba cierre E3 · TC-REQ13-001 (subconjunto).]]>
+        <![CDATA[Request name: TC-REQ13-001 · Código de banco ACH único / Crear QA_NEXUS duplicado.]]>
+        <![CDATA[Test description: mensaje contiene "mismo codigo".]]>
+        <![CDATA[Error message: expected '{}' to include 'mismo codigo'.]]>
+        <![CDATA[Stacktrace: AssertionError: expected '{}' to include 'mismo codigo'
+   at Object.eval sandbox-script.js:2:2).]]>
+      </failure>
+    </testcase>
+  </testsuite>
+</testsuites>

@@ -1,0 +1,28 @@
+newman
+
+BancoERP Nexus · E2 Diseño e Implementación QA (46 casos) · v2 re-prueba cierre E3 · 00_Preparacion_REP01 (subconjunto)
+
+❏ 00 · Preparación (tokens)
+↳ Login qa_admin
+
+↳ Login qa_cajero
+
+↳ Login externo qa.banco.externo@nexus.test
+
+┌─────────────────────────┬──────────┬──────────┐
+│                         │ executed │   failed │
+├─────────────────────────┼──────────┼──────────┤
+│              iterations │        1 │        0 │
+├─────────────────────────┼──────────┼──────────┤
+│                requests │        0 │        0 │
+├─────────────────────────┼──────────┼──────────┤
+│            test-scripts │        0 │        0 │
+├─────────────────────────┼──────────┼──────────┤
+│      prerequest-scripts │        3 │        0 │
+├─────────────────────────┼──────────┼──────────┤
+│              assertions │        0 │        0 │
+├─────────────────────────┴──────────┴──────────┤
+│ total run duration: 492ms                     │
+├───────────────────────────────────────────────┤
+│ total data received: 0B (approx)              │
+└───────────────────────────────────────────────┘

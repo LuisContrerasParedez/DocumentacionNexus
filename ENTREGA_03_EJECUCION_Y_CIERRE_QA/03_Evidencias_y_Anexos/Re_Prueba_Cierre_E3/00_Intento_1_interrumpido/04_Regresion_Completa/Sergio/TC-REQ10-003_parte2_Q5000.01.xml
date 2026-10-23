@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="BancoERP Nexus · E2 Diseño e Implementación QA (46 casos) · v2 re-prueba cierre E3 · TC-REQ10-003_parte2_Q5000.01 (subconjunto)" tests="1" time="0.024">
+  <testsuite name="TC-REQ10-003 · Frontera del límite diario en AHORRO / Retiro Q5000.01 tras reiniciar fixture" id="62f847ad-13b6-49c0-9f14-3430281d4059" timestamp="2026-10-23T00:24:44.839Z" tests="2" failures="0" errors="0" time="0.024">
+    <testcase name="TC-REQ10-003: HTTP 422" time="0.024" classname="TcReq10003FronteraDelLimiteDiarioEnAhorroRetiroQ500001TrasReiniciarFixture"/>
+    <testcase name="mensaje contiene &quot;limite&quot;" time="0.024" classname="TcReq10003FronteraDelLimiteDiarioEnAhorroRetiroQ500001TrasReiniciarFixture"/>
+  </testsuite>
+</testsuites>

@@ -1,0 +1,13 @@
+2026-10-22 18:24:36 CST  TC-REQ08-002
+- Cierre con diferencia +Q10.00 sin justificación
+    POST http://localhost:15141/api/cajas/cerrar
+    HTTP 200 (35 ms) | ok=1 fail=0
+    body: {"fondoInicial":1000.00,"totalDepositos":0.00,"totalRetiros":0.00,"efectivoEsperado":1000.00,"efectivoContado":1010.0,"diferencia":10.00,"resultado":"SOBRANTE"}
+- Fixture nuevo: reabrir caja fondo Q1000
+    POST http://localhost:15141/api/cajas/abrir
+    HTTP 200 (8 ms) | ok=1 fail=0
+    body: {"sesionCajaId":"fbc3d695-5e78-45c7-b3b9-97fa38990a2b","message":"Caja abierta. Puede comenzar a operar."}
+- Cierre con diferencia +Q10.01 sin justificación
+    POST http://localhost:15141/api/cajas/cerrar
+    HTTP 422 (6 ms) | ok=2 fail=0
+    body: {"message":"Diferencia de Q10.01 requiere justificacion."}

@@ -1,0 +1,5 @@
+2026-10-22 18:24:46 CST  TC-REQ11-002
+- Transferir Q1000 AH261002000208 → AH261002000209
+    POST http://localhost:15141/api/transacciones/transferencia
+    HTTP 200 (30 ms) | ok=1 fail=0
+    body: {"referencia":"TRF-778b6df5f0b64d2a97a4bd556e69e0b2","saldoOrigen":2000.00,"saldoDestino":1500.00,"monto":1000.0}

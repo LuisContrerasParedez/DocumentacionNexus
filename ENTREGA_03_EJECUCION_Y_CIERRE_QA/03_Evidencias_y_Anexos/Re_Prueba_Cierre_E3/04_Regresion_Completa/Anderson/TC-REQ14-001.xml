@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="BancoERP Nexus · E2 Diseño e Implementación QA (46 casos) · v2 re-prueba cierre E3 · TC-REQ14-001 (subconjunto)" tests="4" time="0.132">
+  <testsuite name="TC-REQ14-001 · Transferencia ACH saliente válida / Precondición: reactivar QA_NEXUS" id="dba1756b-d5a6-4084-9dc5-1666ca57d56d" timestamp="2026-10-23T00:30:37.576Z" tests="1" failures="0" errors="0" time="0.022">
+    <testcase name="TC-REQ14-001: HTTP 200" time="0.022" classname="TcReq14001TransferenciaAchSalienteValidaPrecondicionReactivarQaNexus"/>
+  </testsuite>
+  <testsuite name="TC-REQ14-001 · Transferencia ACH saliente válida / Validar destino EXT-QA-0001" id="c5bceb95-c1c0-485f-a820-a7b3262dedd0" timestamp="2026-10-23T00:30:37.576Z" tests="1" failures="0" errors="0" time="0.051">
+    <testcase name="TC-REQ14-001: HTTP 200" time="0.051" classname="TcReq14001TransferenciaAchSalienteValidaValidarDestinoExtQa0001"/>
+  </testsuite>
+  <testsuite name="TC-REQ14-001 · Transferencia ACH saliente válida / Enviar ACH Q15" id="33da40e6-8775-4b0e-bc34-976345610a95" timestamp="2026-10-23T00:30:37.576Z" tests="2" failures="0" errors="0" time="0.045">
+    <testcase name="TC-REQ14-001: HTTP 200" time="0.045" classname="TcReq14001TransferenciaAchSalienteValidaEnviarAchQ15"/>
+    <testcase name="ENVIADA o PENDIENTE" time="0.045" classname="TcReq14001TransferenciaAchSalienteValidaEnviarAchQ15"/>
+  </testsuite>
+  <testsuite name="TC-REQ14-001 · Transferencia ACH saliente válida / Historial ACH de la cuenta" id="524284ad-b6e7-4862-80ea-e3e0871bffa5" timestamp="2026-10-23T00:30:37.576Z" tests="1" failures="0" errors="0" time="0.014">
+    <testcase name="TC-REQ14-001: HTTP 200" time="0.014" classname="TcReq14001TransferenciaAchSalienteValidaHistorialAchDeLaCuenta"/>
+  </testsuite>
+</testsuites>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="BancoERP Nexus · E2 Diseño e Implementación QA (46 casos) · v2 re-prueba cierre E3 · TC-REQ13-001 (subconjunto)" tests="2" time="0.074">
+  <testsuite name="TC-REQ13-001 · Código de banco ACH único / Crear banco QA_NEXUS" id="88edaa23-1ab4-4f44-9ea8-244c089e63de" timestamp="2026-10-23T00:30:34.361Z" tests="1" failures="0" errors="0" time="0.066">
+    <testcase name="TC-REQ13-001: HTTP 200/201" time="0.066" classname="TcReq13001CodigoDeBancoAchUnicoCrearBancoQaNexus"/>
+  </testsuite>
+  <testsuite name="TC-REQ13-001 · Código de banco ACH único / Crear QA_NEXUS duplicado" id="293f625e-7add-4bc8-bdf0-b9de128c50ee" timestamp="2026-10-23T00:30:34.361Z" tests="2" failures="0" errors="0" time="0.008">
+    <testcase name="TC-REQ13-001: HTTP 409" time="0.008" classname="TcReq13001CodigoDeBancoAchUnicoCrearQaNexusDuplicado"/>
+    <testcase name="mensaje contiene &quot;mismo codigo&quot;" time="0.008" classname="TcReq13001CodigoDeBancoAchUnicoCrearQaNexusDuplicado"/>
+  </testsuite>
+</testsuites>

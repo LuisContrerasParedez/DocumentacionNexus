@@ -1,0 +1,17 @@
+2026-10-22 18:30:38 CST  TC-REQ14-001
+- Precondición: reactivar QA_NEXUS
+    PATCH http://localhost:15141/api/ach/bancos/6adaaaaab61888635cf90e26/estado
+    HTTP 200 (22 ms) | ok=1 fail=0
+    body: {"id":"6adaaaaab61888635cf90e26","nombre":"Banco QA Nexus","codigo":"QA_NEXUS","descripcion":"Banco sintético exclusivo QA E2 Nexus; sin integración real.","activo":true,"apiBaseUrl":"http://mock-bank:8081","apiEndpoint":"/success/transferencias","httpMethod":"POST","authLoginEndpoint":null,"authEmail":null,"authPassword":null,"headers":{},"estructuraJsonFormulario":"\"{ \\\"numeroCuentaDestino\\\" : \\\"EXT-QA-0001\\\" }\"","estructuraJsonPayload":"\"{ }\"","lookupCuentaEndpoint":"/cuentas/search/{numeroCuenta}","lookupCuentasDisponiblesEndpoint":null,"fechaCreacion":"2026-10-23T00:30:34.566Z","fechaActualizacion":"2026-10-23T00:30:37.761Z"}
+- Validar destino EXT-QA-0001
+    POST http://localhost:15141/api/ach/transferencias/validar-destino
+    HTTP 200 (51 ms) | ok=1 fail=0
+    body: {"numeroCuenta":"EXT-QA-0001","titularNombre":"Titular QA Sintetico","nombres":"Titular QA Sintetico","apellidos":null,"tipoCuenta":"AHORRO","moneda":"GTQ","estado":true,"message":"Cuenta sintetica encontrada.","rawResponseJson":"{\"status\":true,\"message\":\"Cuenta sintetica encontrada.\",\"data\":{\"numeroCuenta\":\"EXT-QA-0001\",\"estado\":true,\"moneda\":\"GTQ\",\"tipoCuenta\":\"AHORRO\",\"titular\":{\"nombre\":\"Titular QA Sintetico\"}}}","cuentaDestinoId":null,"nombreMostrar":"EXT-QA-0001 · Titular QA Sintetico"}
+- Enviar ACH Q15
+    POST http://localhost:15141/api/ach/transferencias/enviar
+    HTTP 200 (45 ms) | ok=2 fail=0
+    body: {"id":"8bca84b1-1ce5-49ea-8f30-74577ca6d6a1","bancoAchId":"6adaaaaab61888635cf90e26","bancoCodigo":"QA_NEXUS","cuentaOrigenId":"60e12f09-f1be-5506-b494-5381502e3e75","monto":15.00,"descripcion":"E2-QA-ACH-001","codigoConfirmacion":"TRX-20261022-000001","estado":1,"estadoNombre":"ENVIADA","requestJson":"{\"monto\": 15.0, \"referencia\": \"E2-QA-ACH-001\", \"descripcion\": \"E2-QA-ACH-001\", \"codigo_confirmacion\": \"TRX-20261022-000001\", \"numeroCuentaDestino\": \"EXT-QA-0001\"}","responseJson":"{\"data\": {\"monto\": 15, \"estado\": \"APROBADA\", \"codigo_confirmacion\": \"TRX-20261022-000001\"}, \"status\": true, \"message\": \"Transferencia sintetica aprobada.\"}","mensajeError":null,"usuarioId":"b6b6a2f5-73e0-58b6-8f78-d50f97d583ba","fechaCreacion":"2026-10-23T00:30:38.187741Z","fechaActualizacion":"2026-10-23T00:30:38.202735Z"}
+- Historial ACH de la cuenta
+    GET http://localhost:15141/api/ach/transferencias/cuenta/60e12f09-f1be-5506-b494-5381502e3e75
+    HTTP 200 (14 ms) | ok=1 fail=0
+    body: [{"id":"8bca84b1-1ce5-49ea-8f30-74577ca6d6a1","bancoAchId":"6adaaaaab61888635cf90e26","bancoCodigo":"QA_NEXUS","cuentaOrigenId":"60e12f09-f1be-5506-b494-5381502e3e75","monto":15.00,"descripcion":"E2-QA-ACH-001","codigoConfirmacion":"TRX-20261022-000001","estado":1,"estadoNombre":"ENVIADA","requestJson":"{\"monto\": 15.0, \"referencia\": \"E2-QA-ACH-001\", \"descripcion\": \"E2-QA-ACH-001\", \"codigo_confirmacion\": \"TRX-20261022-000001\", \"numeroCuentaDestino\": \"EXT-QA-0001\"}","responseJson":"{\"data\": {\"monto\": 15, \"estado\": \"APROBADA\", \"codigo_confirmacion\": \"TRX-20261022-000001\"}, \"status\": true, \"message\": \"Transferencia sintetica aprobada.\"}","mensajeError":null,"usuarioId":"b6b6a2f5-73e0-58b6-8f78-d50f97d583ba","fechaCreacion":"2026-10-23T00:30:38.187741Z","fechaActualizacion":"2026-10-23T00:30:38.202735Z"}]

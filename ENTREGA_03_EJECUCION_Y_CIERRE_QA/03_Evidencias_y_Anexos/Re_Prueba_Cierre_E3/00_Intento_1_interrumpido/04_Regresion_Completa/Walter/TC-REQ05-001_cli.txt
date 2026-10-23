@@ -1,0 +1,33 @@
+newman
+
+BancoERP Nexus · E2 Diseño e Implementación QA (46 casos) · v2 re-prueba cierre E3 · TC-REQ05-001 (subconjunto)
+
+❏ TC-REQ05-001 · Estado inicial del cliente
+↳ Registrar cliente nuevo (Elena)
+  POST http://localhost:15141/api/clientes/natural [201 Created, 241B, 25ms]
+  ✓  TC-REQ05-001: HTTP 201
+
+↳ GET cliente: estado inicial
+  GET http://localhost:15141/api/clientes/e779c9cb-422e-4d2f-9a26-36df390420fa [200 OK, 607B, 6ms]
+  ✓  TC-REQ05-001: HTTP 200
+  ✓  EN_REVISION y no ACTIVO
+
+┌─────────────────────────┬──────────────────┬─────────────────┐
+│                         │         executed │          failed │
+├─────────────────────────┼──────────────────┼─────────────────┤
+│              iterations │                1 │               0 │
+├─────────────────────────┼──────────────────┼─────────────────┤
+│                requests │                2 │               0 │
+├─────────────────────────┼──────────────────┼─────────────────┤
+│            test-scripts │                2 │               0 │
+├─────────────────────────┼──────────────────┼─────────────────┤
+│      prerequest-scripts │                2 │               0 │
+├─────────────────────────┼──────────────────┼─────────────────┤
+│              assertions │                3 │               0 │
+├─────────────────────────┴──────────────────┴─────────────────┤
+│ total run duration: 367ms                                    │
+├──────────────────────────────────────────────────────────────┤
+│ total data received: 547B (approx)                           │
+├──────────────────────────────────────────────────────────────┤
+│ average response time: 15ms [min: 6ms, max: 25ms, s.d.: 9ms] │
+└──────────────────────────────────────────────────────────────┘

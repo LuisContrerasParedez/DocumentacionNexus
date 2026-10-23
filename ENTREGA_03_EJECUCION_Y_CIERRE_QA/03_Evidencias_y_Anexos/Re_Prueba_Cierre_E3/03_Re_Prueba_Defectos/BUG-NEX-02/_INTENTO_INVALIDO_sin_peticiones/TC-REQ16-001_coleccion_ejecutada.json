@@ -1,0 +1,164 @@
+{
+  "info": {
+    "_postman_id": "d0fedf10-dc1c-5a4c-bedf-1d9611853c68",
+    "name": "BancoERP Nexus · E2 Diseño e Implementación QA (46 casos) · v2 re-prueba cierre E3 · TC-REQ16-001 (subconjunto)",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": "Colección trazable a los 46 casos del Documento E2 (E2_Documento_Diseno_Implementacion_Nexus.docx). Una carpeta por requerimiento y una subcarpeta por caso TC-REQxx-xxx con sus pasos. Requiere el entorno QA aislado (docker-compose.qa.yml) y MockData_Fixtures_Nexus.sql. Plantillas de diseño: NO equivale a una ejecución; los resultados formales se registran en la Entrega 3."
+  },
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "exec": [
+          "for (const k of [\"baseInterna\",\"basePublica\"]) {",
+          "  const v=pm.variables.get(k);",
+          "  if (![\"http://localhost:15141\",\"http://localhost:15254\"].includes(v)) {",
+          "    pm.execution.skipRequest(); throw new Error(\"Solo URLs del entorno QA aislado (docker-compose.qa.yml)\");",
+          "  }",
+          "}"
+        ]
+      }
+    }
+  ],
+  "item": [
+    {
+      "name": "TC-REQ16-001 · Reporte resumen coincide con dataset controlado",
+      "description": "TC-REQ16-001 → REQ-16 | Técnica: Partición de Equivalencia | Prioridad: Media\nPrecondiciones: Fixture REP-01 aislado con conteos y montos conocidos.\nDatos de entrada: BD bancoerp_e2_qa_rep01: 2 clientes (1 ACTIVO, 1 EN_REVISION); 3 cuentas (2 ACTIVA, 1 CERRADA); saldo activo final Q4000.00; transferencia interna Q200.00; ACH entrante Q25.00 aprobado\nPasos (Word): 1. Cargar fixture REP-01. 2. GET /api/reportes/resumen. 3. Comparar cada total con consultas SQL de control.\nResultado esperado (Word): Campos totalClientes/clientesActivos/clientesEnRevision, totalCuentas/cuentasActivas/saldoTotal, transferencias y ACH deben coincidir exactamente con el fixture y las consultas SQL del servicio.\nPRE-REQUISITO: Ejecutar contra la BD aislada bancoerp_e2_qa_rep01 (MockData_Fixture_REP01.sql).",
+      "item": [
+        {
+          "name": "REP-01: transferencia interna Q200",
+          "request": {
+            "method": "POST",
+            "url": "{{baseInterna}}/api/transacciones/transferencia",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"numeroCuentaOrigen\": \"AH261002000301\",\n  \"numeroCuentaDestino\": \"MO261002000302\",\n  \"monto\": 200.0,\n  \"concepto\": \"REP-01\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{token_cajero}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "description": "TC-REQ16-001 — paso del Documento E2 (sección 4).\nSolo contra la BD bancoerp_e2_qa_rep01 (ver MockData_Fixture_REP01.sql). Requiere caja abierta de qa_cajero en esa BD."
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "let j={}; try { j=pm.response.json(); } catch(e) { j={}; }",
+                  "pm.test(\"TC-REQ16-001: HTTP 200\", ()=>pm.expect(pm.response.code).to.be.oneOf([200]));"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "REP-01: ACH entrante aprobado Q25",
+          "request": {
+            "method": "POST",
+            "url": "{{basePublica}}/api/external/ach/transferencias",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"codigo_confirmacion\": \"E2-REP01-ACH-001\",\n  \"banco_externo\": \"QA_NEXUS\",\n  \"cuenta_externa\": \"EXT-QA-0001\",\n  \"numeroCuentaDestino\": \"MO261002000302\",\n  \"monto\": 25.0,\n  \"moneda\": \"GTQ\",\n  \"referencia\": \"REP-01\",\n  \"tipo\": \"entrante\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{token_externo}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "description": "TC-REQ16-001 — paso del Documento E2 (sección 4)."
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "let j={}; try { j=pm.response.json(); } catch(e) { j={}; }",
+                  "pm.test(\"TC-REQ16-001: HTTP 201\", ()=>pm.expect(pm.response.code).to.be.oneOf([201]));"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "GET /api/reportes/resumen",
+          "request": {
+            "method": "GET",
+            "url": "{{baseInterna}}/api/reportes/resumen",
+            "header": [],
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{token_admin}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "description": "TC-REQ16-001 — paso del Documento E2 (sección 4)."
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "let j={}; try { j=pm.response.json(); } catch(e) { j={}; }",
+                  "pm.test(\"TC-REQ16-001: HTTP 200\", ()=>pm.expect(pm.response.code).to.be.oneOf([200]));",
+                  "pm.test(\"TC-REQ16-001: totalClientes = 2\", ()=>pm.expect(Number(j.totalClientes)).to.eql(2));",
+                  "pm.test(\"TC-REQ16-001: clientesActivos = 1\", ()=>pm.expect(Number(j.clientesActivos)).to.eql(1));",
+                  "pm.test(\"TC-REQ16-001: clientesEnRevision = 1\", ()=>pm.expect(Number(j.clientesEnRevision)).to.eql(1));",
+                  "pm.test(\"TC-REQ16-001: totalCuentas = 3\", ()=>pm.expect(Number(j.totalCuentas)).to.eql(3));",
+                  "pm.test(\"TC-REQ16-001: cuentasActivas = 2\", ()=>pm.expect(Number(j.cuentasActivas)).to.eql(2));",
+                  "pm.test(\"TC-REQ16-001: saldoTotal = 4000\", ()=>pm.expect(Number(j.saldoTotal)).to.eql(4000));",
+                  "pm.test(\"TC-REQ16-001: totalTransferenciasInternas = 1\", ()=>pm.expect(Number(j.totalTransferenciasInternas)).to.eql(1));",
+                  "pm.test(\"TC-REQ16-001: montoTransferenciasInternas = 200\", ()=>pm.expect(Number(j.montoTransferenciasInternas)).to.eql(200));",
+                  "pm.test(\"TC-REQ16-001: totalAch = 1\", ()=>pm.expect(Number(j.totalAch)).to.eql(1));",
+                  "pm.test(\"TC-REQ16-001: achAprobadas = 1\", ()=>pm.expect(Number(j.achAprobadas)).to.eql(1));",
+                  "pm.test(\"TC-REQ16-001: montoAch = 25\", ()=>pm.expect(Number(j.montoAch)).to.eql(25));"
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

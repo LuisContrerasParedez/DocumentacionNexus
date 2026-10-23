@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="BancoERP Nexus · E2 Diseño e Implementación QA (46 casos) · v2 re-prueba cierre E3 · TC-REQ03-001 (subconjunto)" tests="1" time="0.032">
+  <testsuite name="TC-REQ03-001 · Acceso permitido con permiso requerido / GET /api/clientes con qa_admin" id="e2215943-cf27-4402-b049-4e17b7a77dc6" timestamp="2026-10-23T00:30:31.982Z" tests="1" failures="0" errors="0" time="0.032">
+    <testcase name="TC-REQ03-001: HTTP 200" time="0.032" classname="TcReq03001AccesoPermitidoConPermisoRequeridoGetApiClientesConQaAdmin"/>
+  </testsuite>
+</testsuites>

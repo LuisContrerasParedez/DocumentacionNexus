@@ -1,0 +1,6 @@
+=== Smoke 2026-10-22 18:29:39 CST ===
+   GET http://localhost:13000/login -> HTTP 200
+   GET http://localhost:15141/api/Ping -> HTTP 200
+   GET http://localhost:15254/api/Home -> HTTP 200
+   GET http://localhost:15141/swagger/v1/swagger.json -> HTTP 200
+   GET http://localhost:15254/swagger/v1/swagger.json -> HTTP 200

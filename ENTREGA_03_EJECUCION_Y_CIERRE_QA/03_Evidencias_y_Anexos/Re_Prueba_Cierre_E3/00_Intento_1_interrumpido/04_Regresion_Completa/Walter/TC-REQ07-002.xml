@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="BancoERP Nexus · E2 Diseño e Implementación QA (46 casos) · v2 re-prueba cierre E3 · TC-REQ07-002 (subconjunto)" tests="3" time="0.046">
+  <testsuite name="TC-REQ07-002 · Cierre solo con saldo cero / Cerrar AH261002000203 (saldo Q500)" id="7908f4fe-140c-4957-9206-bc76e700d596" timestamp="2026-10-23T00:24:27.007Z" tests="2" failures="0" errors="0" time="0.029">
+    <testcase name="TC-REQ07-002: HTTP 422" time="0.029" classname="TcReq07002CierreSoloConSaldoCeroCerrarAh261002000203SaldoQ500"/>
+    <testcase name="mensaje contiene &quot;No se puede cerrar&quot;" time="0.029" classname="TcReq07002CierreSoloConSaldoCeroCerrarAh261002000203SaldoQ500"/>
+  </testsuite>
+  <testsuite name="TC-REQ07-002 · Cierre solo con saldo cero / Cerrar AH261002000204 (saldo Q0)" id="44b7bc66-94b1-4d38-884f-304d1ab43cba" timestamp="2026-10-23T00:24:27.007Z" tests="1" failures="0" errors="0" time="0.013">
+    <testcase name="TC-REQ07-002: HTTP 200" time="0.013" classname="TcReq07002CierreSoloConSaldoCeroCerrarAh261002000204SaldoQ0"/>
+  </testsuite>
+  <testsuite name="TC-REQ07-002 · Cierre solo con saldo cero / Consultar AH261002000204" id="5f9169ed-112b-49a2-b790-f10fc9057c1b" timestamp="2026-10-23T00:24:27.007Z" tests="2" failures="0" errors="0" time="0.004">
+    <testcase name="TC-REQ07-002: HTTP 200" time="0.004" classname="TcReq07002CierreSoloConSaldoCeroConsultarAh261002000204"/>
+    <testcase name="CERRADA" time="0.004" classname="TcReq07002CierreSoloConSaldoCeroConsultarAh261002000204"/>
+  </testsuite>
+</testsuites>

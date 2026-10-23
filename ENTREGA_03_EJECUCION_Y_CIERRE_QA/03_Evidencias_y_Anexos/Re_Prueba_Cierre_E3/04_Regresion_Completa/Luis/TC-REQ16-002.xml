@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="BancoERP Nexus · E2 Diseño e Implementación QA (46 casos) · v2 re-prueba cierre E3 · TC-REQ16-002 (subconjunto)" tests="2" time="0.062">
+  <testsuite name="TC-REQ16-002 · Reporte requiere permiso reportes.ver / Resumen con qa_cajero (sin reportes.ver)" id="8a491bbd-5a44-4d85-9d3e-5d8c3ddc90b6" timestamp="2026-10-23T00:30:51.541Z" tests="1" failures="0" errors="0" time="0.023">
+    <testcase name="TC-REQ16-002: HTTP 403" time="0.023" classname="TcReq16002ReporteRequierePermisoReportesVerResumenConQaCajeroSinReportesVer"/>
+  </testsuite>
+  <testsuite name="TC-REQ16-002 · Reporte requiere permiso reportes.ver / Resumen con qa_admin (con permiso)" id="413af60f-c68d-46c0-8e62-9e79be4989d4" timestamp="2026-10-23T00:30:51.541Z" tests="1" failures="0" errors="0" time="0.039">
+    <testcase name="TC-REQ16-002: HTTP 200" time="0.039" classname="TcReq16002ReporteRequierePermisoReportesVerResumenConQaAdminConPermiso"/>
+  </testsuite>
+</testsuites>

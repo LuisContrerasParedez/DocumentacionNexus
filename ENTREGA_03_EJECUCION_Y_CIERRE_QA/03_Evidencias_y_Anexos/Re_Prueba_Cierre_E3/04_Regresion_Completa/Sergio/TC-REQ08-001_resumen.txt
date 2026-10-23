@@ -1,0 +1,9 @@
+2026-10-22 18:30:07 CST  TC-REQ08-001
+- Primera apertura fondo Q1000
+    POST http://localhost:15141/api/cajas/abrir
+    HTTP 200 (24 ms) | ok=1 fail=0
+    body: {"sesionCajaId":"1ce35044-b700-42b9-8693-6be5a9fec65e","message":"Caja abierta. Puede comenzar a operar."}
+- Segunda apertura el mismo día
+    POST http://localhost:15141/api/cajas/abrir
+    HTTP 422 (5 ms) | ok=2 fail=0
+    body: {"message":"Ya tiene una sesion de caja abierta hoy"}

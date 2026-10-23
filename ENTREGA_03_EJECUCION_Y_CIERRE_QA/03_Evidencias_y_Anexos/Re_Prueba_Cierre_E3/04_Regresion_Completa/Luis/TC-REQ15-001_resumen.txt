@@ -1,0 +1,29 @@
+2026-10-22 18:30:49 CST  TC-REQ15-001
+- Login fallido 1/5 qa_bloqueo
+    POST http://localhost:15141/api/auth/login
+    HTTP 401 (26 ms) | ok=1 fail=0
+    body: {"message":"Credenciales incorrectas. Intento 1 de 5."}
+- Login fallido 2/5 qa_bloqueo
+    POST http://localhost:15141/api/auth/login
+    HTTP 401 (13 ms) | ok=1 fail=0
+    body: {"message":"Credenciales incorrectas. Intento 2 de 5."}
+- Login fallido 3/5 qa_bloqueo
+    POST http://localhost:15141/api/auth/login
+    HTTP 401 (13 ms) | ok=1 fail=0
+    body: {"message":"Credenciales incorrectas. Intento 3 de 5."}
+- Login fallido 4/5 qa_bloqueo
+    POST http://localhost:15141/api/auth/login
+    HTTP 401 (13 ms) | ok=1 fail=0
+    body: {"message":"Credenciales incorrectas. Intento 4 de 5."}
+- Login fallido 5/5 qa_bloqueo
+    POST http://localhost:15141/api/auth/login
+    HTTP 401 (14 ms) | ok=1 fail=0
+    body: {"message":"Credenciales incorrectas. El usuario se encuentra bloqueado. Por favor comuniquese con soporte."}
+- Eventos LOGIN_FALLIDO de qa_bloqueo
+    GET http://localhost:15141/api/seguridad/eventos?usuarioId=4d00b5fc-9b29-5274-bf79-4d712ff0c72b&evento=LOGIN_FALLIDO
+    HTTP 200 (23 ms) | ok=3 fail=0
+    body: [{"id":"3e7856f7-36f1-4935-959b-2287b96c52b0","usuarioId":"4d00b5fc-9b29-5274-bf79-4d712ff0c72b","usernameIntentado":"qa_bloqueo","evento":"LOGIN_FALLIDO","descripcion":"Password incorrecta. Intento 5 de 5.","ipAddress":"172.24.0.1","userAgent":"PostmanRuntime/7.39.1","exitoso":false,"createdAt":"2026-10-23T00:30:49.39124Z"},{"id":"c39381fd-6fb8-479f-9bac-e5df6a28cf2e","usuarioId":"4d00b5fc-9b29-5274-bf79-4d712ff0c72b","usernameIntentado":"qa_bloqueo","evento":"LOGIN_FALLIDO","descripcion":"Password incorrecta. Intento 4 de 5.","ipAddress":"172.24.0.1","userAgent":"PostmanRuntime/7.39.1","exitoso":false,"createdAt":"2026-10-23T00:30:49.200969Z"},{"id":"7321469f-8cd3-43f5-bf60-0ec5d35ccb25","usuarioId":"4d00b5fc-9b29-5274-bf79-4d712ff0c72b","usernameIntentado":"qa_bloqueo","evento":"LOGIN_FALLIDO","descripcion":"Password incorrecta. Intento 3 de 5.","ipAddress":"172.24.0.1","userAgent":"PostmanRuntime/7.39.1","exitoso":false,"createdAt":"2026-10-23T00:30:49.018707Z"},{"id":"78e9e066-1ac2-4c5a-878e-3ea0f171ead5","usuarioId":"4d00b5fc-9b29-5274-bf79-4d712ff0c72b","usernameIntentado":"qa_bloqueo","evento":"LOGIN_FALLIDO","descripcion":"Password incorrecta. Intento 2 de 5.","ipAddress":
+- Evento USUARIO_BLOQUEADO
+    GET http://localhost:15141/api/seguridad/eventos?usuarioId=4d00b5fc-9b29-5274-bf79-4d712ff0c72b&evento=USUARIO_BLOQUEADO
+    HTTP 200 (8 ms) | ok=2 fail=0
+    body: [{"id":"501da4c1-05d0-489f-8504-c8d45c9d2140","usuarioId":"4d00b5fc-9b29-5274-bf79-4d712ff0c72b","usernameIntentado":"qa_bloqueo","evento":"USUARIO_BLOQUEADO","descripcion":"Usuario bloqueado por intentos fallidos.","ipAddress":"172.24.0.1","userAgent":"PostmanRuntime/7.39.1","exitoso":true,"createdAt":"2026-10-23T00:30:49.392144Z"},{"id":"8deb8c4b-54de-4119-a8ed-f66373107ad4","usuarioId":"4d00b5fc-9b29-5274-bf79-4d712ff0c72b","usernameIntentado":"qa_bloqueo","evento":"USUARIO_BLOQUEADO","descripcion":"Usuario bloqueado por intentos fallidos.","ipAddress":"172.24.0.1","userAgent":"PostmanRuntime/7.39.1","exitoso":true,"createdAt":"2026-10-23T00:30:27.335208Z"}]

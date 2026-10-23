@@ -1,0 +1,43 @@
+================ TC-REQ16-001_REP01 — ANTES — 2026-10-22 18:37:01 CST ================
+numero_cuenta | estado | saldo | saldo_disponible | saldo_minimo | limite_retiro_diario | monto_retirado_hoy 
+---------------+--------+-------+------------------+--------------+----------------------+--------------------
+(0 rows)
+
+ username | fecha | estado | fondo_inicial | total_depositos | total_retiros | efectivo_esperado | efectivo_contado | diferencia | abre | cierra 
+----------+-------+--------+---------------+-----------------+---------------+-------------------+------------------+------------+------+--------
+(0 rows)
+
+================ TC-REQ16-001_REP01 — DESPUES — 2026-10-22 18:37:02 CST ================
+numero_cuenta | estado | saldo | saldo_disponible | saldo_minimo | limite_retiro_diario | monto_retirado_hoy 
+---------------+--------+-------+------------------+--------------+----------------------+--------------------
+(0 rows)
+
+ username | fecha | estado | fondo_inicial | total_depositos | total_retiros | efectivo_esperado | efectivo_contado | diferencia | abre | cierra 
+----------+-------+--------+---------------+-----------------+---------------+-------------------+------------------+------------+------+--------
+(0 rows)
+
+-- Movimientos generados durante el caso
+ numero_cuenta | tipo | monto | saldo_anterior | saldo_posterior | estado | referencia | canal | hora 
+---------------+------+-------+----------------+-----------------+--------+------------+-------+------
+(0 rows)
+
+-- Auditoría de operaciones durante el caso
+ modulo | accion | entidad_tipo | resultado | antes | despues | hora 
+--------+--------+--------------+-----------+-------+---------+------
+(0 rows)
+
+-- Eventos de seguridad durante el caso
+ username_intentado | evento | exitoso | descripcion | hora 
+--------------------+--------+---------+-------------+------
+(0 rows)
+
+-- Clientes creados o modificados durante el caso
+ dpi | nombre_completo | estado | fecha_nacimiento 
+-----+-----------------+--------+------------------
+(0 rows)
+
+-- ACH saliente / entrante durante el caso
+ sentido | banco | monto | estado | codigo_confirmacion | hora 
+---------+-------+-------+--------+---------------------+------
+(0 rows)
+

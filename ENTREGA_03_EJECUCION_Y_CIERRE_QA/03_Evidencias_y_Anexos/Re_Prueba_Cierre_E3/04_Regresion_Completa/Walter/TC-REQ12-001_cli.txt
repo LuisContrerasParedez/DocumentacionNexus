@@ -1,0 +1,31 @@
+newman
+
+BancoERP Nexus · E2 Diseño e Implementación QA (46 casos) · v2 re-prueba cierre E3 · TC-REQ12-001 (subconjunto)
+
+❏ TC-REQ12-001 · Portal lista únicamente cuentas propias
+↳ GET /api/portal/cuentas con token de Ana
+  GET http://localhost:15141/api/portal/cuentas [200 OK, 2.73kB, 32ms]
+  ✓  TC-REQ12-001: HTTP 200
+  ✓  no contiene AH261002000201
+  ✓  no contiene MO261002000202
+  ✓  incluye cuentas de Ana
+
+┌─────────────────────────┬──────────────────┬──────────────────┐
+│                         │         executed │           failed │
+├─────────────────────────┼──────────────────┼──────────────────┤
+│              iterations │                1 │                0 │
+├─────────────────────────┼──────────────────┼──────────────────┤
+│                requests │                1 │                0 │
+├─────────────────────────┼──────────────────┼──────────────────┤
+│            test-scripts │                1 │                0 │
+├─────────────────────────┼──────────────────┼──────────────────┤
+│      prerequest-scripts │                1 │                0 │
+├─────────────────────────┼──────────────────┼──────────────────┤
+│              assertions │                4 │                0 │
+├─────────────────────────┴──────────────────┴──────────────────┤
+│ total run duration: 211ms                                     │
+├───────────────────────────────────────────────────────────────┤
+│ total data received: 2.58kB (approx)                          │
+├───────────────────────────────────────────────────────────────┤
+│ average response time: 32ms [min: 32ms, max: 32ms, s.d.: 0µs] │
+└───────────────────────────────────────────────────────────────┘

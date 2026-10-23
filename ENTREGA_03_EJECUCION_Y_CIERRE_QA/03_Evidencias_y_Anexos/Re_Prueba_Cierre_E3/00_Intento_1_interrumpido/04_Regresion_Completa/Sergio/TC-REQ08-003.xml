@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="BancoERP Nexus · E2 Diseño e Implementación QA (46 casos) · v2 re-prueba cierre E3 · TC-REQ08-003 (subconjunto)" tests="1" time="0.025">
+  <testsuite name="TC-REQ08-003 · Cierre con diferencia mayor a Q10 justificada / Cierre +Q10.01 con justificación" id="a4f228e8-a728-424d-b7f0-670380a0f408" timestamp="2026-10-23T00:24:36.953Z" tests="2" failures="0" errors="0" time="0.025">
+    <testcase name="TC-REQ08-003: HTTP 200" time="0.025" classname="TcReq08003CierreConDiferenciaMayorAQ10JustificadaCierreQ1001ConJustificacion"/>
+    <testcase name="mensaje contiene &quot;SOBRANTE&quot;" time="0.025" classname="TcReq08003CierreConDiferenciaMayorAQ10JustificadaCierreQ1001ConJustificacion"/>
+  </testsuite>
+</testsuites>

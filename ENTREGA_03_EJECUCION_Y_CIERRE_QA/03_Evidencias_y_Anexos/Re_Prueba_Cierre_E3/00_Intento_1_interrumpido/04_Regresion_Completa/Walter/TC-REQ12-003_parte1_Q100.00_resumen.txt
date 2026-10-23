@@ -1,0 +1,5 @@
+2026-10-22 18:24:31 CST  TC-REQ12-003_parte1_Q100.00
+- Portal Q100.00 (restante exacto)
+    POST http://localhost:15141/api/portal/transferencias
+    HTTP 200 (27 ms) | ok=1 fail=0
+    body: {"referencia":"WEB-20261023002431-5709022B","saldoOrigen":5900.00,"saldoDestino":1600.00,"monto":100.0}

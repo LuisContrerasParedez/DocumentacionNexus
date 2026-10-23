@@ -1,0 +1,5 @@
+2026-10-22 18:24:42 CST  TC-REQ10-002
+- Retiro Q100 de AH261002000206
+    POST http://localhost:15141/api/transacciones/retiro
+    HTTP 200 (26 ms) | ok=1 fail=0
+    body: {"referencia":"RET-c5b86e1991a04b0aaa1c50241403c3ec","saldoNuevo":2400.00,"monto":100.0}

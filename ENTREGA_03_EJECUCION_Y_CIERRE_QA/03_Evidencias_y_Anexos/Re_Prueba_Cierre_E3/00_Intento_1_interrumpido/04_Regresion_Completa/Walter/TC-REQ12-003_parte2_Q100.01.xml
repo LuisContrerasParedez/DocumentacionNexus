@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="BancoERP Nexus · E2 Diseño e Implementación QA (46 casos) · v2 re-prueba cierre E3 · TC-REQ12-003_parte2_Q100.01 (subconjunto)" tests="1" time="0.021">
+  <testsuite name="TC-REQ12-003 · Límite diario del portal en frontera / Portal Q100.01 tras reiniciar fixture" id="ed6d77b1-c337-45fa-95b3-a3365eb287ed" timestamp="2026-10-23T00:24:32.189Z" tests="2" failures="0" errors="0" time="0.021">
+    <testcase name="TC-REQ12-003: HTTP 422" time="0.021" classname="TcReq12003LimiteDiarioDelPortalEnFronteraPortalQ10001TrasReiniciarFixture"/>
+    <testcase name="mensaje contiene &quot;limite diario&quot;" time="0.021" classname="TcReq12003LimiteDiarioDelPortalEnFronteraPortalQ10001TrasReiniciarFixture"/>
+  </testsuite>
+</testsuites>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="BancoERP Nexus · E2 Diseño e Implementación QA (46 casos) · v2 re-prueba cierre E3 · TC-REQ17-001 (subconjunto)" tests="2" time="0.072">
+  <testsuite name="TC-REQ17-001 · Login de banco externo autorizado / Login externo autorizado" id="8e927e76-7f9c-406e-9478-ed3a3ef4dd34" timestamp="2026-10-23T00:30:43.110Z" tests="2" failures="0" errors="0" time="0.050">
+    <testcase name="TC-REQ17-001: HTTP 200" time="0.050" classname="TcReq17001LoginDeBancoExternoAutorizadoLoginExternoAutorizado"/>
+    <testcase name="Bearer + expiración" time="0.050" classname="TcReq17001LoginDeBancoExternoAutorizadoLoginExternoAutorizado"/>
+  </testsuite>
+  <testsuite name="TC-REQ17-001 · Login de banco externo autorizado / Login externo con usuario sin rol BANCO_EXTERNO (Ana)" id="ca699817-cbd7-4972-8d82-c5d19daed32b" timestamp="2026-10-23T00:30:43.110Z" tests="2" failures="0" errors="0" time="0.022">
+    <testcase name="TC-REQ17-001: HTTP 403" time="0.022" classname="TcReq17001LoginDeBancoExternoAutorizadoLoginExternoConUsuarioSinRolBancoExternoAna"/>
+    <testcase name="mensaje contiene &quot;banco externo&quot;" time="0.022" classname="TcReq17001LoginDeBancoExternoAutorizadoLoginExternoConUsuarioSinRolBancoExternoAna"/>
+  </testsuite>
+</testsuites>

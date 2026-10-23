@@ -1,0 +1,5 @@
+2026-10-22 18:30:42 CST  TC-REQ14-003_parte2_Q10.01
+- Enviar Q10.01 tras reiniciar fixture
+    POST http://localhost:15141/api/ach/transferencias/enviar
+    HTTP 422 (25 ms) | ok=2 fail=0
+    body: {"message":"La transferencia ACH supera el limite diario de la cuenta origen."}

@@ -1,0 +1,8 @@
+Configuración ACH en Mongo antes y después de los 14 intentos denegados (RT-01-01..14)
+ANTES   2026-10-22 18:29:46 CST
+[{"_id":"e20000000000000000000005","activo":true,"codigo":"E2_QA_DUPLICATE","fecha_actualizacion":"2026-10-23T00:29:28.136Z","nombre":"Banco Sintetico duplicate"},{"_id":"e20000000000000000000002","activo":true,"codigo":"E2_QA_HTTP500","fecha_actualizacion":"2026-10-23T00:29:28.133Z","nombre":"Banco Sintetico http500"},{"_id":"e20000000000000000000003","activo":true,"codigo":"E2_QA_INVALID","fecha_actualizacion":"2026-10-23T00:29:28.135Z","nombre":"Banco Sintetico invalid"},{"_id":"e20000000000000000000001","activo":true,"codigo":"E2_QA_SUCCESS","fecha_actualizacion":"2026-10-23T00:29:28.132Z","nombre":"Banco Sintetico success"},{"_id":"e20000000000000000000004","activo":true,"codigo":"E2_QA_TIMEOUT","fecha_actualizacion":"2026-10-23T00:29:28.135Z","nombre":"Banco Sintetico timeout"}]
+
+DESPUES 2026-10-22 18:29:46 CST
+[{"_id":"e20000000000000000000005","activo":true,"codigo":"E2_QA_DUPLICATE","fecha_actualizacion":"2026-10-23T00:29:28.136Z","nombre":"Banco Sintetico duplicate"},{"_id":"e20000000000000000000002","activo":true,"codigo":"E2_QA_HTTP500","fecha_actualizacion":"2026-10-23T00:29:28.133Z","nombre":"Banco Sintetico http500"},{"_id":"e20000000000000000000003","activo":true,"codigo":"E2_QA_INVALID","fecha_actualizacion":"2026-10-23T00:29:28.135Z","nombre":"Banco Sintetico invalid"},{"_id":"e20000000000000000000001","activo":true,"codigo":"E2_QA_SUCCESS","fecha_actualizacion":"2026-10-23T00:29:28.132Z","nombre":"Banco Sintetico success"},{"_id":"e20000000000000000000004","activo":true,"codigo":"E2_QA_TIMEOUT","fecha_actualizacion":"2026-10-23T00:29:28.135Z","nombre":"Banco Sintetico timeout"}]
+
+Sin cambios: True

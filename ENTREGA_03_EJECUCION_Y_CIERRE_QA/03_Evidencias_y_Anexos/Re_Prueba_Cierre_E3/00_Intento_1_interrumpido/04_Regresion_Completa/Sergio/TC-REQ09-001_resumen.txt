@@ -1,0 +1,13 @@
+2026-10-22 18:24:38 CST  TC-REQ09-001
+- Precondición: caja ABIERTA de qa_cajero (acepta "ya abierta")
+    POST http://localhost:15141/api/cajas/abrir
+    HTTP 200 (23 ms) | ok=1 fail=0
+    body: {"sesionCajaId":"1be07ddb-f441-4c67-bbc6-a2b2fe09da42","message":"Caja abierta. Puede comenzar a operar."}
+- Depósito Q0.00
+    POST http://localhost:15141/api/transacciones/deposito
+    HTTP 400 (16 ms) | ok=2 fail=0
+    body: {"message":"El monto debe ser mayor a cero."}
+- Depósito Q0.01
+    POST http://localhost:15141/api/transacciones/deposito
+    HTTP 200 (17 ms) | ok=1 fail=0
+    body: {"referencia":"DEP-7fb1d99d0a33494ca348dcfcec9c4fa3","saldoNuevo":7000.01,"monto":0.01}

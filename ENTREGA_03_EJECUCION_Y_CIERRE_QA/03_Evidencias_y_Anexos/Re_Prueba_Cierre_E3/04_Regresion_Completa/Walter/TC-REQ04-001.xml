@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="BancoERP Nexus · E2 Diseño e Implementación QA (46 casos) · v2 re-prueba cierre E3 · TC-REQ04-001 (subconjunto)" tests="3" time="0.091">
+  <testsuite name="TC-REQ04-001 · Registro válido en frontera exacta de 18 años / Registro 18 años exactos (Diego)" id="95d4a85c-e1f4-45b6-9d70-14e8235eed1a" timestamp="2026-10-23T00:29:49.203Z" tests="1" failures="0" errors="0" time="0.063">
+    <testcase name="TC-REQ04-001: HTTP 201" time="0.063" classname="TcReq04001RegistroValidoEnFronteraExactaDe18AnosRegistro18AnosExactosDiego"/>
+  </testsuite>
+  <testsuite name="TC-REQ04-001 · Registro válido en frontera exacta de 18 años / Consultar cliente creado" id="7c8a92e9-2816-4075-878f-58f1a86ab49f" timestamp="2026-10-23T00:29:49.203Z" tests="2" failures="0" errors="0" time="0.020">
+    <testcase name="TC-REQ04-001: HTTP 200" time="0.020" classname="TcReq04001RegistroValidoEnFronteraExactaDe18AnosConsultarClienteCreado"/>
+    <testcase name="estado EN_REVISION" time="0.020" classname="TcReq04001RegistroValidoEnFronteraExactaDe18AnosConsultarClienteCreado"/>
+  </testsuite>
+  <testsuite name="TC-REQ04-001 · Registro válido en frontera exacta de 18 años / Variante menor por 1 día (Mateo, 2008-10-24)" id="ba4bb8a6-8d66-46ee-88e7-93773d641aa5" timestamp="2026-10-23T00:29:49.203Z" tests="1" failures="0" errors="0" time="0.008">
+    <testcase name="TC-REQ04-001: HTTP 400" time="0.008" classname="TcReq04001RegistroValidoEnFronteraExactaDe18AnosVarianteMenorPor1DiaMateo20081024"/>
+  </testsuite>
+</testsuites>

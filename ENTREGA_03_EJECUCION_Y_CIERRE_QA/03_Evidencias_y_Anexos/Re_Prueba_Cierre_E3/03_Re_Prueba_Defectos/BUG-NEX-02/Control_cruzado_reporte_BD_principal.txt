@@ -1,0 +1,6 @@
+=== 2026-10-22 18:37:02 CST GET /api/reportes/resumen (qa_admin) vs SQL directo · BD bancoerp_e2_qa tras la regresión ===
+ACH en BD: 2 salientes + 1 entrantes
+totalAch       API=         3  SQL=         3  OK
+achAprobadas   API=         3  SQL=         3  OK
+montoAch       API=     525.0  SQL=     525.0  OK
+Resultado: COINCIDE

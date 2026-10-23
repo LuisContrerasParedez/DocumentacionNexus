@@ -1,0 +1,13 @@
+2026-10-22 18:25:03 CST  TC-REQ13-002
+- Desactivar QA_NEXUS
+    PATCH http://localhost:15141/api/ach/bancos//estado
+    HTTP 404 (21 ms) | ok=0 fail=1 FALLAN: TC-REQ13-002: HTTP 200
+    body: 
+- Listado de activos
+    GET http://localhost:15141/api/ach/bancos/activos
+    HTTP 200 (12 ms) | ok=2 fail=0
+    body: [{"id":"e20000000000000000000005","nombre":"Banco Sintetico duplicate","codigo":"E2_QA_DUPLICATE","descripcion":"Fixture exclusivamente QA; sin integración real.","activo":true,"apiBaseUrl":"http://mock-bank:8081","apiEndpoint":"/duplicate/transferencias","httpMethod":"POST","authLoginEndpoint":null,"authEmail":null,"authPassword":null,"headers":{},"estructuraJsonFormulario":"{ \"numeroCuentaDestino\" : \"EXT-QA-0001\" }","estructuraJsonPayload":"{ }","lookupCuentaEndpoint":"/cuentas/search/{numeroCuenta}","lookupCuentasDisponiblesEndpoint":null,"fechaCreacion":"2026-10-23T00:18:46.576Z","fechaActualizacion":"2026-10-23T00:18:46.575Z"},{"id":"e20000000000000000000003","nombre":"Banco Sintetico invalid","codigo":"E2_QA_INVALID","descripcion":"Fixture exclusivamente QA; sin integración real.","activo":true,"apiBaseUrl":"http://mock-bank:8081","apiEndpoint":"/invalid/transferencias","httpMethod":"POST","authLoginEndpoint":null,"authEmail":null,"authPassword":null,"headers":{},"estructuraJsonFormulario":"{ \"numeroCuentaDestino\" : \"EXT-QA-0001\" }","estructuraJsonPayload":"{ }","lookupCuentaEndpoint":"/cuentas/search/{numeroCuenta}","lookupCuentasDisponiblesEndpoint":null,"fechaCreac
+- Validar destino con banco inactivo
+    POST http://localhost:15141/api/ach/transferencias/validar-destino
+    HTTP 400 (14 ms) | ok=0 fail=2 FALLAN: TC-REQ13-002: HTTP 422; mensaje contiene "inactivo"
+    body: {"message":"Banco ACH requerido."}

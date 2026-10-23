@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="BancoERP Nexus · E2 Diseño e Implementación QA (46 casos) · v2 re-prueba cierre E3 · 00_Preparacion_REP01 (subconjunto)" tests="3" time="0.326">
+  <testsuite name="00 · Preparación (tokens) / Login qa_admin" id="14260a03-3c1c-496a-bb53-092642221cfc" timestamp="2026-10-23T00:39:07.093Z" tests="1" failures="0" errors="0" time="0.170">
+    <testcase name="Prep: HTTP 200" time="0.170" classname="00PreparacionTokensLoginQaAdmin"/>
+  </testsuite>
+  <testsuite name="00 · Preparación (tokens) / Login qa_cajero" id="fc50e4aa-4850-4699-b87c-7309af4221e4" timestamp="2026-10-23T00:39:07.093Z" tests="1" failures="0" errors="0" time="0.016">
+    <testcase name="Prep: HTTP 200" time="0.016" classname="00PreparacionTokensLoginQaCajero"/>
+  </testsuite>
+  <testsuite name="00 · Preparación (tokens) / Login externo qa.banco.externo@nexus.test" id="16c0aeff-9c80-46b1-8301-5daf2d880db5" timestamp="2026-10-23T00:39:07.093Z" tests="1" failures="0" errors="0" time="0.140">
+    <testcase name="Prep: HTTP 200" time="0.140" classname="00PreparacionTokensLoginExternoQaBancoExternoNexusTest"/>
+  </testsuite>
+</testsuites>

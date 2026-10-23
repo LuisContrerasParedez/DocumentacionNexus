@@ -1,0 +1,13 @@
+2026-10-22 18:24:23 CST  TC-REQ06-001
+- Precondición: caja ABIERTA de qa_cajero (acepta "ya abierta")
+    POST http://localhost:15141/api/cajas/abrir
+    HTTP 422 (24 ms) | ok=1 fail=0
+    body: {"message":"Ya tiene una sesion de caja abierta hoy"}
+- Apertura AHORRO para Ana
+    POST http://localhost:15141/api/cuentas
+    HTTP 201 (11 ms) | ok=3 fail=0
+    body: {"id":"fc5b5e6f-392b-496e-96b2-52b0761a8cc1","numeroCuenta":"AH261023555993","tipoCuenta":"AHORRO","saldoMinimo":100.00,"message":"Cuenta abierta correctamente"}
+- Consultar cuenta creada
+    GET http://localhost:15141/api/cuentas/fc5b5e6f-392b-496e-96b2-52b0761a8cc1
+    HTTP 200 (22 ms) | ok=2 fail=0
+    body: {"id":"fc5b5e6f-392b-496e-96b2-52b0761a8cc1","numeroCuenta":"AH261023555993","tipoCuenta":"AHORRO","clienteId":"5eefea06-04b7-5a99-8e78-a3080150319d","clienteNombre":"Ana Prueba","estado":"ACTIVA","saldo":0.00,"saldoDisponible":0.00,"saldoRetenido":0.00,"saldoMinimo":100.00,"limiteRetiroDiario":5000.00,"montoRetiradoHoy":0.00,"tasaInteresAnual":0.0300,"permiteCheques":false,"fechaApertura":"2026-10-23T00:24:23.709066Z"}

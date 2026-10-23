@@ -1,0 +1,233 @@
+# Corrección de BUG-NEX-01 y BUG-NEX-02 — diff respecto de la build del ciclo 1 (baseline 28f3faf + cambios locales)
+# Generado el 2026-10-22 18:50 CST. Archivos de producción: 4. Pruebas: 1 nuevo + referencia de proyecto.
+
+diff --git a/Backend/BancoERP.Application/Services/ReporteService.cs b/Backend/BancoERP.Application/Services/ReporteService.cs
+index 025aed2..3c2db3c 100644
+--- a/Backend/BancoERP.Application/Services/ReporteService.cs
++++ b/Backend/BancoERP.Application/Services/ReporteService.cs
+@@ -54,7 +54,11 @@ public class ReporteService : IReporteService
+                 COUNT(*) FILTER (WHERE UPPER(estado) IN ('ENVIADA', 'APROBADA'))::int AS AchAprobadas,
+                 COUNT(*) FILTER (WHERE UPPER(estado) IN ('RECHAZADA', 'ERROR'))::int AS AchRechazadas,
+                 COALESCE(SUM(monto), 0) AS MontoAch
+-            FROM ach.transferencias
++            FROM (
++                SELECT estado, monto FROM ach.transferencias
++                UNION ALL
++                SELECT estado, monto FROM ach.transferencias_entrantes
++            ) ach
+             """;
+ 
+         const string clientesEstadoSql = """
+@@ -100,7 +104,11 @@ public class ReporteService : IReporteService
+                 SELECT
+                     DATE(fecha_creacion AT TIME ZONE 'America/Guatemala') AS fecha,
+                     COALESCE(SUM(monto), 0) AS monto_ach
+-                FROM ach.transferencias
++                FROM (
++                    SELECT fecha_creacion, monto FROM ach.transferencias
++                    UNION ALL
++                    SELECT created_at, monto FROM ach.transferencias_entrantes
++                ) ach_union
+                 WHERE fecha_creacion >= CURRENT_DATE - INTERVAL '6 day'
+                 GROUP BY DATE(fecha_creacion AT TIME ZONE 'America/Guatemala')
+             )
+diff --git a/Backend/BancoERP.Domain/Constants/PermisosSeguridad.cs b/Backend/BancoERP.Domain/Constants/PermisosSeguridad.cs
+index b4e2a2f..38c5136 100644
+--- a/Backend/BancoERP.Domain/Constants/PermisosSeguridad.cs
++++ b/Backend/BancoERP.Domain/Constants/PermisosSeguridad.cs
+@@ -86,6 +86,13 @@ public static class PermisosSeguridad
+     public const string CatalogosVer = "catalogos.configuracion.ver";
+     public const string CatalogosEditar = "catalogos.configuracion.editar";
+ 
++    public const string AchBancosListar = "ach.bancos.listar";
++    public const string AchBancosVer = "ach.bancos.ver";
++    public const string AchBancosCrear = "ach.bancos.crear";
++    public const string AchBancosEditar = "ach.bancos.editar";
++    public const string AchBancosCambiarEstado = "ach.bancos.estado.cambiar";
++    public const string AchBancosEliminar = "ach.bancos.eliminar";
++
+     public const string AchPublicAuthLogin = "ach.public.auth.login";
+     public const string AchPublicCuentasConsultar = "ach.public.cuentas.consultar";
+     public const string AchPublicTransferenciasCrear = "ach.public.transferencias.crear";
+diff --git a/Backend/BancoERP.InternalAPI/Controllers/AchBancosController.cs b/Backend/BancoERP.InternalAPI/Controllers/AchBancosController.cs
+index a0fe345..c6022a1 100644
+--- a/Backend/BancoERP.InternalAPI/Controllers/AchBancosController.cs
++++ b/Backend/BancoERP.InternalAPI/Controllers/AchBancosController.cs
+@@ -1,39 +1,50 @@
+ using BancoERP.Application.DTOs.Ach;
+ using BancoERP.Application.Services;
++using BancoERP.Domain.Constants;
++using BancoERP.InternalAPI.Authorization;
+ using BancoERP.InternalAPI.Extensions;
++using Microsoft.AspNetCore.Authorization;
+ using Microsoft.AspNetCore.Mvc;
+ 
+ namespace BancoERP.InternalAPI.Controllers;
+ 
+ [ApiController]
++[Authorize]
+ [Route("api/ach/bancos")]
+ public class AchBancosController(IAchBancoService service) : ControllerBase
+ {
+     [HttpGet]
++    [RequirePermission(PermisosSeguridad.AchBancosListar)]
+     public async Task<IActionResult> Listar() =>
+         this.ToActionResult(await service.ListarAsync());
+ 
++    // Lo consumen cajeros (ACH saliente) y clientes del portal: basta con sesión válida.
+     [HttpGet("activos")]
+     public async Task<IActionResult> ListarActivos() =>
+         this.ToActionResult(await service.ListarActivosAsync());
+ 
+     [HttpGet("{id}")]
++    [RequirePermission(PermisosSeguridad.AchBancosVer)]
+     public async Task<IActionResult> Obtener(string id) =>
+         this.ToActionResult(await service.ObtenerAsync(id));
+ 
+     [HttpPost]
++    [RequirePermission(PermisosSeguridad.AchBancosCrear)]
+     public async Task<IActionResult> Crear([FromBody] CrearBancoAchRequest request) =>
+         this.ToActionResult(await service.CrearAsync(request, User.ObtenerUsuarioId()));
+ 
+     [HttpPut("{id}")]
++    [RequirePermission(PermisosSeguridad.AchBancosEditar)]
+     public async Task<IActionResult> Actualizar(string id, [FromBody] ActualizarBancoAchRequest request) =>
+         this.ToActionResult(await service.ActualizarAsync(id, request, User.ObtenerUsuarioId()));
+ 
+     [HttpPatch("{id}/estado")]
++    [RequirePermission(PermisosSeguridad.AchBancosCambiarEstado)]
+     public async Task<IActionResult> CambiarEstado(string id, [FromBody] CambiarEstadoBancoAchRequest request) =>
+         this.ToActionResult(await service.CambiarEstadoAsync(id, request, User.ObtenerUsuarioId()));
+ 
+     [HttpDelete("{id}")]
++    [RequirePermission(PermisosSeguridad.AchBancosEliminar)]
+     public async Task<IActionResult> Eliminar(string id) =>
+         this.ToActionResult(await service.EliminarAsync(id, User.ObtenerUsuarioId()));
+ }
+diff --git a/Backend/BancoERP.InternalAPI/Controllers/AchTransferenciasController.cs b/Backend/BancoERP.InternalAPI/Controllers/AchTransferenciasController.cs
+index ea24300..c25c939 100644
+--- a/Backend/BancoERP.InternalAPI/Controllers/AchTransferenciasController.cs
++++ b/Backend/BancoERP.InternalAPI/Controllers/AchTransferenciasController.cs
+@@ -1,10 +1,12 @@
+ using BancoERP.Application.Services;
+ using BancoERP.InternalAPI.Extensions;
++using Microsoft.AspNetCore.Authorization;
+ using Microsoft.AspNetCore.Mvc;
+ 
+ namespace BancoERP.InternalAPI.Controllers;
+ 
+ [ApiController]
++[Authorize]
+ [Route("api/ach/transferencias")]
+ public class AchTransferenciasController(IAchTransferenciaService service) : ControllerBase
+ {
+diff --git a/Backend/BancoERP.UnitTests/BancoERP.UnitTests.csproj b/Backend/BancoERP.UnitTests/BancoERP.UnitTests.csproj
+index ec2e9bd..5b7d9d8 100644
+--- a/Backend/BancoERP.UnitTests/BancoERP.UnitTests.csproj
++++ b/Backend/BancoERP.UnitTests/BancoERP.UnitTests.csproj
+@@ -20,6 +20,7 @@
+ 
+   <ItemGroup>
+     <ProjectReference Include="..\BancoERP.Application\BancoERP.Application.csproj" />
++    <ProjectReference Include="..\BancoERP.InternalAPI\BancoERP.InternalAPI.csproj" />
+     <ProjectReference Include="..\BancoERP.PublicAPI\BancoERP.PublicAPI.csproj" />
+   </ItemGroup>
+ 
+diff --git a/Backend/BancoERP.UnitTests/InternalApiAuthorizationTests.cs b/Backend/BancoERP.UnitTests/InternalApiAuthorizationTests.cs
+new file mode 100644
+index 0000000..d7e7786
+--- /dev/null
++++ b/Backend/BancoERP.UnitTests/InternalApiAuthorizationTests.cs
+@@ -0,0 +1,92 @@
++using BancoERP.Domain.Constants;
++using BancoERP.InternalAPI.Authorization;
++using BancoERP.InternalAPI.Controllers;
++using Microsoft.AspNetCore.Authorization;
++using Microsoft.AspNetCore.Mvc;
++using Microsoft.AspNetCore.Mvc.Routing;
++using System.Reflection;
++
++namespace BancoERP.UnitTests;
++
++// Regresión de BUG-NEX-01: ningún endpoint de la InternalAPI puede quedar accesible sin token por omisión.
++public class InternalApiAuthorizationTests
++{
++    private static readonly HashSet<string> EndpointsPublicos =
++    [
++        "PingController.Get",
++        "AuthController.Login",
++        "AuthController.RefreshToken",
++        "AuthController.SolicitarRecuperacionPassword",
++        "AuthController.RestablecerPassword"
++    ];
++
++    [Fact]
++    public void InternalApi_TodosLosEndpoints_RequierenAutenticacionSalvoLosPublicosDeclarados()
++    {
++        var expuestos = ObtenerAcciones()
++            .Where(a => !RequiereAutenticacion(a.Controlador, a.Accion))
++            .Select(a => $"{a.Controlador.Name}.{a.Accion.Name}")
++            .Where(nombre => !EndpointsPublicos.Contains(nombre))
++            .ToArray();
++
++        Assert.Empty(expuestos);
++    }
++
++    [Fact]
++    public void AchBancosController_ExigeAutenticacionEnTodasSusAcciones()
++    {
++        Assert.NotNull(typeof(AchBancosController).GetCustomAttribute<AuthorizeAttribute>());
++        Assert.All(
++            ObtenerAcciones().Where(a => a.Controlador == typeof(AchBancosController)),
++            a => Assert.Null(a.Accion.GetCustomAttribute<AllowAnonymousAttribute>()));
++    }
++
++    [Theory]
++    [InlineData(nameof(AchBancosController.Listar), PermisosSeguridad.AchBancosListar)]
++    [InlineData(nameof(AchBancosController.Obtener), PermisosSeguridad.AchBancosVer)]
++    [InlineData(nameof(AchBancosController.Crear), PermisosSeguridad.AchBancosCrear)]
++    [InlineData(nameof(AchBancosController.Actualizar), PermisosSeguridad.AchBancosEditar)]
++    [InlineData(nameof(AchBancosController.CambiarEstado), PermisosSeguridad.AchBancosCambiarEstado)]
++    [InlineData(nameof(AchBancosController.Eliminar), PermisosSeguridad.AchBancosEliminar)]
++    public void AchBancosController_AccionesAdministrativas_ExigenPermisoAch(string accion, string permiso)
++    {
++        var atributo = typeof(AchBancosController).GetMethod(accion)!.GetCustomAttribute<RequirePermissionAttribute>();
++
++        Assert.NotNull(atributo);
++        Assert.Equal(PermissionPolicyProvider.PolicyPrefix + permiso, atributo.Policy);
++    }
++
++    [Fact]
++    public void AchBancosController_ListarActivos_SoloExigeSesionParaCajerosYClientes()
++    {
++        var accion = typeof(AchBancosController).GetMethod(nameof(AchBancosController.ListarActivos))!;
++
++        Assert.Null(accion.GetCustomAttribute<RequirePermissionAttribute>());
++        Assert.True(RequiereAutenticacion(typeof(AchBancosController), accion));
++    }
++
++    [Fact]
++    public void AchTransferenciasController_ExigeAutenticacion()
++    {
++        Assert.NotNull(typeof(AchTransferenciasController).GetCustomAttribute<AuthorizeAttribute>());
++    }
++
++    private static IEnumerable<(Type Controlador, MethodInfo Accion)> ObtenerAcciones() =>
++        typeof(AchBancosController).Assembly.GetTypes()
++            .Where(t => t is { IsClass: true, IsAbstract: false } && typeof(ControllerBase).IsAssignableFrom(t))
++            .SelectMany(t => t.GetMethods(BindingFlags.Public | BindingFlags.Instance | BindingFlags.DeclaredOnly)
++                .Where(m => m.GetCustomAttributes<HttpMethodAttribute>().Any())
++                .Select(m => (t, m)));
++
++    private static bool RequiereAutenticacion(Type controlador, MethodInfo accion)
++    {
++        if (accion.GetCustomAttribute<AllowAnonymousAttribute>() is not null ||
++            controlador.GetCustomAttribute<AllowAnonymousAttribute>() is not null)
++        {
++            return false;
++        }
++
++        return accion.GetCustomAttributes<AuthorizeAttribute>(inherit: true).Any() ||
++               controlador.GetCustomAttributes<AuthorizeAttribute>(inherit: true).Any();
++    }
++}

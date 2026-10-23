@@ -1,0 +1,8 @@
+Intento 2 del ciclo 2 — 2026-10-22 18:26-18:27 CST (no se usa para el veredicto; se conserva por trazabilidad)
+
+Resultado: smoke OK; re-prueba BUG-NEX-01 (RT 19/19 aserciones, TC-REQ03-002 con P7-ACH 6/6, Mongo sin cambios) y
+regresión completa de los 46 casos SIN aserciones fallidas.
+Se interrumpió en la fase REP-01 por un error del script de ejecución (no del producto): para crear la BD aislada
+bancoerp_e2_qa_rep01 se usó init_all.sql completo, que además de esquema contiene la carga sintética con la guarda
+"Solo bancoerp_e2_qa". Se corrigió el script para aplicar solo scripts/schema/*.sql (como init_qa.sh) y se repitió
+el ciclo completo desde un entorno limpio (intento 3 = evidencias de las carpetas 03, 04 y 05).

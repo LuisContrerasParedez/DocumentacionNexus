@@ -1,0 +1,5 @@
+2026-10-22 18:24:32 CST  TC-REQ12-003_parte2_Q100.01
+- Portal Q100.01 tras reiniciar fixture
+    POST http://localhost:15141/api/portal/transferencias
+    HTTP 422 (21 ms) | ok=2 fail=0
+    body: {"message":"La transferencia supera el limite diario de la cuenta origen."}

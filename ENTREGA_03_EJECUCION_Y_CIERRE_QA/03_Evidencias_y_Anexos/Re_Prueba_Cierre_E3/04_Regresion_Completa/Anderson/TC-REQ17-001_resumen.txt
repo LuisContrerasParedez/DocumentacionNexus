@@ -1,0 +1,9 @@
+2026-10-22 18:30:43 CST  TC-REQ17-001
+- Login externo autorizado
+    POST http://localhost:15254/api/external/auth/login
+    HTTP 200 (50 ms) | ok=2 fail=0
+    body: {"accessToken":"<JWT-redactado>","expiresAt":"2026-10-23T01:30:43.3200156Z","tokenType":"Bearer"}
+- Login externo con usuario sin rol BANCO_EXTERNO (Ana)
+    POST http://localhost:15254/api/external/auth/login
+    HTTP 403 (22 ms) | ok=2 fail=0
+    body: {"status":false,"message":"El usuario no esta autorizado para operar como banco externo.","data":null,"errors":null}

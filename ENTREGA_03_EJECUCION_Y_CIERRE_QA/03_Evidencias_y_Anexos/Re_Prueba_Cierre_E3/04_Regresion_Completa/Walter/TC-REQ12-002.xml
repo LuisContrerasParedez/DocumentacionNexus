@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="BancoERP Nexus · E2 Diseño e Implementación QA (46 casos) · v2 re-prueba cierre E3 · TC-REQ12-002 (subconjunto)" tests="1" time="0.064">
+  <testsuite name="TC-REQ12-002 · Autorización horizontal en transferencia portal / Transferencia portal con origen de Bruno" id="a778df8c-8a65-4f44-80bb-3f75e2842738" timestamp="2026-10-23T00:30:02.691Z" tests="2" failures="0" errors="0" time="0.064">
+    <testcase name="TC-REQ12-002: HTTP 403" time="0.064" classname="TcReq12002AutorizacionHorizontalEnTransferenciaPortalTransferenciaPortalConOrigenDeBruno"/>
+    <testcase name="mensaje contiene &quot;no pertenece&quot;" time="0.064" classname="TcReq12002AutorizacionHorizontalEnTransferenciaPortalTransferenciaPortalConOrigenDeBruno"/>
+  </testsuite>
+</testsuites>

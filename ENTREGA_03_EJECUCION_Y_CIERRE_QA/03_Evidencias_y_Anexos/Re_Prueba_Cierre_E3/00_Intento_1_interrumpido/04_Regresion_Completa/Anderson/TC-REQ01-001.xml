@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="BancoERP Nexus · E2 Diseño e Implementación QA (46 casos) · v2 re-prueba cierre E3 · TC-REQ01-001 (subconjunto)" tests="1" time="0.036">
+  <testsuite name="TC-REQ01-001 · Login válido con usuario activo / Login válido qa_admin" id="c5be779d-55cd-462e-99b1-6b2e56780e7e" timestamp="2026-10-23T00:24:53.015Z" tests="2" failures="0" errors="0" time="0.036">
+    <testcase name="TC-REQ01-001: HTTP 200" time="0.036" classname="TcReq01001LoginValidoConUsuarioActivoLoginValidoQaAdmin"/>
+    <testcase name="token y refreshToken presentes" time="0.036" classname="TcReq01001LoginValidoConUsuarioActivoLoginValidoQaAdmin"/>
+  </testsuite>
+</testsuites>

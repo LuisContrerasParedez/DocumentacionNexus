@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="BancoERP Nexus · E2 Diseño e Implementación QA (46 casos) · v2 re-prueba cierre E3 · TC-REQ07-001 (subconjunto)" tests="2" time="0.037">
+  <testsuite name="TC-REQ07-001 · Bloqueo de cuenta activa / Bloquear AH261002000210" id="a3a43d4f-0eae-497d-8e18-b0660dfcb6bb" timestamp="2026-10-23T00:29:58.284Z" tests="2" failures="0" errors="0" time="0.031">
+    <testcase name="TC-REQ07-001: HTTP 200" time="0.031" classname="TcReq07001BloqueoDeCuentaActivaBloquearAh261002000210"/>
+    <testcase name="mensaje contiene &quot;Cuenta bloqueada&quot;" time="0.031" classname="TcReq07001BloqueoDeCuentaActivaBloquearAh261002000210"/>
+  </testsuite>
+  <testsuite name="TC-REQ07-001 · Bloqueo de cuenta activa / Consultar estado" id="187909d2-e4b2-4625-ba95-b9c65a10a812" timestamp="2026-10-23T00:29:58.284Z" tests="2" failures="0" errors="0" time="0.006">
+    <testcase name="TC-REQ07-001: HTTP 200" time="0.006" classname="TcReq07001BloqueoDeCuentaActivaConsultarEstado"/>
+    <testcase name="BLOQUEADA" time="0.006" classname="TcReq07001BloqueoDeCuentaActivaConsultarEstado"/>
+  </testsuite>
+</testsuites>

@@ -1,0 +1,5 @@
+2026-10-22 18:24:44 CST  TC-REQ09-001_precondicion_caja_para_TC-REQ10-003
+- Precondición: caja ABIERTA de qa_cajero (acepta "ya abierta")
+    POST http://localhost:15141/api/cajas/abrir
+    HTTP 200 (21 ms) | ok=1 fail=0
+    body: {"sesionCajaId":"d4d229d8-18d0-4019-8d52-610030a379e5","message":"Caja abierta. Puede comenzar a operar."}

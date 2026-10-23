@@ -1,0 +1,5 @@
+2026-10-22 18:24:43 CST  TC-REQ10-003_parte1_Q5000.00
+- Retiro Q5000.00 (en el límite)
+    POST http://localhost:15141/api/transacciones/retiro
+    HTTP 200 (26 ms) | ok=1 fail=0
+    body: {"referencia":"RET-31e9d955f3d54759a4be6e439fcc3db1","saldoNuevo":7000.00,"monto":5000.0}

@@ -1,0 +1,55 @@
+newman
+
+BancoERP Nexus · E2 Diseño e Implementación QA (46 casos) · v2 re-prueba cierre E3 · TC-REQ13-002 (subconjunto)
+
+❏ TC-REQ13-002 · Banco ACH inactivo no es utilizable
+↳ Desactivar QA_NEXUS
+  PATCH http://localhost:15141/api/ach/bancos//estado [404 Not Found, 99B, 21ms]
+  1. TC-REQ13-002: HTTP 200
+
+↳ Listado de activos
+  GET http://localhost:15141/api/ach/bancos/activos [200 OK, 3.35kB, 12ms]
+  ✓  TC-REQ13-002: HTTP 200
+  ✓  no contiene QA_NEXUS
+
+↳ Validar destino con banco inactivo
+  POST http://localhost:15141/api/ach/transferencias/validar-destino [400 Bad Request, 191B, 14ms]
+  2. TC-REQ13-002: HTTP 422
+  3. mensaje contiene "inactivo"
+
+┌─────────────────────────┬──────────────────┬──────────────────┐
+│                         │         executed │           failed │
+├─────────────────────────┼──────────────────┼──────────────────┤
+│              iterations │                1 │                0 │
+├─────────────────────────┼──────────────────┼──────────────────┤
+│                requests │                3 │                0 │
+├─────────────────────────┼──────────────────┼──────────────────┤
+│            test-scripts │                3 │                0 │
+├─────────────────────────┼──────────────────┼──────────────────┤
+│      prerequest-scripts │                3 │                0 │
+├─────────────────────────┼──────────────────┼──────────────────┤
+│              assertions │                5 │                3 │
+├─────────────────────────┴──────────────────┴──────────────────┤
+│ total run duration: 575ms                                     │
+├───────────────────────────────────────────────────────────────┤
+│ total data received: 3.23kB (approx)                          │
+├───────────────────────────────────────────────────────────────┤
+│ average response time: 15ms [min: 12ms, max: 21ms, s.d.: 3ms] │
+└───────────────────────────────────────────────────────────────┘
+
+[31m  # [39m[31m failure        [39m[31m detail                                                                                           [39m
+[90m    [39m[90m                [39m[90m                                                                                                  [39m
+ 1.  AssertionError  TC-REQ13-002: HTTP 200                                                                           
+                     expected 404 to be one of [ 200 ]                                                                
+                     at assertion:0 in test-script                                                                    
+                     inside "TC-REQ13-002 · Banco ACH inactivo no es utilizable / Desactivar QA_NEXUS"                
+[90m    [39m[90m                [39m[90m                                                                                                  [39m
+ 2.  AssertionError  TC-REQ13-002: HTTP 422                                                                           
+                     expected 400 to be one of [ 422 ]                                                                
+                     at assertion:0 in test-script                                                                    
+                     inside "TC-REQ13-002 · Banco ACH inactivo no es utilizable / Validar destino con banco inactivo" 
+[90m    [39m[90m                [39m[90m                                                                                                  [39m
+ 3.  AssertionError  mensaje contiene "inactivo"                                                                      
+                     expected '{"message":"banco ach requerido."}' to include 'inactivo'                              
+                     at assertion:1 in test-script                                                                    
+                     inside "TC-REQ13-002 · Banco ACH inactivo no es utilizable / Validar destino con banco inactivo" 

@@ -1,0 +1,9 @@
+2026-10-22 18:30:13 CST  TC-REQ10-001
+- Retiro Q0.00
+    POST http://localhost:15141/api/transacciones/retiro
+    HTTP 400 (29 ms) | ok=2 fail=0
+    body: {"message":"El monto debe ser mayor a cero."}
+- Retiro Q0.01
+    POST http://localhost:15141/api/transacciones/retiro
+    HTTP 200 (11 ms) | ok=1 fail=0
+    body: {"referencia":"RET-52b446c7c8124fae9e251de23c2b0fc9","saldoNuevo":9000.00,"monto":0.01}

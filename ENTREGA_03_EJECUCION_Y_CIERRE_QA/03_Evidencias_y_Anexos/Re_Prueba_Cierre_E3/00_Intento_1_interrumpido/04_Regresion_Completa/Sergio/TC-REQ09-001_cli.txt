@@ -1,0 +1,37 @@
+newman
+
+BancoERP Nexus · E2 Diseño e Implementación QA (46 casos) · v2 re-prueba cierre E3 · TC-REQ09-001 (subconjunto)
+
+❏ TC-REQ09-001 · Monto mínimo de depósito
+↳ Precondición: caja ABIERTA de qa_cajero (acepta "ya abierta")
+  POST http://localhost:15141/api/cajas/abrir [200 OK, 254B, 23ms]
+  ✓  TC-REQ09-001: HTTP 200/201/400/409/422
+
+↳ Depósito Q0.00
+  POST http://localhost:15141/api/transacciones/deposito [400 Bad Request, 202B, 16ms]
+  ✓  TC-REQ09-001: HTTP 400
+  ✓  mensaje contiene "mayor a cero"
+
+↳ Depósito Q0.01
+  POST http://localhost:15141/api/transacciones/deposito [200 OK, 235B, 17ms]
+  ✓  TC-REQ09-001: HTTP 200
+
+┌─────────────────────────┬──────────────────┬──────────────────┐
+│                         │         executed │           failed │
+├─────────────────────────┼──────────────────┼──────────────────┤
+│              iterations │                1 │                0 │
+├─────────────────────────┼──────────────────┼──────────────────┤
+│                requests │                3 │                0 │
+├─────────────────────────┼──────────────────┼──────────────────┤
+│            test-scripts │                3 │                0 │
+├─────────────────────────┼──────────────────┼──────────────────┤
+│      prerequest-scripts │                3 │                0 │
+├─────────────────────────┼──────────────────┼──────────────────┤
+│              assertions │                4 │                0 │
+├─────────────────────────┴──────────────────┴──────────────────┤
+│ total run duration: 574ms                                     │
+├───────────────────────────────────────────────────────────────┤
+│ total data received: 238B (approx)                            │
+├───────────────────────────────────────────────────────────────┤
+│ average response time: 18ms [min: 16ms, max: 23ms, s.d.: 3ms] │
+└───────────────────────────────────────────────────────────────┘

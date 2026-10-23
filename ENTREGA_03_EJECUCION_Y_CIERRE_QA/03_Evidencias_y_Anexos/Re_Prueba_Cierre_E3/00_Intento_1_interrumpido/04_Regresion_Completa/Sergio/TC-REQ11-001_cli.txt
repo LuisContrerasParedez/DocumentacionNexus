@@ -1,0 +1,29 @@
+newman
+
+BancoERP Nexus · E2 Diseño e Implementación QA (46 casos) · v2 re-prueba cierre E3 · TC-REQ11-001 (subconjunto)
+
+❏ TC-REQ11-001 · Origen y destino no pueden ser la misma cuenta
+↳ Transferencia origen = destino
+  POST http://localhost:15141/api/transacciones/transferencia [400 Bad Request, 220B, 27ms]
+  ✓  TC-REQ11-001: HTTP 400
+  ✓  mensaje contiene "misma"
+
+┌─────────────────────────┬──────────────────┬──────────────────┐
+│                         │         executed │           failed │
+├─────────────────────────┼──────────────────┼──────────────────┤
+│              iterations │                1 │                0 │
+├─────────────────────────┼──────────────────┼──────────────────┤
+│                requests │                1 │                0 │
+├─────────────────────────┼──────────────────┼──────────────────┤
+│            test-scripts │                1 │                0 │
+├─────────────────────────┼──────────────────┼──────────────────┤
+│      prerequest-scripts │                1 │                0 │
+├─────────────────────────┼──────────────────┼──────────────────┤
+│              assertions │                2 │                0 │
+├─────────────────────────┴──────────────────┴──────────────────┤
+│ total run duration: 206ms                                     │
+├───────────────────────────────────────────────────────────────┤
+│ total data received: 63B (approx)                             │
+├───────────────────────────────────────────────────────────────┤
+│ average response time: 27ms [min: 27ms, max: 27ms, s.d.: 0µs] │
+└───────────────────────────────────────────────────────────────┘

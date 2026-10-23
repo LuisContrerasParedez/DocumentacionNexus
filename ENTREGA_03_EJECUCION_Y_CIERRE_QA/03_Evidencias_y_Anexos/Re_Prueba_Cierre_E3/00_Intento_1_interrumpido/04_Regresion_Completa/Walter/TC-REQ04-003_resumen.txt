@@ -1,0 +1,13 @@
+2026-10-22 18:24:20 CST  TC-REQ04-003
+- Correo sin @
+    POST http://localhost:15141/api/clientes/natural
+    HTTP 400 (21 ms) | ok=2 fail=0
+    body: {"message":"Email con formato invalido"}
+- Teléfono 7 dígitos
+    POST http://localhost:15141/api/clientes/natural
+    HTTP 400 (6 ms) | ok=2 fail=0
+    body: {"message":"Telefono invalido. Debe tener 8 digitos"}
+- Teléfono 9 dígitos
+    POST http://localhost:15141/api/clientes/natural
+    HTTP 400 (4 ms) | ok=2 fail=0
+    body: {"message":"Telefono invalido. Debe tener 8 digitos"}

@@ -1,0 +1,9 @@
+2026-10-22 18:30:51 CST  TC-REQ16-002
+- Resumen con qa_cajero (sin reportes.ver)
+    GET http://localhost:15141/api/reportes/resumen
+    HTTP 403 (23 ms) | ok=1 fail=0
+    body: 
+- Resumen con qa_admin (con permiso)
+    GET http://localhost:15141/api/reportes/resumen
+    HTTP 200 (39 ms) | ok=1 fail=0
+    body: {"totalClientes":1007,"clientesActivos":1002,"clientesEnRevision":4,"totalCuentas":2018,"cuentasActivas":2014,"saldoTotal":1547400.00,"totalTransferenciasInternas":3,"montoTransferenciasInternas":1150.00,"totalMovimientosHoy":0,"montoMovimientosHoy":0,"totalAch":3,"achPendientes":0,"achAprobadas":3,"achRechazadas":0,"montoAch":525.00,"clientesPorEstado":[{"codigo":"ACTIVO","total":1002},{"codigo":"EN_REVISION","total":4},{"codigo":"INACTIVO","total":1}],"cuentasPorEstado":[{"codigo":"ACTIVA","total":2014},{"codigo":"BLOQUEADA","total":2},{"codigo":"CERRADA","total":2}],"montosUltimos7Dias":[{"fecha":"2026-10-17","montoDepositos":0,"montoRetiros":0,"montoTransferenciasInternas":0,"montoAch":0},{"fecha":"2026-10-18","montoDepositos":0,"montoRetiros":0,"montoTransferenciasInternas":0,"montoAch":0},{"fecha":"2026-10-19","montoDepositos":0,"montoRetiros":0,"montoTransferenciasInternas":0,"montoAch":0},{"fecha":"2026-10-20","montoDepositos":0,"montoRetiros":0,"montoTransferenciasInternas":0,"montoAch":0},{"fecha":"2026-10-21","montoDepositos":0,"montoRetiros":0,"montoTransferenciasInternas":0,"montoAch":0},{"fecha":"2026-10-22","montoDepositos":2110.01,"montoRetiros":5100.01,"montoTransf

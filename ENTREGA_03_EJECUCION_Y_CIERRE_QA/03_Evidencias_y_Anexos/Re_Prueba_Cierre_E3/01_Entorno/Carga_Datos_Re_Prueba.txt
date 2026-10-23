@@ -1,0 +1,37 @@
+=== 2026-10-22 18:29:26 CST Proyecto bancoerp-e3-retest: esquema init_all.sql aplicado por docker-entrypoint (BD nueva) ===
+=== 2026-10-22 18:29:26 CST Carga base MockData_Sintetica.sql ===
+=== 2026-10-22 18:29:27 CST Capa Nexus MockData_Fixtures_Nexus.sql ===
+DO
+BEGIN
+UPDATE 0
+DO
+DO
+UPDATE 0
+DO
+COMMIT
+=== 2026-10-22 18:29:27 CST Seed de permisos ACH 009_ach_seed.sql (script de despliegue a producción omitido en el esquema QA; OBS-RT-01) ===
+INSERT 0 11
+INSERT 0 8
+INSERT 0 12
+=== 2026-10-22 18:29:27 CST Mongo: seed_banco_mock.js (5 bancos simulados E2_QA_*) ===
+{"database":"bancoerp_e2_qa","bancos_mock":5}
+
+=== 2026-10-22 18:29:28 CST Permisos ACH por rol tras 009 ===
+             codigo              |        roles         
+---------------------------------+----------------------
+ ach.bancos.crear                | ADMIN
+ ach.bancos.editar               | ADMIN
+ ach.bancos.eliminar             | ADMIN
+ ach.bancos.estado.cambiar       | ADMIN
+ ach.bancos.listar               | ADMIN
+ ach.bancos.ver                  | ADMIN
+ ach.public.auth.login           | ADMIN,BANCO_EXTERNO
+ ach.public.cuentas.consultar    | ADMIN,BANCO_EXTERNO
+ ach.public.transferencias.crear | ADMIN,BANCO_EXTERNO
+ ach.transferencias.crear        | ADMIN,CAJERO,GERENTE
+ ach.transferencias.listar       | ADMIN,CAJERO,GERENTE
+ ach.transferencias.ver          | ADMIN,CAJERO,GERENTE
+ portal.ach.crear                | CLIENTE
+ portal.ach.ver                  | CLIENTE
+(14 rows)
+

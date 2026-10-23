@@ -1,0 +1,6 @@
+Intento inválido de la fase REP-01 (2026-10-22 18:30-18:37 CST). No se usa para el veredicto.
+Las peticiones no se enviaron (requests=0): la colección tiene una guarda prerequest que solo permite los puertos
+oficiales del entorno QA (15141/15254) y el script había levantado las APIs de REP-01 en 15142/15255. Además, la
+PublicAPI de REP-01 no compiló al arrancar en paralelo con la InternalAPI (CS2021, transitorio).
+Corrección: igual que en el ciclo 1, las APIs de 15141/15254 se apuntan temporalmente a bancoerp_e2_qa_rep01, se levantan
+en forma secuencial y luego se restauran. La fase se repitió con: Ejecutar_Re_Prueba_E3.py ... --solo-rep01

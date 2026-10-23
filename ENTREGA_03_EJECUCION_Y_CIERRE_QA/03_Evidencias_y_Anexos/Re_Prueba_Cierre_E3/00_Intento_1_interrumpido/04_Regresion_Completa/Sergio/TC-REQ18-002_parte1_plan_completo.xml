@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="BancoERP Nexus · E2 Diseño e Implementación QA (46 casos) · v2 re-prueba cierre E3 · TC-REQ18-002_parte1_plan_completo (subconjunto)" tests="2" time="0.032">
+  <testsuite name="TC-REQ18-002 · Dependencias de catálogo/plan contable determinan readiness / Precondición: caja ABIERTA de qa_cajero (acepta &quot;ya abierta&quot;)" id="eaf43ad9-cd64-4915-95bf-e50fa992cf5f" timestamp="2026-10-23T00:24:49.360Z" tests="1" failures="0" errors="0" time="0.022">
+    <testcase name="TC-REQ18-002: HTTP 200/201/400/409/422" time="0.022" classname="TcReq18002DependenciasDeCatalogoPlanContableDeterminanReadinessPrecondicionCajaAbiertaDeQaCajeroAceptaQuotYaAbiertaQuot"/>
+  </testsuite>
+  <testsuite name="TC-REQ18-002 · Dependencias de catálogo/plan contable determinan readiness / Depósito Q10 con plan contable completo" id="0d585181-16c1-4017-bcfb-6836b97ae1ea" timestamp="2026-10-23T00:24:49.360Z" tests="1" failures="0" errors="0" time="0.010">
+    <testcase name="TC-REQ18-002: HTTP 200" time="0.010" classname="TcReq18002DependenciasDeCatalogoPlanContableDeterminanReadinessDepositoQ10ConPlanContableCompleto"/>
+  </testsuite>
+</testsuites>

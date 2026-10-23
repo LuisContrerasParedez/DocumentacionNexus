@@ -1,0 +1,32 @@
+newman
+
+BancoERP Nexus · E2 Diseño e Implementación QA (46 casos) · v2 re-prueba cierre E3 · TC-REQ16-002 (subconjunto)
+
+❏ TC-REQ16-002 · Reporte requiere permiso reportes.ver
+↳ Resumen con qa_cajero (sin reportes.ver)
+  GET http://localhost:15141/api/reportes/resumen [403 Forbidden, 99B, 23ms]
+  ✓  TC-REQ16-002: HTTP 403
+
+↳ Resumen con qa_admin (con permiso)
+  GET http://localhost:15141/api/reportes/resumen [200 OK, 3.2kB, 39ms]
+  ✓  TC-REQ16-002: HTTP 200
+
+┌─────────────────────────┬──────────────────┬──────────────────┐
+│                         │         executed │           failed │
+├─────────────────────────┼──────────────────┼──────────────────┤
+│              iterations │                1 │                0 │
+├─────────────────────────┼──────────────────┼──────────────────┤
+│                requests │                2 │                0 │
+├─────────────────────────┼──────────────────┼──────────────────┤
+│            test-scripts │                2 │                0 │
+├─────────────────────────┼──────────────────┼──────────────────┤
+│      prerequest-scripts │                2 │                0 │
+├─────────────────────────┼──────────────────┼──────────────────┤
+│              assertions │                2 │                0 │
+├─────────────────────────┴──────────────────┴──────────────────┤
+│ total run duration: 416ms                                     │
+├───────────────────────────────────────────────────────────────┤
+│ total data received: 3.05kB (approx)                          │
+├───────────────────────────────────────────────────────────────┤
+│ average response time: 31ms [min: 23ms, max: 39ms, s.d.: 8ms] │
+└───────────────────────────────────────────────────────────────┘

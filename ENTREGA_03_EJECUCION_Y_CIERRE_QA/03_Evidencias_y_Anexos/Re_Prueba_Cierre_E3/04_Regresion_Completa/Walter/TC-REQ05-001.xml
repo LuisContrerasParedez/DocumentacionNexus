@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="BancoERP Nexus · E2 Diseño e Implementación QA (46 casos) · v2 re-prueba cierre E3 · TC-REQ05-001 (subconjunto)" tests="2" time="0.032">
+  <testsuite name="TC-REQ05-001 · Estado inicial del cliente / Registrar cliente nuevo (Elena)" id="f22b17fd-fcf4-472c-a0e5-8feaedcb9900" timestamp="2026-10-23T00:29:53.070Z" tests="1" failures="0" errors="0" time="0.023">
+    <testcase name="TC-REQ05-001: HTTP 201" time="0.023" classname="TcReq05001EstadoInicialDelClienteRegistrarClienteNuevoElena"/>
+  </testsuite>
+  <testsuite name="TC-REQ05-001 · Estado inicial del cliente / GET cliente: estado inicial" id="945fa5e5-d7fe-4da9-afed-f8a3f2e4454e" timestamp="2026-10-23T00:29:53.070Z" tests="2" failures="0" errors="0" time="0.009">
+    <testcase name="TC-REQ05-001: HTTP 200" time="0.009" classname="TcReq05001EstadoInicialDelClienteGetClienteEstadoInicial"/>
+    <testcase name="EN_REVISION y no ACTIVO" time="0.009" classname="TcReq05001EstadoInicialDelClienteGetClienteEstadoInicial"/>
+  </testsuite>
+</testsuites>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="BancoERP Nexus · E2 Diseño e Implementación QA (46 casos) · v2 re-prueba cierre E3 · TC-REQ06-002 (subconjunto)" tests="4" time="0.042">
+  <testsuite name="TC-REQ06-002 · Negativas de apertura por precondición / R2: cliente no ACTIVO (Gabriel EN_REVISION)" id="5293a471-f7a6-4cdf-b936-cb475c120c9f" timestamp="2026-10-23T00:29:56.925Z" tests="1" failures="0" errors="0" time="0.023">
+    <testcase name="TC-REQ06-002: HTTP 422" time="0.023" classname="TcReq06002NegativasDeAperturaPorPrecondicionR2ClienteNoActivoGabrielEnRevision"/>
+  </testsuite>
+  <testsuite name="TC-REQ06-002 · Negativas de apertura por precondición / R3: tipo inválido" id="ceaa90ee-840e-48f2-8717-bafe8bc9759e" timestamp="2026-10-23T00:29:56.925Z" tests="1" failures="0" errors="0" time="0.009">
+    <testcase name="TC-REQ06-002: HTTP 400" time="0.009" classname="TcReq06002NegativasDeAperturaPorPrecondicionR3TipoInvalido"/>
+  </testsuite>
+  <testsuite name="TC-REQ06-002 · Negativas de apertura por precondición / R4: usuario sin empleado activo" id="72fee473-5b66-4c9c-917a-887e25925e6b" timestamp="2026-10-23T00:29:56.925Z" tests="1" failures="0" errors="0" time="0.005">
+    <testcase name="TC-REQ06-002: HTTP 422" time="0.005" classname="TcReq06002NegativasDeAperturaPorPrecondicionR4UsuarioSinEmpleadoActivo"/>
+  </testsuite>
+  <testsuite name="TC-REQ06-002 · Negativas de apertura por precondición / R5: operador sin caja abierta (qa_cajero2)" id="7012f54e-21eb-4cc2-9990-0c696ce819e8" timestamp="2026-10-23T00:29:56.925Z" tests="2" failures="0" errors="0" time="0.005">
+    <testcase name="TC-REQ06-002: HTTP 400" time="0.005" classname="TcReq06002NegativasDeAperturaPorPrecondicionR5OperadorSinCajaAbiertaQaCajero2"/>
+    <testcase name="mensaje contiene &quot;Abra su caja primero&quot;" time="0.005" classname="TcReq06002NegativasDeAperturaPorPrecondicionR5OperadorSinCajaAbiertaQaCajero2"/>
+  </testsuite>
+</testsuites>

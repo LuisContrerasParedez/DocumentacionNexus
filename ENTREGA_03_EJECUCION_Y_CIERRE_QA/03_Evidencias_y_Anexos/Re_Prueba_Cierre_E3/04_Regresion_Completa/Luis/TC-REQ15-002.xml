@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="BancoERP Nexus · E2 Diseño e Implementación QA (46 casos) · v2 re-prueba cierre E3 · TC-REQ15-002 (subconjunto)" tests="2" time="0.039">
+  <testsuite name="TC-REQ15-002 · Operación financiera genera auditoría de antes/después / Depósito Q100 a AH261002000101" id="3d0ea0fc-3764-4074-a4f4-86af6b42ee83" timestamp="2026-10-23T00:30:50.467Z" tests="1" failures="0" errors="0" time="0.028">
+    <testcase name="TC-REQ15-002: HTTP 200" time="0.028" classname="TcReq15002OperacionFinancieraGeneraAuditoriaDeAntesDespuesDepositoQ100AAh261002000101"/>
+  </testsuite>
+  <testsuite name="TC-REQ15-002 · Operación financiera genera auditoría de antes/después / Transferencia Q50 AH261002000101 → AH261002000209" id="b497f856-32db-44aa-b7f9-0d2a21cb32b7" timestamp="2026-10-23T00:30:50.467Z" tests="1" failures="0" errors="0" time="0.011">
+    <testcase name="TC-REQ15-002: HTTP 200" time="0.011" classname="TcReq15002OperacionFinancieraGeneraAuditoriaDeAntesDespuesTransferenciaQ50Ah261002000101Ah261002000209"/>
+  </testsuite>
+</testsuites>

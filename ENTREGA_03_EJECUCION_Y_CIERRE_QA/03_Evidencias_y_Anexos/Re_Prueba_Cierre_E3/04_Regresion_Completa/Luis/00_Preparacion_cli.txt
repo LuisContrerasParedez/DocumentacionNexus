@@ -1,0 +1,52 @@
+newman
+
+BancoERP Nexus · E2 Diseño e Implementación QA (46 casos) · v2 re-prueba cierre E3 · 00 · Preparación (subconjunto)
+
+❏ 00 · Preparación (tokens)
+↳ Login qa_admin
+  POST http://localhost:15141/api/auth/login [200 OK, 34.94kB, 35ms]
+  ✓  Prep: HTTP 200
+
+↳ Login qa_cajero
+  POST http://localhost:15141/api/auth/login [200 OK, 8.61kB, 16ms]
+  ✓  Prep: HTTP 200
+
+↳ Login qa_cajero2
+  POST http://localhost:15141/api/auth/login [200 OK, 8.63kB, 17ms]
+  ✓  Prep: HTTP 200
+
+↳ Login qa_sin_empleado
+  POST http://localhost:15141/api/auth/login [200 OK, 8.67kB, 19ms]
+  ✓  Prep: HTTP 200
+
+↳ Login qa_cliente_ana
+  POST http://localhost:15141/api/auth/login [200 OK, 4.12kB, 15ms]
+  ✓  Prep: HTTP 200
+
+↳ Login qa_cliente_bruno
+  POST http://localhost:15141/api/auth/login [200 OK, 4.13kB, 17ms]
+  ✓  Prep: HTTP 200
+
+↳ Login externo qa.banco.externo@nexus.test
+  POST http://localhost:15254/api/external/auth/login [200 OK, 1.37kB, 20ms]
+  ✓  Prep: HTTP 200
+
+┌─────────────────────────┬──────────────────┬──────────────────┐
+│                         │         executed │           failed │
+├─────────────────────────┼──────────────────┼──────────────────┤
+│              iterations │                1 │                0 │
+├─────────────────────────┼──────────────────┼──────────────────┤
+│                requests │                7 │                0 │
+├─────────────────────────┼──────────────────┼──────────────────┤
+│            test-scripts │                7 │                0 │
+├─────────────────────────┼──────────────────┼──────────────────┤
+│      prerequest-scripts │                7 │                0 │
+├─────────────────────────┼──────────────────┼──────────────────┤
+│              assertions │                7 │                0 │
+├─────────────────────────┴──────────────────┴──────────────────┤
+│ total run duration: 1347ms                                    │
+├───────────────────────────────────────────────────────────────┤
+│ total data received: 69.43kB (approx)                         │
+├───────────────────────────────────────────────────────────────┤
+│ average response time: 19ms [min: 15ms, max: 35ms, s.d.: 6ms] │
+└───────────────────────────────────────────────────────────────┘

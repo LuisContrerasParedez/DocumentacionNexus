@@ -1,0 +1,13 @@
+2026-10-22 18:24:28 CST  TC-REQ07-003
+- Límite -0.01 en cuenta ACTIVA
+    PATCH http://localhost:15141/api/cuentas/f448814a-3b4e-53e9-a426-f8592316be4d/limite-retiro
+    HTTP 400 (27 ms) | ok=2 fail=0
+    body: {"message":"El límite diario no puede ser negativo."}
+- Límite 0.00 en cuenta ACTIVA
+    PATCH http://localhost:15141/api/cuentas/f448814a-3b4e-53e9-a426-f8592316be4d/limite-retiro
+    HTTP 200 (8 ms) | ok=1 fail=0
+    body: {"message":"Límite diario actualizado a Q0.00.","limiteRetiroDiario":0.0}
+- Límite en cuenta CERRADA
+    PATCH http://localhost:15141/api/cuentas/95227470-cd90-549c-bb0f-d6eeb7984075/limite-retiro
+    HTTP 422 (3 ms) | ok=2 fail=0
+    body: {"message":"No se puede actualizar el límite de una cuenta cerrada."}

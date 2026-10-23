@@ -1,0 +1,17 @@
+2026-10-22 18:29:55 CST  TC-REQ05-002
+- Precondición: caja ABIERTA de qa_cajero (acepta "ya abierta")
+    POST http://localhost:15141/api/cajas/abrir
+    HTTP 200 (34 ms) | ok=1 fail=0
+    body: {"sesionCajaId":"a33f34c6-ce51-4f5b-858a-4fc91e1c2b27","message":"Caja abierta. Puede comenzar a operar."}
+- Apertura con cliente EN_REVISION (Carla)
+    POST http://localhost:15141/api/cuentas
+    HTTP 422 (18 ms) | ok=1 fail=0
+    body: {"message":"El cliente no esta activo. Estado: EN_REVISION"}
+- PATCH cliente a ACTIVO
+    PATCH http://localhost:15141/api/clientes/b5d182a8-d502-5b07-9a23-ab1276efa52e/estado
+    HTTP 200 (29 ms) | ok=1 fail=0
+    body: {"message":"Estado cambiado a ACTIVO","estado":"ACTIVO"}
+- Repetir apertura (cliente ACTIVO)
+    POST http://localhost:15141/api/cuentas
+    HTTP 201 (15 ms) | ok=1 fail=0
+    body: {"id":"ffbdbd2d-ed32-44ee-833c-e3463a030f54","numeroCuenta":"AH261023403230","tipoCuenta":"AHORRO","saldoMinimo":100.00,"message":"Cuenta abierta correctamente"}

@@ -1,0 +1,36 @@
+newman
+
+BancoERP Nexus · E2 Diseño e Implementación QA (46 casos) · v2 re-prueba cierre E3 · 00_Preparacion_REP01 (subconjunto)
+
+❏ 00 · Preparación (tokens)
+↳ Login qa_admin
+  POST http://localhost:15141/api/auth/login [200 OK, 34.95kB, 170ms]
+  ✓  Prep: HTTP 200
+
+↳ Login qa_cajero
+  POST http://localhost:15141/api/auth/login [200 OK, 8.63kB, 16ms]
+  ✓  Prep: HTTP 200
+
+↳ Login externo qa.banco.externo@nexus.test
+  POST http://localhost:15254/api/external/auth/login [200 OK, 1.37kB, 140ms]
+  ✓  Prep: HTTP 200
+
+┌─────────────────────────┬────────────────────┬───────────────────┐
+│                         │           executed │            failed │
+├─────────────────────────┼────────────────────┼───────────────────┤
+│              iterations │                  1 │                 0 │
+├─────────────────────────┼────────────────────┼───────────────────┤
+│                requests │                  3 │                 0 │
+├─────────────────────────┼────────────────────┼───────────────────┤
+│            test-scripts │                  3 │                 0 │
+├─────────────────────────┼────────────────────┼───────────────────┤
+│      prerequest-scripts │                  3 │                 0 │
+├─────────────────────────┼────────────────────┼───────────────────┤
+│              assertions │                  3 │                 0 │
+├─────────────────────────┴────────────────────┴───────────────────┤
+│ total run duration: 855ms                                        │
+├──────────────────────────────────────────────────────────────────┤
+│ total data received: 44.51kB (approx)                            │
+├──────────────────────────────────────────────────────────────────┤
+│ average response time: 108ms [min: 16ms, max: 170ms, s.d.: 66ms] │
+└──────────────────────────────────────────────────────────────────┘

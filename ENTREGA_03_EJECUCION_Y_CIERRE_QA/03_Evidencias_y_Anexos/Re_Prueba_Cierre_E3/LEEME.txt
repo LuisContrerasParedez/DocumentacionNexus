@@ -1,0 +1,40 @@
+Re_Prueba_Cierre_E3 — Ciclo 2 de la Entrega 3 (22/10/2026): re-prueba de BUG-NEX-01/02 y regresión completa
+==========================================================================================================
+
+Resultado: 46 de 46 casos en Pass sobre la build corregida (184 peticiones, 257 aserciones, 0 fallidas);
+BUG-NEX-01 y BUG-NEX-02 cerrados; 9 de 9 criterios de salida cumplidos; veredicto GO.
+El ciclo 1 (19/10/2026, NO-GO) no se modificó: sus evidencias siguen en ../Resultados_Newman, ../Capturas_Bugs y ../Logs_Consola_Servidor.
+
+Build bajo prueba: baseline 28f3faf + cambios locales del ciclo 1 + corrección (Correccion_BUG-NEX-01_02.diff):
+  - AchBancosController: [Authorize] en la clase y [RequirePermission(ach.bancos.*)] en las acciones administrativas.
+  - AchTransferenciasController: [Authorize] (refuerzo).
+  - PermisosSeguridad: constantes de los permisos ach.bancos.* (ya existían en la BD vía 009_ach_seed.sql).
+  - ReporteService: el resumen y la serie de 7 días suman ach.transferencias y ach.transferencias_entrantes.
+  - Prueba nueva InternalApiAuthorizationTests.
+
+Contenido
+  Correccion_BUG-NEX-01_02.diff           Cambio de código aplicado (diff).
+  Postman_Collection_QA_Nexus_v2_Re_Prueba.json
+                                          Colección v2 = original + fila P7-ACH en TC-REQ03-002 + oráculo de 11 totales
+                                          en TC-REQ16-001 + carpeta "RT · Re-prueba de defectos" (144 peticiones).
+  Re_Prueba_y_Regresion_pasos.txt        Bitácora de la ejecución con hora, pasos manuales y conteos por caso.
+  Resumen_Ejecucion_Ciclo2.json           Conteo de peticiones/aserciones/fallidas por ejecución de Newman.
+  01_Entorno/                             Carga de datos, checklist RD-16 (13/13), smoke y verificación del entorno nuevo.
+  02_Pruebas_Unitarias/                   dotnet test con y sin la corrección (.txt y .trx): 26/26 vs 16/26.
+  03_Re_Prueba_Defectos/BUG-NEX-01/       Carpeta RT (18 peticiones), TC-REQ03-002 con P7-ACH, Mongo antes/después.
+  03_Re_Prueba_Defectos/BUG-NEX-02/       TC-REQ16-001 en bancoerp_e2_qa_rep01, control SQL y control cruzado en la BD principal.
+  04_Regresion_Completa/<Especialista>/   Newman por caso: .json (reporte), _cli.txt, _resumen.txt (código y cuerpo), .xml (JUnit).
+  05_Verificaciones_SQL/                  ANTES/DESPUÉS de los 46 casos: saldos, caja, movimientos, auditoría, eventos, clientes y ACH.
+  06_Capturas/                            Render de las salidas reales de consola (.png + .txt de origen).
+  00_Intento_1_interrumpido/              Intento detenido por OBS-RT-01 (faltaba 009_ach_seed.sql en el esquema QA).
+  00_Intento_2_error_script_REP01/        Intento detenido por un error del script al crear la BD de REP-01 (regresión sin fallos).
+  03_.../BUG-NEX-02/_INTENTO_INVALIDO_sin_peticiones/
+                                          Primer intento de la fase REP-01: no envió peticiones (guarda de URLs de la colección).
+  Los intentos 00_* y _INTENTO_INVALIDO se conservan por trazabilidad y no se usan para el veredicto.
+
+Cómo reproducirlo (scripts en ../Kit_Ejecucion)
+  1. sh Preparar_Entorno_Re_Prueba.sh <E2/03_Evidencias_y_MockData> <E3/03_Evidencias_y_Anexos> <repo/Backend>
+  2. python3 -I Generar_Coleccion_Re_Prueba.py <colección original> <colección v2>
+  3. python3 -I Ejecutar_Re_Prueba_E3.py <E3/03_Evidencias_y_Anexos> <E2/03_Evidencias_y_MockData>   (--solo-rep01 repite solo REP-01)
+  4. sh Evidencia_Re_Prueba_BUG01.sh <salida.txt>; node Renderizar_Evidencia.cjs <txt> <png> "<título>"
+Los JWT y refresh tokens están redactados en todas las evidencias (<JWT-redactado>, <refresh-redactado>).

@@ -1,0 +1,82 @@
+BUG-NEX-01 — Re-prueba (confirmation testing) — 2026-10-22 18:40:19 CST (UTC 2026-10-23T00:40:19Z) — Ejecutor: Luis Contreras (Líder QA)
+Build: baseline 28f3faf + cambios locales del ciclo 1 + corrección ([Authorize] y [RequirePermission(ach.bancos.*)] en AchBancosController; [Authorize] en AchTransferenciasController)
+
+--- 1. Mismo paso que reprodujo el defecto: GET /api/ach/bancos SIN cabecera Authorization (ciclo 1: HTTP 200 con la configuración ACH) ---
+$ curl -sS -i http://localhost:15141/api/ach/bancos
+HTTP/1.1 401 Unauthorized
+Content-Length: 0
+Date: Fri, 23 Oct 2026 00:40:19 GMT
+Server: Kestrel
+WWW-Authenticate: Bearer
+
+
+
+--- 2. GET /api/ach/bancos/activos sin token (ciclo 1: HTTP 200) ---
+$ curl -sS -i http://localhost:15141/api/ach/bancos/activos
+HTTP/1.1 401 Unauthorized
+Content-Length: 0
+Date: Fri, 23 Oct 2026 00:40:19 GMT
+Server: Kestrel
+WWW-Authenticate: Bearer
+
+
+
+--- 3. Escritura anónima: PATCH /api/ach/bancos/{id}/estado sin token (ciclo 1: llegaba al servicio, 404) ---
+$ curl -sS -i -X PATCH http://localhost:15141/api/ach/bancos/000000000000000000000000/estado -H 'Content-Type: application/json' -d '{"activo":false}'
+HTTP/1.1 401 Unauthorized
+Content-Length: 0
+Date: Fri, 23 Oct 2026 00:40:19 GMT
+Server: Kestrel
+WWW-Authenticate: Bearer
+
+
+
+--- 4. Rol sin permiso: CLIENTE (qa_cliente_ana) → GET /api/ach/bancos ---
+$ curl -sS -i http://localhost:15141/api/ach/bancos -H 'Authorization: Bearer <JWT-redactado>'
+HTTP/1.1 403 Forbidden
+Content-Length: 0
+Date: Fri, 23 Oct 2026 00:40:19 GMT
+Server: Kestrel
+
+
+
+--- 5. Rol sin permiso: CAJERO (qa_cajero) → DELETE /api/ach/bancos/e20000000000000000000005 ---
+$ curl -sS -i -X DELETE http://localhost:15141/api/ach/bancos/e20000000000000000000005 -H 'Authorization: Bearer <JWT-redactado>'
+HTTP/1.1 403 Forbidden
+Content-Length: 0
+Date: Fri, 23 Oct 2026 00:40:19 GMT
+Server: Kestrel
+
+
+
+--- 6. Control positivo: ADMIN (qa_admin, permiso ach.bancos.listar) → GET /api/ach/bancos (se muestra solo el conteo y los códigos) ---
+$ curl -sS http://localhost:15141/api/ach/bancos -H 'Authorization: Bearer <JWT qa_admin>' | (códigos)
+HTTP 200
+"codigo":"QA_NEXUS" "codigo":"E2_QA_DUPLICATE" "codigo":"E2_QA_INVALID" "codigo":"E2_QA_TIMEOUT" "codigo":"E2_QA_HTTP500" "codigo":"E2_QA_SUCCESS" 
+
+
+--- 7. Control positivo: CLIENTE del portal → GET /api/ach/bancos/activos (necesario para transferir ACH desde Mi Banco) ---
+$ curl -sS http://localhost:15141/api/ach/bancos/activos -H 'Authorization: Bearer <JWT qa_cliente_ana>'
+HTTP 200
+
+
+--- 8. Hardening: GET /api/ach/transferencias sin token (antes de la corrección el rechazo dependía del servicio; ahora lo hace el pipeline de autenticación con 401) ---
+$ curl -sS -i http://localhost:15141/api/ach/transferencias
+HTTP/1.1 401 Unauthorized
+Content-Length: 0
+Date: Fri, 23 Oct 2026 00:40:19 GMT
+Server: Kestrel
+WWW-Authenticate: Bearer
+
+
+
+--- 9. Mismo endpoint protegido de referencia sin token (control) ---
+$ curl -sS -i http://localhost:15141/api/clientes
+HTTP/1.1 401 Unauthorized
+Content-Length: 0
+Date: Fri, 23 Oct 2026 00:40:19 GMT
+Server: Kestrel
+WWW-Authenticate: Bearer
+
+
+Resultado: los accesos sin token responden 401 y los roles sin permiso 403, igual que /api/clientes; ADMIN y el portal conservan su acceso.

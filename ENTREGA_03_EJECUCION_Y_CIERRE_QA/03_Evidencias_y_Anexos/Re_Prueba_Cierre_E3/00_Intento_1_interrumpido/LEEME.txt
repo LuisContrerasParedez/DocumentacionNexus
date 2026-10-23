@@ -1,0 +1,11 @@
+Intento 1 del ciclo 2 — interrumpido el 2026-10-22 18:24 CST (no se usa para el veredicto)
+
+Qué pasó: el control positivo RT-01-15 (ADMIN → GET /api/ach/bancos) devolvió HTTP 403 en lugar de 200.
+Causa: el esquema del entorno QA (scripts/schema de la E2 → init_all.sql) incluye los scripts de despliegue 001-008 y 012-016,
+pero omitió 009_ach_seed.sql, que crea los permisos ach.bancos.*, ach.transferencias.* y portal.ach.* y los asigna a
+ADMIN/GERENTE/CAJERO/CLIENTE. Antes de la corrección de BUG-NEX-01 la omisión no se notaba porque AchBancosController
+no exigía ningún permiso. En producción el script 009 sí se ejecuta (README_PRODUCTION_DEPLOY.md).
+Registro: OBS-RT-01 (configuración del entorno QA, no defecto del producto).
+Acción: se detuvo la ejecución, se recreó el entorno desde cero aplicando 009_ach_seed.sql después de la carga base
+y se repitió el ciclo completo (intento 2, carpetas 03, 04 y 05 de Re_Prueba_Cierre_E3).
+Este folder conserva los resultados parciales del intento 1 tal como quedaron.

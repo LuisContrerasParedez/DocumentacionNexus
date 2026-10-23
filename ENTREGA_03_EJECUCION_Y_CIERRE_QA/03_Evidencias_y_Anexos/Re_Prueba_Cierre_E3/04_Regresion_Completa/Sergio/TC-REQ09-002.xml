@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="BancoERP Nexus · E2 Diseño e Implementación QA (46 casos) · v2 re-prueba cierre E3 · TC-REQ09-002 (subconjunto)" tests="2" time="0.041">
+  <testsuite name="TC-REQ09-002 · Depósito válido reconcilia cuenta, movimiento y caja / Depósito Q2000 a AH261002000101" id="c47e2eaf-5179-48e6-a058-40f502100212" timestamp="2026-10-23T00:30:11.468Z" tests="1" failures="0" errors="0" time="0.025">
+    <testcase name="TC-REQ09-002: HTTP 200" time="0.025" classname="TcReq09002DepositoValidoReconciliaCuentaMovimientoYCajaDepositoQ2000AAh261002000101"/>
+  </testsuite>
+  <testsuite name="TC-REQ09-002 · Depósito válido reconcilia cuenta, movimiento y caja / Historial de la cuenta" id="a4cbae5c-6ce7-495c-a3ac-007b1a121b4c" timestamp="2026-10-23T00:30:11.468Z" tests="2" failures="0" errors="0" time="0.016">
+    <testcase name="TC-REQ09-002: HTTP 200" time="0.016" classname="TcReq09002DepositoValidoReconciliaCuentaMovimientoYCajaHistorialDeLaCuenta"/>
+    <testcase name="movimiento DEPOSITO" time="0.016" classname="TcReq09002DepositoValidoReconciliaCuentaMovimientoYCajaHistorialDeLaCuenta"/>
+  </testsuite>
+</testsuites>

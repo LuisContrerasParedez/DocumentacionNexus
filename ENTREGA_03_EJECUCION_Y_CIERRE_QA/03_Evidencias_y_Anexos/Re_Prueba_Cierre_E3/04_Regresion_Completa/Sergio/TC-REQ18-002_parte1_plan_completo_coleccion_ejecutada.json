@@ -1,0 +1,122 @@
+{
+  "info": {
+    "_postman_id": "d0fedf10-dc1c-5a4c-bedf-1d9611853c68",
+    "name": "BancoERP Nexus · E2 Diseño e Implementación QA (46 casos) · v2 re-prueba cierre E3 · TC-REQ18-002_parte1_plan_completo (subconjunto)",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": "Colección trazable a los 46 casos del Documento E2 (E2_Documento_Diseno_Implementacion_Nexus.docx). Una carpeta por requerimiento y una subcarpeta por caso TC-REQxx-xxx con sus pasos. Requiere el entorno QA aislado (docker-compose.qa.yml) y MockData_Fixtures_Nexus.sql. Plantillas de diseño: NO equivale a una ejecución; los resultados formales se registran en la Entrega 3."
+  },
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "exec": [
+          "for (const k of [\"baseInterna\",\"basePublica\"]) {",
+          "  const v=pm.variables.get(k);",
+          "  if (![\"http://localhost:15141\",\"http://localhost:15254\"].includes(v)) {",
+          "    pm.execution.skipRequest(); throw new Error(\"Solo URLs del entorno QA aislado (docker-compose.qa.yml)\");",
+          "  }",
+          "}"
+        ]
+      }
+    }
+  ],
+  "item": [
+    {
+      "name": "TC-REQ18-002 · Dependencias de catálogo/plan contable determinan readiness",
+      "description": "TC-REQ18-002 → REQ-18 | Técnica: Tabla de Decisión | Prioridad: Media\nPrecondiciones: Ambiente QA aislado; cuenta y caja válidas.\nDatos de entrada: Plan 1101/2101/2102 activos vs. 1101 inactivo; depósito 10.00 a AH261002000101\nPasos (Word): 1. Verificar catálogos CLIENTE_ESTADO/CUENTA_TIPO y plan 1101/2101/2102. 2. Ejecutar transacción con dependencias válidas. 3. En fixture controlado, desactivar una cuenta contable y repetir.\nResultado esperado (Word): Con seeds válidos el flujo continúa. Si falta cuenta contable requerida, depósito/retiro falla 422 con mensaje 'No existe cuenta contable activa con codigo ...'. Se clasifica como fallo de ambiente, no como defecto del caso funcional.\nPRE-REQUISITO: psql-QA: bloque [TC-REQ18-002] (desactivar 1101 antes de la 3.ª petición y restaurar al terminar).",
+      "item": [
+        {
+          "name": "Precondición: caja ABIERTA de qa_cajero (acepta \"ya abierta\")",
+          "request": {
+            "method": "POST",
+            "url": "{{baseInterna}}/api/cajas/abrir",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"fondoInicial\": 1000.0\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{token_cajero}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "description": "TC-REQ18-002 — paso del Documento E2 (sección 4)."
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "let j={}; try { j=pm.response.json(); } catch(e) { j={}; }",
+                  "pm.test(\"TC-REQ18-002: HTTP 200/201/400/409/422\", ()=>pm.expect(pm.response.code).to.be.oneOf([200, 201, 400, 409, 422]));"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Depósito Q10 con plan contable completo",
+          "request": {
+            "method": "POST",
+            "url": "{{baseInterna}}/api/transacciones/deposito",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"numeroCuenta\": \"AH261002000101\",\n  \"monto\": 10.0,\n  \"descripcion\": \"TC-REQ18-002 seeds OK\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{token_cajero}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "description": "TC-REQ18-002 — paso del Documento E2 (sección 4)."
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "let j={}; try { j=pm.response.json(); } catch(e) { j={}; }",
+                  "pm.test(\"TC-REQ18-002: HTTP 200\", ()=>pm.expect(pm.response.code).to.be.oneOf([200]));"
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

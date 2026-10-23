@@ -1,0 +1,13 @@
+=== 2026-10-22 18:18:36 CST Carga base MockData_Sintetica.sql (BD nueva, proyecto bancoerp-e3-retest) ===
+exit=0
+=== 2026-10-22 18:18:37 CST MockData_Fixtures_Nexus.sql ===
+DO
+BEGIN
+UPDATE 0
+DO
+DO
+UPDATE 0
+DO
+COMMIT
+=== 2026-10-22 18:18:45 CST Mongo: seed_banco_mock.js ===
+{"database":"bancoerp_e2_qa","bancos_mock":5}

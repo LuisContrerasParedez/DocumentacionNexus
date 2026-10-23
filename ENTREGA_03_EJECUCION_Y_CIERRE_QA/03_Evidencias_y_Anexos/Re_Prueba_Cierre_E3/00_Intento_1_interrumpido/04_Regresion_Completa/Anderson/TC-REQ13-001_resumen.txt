@@ -1,0 +1,9 @@
+2026-10-22 18:25:02 CST  TC-REQ13-001
+- Crear banco QA_NEXUS
+    POST http://localhost:15141/api/ach/bancos
+    HTTP 403 (22 ms) | ok=0 fail=1 FALLAN: TC-REQ13-001: HTTP 200/201
+    body: 
+- Crear QA_NEXUS duplicado
+    POST http://localhost:15141/api/ach/bancos
+    HTTP 403 (8 ms) | ok=0 fail=2 FALLAN: TC-REQ13-001: HTTP 409; mensaje contiene "mismo codigo"
+    body: 

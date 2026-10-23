@@ -1,0 +1,34 @@
+newman
+
+BancoERP Nexus · E2 Diseño e Implementación QA (46 casos) · v2 re-prueba cierre E3 · TC-REQ17-003 (subconjunto)
+
+❏ TC-REQ17-003 · ACH entrante idempotente por código de confirmación
+↳ ACH entrante Q500 (primera vez)
+  POST http://localhost:15254/api/external/ach/transferencias [201 Created, 421B, 70ms]
+  ✓  TC-REQ17-003: HTTP 201
+  ✓  APROBADA
+
+↳ Repetir el mismo código de confirmación
+  POST http://localhost:15254/api/external/ach/transferencias [409 Conflict, 303B, 9ms]
+  ✓  TC-REQ17-003: HTTP 409
+  ✓  mensaje contiene "ya fue procesada"
+
+┌─────────────────────────┬──────────────────┬──────────────────┐
+│                         │         executed │           failed │
+├─────────────────────────┼──────────────────┼──────────────────┤
+│              iterations │                1 │                0 │
+├─────────────────────────┼──────────────────┼──────────────────┤
+│                requests │                2 │                0 │
+├─────────────────────────┼──────────────────┼──────────────────┤
+│            test-scripts │                2 │                0 │
+├─────────────────────────┼──────────────────┼──────────────────┤
+│      prerequest-scripts │                2 │                0 │
+├─────────────────────────┼──────────────────┼──────────────────┤
+│              assertions │                4 │                0 │
+├─────────────────────────┴──────────────────┴──────────────────┤
+│ total run duration: 435ms                                     │
+├───────────────────────────────────────────────────────────────┤
+│ total data received: 417B (approx)                            │
+├───────────────────────────────────────────────────────────────┤
+│ average response time: 39ms [min: 9ms, max: 70ms, s.d.: 30ms] │
+└───────────────────────────────────────────────────────────────┘

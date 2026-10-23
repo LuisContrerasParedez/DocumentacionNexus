@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="BancoERP Nexus · E2 Diseño e Implementación QA (46 casos) · v2 re-prueba cierre E3 · TC-REQ10-001 (subconjunto)" tests="2" time="0.040">
+  <testsuite name="TC-REQ10-001 · Monto de retiro mayor que cero / Retiro Q0.00" id="e329eb49-deee-41ac-a700-cbae30603a57" timestamp="2026-10-23T00:30:13.540Z" tests="2" failures="0" errors="0" time="0.029">
+    <testcase name="TC-REQ10-001: HTTP 400" time="0.029" classname="TcReq10001MontoDeRetiroMayorQueCeroRetiroQ000"/>
+    <testcase name="mensaje contiene &quot;mayor a cero&quot;" time="0.029" classname="TcReq10001MontoDeRetiroMayorQueCeroRetiroQ000"/>
+  </testsuite>
+  <testsuite name="TC-REQ10-001 · Monto de retiro mayor que cero / Retiro Q0.01" id="4c6535e1-5183-4fba-b8bf-eb10ef406eb9" timestamp="2026-10-23T00:30:13.540Z" tests="1" failures="0" errors="0" time="0.011">
+    <testcase name="TC-REQ10-001: HTTP 200" time="0.011" classname="TcReq10001MontoDeRetiroMayorQueCeroRetiroQ001"/>
+  </testsuite>
+</testsuites>

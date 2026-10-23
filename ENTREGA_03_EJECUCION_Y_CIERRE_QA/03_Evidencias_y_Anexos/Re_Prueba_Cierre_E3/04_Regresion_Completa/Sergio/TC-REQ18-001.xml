@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="BancoERP Nexus · E2 Diseño e Implementación QA (46 casos) · v2 re-prueba cierre E3 · TC-REQ18-001 (subconjunto)" tests="2" time="0.028">
+  <testsuite name="TC-REQ18-001 · Operación bloqueada si usuario no tiene empleado activo / Abrir caja sin empleado activo" id="3bcf0b57-481d-492d-9370-85f99006d591" timestamp="2026-10-23T00:30:20.735Z" tests="2" failures="0" errors="0" time="0.021">
+    <testcase name="TC-REQ18-001: HTTP 422" time="0.021" classname="TcReq18001OperacionBloqueadaSiUsuarioNoTieneEmpleadoActivoAbrirCajaSinEmpleadoActivo"/>
+    <testcase name="mensaje contiene &quot;empleado activo&quot;" time="0.021" classname="TcReq18001OperacionBloqueadaSiUsuarioNoTieneEmpleadoActivoAbrirCajaSinEmpleadoActivo"/>
+  </testsuite>
+  <testsuite name="TC-REQ18-001 · Operación bloqueada si usuario no tiene empleado activo / Abrir cuenta sin empleado activo" id="8f90e724-388c-4ac4-9c37-43203f956b58" timestamp="2026-10-23T00:30:20.735Z" tests="2" failures="0" errors="0" time="0.007">
+    <testcase name="TC-REQ18-001: HTTP 422" time="0.007" classname="TcReq18001OperacionBloqueadaSiUsuarioNoTieneEmpleadoActivoAbrirCuentaSinEmpleadoActivo"/>
+    <testcase name="mensaje contiene &quot;empleado&quot;" time="0.007" classname="TcReq18001OperacionBloqueadaSiUsuarioNoTieneEmpleadoActivoAbrirCuentaSinEmpleadoActivo"/>
+  </testsuite>
+</testsuites>

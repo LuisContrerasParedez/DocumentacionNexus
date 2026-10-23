@@ -1,0 +1,17 @@
+2026-10-22 18:30:39 CST  TC-REQ14-002
+- Desactivar QA_NEXUS
+    PATCH http://localhost:15141/api/ach/bancos/6adaaaaab61888635cf90e26/estado
+    HTTP 200 (13 ms) | ok=1 fail=0
+    body: {"id":"6adaaaaab61888635cf90e26","nombre":"Banco QA Nexus","codigo":"QA_NEXUS","descripcion":"Banco sintético exclusivo QA E2 Nexus; sin integración real.","activo":false,"apiBaseUrl":"http://mock-bank:8081","apiEndpoint":"/success/transferencias","httpMethod":"POST","authLoginEndpoint":null,"authEmail":null,"authPassword":null,"headers":{},"estructuraJsonFormulario":"\"{ \\\"numeroCuentaDestino\\\" : \\\"EXT-QA-0001\\\" }\"","estructuraJsonPayload":"\"{ }\"","lookupCuentaEndpoint":"/cuentas/search/{numeroCuenta}","lookupCuentasDisponiblesEndpoint":null,"fechaCreacion":"2026-10-23T00:30:34.566Z","fechaActualizacion":"2026-10-23T00:30:39.211Z"}
+- Enviar con banco inactivo
+    POST http://localhost:15141/api/ach/transferencias/enviar
+    HTTP 422 (8 ms) | ok=2 fail=0
+    body: {"message":"El banco ACH seleccionado esta inactivo."}
+- Reactivar QA_NEXUS
+    PATCH http://localhost:15141/api/ach/bancos/6adaaaaab61888635cf90e26/estado
+    HTTP 200 (6 ms) | ok=1 fail=0
+    body: {"id":"6adaaaaab61888635cf90e26","nombre":"Banco QA Nexus","codigo":"QA_NEXUS","descripcion":"Banco sintético exclusivo QA E2 Nexus; sin integración real.","activo":true,"apiBaseUrl":"http://mock-bank:8081","apiEndpoint":"/success/transferencias","httpMethod":"POST","authLoginEndpoint":null,"authEmail":null,"authPassword":null,"headers":{},"estructuraJsonFormulario":"\"{ \\\"numeroCuentaDestino\\\" : \\\"EXT-QA-0001\\\" }\"","estructuraJsonPayload":"\"{ }\"","lookupCuentaEndpoint":"/cuentas/search/{numeroCuenta}","lookupCuentasDisponiblesEndpoint":null,"fechaCreacion":"2026-10-23T00:30:34.566Z","fechaActualizacion":"2026-10-23T00:30:39.569Z"}
+- Enviar Q1500.01 desde MO261002000102 (disponible Q1500)
+    POST http://localhost:15141/api/ach/transferencias/enviar
+    HTTP 422 (8 ms) | ok=2 fail=0
+    body: {"message":"Saldo disponible insuficiente para completar la transferencia ACH."}

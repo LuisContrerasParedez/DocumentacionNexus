@@ -1,0 +1,50 @@
+newman
+
+BancoERP Nexus · E2 Diseño e Implementación QA (46 casos) · v2 re-prueba cierre E3 · TC-REQ13-001 (subconjunto)
+
+❏ TC-REQ13-001 · Código de banco ACH único
+↳ Crear banco QA_NEXUS
+  POST http://localhost:15141/api/ach/bancos [403 Forbidden, 99B, 22ms]
+  1. TC-REQ13-001: HTTP 200/201
+
+↳ Crear QA_NEXUS duplicado
+  POST http://localhost:15141/api/ach/bancos [403 Forbidden, 99B, 8ms]
+  2. TC-REQ13-001: HTTP 409
+  3. mensaje contiene "mismo codigo"
+
+┌─────────────────────────┬──────────────────┬─────────────────┐
+│                         │         executed │          failed │
+├─────────────────────────┼──────────────────┼─────────────────┤
+│              iterations │                1 │               0 │
+├─────────────────────────┼──────────────────┼─────────────────┤
+│                requests │                2 │               0 │
+├─────────────────────────┼──────────────────┼─────────────────┤
+│            test-scripts │                2 │               0 │
+├─────────────────────────┼──────────────────┼─────────────────┤
+│      prerequest-scripts │                2 │               0 │
+├─────────────────────────┼──────────────────┼─────────────────┤
+│              assertions │                3 │               3 │
+├─────────────────────────┴──────────────────┴─────────────────┤
+│ total run duration: 385ms                                    │
+├──────────────────────────────────────────────────────────────┤
+│ total data received: 0B (approx)                             │
+├──────────────────────────────────────────────────────────────┤
+│ average response time: 15ms [min: 8ms, max: 22ms, s.d.: 7ms] │
+└──────────────────────────────────────────────────────────────┘
+
+[31m  # [39m[31m failure        [39m[31m detail                                                                       [39m
+[90m    [39m[90m                [39m[90m                                                                              [39m
+ 1.  AssertionError  TC-REQ13-001: HTTP 200/201                                                   
+                     expected 403 to be one of [ 200, 201 ]                                       
+                     at assertion:0 in test-script                                                
+                     inside "TC-REQ13-001 · Código de banco ACH único / Crear banco QA_NEXUS"     
+[90m    [39m[90m                [39m[90m                                                                              [39m
+ 2.  AssertionError  TC-REQ13-001: HTTP 409                                                       
+                     expected 403 to be one of [ 409 ]                                            
+                     at assertion:0 in test-script                                                
+                     inside "TC-REQ13-001 · Código de banco ACH único / Crear QA_NEXUS duplicado" 
+[90m    [39m[90m                [39m[90m                                                                              [39m
+ 3.  AssertionError  mensaje contiene "mismo codigo"                                              
+                     expected '{}' to include 'mismo codigo'                                      
+                     at assertion:1 in test-script                                                
+                     inside "TC-REQ13-001 · Código de banco ACH único / Crear QA_NEXUS duplicado" 
