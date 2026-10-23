@@ -1,0 +1,173 @@
+BUG-NEX-02 — Evidencia de request/response — TC-REQ16-001 (Reporte resumen vs dataset REP-01)
+Ejecutor: Luis Contreras · Fecha: 19/10/2026 18:51 (UTC-6) / 2026-10-20 00:51 UTC · BD aislada: bancoerp_e2_qa_rep01
+Fuente: Newman 6.2.3 — Resultados_Newman/Luis/TC-REQ16-001.json (tokens JWT redactados)
+
+====================================================================================================
+REP-01: transferencia interna Q200
+REQUEST : POST http://localhost:15141/api/transacciones/transferencia
+Headers : Authorization: Bearer <JWT-redactado>; Content-Type: application/json
+Body    : {   "numeroCuentaOrigen": "AH261002000301",   "numeroCuentaDestino": "MO261002000302",   "monto": 200.0,   "concepto": "REP-01" }
+RESPONSE: HTTP 200 OK (55 ms)
+{
+  "referencia": "TRF-6eef7cb4ee024357ae7e1f500dc2c2a0",
+  "saldoOrigen": 2275.0,
+  "saldoDestino": 1700.0,
+  "monto": 200.0
+}
+====================================================================================================
+REP-01: ACH entrante aprobado Q25
+REQUEST : POST http://localhost:15254/api/external/ach/transferencias
+Headers : Authorization: Bearer <JWT-redactado>; Content-Type: application/json
+Body    : {   "codigo_confirmacion": "E2-REP01-ACH-001",   "banco_externo": "QA_NEXUS",   "cuenta_externa": "EXT-QA-0001",   "numeroCuentaDestino": "MO261002000302",   "monto": 25.0,   "moneda": "GTQ",   "referencia": "REP-01",   "tipo": "entrante" }
+RESPONSE: HTTP 201 Created (52 ms)
+{
+  "status": true,
+  "message": "Transferencia recibida correctamente.",
+  "data": {
+    "codigoConfirmacion": "E2-REP01-ACH-001",
+    "numeroCuentaDestino": "MO261002000302",
+    "monto": 25.0,
+    "moneda": "Q",
+    "estado": "APROBADA",
+    "fechaProcesamiento": "2026-10-20T00:51:18.924354Z"
+  },
+  "errors": null
+}
+====================================================================================================
+GET /api/reportes/resumen
+REQUEST : GET http://localhost:15141/api/reportes/resumen
+Headers : Authorization: Bearer <JWT-redactado>; Content-Type: application/json
+RESPONSE: HTTP 200 OK (17 ms)
+{
+  "totalClientes": 2,
+  "clientesActivos": 1,
+  "clientesEnRevision": 1,
+  "totalCuentas": 3,
+  "cuentasActivas": 2,
+  "saldoTotal": 4000.0,
+  "totalTransferenciasInternas": 1,
+  "montoTransferenciasInternas": 200.0,
+  "totalMovimientosHoy": 0,
+  "montoMovimientosHoy": 0,
+  "totalAch": 0,
+  "achPendientes": 0,
+  "achAprobadas": 0,
+  "achRechazadas": 0,
+  "montoAch": 0,
+  "clientesPorEstado": [
+    {
+      "codigo": "ACTIVO",
+      "total": 1
+    },
+    {
+      "codigo": "EN_REVISION",
+      "total": 1
+    }
+  ],
+  "cuentasPorEstado": [
+    {
+      "codigo": "ACTIVA",
+      "total": 2
+    },
+    {
+      "codigo": "CERRADA",
+      "total": 1
+    }
+  ],
+  "montosUltimos7Dias": [
+    {
+      "fecha": "2026-10-14",
+      "montoDepositos": 0,
+      "montoRetiros": 0,
+      "montoTransferenciasInternas": 0,
+      "montoAch": 0
+    },
+    {
+      "fecha": "2026-10-15",
+      "montoDepositos": 0,
+      "montoRetiros": 0,
+      "montoTransferenciasInternas": 0,
+      "montoAch": 0
+    },
+    {
+      "fecha": "2026-10-16",
+      "montoDepositos": 0,
+      "montoRetiros": 0,
+      "montoTransferenciasInternas": 0,
+      "montoAch": 0
+    },
+    {
+      "fecha": "2026-10-17",
+      "montoDepositos": 0,
+      "montoRetiros": 0,
+      "montoTransferenciasInternas": 0,
+      "montoAch": 0
+    },
+    {
+      "fecha": "2026-10-18",
+      "montoDepositos": 0,
+      "montoRetiros": 0,
+      "montoTransferenciasInternas": 0,
+      "montoAch": 0
+    },
+    {
+      "fecha": "2026-10-19",
+      "montoDepositos": 0,
+      "montoRetiros": 0,
+      "montoTransferenciasInternas": 200.0,
+      "montoAch": 0
+    },
+    {
+      "fecha": "2026-10-20",
+      "montoDepositos": 0,
+      "montoRetiros": 0,
+      "montoTransferenciasInternas": 0,
+      "montoAch": 0
+    }
+  ],
+  "movimientosRecientes": [
+    {
+      "referencia": "ACHIN-239e8a2e01b24519ba7df4d693037ba8",
+      "tipo": "ACH_IN",
+      "monto": 25.0,
+      "estado": "COMPLETADA",
+      "cuentaNumero": "MO261002000302",
+      "clienteNombre": "Rita Reporte",
+      "creadoEn": "2026-10-20T00:51:18.924354Z"
+    },
+    {
+      "referencia": "TRF-6eef7cb4ee024357ae7e1f500dc2c2a0-OUT",
+      "tipo": "TRF_OUT",
+      "monto": 200.0,
+      "estado": "COMPLETADA",
+      "cuentaNumero": "AH261002000301",
+      "clienteNombre": "Rita Reporte",
+      "creadoEn": "2026-10-20T00:51:18.546245Z"
+    },
+    {
+      "referencia": "TRF-6eef7cb4ee024357ae7e1f500dc2c2a0-IN",
+      "tipo": "TRF_IN",
+      "monto": 200.0,
+      "estado": "COMPLETADA",
+      "cuentaNumero": "MO261002000302",
+      "clienteNombre": "Rita Reporte",
+      "creadoEn": "2026-10-20T00:51:18.546245Z"
+    }
+  ]
+}
+
+====================================================================================================
+COMPARACIÓN CAMPO A CAMPO (REP01_Totales_Esperados.json vs GET /api/reportes/resumen)
+  totalClientes                esperado=2        obtenido(totalClientes)=2        OK
+  clientesActivos              esperado=1        obtenido(clientesActivos)=1        OK
+  clientesEnRevision           esperado=1        obtenido(clientesEnRevision)=1        OK
+  totalCuentas                 esperado=3        obtenido(totalCuentas)=3        OK
+  cuentasActivas               esperado=2        obtenido(cuentasActivas)=2        OK
+  saldoTotalActivo             esperado=4000.00  obtenido(saldoTotal)=4000.0   OK
+  transferenciasInternas       esperado=1        obtenido(totalTransferenciasInternas)=1        OK
+  montoTransferenciasInternas  esperado=200.00   obtenido(montoTransferenciasInternas)=200.0    OK
+  achAprobadas                 esperado=1        obtenido(achAprobadas)=0        NO COINCIDE
+  montoAchAprobado             esperado=25.00    obtenido(montoAch)=0        NO COINCIDE
+
+Control SQL (Logs_Consola_Servidor/Verificaciones_SQL/TC-REQ16-001_REP01.txt): ach.transferencias_entrantes = 1 fila APROBADA por Q25.00 (E2-REP01-ACH-001), con movimiento ACH_IN; MO261002000302 pasó de 1700.00 a 1725.00.
+Causa observada en el código: Backend/BancoERP.Application/Services/ReporteService.cs (consulta achSql, líneas 50-57) agrega solo FROM ach.transferencias (ACH salientes); no considera ach.transferencias_entrantes.

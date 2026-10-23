@@ -1,0 +1,51 @@
+BUG-NEX-01 — Confirmación — 2026-10-19 18:45:58 CST (UTC 2026-10-20T00:45:58Z) — Ejecutor: Anderson Ariana
+Petición: GET http://localhost:15141/api/ach/bancos  (SIN cabecera Authorization)
+
+$ curl -sS -i http://localhost:15141/api/ach/bancos
+HTTP/1.1 200 OK
+Content-Type: application/json; charset=utf-8
+Date: Tue, 20 Oct 2026 00:45:58 GMT
+Server: Kestrel
+Transfer-Encoding: chunked
+
+[{"id":"e20000000000000000000005","nombre":"Banco Sintetico duplicate","codigo":"E2_QA_DUPLICATE","descripcion":"Fixture exclusivamente QA; sin integración real.","activo":true,"apiBaseUrl":"http://mock-bank:8081","apiEndpoint":"/duplicate/transferencias","httpMethod":"POST","authLoginEndpoint":null,"authEmail":null,"authPassword":null,"headers":{},"estructuraJsonFormulario":"{ \"numeroCuentaDestino\" : \"EXT-QA-0001\" }","estructuraJsonPayload":"{ }","lookupCuentaEndpoint":"/cuentas/search/{numeroCuenta}","lookupCuentasDisponiblesEndpoint":null,"fechaCreacion":"2026-10-07T00:15:58.602Z","fechaActualizacion":"2026-10-07T00:15:58.603Z"},{"id":"e20000000000000000000004","nombre":"Banco Sintetico timeout","codigo":"E2_QA_TIMEOUT","descripcion":"Fixture exclusivamente QA; sin integración real.","activo":true,"apiBaseUrl":"http://mock-bank:8081","apiEndpoint":"/timeout/transferencias","httpMethod":"POST","authLoginEndpoint":null,"authEmail":null,"authPassword":null,"headers":{},"estructuraJsonFormulario":"{ \"numeroCuentaDestino\" : \"EXT-QA-0001\" }","estructuraJsonPayload":"{ }","lookupCuentaEndpoint":"/cuentas/search/{numeroCuenta}","lookupCuentasDisponiblesEndpoint":null,"fechaCreacion":"2026-10-07T00:15:58.597Z","fechaActualizacion":"2026-10-07T00:15:58.599Z"},{"id":"e20000000000000000000003","nombre":"Banco Sintetico invalid","codigo":"E2_QA_INVALID","descripcion":"Fixture exclusivamente QA; sin integración real.","activo":true,"apiBaseUrl":"http://mock-bank:8081","apiEndpoint":"/invalid/transferencias","httpMethod":"POST","authLoginEndpoint":null,"authEmail":null,"authPassword":null,"headers":{},"estructuraJsonFormulario":"{ \"numeroCuentaDestino\" : \"EXT-QA-0001\" }","estructuraJsonPayload":"{ }","lookupCuentaEndpoint":"/cuentas/search/{numeroCuenta}","lookupCuentasDisponiblesEndpoint":null,"fechaCreacion":"2026-10-07T00:15:58.592Z","fechaActualizacion":"2026-10-07T00:15:58.593Z"},{"id":"e20000000000000000000002","nombre":"Banco Sintetico http500","codigo":"E2_QA_HTTP500","descripcion":"Fixture exclusivamente QA; sin integración real.","activo":true,"apiBaseUrl":"http://mock-bank:8081","apiEndpoint":"/http500/transferencias","httpMethod":"POST","authLoginEndpoint":null,"authEmail":null,"authPassword":null,"headers":{},"estructuraJsonFormulario":"{ \"numeroCuentaDestino\" : \"EXT-QA-0001\" }","estructuraJsonPayload":"{ }","lookupCuentaEndpoint":"/cuentas/search/{numeroCuenta}","lookupCuentasDisponiblesEndpoint":null,"fechaCreacion":"2026-10-07T00:15:58.587Z","fechaActualizacion":"2026-10-07T00:15:58.588Z"},{"id":"e20000000000000000000001","nombre":"Banco Sintetico success","codigo":"E2_QA_SUCCESS","descripcion":"Fixture exclusivamente QA; sin integración real.","activo":true,"apiBaseUrl":"http://mock-bank:8081","apiEndpoint":"/success/transferencias","httpMethod":"POST","authLoginEndpoint":null,"authEmail":null,"authPassword":null,"headers":{},"estructuraJsonFormulario":"{ \"numeroCuentaDestino\" : \"EXT-QA-0001\" }","estructuraJsonPayload":"{ }","lookupCuentaEndpoint":"/cuentas/search/{numeroCuenta}","lookupCuentasDisponiblesEndpoint":null,"fechaCreacion":"2026-10-07T00:15:58.575Z","fechaActualizacion":"2026-10-07T00:15:58.581Z"}]
+
+--- Control: mismo endpoint protegido de referencia sin token ---
+$ curl -sS -i http://localhost:15141/api/clientes
+HTTP/1.1 401 Unauthorized
+Content-Length: 0
+Date: Tue, 20 Oct 2026 00:45:58 GMT
+Server: Kestrel
+WWW-Authenticate: Bearer
+
+
+--- Control: GET /api/ach/bancos/activos sin token ---
+HTTP/1.1 200 OK
+Content-Type: application/json; charset=utf-8
+Date: Tue, 20 Oct 2026 00:45:58 GMT
+Server: Kestrel
+Transfer-Encoding: chunked
+
+[{"id":"e20000000000000000000005","nombre":"Banco Sintetico duplicate","codigo":"E2_QA_DUPLICATE","descripcion":"Fixture exclusivamente QA; sin integración real.","activo":true,"apiBaseUrl":"http://mock-bank:8081","apiEndpoint":"/duplicate/transferencias","httpMethod":"POST","authLoginEndpoint":null,"authEmail":null,"authPassword":null,"headers":{},"estructuraJsonFormulario":"{ \"numeroCuentaDestino\" : \"EXT-QA-0001\" }","estructuraJsonPayload":"{ }","lookupCuentaEndpoint":"/cuentas/search/{numeroCuenta}","lookupCuentasDisponiblesEndpoint":null,"fechaCreacion":"2026-10-07T00:15:58.602Z","fechaActualizacion":"2026-10-07T00:15:58.603Z"},{"id":"e20000000000000000000004","nombre":"Banco Sintetico timeout","codigo":"E2_QA_TIMEOUT","descripcion":"Fixture exclusivamente QA; sin integración real.","activo":true,"apiBaseUrl":"http://mock-bank:8081","apiEndpoint":"/timeout/transferencias","httpMethod":"POST","authLoginEndpoint":null,"authEmail":null,"authPassword":null,"headers":{},"estructuraJsonFormulario":"{ \"numeroCuentaDestino\" : \"EXT-QA-0001\" }","estructuraJsonPayload":"{ }","lookupCuentaEndpoint":"/cuentas/search/{numeroCuenta}","lookupCuentasDisponiblesEndpoint":null,"fechaCreacion":"2026-10-07T00:15:58.597Z","fechaActualizacion":"2026-10-07T00:15:58.599Z"},{"id":"e20000000000000000000003","nombre":"Banco Sintetico invalid","codigo":"E2_QA_INVALID","descripcion":"Fixture exclusivamente QA; sin integración real.","activo":true,"apiBaseUrl":"http://mock-bank:8081","apiEndpoint":"/invalid/transferencias","httpMethod":"POST","authLoginEndpoint":null,"authEmail":null,"authPassword":null,"headers":{},"estructuraJsonFormulario":"{ \"numeroCuentaDestino\" : \"EXT-QA-0001\" }","estructuraJsonPayload":"{ }","lookupCuentaEndpoint":"/cuentas/search/{numeroCuenta}","lookupCuentasDisponiblesEndpoint":null,"fechaCreacion":"2026-10-07T00:15:58.592Z","fechaActualizacion":"2026-10-07T00:15:58.593Z"},{"id":"e20000000000000000000002","nombre":"Banco Sintetico http500","codigo":"E2_QA_HTTP500","descripcion":"Fixture exclusivamente QA; sin integración real.","activo":true,"apiBaseUrl":"http://mock-bank:8081","apiEndpoint":"/http500/transferencias","httpMethod":"POST","authLoginEndpoint":null,"authEmail":null,"authPassword":null,"headers":{},"estructuraJsonFormulario":"{ \"numeroCuentaDestino\" : \"EXT-QA-0001\" }","estructuraJsonPayload":"{ }","lookupCuentaEndpoint":"/cuentas/search/{numeroCuenta}","lookupCuentasDisponiblesEndpoint":null,"fechaCreacion":"2026-10-07T00:15:58.587Z","fechaActualizacion":"2026-10-07T00:15:58.588Z"},{"id":"e20000000000000000000001","nombre":"Banco Sintetico success","codigo":"E2_QA_SUCCESS","descripcion":"Fixture exclusivamente QA; sin integración real.","activo":true,"apiBaseUrl":"http://mock-bank:8081","apiEndpoint":"/success/transferencias","httpMethod":"POST","authLoginEndpoint":null,"authEmail":null,"authPassword":null,"headers":{},"estructuraJsonFormulario":"{ \"numeroCuentaDestino\" : \"EXT-QA-0001\" }","estructuraJsonPayload":"{ }","lookupCuentaEndpoint":"/cuentas/search/{numeroCuenta}","lookupCuentasDisponiblesEndpoint":null,"fechaCreacion":"2026-10-07T00:15:58.575Z","fechaActualizacion":"2026-10-07T00:15:58.581Z"}]
+
+--- Alcance: operación de escritura SIN token sobre id inexistente (no altera datos) ---
+$ curl -sS -i -X PATCH http://localhost:15141/api/ach/bancos/000000000000000000000000/estado -H "Content-Type: application/json" -d {"activo":false}
+HTTP/1.1 404 Not Found
+Content-Type: application/json; charset=utf-8
+Date: Tue, 20 Oct 2026 00:46:16 GMT
+Server: Kestrel
+Transfer-Encoding: chunked
+
+{"message":"Banco ACH no encontrado."}
+
+Código fuente: Backend/BancoERP.InternalAPI/Controllers/AchBancosController.cs — la clase y sus 7 acciones (GET, GET activos, GET {id}, POST, PUT, PATCH estado, DELETE) no declaran [Authorize].
+
+--- Re-verificación al cierre (después de la regresión P1) — 2026-10-19 18:54:26 CST ---
+$ curl -sS -i http://localhost:15141/api/ach/bancos
+HTTP/1.1 200 OK
+Content-Type: application/json; charset=utf-8
+Date: Tue, 20 Oct 2026 00:54:25 GMT
+Server: Kestrel
+Transfer-Encoding: chunked
+
+[{"id":"6ad6ba31cf560ee3ce8d006e","nombre":"Banco QA Nexus","codigo":"QA_NEXUS","descripcion":"Banco sintético exclusivo QA E2 Nexus; sin integración real.","activo":true,"apiBaseUrl":"http://mock-bank:8081","apiEndpoint":"/success/transferencias","httpMethod":"POST","authLoginEndpoint":null,"authEmail":null,"authPassword":null,"headers":{},"estructuraJsonFormulario":"\"{ \\\"numeroCuentaDestino\\\" : \\\"EXT-QA-0001\\\" }\"","estructuraJsonPaylo

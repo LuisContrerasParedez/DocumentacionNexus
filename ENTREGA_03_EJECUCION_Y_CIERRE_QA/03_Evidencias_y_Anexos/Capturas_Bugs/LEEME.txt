@@ -1,0 +1,5 @@
+Evidencias de defectos — Ejecución E3 (19/10/2026)
+- Evidencia_BUG01_Anderson.png / .txt : BUG-NEX-01. GET /api/ach/bancos y /activos sin token -> HTTP 200; PATCH anónimo llega al servicio (404, no 401); re-verificación al cierre.
+- Evidencia_BUG02_Luis.png / .txt     : BUG-NEX-02. TC-REQ16-001: request/response, comparación campo a campo con REP01_Totales_Esperados.json y control SQL.
+Los .png son un render fiel de las salidas reales de consola/Newman (.txt). Los logs de contenedor están en ../Logs_Consola_Servidor/BUG0X_internal-api.log.
+Ciclo 2 (22/10/2026): la re-prueba y la regresión completa sobre la build corregida están en ../Re_Prueba_Cierre_E3 (ver su LEEME.txt).
