@@ -1,0 +1,4 @@
+2026-10-19 18:43:50  TC-REQ08-003 · Cierre con diferencia mayor a Q10 justificada 
+- Cierre +Q10.01 con justificación
+    HTTP 200 | ok=2 fail=0 
+    body: {"fondoInicial":1000.00,"totalDepositos":0.00,"totalRetiros":0.00,"efectivoEsperado":1000.00,"efectivoContado":1010.01,"diferencia":10.01,"resultado":"SOBRANTE"}

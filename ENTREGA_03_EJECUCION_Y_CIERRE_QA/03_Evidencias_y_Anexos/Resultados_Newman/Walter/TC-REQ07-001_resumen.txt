@@ -1,0 +1,7 @@
+2026-10-19 18:42:59  TC-REQ07-001 · Bloqueo de cuenta activa 
+- Bloquear AH261002000210
+    HTTP 200 | ok=2 fail=0 
+    body: {"message":"Cuenta bloqueada","estado":"BLOQUEADA"}
+- Consultar estado
+    HTTP 200 | ok=2 fail=0 
+    body: {"id":"b7c1cc0f-7631-53b1-82a7-8b09a8cc75da","numeroCuenta":"AH261002000210","tipoCuenta":"AHORRO","clienteId":"29f57303-cfdf-5c62-883f-ac4372522b71","clienteNombre":"Bruno Prueba","estado":"BLOQUEADA","saldo":1000.00,"saldoDisponible":1000.00,"saldoRetenido":0.00,"saldoMinimo":100.00,"limiteRetiroDiario":5000.00,"montoRetiradoHoy":0.00,"tasaInteresAnual":0.0000,"permiteCheques":false,"fechaApertura":"2026-10-20T00:40:16.847132Z"}

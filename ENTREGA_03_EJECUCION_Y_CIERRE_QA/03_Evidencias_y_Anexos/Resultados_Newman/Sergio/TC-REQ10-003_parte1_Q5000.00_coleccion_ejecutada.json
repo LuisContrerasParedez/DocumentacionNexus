@@ -1,0 +1,77 @@
+{
+ "info": {
+  "_postman_id": "d0fedf10-dc1c-5a4c-bedf-1d9611853c68",
+  "name": "BancoERP Nexus · E2 Diseño e Implementación QA (46 casos) · TC-REQ10-003_parte1_Q5000.00 (subconjunto)",
+  "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+  "description": "Colección trazable a los 46 casos del Documento E2 (E2_Documento_Diseno_Implementacion_Nexus.docx). Una carpeta por requerimiento y una subcarpeta por caso TC-REQxx-xxx con sus pasos. Requiere el entorno QA aislado (docker-compose.qa.yml) y MockData_Fixtures_Nexus.sql. Plantillas de diseño: NO equivale a una ejecución; los resultados formales se registran en la Entrega 3."
+ },
+ "event": [
+  {
+   "listen": "prerequest",
+   "script": {
+    "type": "text/javascript",
+    "exec": [
+     "for (const k of [\"baseInterna\",\"basePublica\"]) {",
+     "  const v=pm.variables.get(k);",
+     "  if (![\"http://localhost:15141\",\"http://localhost:15254\"].includes(v)) {",
+     "    pm.execution.skipRequest(); throw new Error(\"Solo URLs del entorno QA aislado (docker-compose.qa.yml)\");",
+     "  }",
+     "}"
+    ]
+   }
+  }
+ ],
+ "item": [
+  {
+   "name": "TC-REQ10-003 · Frontera del límite diario en AHORRO",
+   "description": "TC-REQ10-003 → REQ-10 | Técnica: Análisis de Valores Límite | Prioridad: Alta\nPrecondiciones: Cuenta AHORRO con límite Q5000, retiradoHoy Q0, saldo suficiente y mínimo cubierto.\nDatos de entrada: AH261002000207 (límite Q5000; retirado Q0): 5000.00 / 5000.01\nPasos (Word): 1. Retirar Q5000.00 en fixture limpio. 2. Reiniciar fixture. 3. Retirar Q5000.01.\nResultado esperado (Word): Q5000.00 no excede la condición '>'. Q5000.01→HTTP 422 con mensaje de límite diario excedido. Mantener H-01 abierto para equivalencia entre canales.",
+   "item": [
+    {
+     "name": "Retiro Q5000.00 (en el límite)",
+     "request": {
+      "method": "POST",
+      "url": "{{baseInterna}}/api/transacciones/retiro",
+      "header": [
+       {
+        "key": "Content-Type",
+        "value": "application/json"
+       }
+      ],
+      "body": {
+       "mode": "raw",
+       "raw": "{\n  \"numeroCuenta\": \"AH261002000207\",\n  \"monto\": 5000.0,\n  \"descripcion\": \"TC-REQ10-003\"\n}",
+       "options": {
+        "raw": {
+         "language": "json"
+        }
+       }
+      },
+      "auth": {
+       "type": "bearer",
+       "bearer": [
+        {
+         "key": "token",
+         "value": "{{token_cajero}}",
+         "type": "string"
+        }
+       ]
+      },
+      "description": "TC-REQ10-003 — paso del Documento E2 (sección 4)."
+     },
+     "event": [
+      {
+       "listen": "test",
+       "script": {
+        "type": "text/javascript",
+        "exec": [
+         "let j={}; try { j=pm.response.json(); } catch(e) { j={}; }",
+         "pm.test(\"TC-REQ10-003: HTTP 200\", ()=>pm.expect(pm.response.code).to.be.oneOf([200]));"
+        ]
+       }
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

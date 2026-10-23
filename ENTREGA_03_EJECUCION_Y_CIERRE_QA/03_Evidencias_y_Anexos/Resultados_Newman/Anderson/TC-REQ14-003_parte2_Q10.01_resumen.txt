@@ -1,0 +1,4 @@
+2026-10-19 18:48:48  TC-REQ14-003 · ACH respeta límite diario parte2_Q10.01
+- Enviar Q10.01 tras reiniciar fixture
+    HTTP 422 | ok=2 fail=0 
+    body: {"message":"La transferencia ACH supera el limite diario de la cuenta origen."}

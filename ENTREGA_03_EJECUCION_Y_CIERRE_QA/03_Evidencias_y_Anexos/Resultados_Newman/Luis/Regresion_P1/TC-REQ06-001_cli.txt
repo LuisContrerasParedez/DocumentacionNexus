@@ -1,0 +1,40 @@
+# 2026-10-19 18:53:41 newman (Luis/Regresion_P1) TC-REQ06-001 · Apertura de cuenta con todas las precondiciones 
+newman
+
+BancoERP Nexus · E2 Diseño e Implementación QA (46 casos)
+
+❏ REQ-06 / TC-REQ06-001 · Apertura de cuenta con todas las precondiciones
+↳ Precondición: caja ABIERTA de qa_cajero (acepta "ya abierta")
+  POST http://localhost:15141/api/cajas/abrir [200 OK, 254B, 34ms]
+  ✓  TC-REQ06-001: HTTP 200/201/400/409/422
+
+↳ Apertura AHORRO para Ana
+  POST http://localhost:15141/api/cuentas [201 Created, 314B, 41ms]
+  ✓  TC-REQ06-001: HTTP 201
+  ✓  mensaje contiene "Cuenta abierta correctamente"
+  ✓  prefijo AH
+
+↳ Consultar cuenta creada
+  GET http://localhost:15141/api/cuentas/b910404c-b029-4955-90c2-ef19bc56248a [200 OK, 571B, 14ms]
+  ✓  TC-REQ06-001: HTTP 200
+  ✓  ACTIVA
+
+┌─────────────────────────┬───────────────────┬──────────────────┐
+│                         │          executed │           failed │
+├─────────────────────────┼───────────────────┼──────────────────┤
+│              iterations │                 1 │                0 │
+├─────────────────────────┼───────────────────┼──────────────────┤
+│                requests │                 3 │                0 │
+├─────────────────────────┼───────────────────┼──────────────────┤
+│            test-scripts │                 3 │                0 │
+├─────────────────────────┼───────────────────┼──────────────────┤
+│      prerequest-scripts │                 3 │                0 │
+├─────────────────────────┼───────────────────┼──────────────────┤
+│              assertions │                 6 │                0 │
+├─────────────────────────┴───────────────────┴──────────────────┤
+│ total run duration: 1072ms                                     │
+├────────────────────────────────────────────────────────────────┤
+│ total data received: 690B (approx)                             │
+├────────────────────────────────────────────────────────────────┤
+│ average response time: 29ms [min: 14ms, max: 41ms, s.d.: 11ms] │
+└────────────────────────────────────────────────────────────────┘

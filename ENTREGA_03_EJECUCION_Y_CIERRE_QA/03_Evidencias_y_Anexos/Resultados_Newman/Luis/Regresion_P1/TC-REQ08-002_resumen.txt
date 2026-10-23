@@ -1,0 +1,10 @@
+2026-10-19 18:53:46  TC-REQ08-002 · Frontera Q10.00/Q10.01 sin justificación 
+- Cierre con diferencia +Q10.00 sin justificación
+    HTTP 200 | ok=1 fail=0 
+    body: {"fondoInicial":1000.00,"totalDepositos":0.00,"totalRetiros":0.00,"efectivoEsperado":1000.00,"efectivoContado":1010.0,"diferencia":10.00,"resultado":"SOBRANTE"}
+- Fixture nuevo: reabrir caja fondo Q1000
+    HTTP 200 | ok=1 fail=0 
+    body: {"sesionCajaId":"96ddfbc5-cef5-4fe6-af28-3100044319b3","message":"Caja abierta. Puede comenzar a operar."}
+- Cierre con diferencia +Q10.01 sin justificación
+    HTTP 422 | ok=2 fail=0 
+    body: {"message":"Diferencia de Q10.01 requiere justificacion."}

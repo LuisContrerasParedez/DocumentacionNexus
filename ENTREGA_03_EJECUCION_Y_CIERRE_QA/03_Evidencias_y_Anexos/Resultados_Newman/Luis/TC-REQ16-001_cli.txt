@@ -1,0 +1,38 @@
+# 2026-10-19 18:51:17 newman (Luis) TC-REQ16-001 · Reporte resumen coincide con dataset controlado 
+newman
+
+BancoERP Nexus · E2 Diseño e Implementación QA (46 casos)
+
+❏ REQ-16 / TC-REQ16-001 · Reporte resumen coincide con dataset controlado
+↳ REP-01: transferencia interna Q200
+  POST http://localhost:15141/api/transacciones/transferencia [200 OK, 260B, 55ms]
+  ✓  TC-REQ16-001: HTTP 200
+
+↳ REP-01: ACH entrante aprobado Q25
+  POST http://localhost:15254/api/external/ach/transferencias [201 Created, 417B, 52ms]
+  ✓  TC-REQ16-001: HTTP 201
+
+↳ GET /api/reportes/resumen
+  GET http://localhost:15141/api/reportes/resumen [200 OK, 2.06kB, 17ms]
+  ✓  TC-REQ16-001: HTTP 200
+  ✓  totales REP-01 (ver REP01_Totales_Esperados.json)
+
+┌─────────────────────────┬───────────────────┬──────────────────┐
+│                         │          executed │           failed │
+├─────────────────────────┼───────────────────┼──────────────────┤
+│              iterations │                 1 │                0 │
+├─────────────────────────┼───────────────────┼──────────────────┤
+│                requests │                 3 │                0 │
+├─────────────────────────┼───────────────────┼──────────────────┤
+│            test-scripts │                 3 │                0 │
+├─────────────────────────┼───────────────────┼──────────────────┤
+│      prerequest-scripts │                 3 │                0 │
+├─────────────────────────┼───────────────────┼──────────────────┤
+│              assertions │                 4 │                0 │
+├─────────────────────────┴───────────────────┴──────────────────┤
+│ total run duration: 1110ms                                     │
+├────────────────────────────────────────────────────────────────┤
+│ total data received: 2.28kB (approx)                           │
+├────────────────────────────────────────────────────────────────┤
+│ average response time: 41ms [min: 17ms, max: 55ms, s.d.: 17ms] │
+└────────────────────────────────────────────────────────────────┘

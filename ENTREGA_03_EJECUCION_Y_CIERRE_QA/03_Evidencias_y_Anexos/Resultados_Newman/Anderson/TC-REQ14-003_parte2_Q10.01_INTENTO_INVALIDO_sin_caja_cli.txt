@@ -1,0 +1,42 @@
+# 2026-10-19 18:48:24 newman (Anderson) TC-REQ14-003 · ACH respeta límite diario parte2_Q10.01
+newman
+
+BancoERP Nexus · E2 Diseño e Implementación QA (46 casos) · TC-REQ14-003_parte2_Q10.01 (subconjunto)
+
+❏ TC-REQ14-003 · ACH respeta límite diario
+↳ Enviar Q10.01 tras reiniciar fixture
+  POST http://localhost:15141/api/ach/transferencias/enviar [403 Forbidden, 242B, 32ms]
+  1. TC-REQ14-003: HTTP 422
+  2. mensaje contiene "limite diario"
+
+┌─────────────────────────┬──────────────────┬──────────────────┐
+│                         │         executed │           failed │
+├─────────────────────────┼──────────────────┼──────────────────┤
+│              iterations │                1 │                0 │
+├─────────────────────────┼──────────────────┼──────────────────┤
+│                requests │                1 │                0 │
+├─────────────────────────┼──────────────────┼──────────────────┤
+│            test-scripts │                1 │                0 │
+├─────────────────────────┼──────────────────┼──────────────────┤
+│      prerequest-scripts │                1 │                0 │
+├─────────────────────────┼──────────────────┼──────────────────┤
+│              assertions │                2 │                2 │
+├─────────────────────────┴──────────────────┴──────────────────┤
+│ total run duration: 374ms                                     │
+├───────────────────────────────────────────────────────────────┤
+│ total data received: 87B (approx)                             │
+├───────────────────────────────────────────────────────────────┤
+│ average response time: 32ms [min: 32ms, max: 32ms, s.d.: 0µs] │
+└───────────────────────────────────────────────────────────────┘
+
+[31m  # [39m[31m failure        [39m[31m detail                                                                                   [39m
+[90m    [39m[90m                [39m[90m                                                                                          [39m
+ 1.  AssertionError  TC-REQ14-003: HTTP 422                                                                   
+                     expected 403 to be one of [ 422 ]                                                        
+                     at assertion:0 in test-script                                                            
+                     inside "TC-REQ14-003 · ACH respeta límite diario / Enviar Q10.01 tras reiniciar fixture" 
+[90m    [39m[90m                [39m[90m                                                                                          [39m
+ 2.  AssertionError  mensaje contiene "limite diario"                                                         
+                     expected '{"message":"el usuario autenticado no…' to include 'limite diario'             
+                     at assertion:1 in test-script                                                            
+                     inside "TC-REQ14-003 · ACH respeta límite diario / Enviar Q10.01 tras reiniciar fixture" 

@@ -1,0 +1,4 @@
+2026-10-19 18:44:14  TC-REQ10-002 · Retiro válido actualiza saldo, caja y acumulado diario 
+- Retiro Q100 de AH261002000206
+    HTTP 200 | ok=1 fail=0 
+    body: {"referencia":"RET-25d410a30e864fb59f327c399583a6b0","saldoNuevo":2400.00,"monto":100.0}

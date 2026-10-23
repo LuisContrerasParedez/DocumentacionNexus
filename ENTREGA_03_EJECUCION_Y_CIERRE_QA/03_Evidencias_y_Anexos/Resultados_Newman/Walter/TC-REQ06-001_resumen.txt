@@ -1,0 +1,10 @@
+2026-10-19 18:42:33  TC-REQ06-001 · Apertura de cuenta con todas las precondiciones 
+- Precondición: caja ABIERTA de qa_cajero (acepta "ya abierta")
+    HTTP 422 | ok=1 fail=0 
+    body: {"message":"Ya tiene una sesion de caja abierta hoy"}
+- Apertura AHORRO para Ana
+    HTTP 201 | ok=3 fail=0 
+    body: {"id":"d2d15b6d-57dc-4727-9b8f-9df28fbee2cc","numeroCuenta":"AH261020969652","tipoCuenta":"AHORRO","saldoMinimo":100.00,"message":"Cuenta abierta correctamente"}
+- Consultar cuenta creada
+    HTTP 200 | ok=2 fail=0 
+    body: {"id":"d2d15b6d-57dc-4727-9b8f-9df28fbee2cc","numeroCuenta":"AH261020969652","tipoCuenta":"AHORRO","clienteId":"5eefea06-04b7-5a99-8e78-a3080150319d","clienteNombre":"Ana Prueba","estado":"ACTIVA","saldo":0.00,"saldoDisponible":0.00,"saldoRetenido":0.00,"saldoMinimo":100.00,"limiteRetiroDiario":5000.00,"montoRetiradoHoy":0.00,"tasaInteresAnual":0.0300,"permiteCheques":false,"fechaApertura":"2026-10-20T00:42:34.694824Z"}

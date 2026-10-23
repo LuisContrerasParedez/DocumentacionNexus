@@ -1,0 +1,10 @@
+2026-10-19 18:51:17  TC-REQ16-001 · Reporte resumen coincide con dataset controlado 
+- REP-01: transferencia interna Q200
+    HTTP 200 | ok=1 fail=0 
+    body: {"referencia":"TRF-6eef7cb4ee024357ae7e1f500dc2c2a0","saldoOrigen":2275.00,"saldoDestino":1700.00,"monto":200.0}
+- REP-01: ACH entrante aprobado Q25
+    HTTP 201 | ok=1 fail=0 
+    body: {"status":true,"message":"Transferencia recibida correctamente.","data":{"codigoConfirmacion":"E2-REP01-ACH-001","numeroCuentaDestino":"MO261002000302","monto":25.0,"moneda":"Q","estado":"APROBADA","fechaProcesamiento":"2026-10-20T00:51:18.924354Z"},"errors":null}
+- GET /api/reportes/resumen
+    HTTP 200 | ok=2 fail=0 
+    body: {"totalClientes":2,"clientesActivos":1,"clientesEnRevision":1,"totalCuentas":3,"cuentasActivas":2,"saldoTotal":4000.00,"totalTransferenciasInternas":1,"montoTransferenciasInternas":200.00,"totalMovimientosHoy":0,"montoMovimientosHoy":0,"totalAch":0,"achPendientes":0,"achAprobadas":0,"achRechazadas":0,"montoAch":0,"clientesPorEstado":[{"codigo":"ACTIVO","total":1},{"codigo":"EN_REVISION","total":1}],"cuentasPorEstado":[{"codigo":"ACTIVA","total":2},{"codigo":"CERRADA","total":1}],"montosUltimos7Dias":[{"fecha":"2026-10-14","montoDepositos":0,"montoRetiros":0,"montoTransferenciasInternas":0,"montoAch":0},{"fecha":"2026-10-15","montoDepositos":0,"montoRetiros":0,"montoTransferenciasInternas":0,

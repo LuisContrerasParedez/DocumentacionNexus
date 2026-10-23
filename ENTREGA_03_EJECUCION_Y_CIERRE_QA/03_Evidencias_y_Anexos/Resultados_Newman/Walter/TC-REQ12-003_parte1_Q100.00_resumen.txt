@@ -1,0 +1,4 @@
+2026-10-19 18:43:24  TC-REQ12-003 · Límite diario del portal en frontera parte1_Q100.00
+- Portal Q100.00 (restante exacto)
+    HTTP 200 | ok=1 fail=0 
+    body: {"referencia":"WEB-20261020004324-D3AE260C","saldoOrigen":5900.00,"saldoDestino":1600.00,"monto":100.0}

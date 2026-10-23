@@ -1,0 +1,4 @@
+2026-10-19 18:45:06  TC-REQ18-002 · Dependencias de catálogo/plan contable determinan readiness parte2_1101_inactiva
+- Depósito Q10 con cuenta contable 1101 inactiva
+    HTTP 422 | ok=2 fail=0 
+    body: {"message":"No existe cuenta contable activa con codigo 1101 en contabilidad.plan_cuentas."}

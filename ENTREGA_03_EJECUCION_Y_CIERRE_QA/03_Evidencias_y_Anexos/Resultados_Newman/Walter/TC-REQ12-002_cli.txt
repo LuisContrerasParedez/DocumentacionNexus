@@ -1,0 +1,30 @@
+# 2026-10-19 18:43:23 newman (Walter) TC-REQ12-002 · Autorización horizontal en transferencia portal 
+newman
+
+BancoERP Nexus · E2 Diseño e Implementación QA (46 casos)
+
+❏ REQ-12 / TC-REQ12-002 · Autorización horizontal en transferencia portal
+↳ Transferencia portal con origen de Bruno
+  POST http://localhost:15141/api/portal/transferencias [403 Forbidden, 222B, 75ms]
+  ✓  TC-REQ12-002: HTTP 403
+  ✓  mensaje contiene "no pertenece"
+
+┌─────────────────────────┬──────────────────┬──────────────────┐
+│                         │         executed │           failed │
+├─────────────────────────┼──────────────────┼──────────────────┤
+│              iterations │                1 │                0 │
+├─────────────────────────┼──────────────────┼──────────────────┤
+│                requests │                1 │                0 │
+├─────────────────────────┼──────────────────┼──────────────────┤
+│            test-scripts │                1 │                0 │
+├─────────────────────────┼──────────────────┼──────────────────┤
+│      prerequest-scripts │                1 │                0 │
+├─────────────────────────┼──────────────────┼──────────────────┤
+│              assertions │                2 │                0 │
+├─────────────────────────┴──────────────────┴──────────────────┤
+│ total run duration: 413ms                                     │
+├───────────────────────────────────────────────────────────────┤
+│ total data received: 67B (approx)                             │
+├───────────────────────────────────────────────────────────────┤
+│ average response time: 75ms [min: 75ms, max: 75ms, s.d.: 0µs] │
+└───────────────────────────────────────────────────────────────┘

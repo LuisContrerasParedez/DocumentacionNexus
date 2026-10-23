@@ -1,0 +1,155 @@
+{
+ "info": {
+  "_postman_id": "d0fedf10-dc1c-5a4c-bedf-1d9611853c68",
+  "name": "BancoERP Nexus · E2 Diseño e Implementación QA (46 casos) · TC-REQ04-001 (subconjunto)",
+  "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+  "description": "Colección trazable a los 46 casos del Documento E2 (E2_Documento_Diseno_Implementacion_Nexus.docx). Una carpeta por requerimiento y una subcarpeta por caso TC-REQxx-xxx con sus pasos. Requiere el entorno QA aislado (docker-compose.qa.yml) y MockData_Fixtures_Nexus.sql. Plantillas de diseño: NO equivale a una ejecución; los resultados formales se registran en la Entrega 3."
+ },
+ "event": [
+  {
+   "listen": "prerequest",
+   "script": {
+    "type": "text/javascript",
+    "exec": [
+     "for (const k of [\"baseInterna\",\"basePublica\"]) {",
+     "  const v=pm.variables.get(k);",
+     "  if (![\"http://localhost:15141\",\"http://localhost:15254\"].includes(v)) {",
+     "    pm.execution.skipRequest(); throw new Error(\"Solo URLs del entorno QA aislado (docker-compose.qa.yml)\");",
+     "  }",
+     "}"
+    ]
+   }
+  }
+ ],
+ "item": [
+  {
+   "name": "TC-REQ04-001 · Registro válido en frontera exacta de 18 años",
+   "description": "TC-REQ04-001 → REQ-04 | Técnica: Análisis de Valores Límite | Prioridad: Media\nPrecondiciones: Catálogo CLIENTE_ESTADO/EN_REVISION activo; DPI no existente.\nDatos de entrada: DPI=2999999990199; teléfono=55778899; correo=diego.qa@nexus.test\nPasos (Word): 1. POST /api/clientes/natural. 2. Usar fecha nacimiento 2008-10-02 para fecha base 2026-10-02. 3. Consultar cliente creado.\nResultado esperado (Word): HTTP 201. Cliente creado y estado inicial EN_REVISION; no se rechaza por edad al cumplir exactamente 18.",
+   "item": [
+    {
+     "name": "Registro 18 años exactos (Diego)",
+     "request": {
+      "method": "POST",
+      "url": "{{baseInterna}}/api/clientes/natural",
+      "header": [
+       {
+        "key": "Content-Type",
+        "value": "application/json"
+       }
+      ],
+      "body": {
+       "mode": "raw",
+       "raw": "{\n  \"primerNombre\": \"Diego\",\n  \"primerApellido\": \"Frontera\",\n  \"dpi\": \"2999999990199\",\n  \"fechaNacimiento\": \"2008-10-20\",\n  \"email\": \"diego.qa@nexus.test\",\n  \"telefono\": \"55778899\"\n}",
+       "options": {
+        "raw": {
+         "language": "json"
+        }
+       }
+      },
+      "auth": {
+       "type": "bearer",
+       "bearer": [
+        {
+         "key": "token",
+         "value": "{{token_admin}}",
+         "type": "string"
+        }
+       ]
+      },
+      "description": "TC-REQ04-001 — paso del Documento E2 (sección 4)."
+     },
+     "event": [
+      {
+       "listen": "test",
+       "script": {
+        "type": "text/javascript",
+        "exec": [
+         "let j={}; try { j=pm.response.json(); } catch(e) { j={}; }",
+         "pm.test(\"TC-REQ04-001: HTTP 201\", ()=>pm.expect(pm.response.code).to.be.oneOf([201]));",
+         "const d=j.data||j; if(d.id) pm.environment.set(\"cliente_diego_id\", d.id);"
+        ]
+       }
+      }
+     ]
+    },
+    {
+     "name": "Consultar cliente creado",
+     "request": {
+      "method": "GET",
+      "url": "{{baseInterna}}/api/clientes/{{cliente_diego_id}}",
+      "header": [],
+      "auth": {
+       "type": "bearer",
+       "bearer": [
+        {
+         "key": "token",
+         "value": "{{token_admin}}",
+         "type": "string"
+        }
+       ]
+      },
+      "description": "TC-REQ04-001 — paso del Documento E2 (sección 4)."
+     },
+     "event": [
+      {
+       "listen": "test",
+       "script": {
+        "type": "text/javascript",
+        "exec": [
+         "let j={}; try { j=pm.response.json(); } catch(e) { j={}; }",
+         "pm.test(\"TC-REQ04-001: HTTP 200\", ()=>pm.expect(pm.response.code).to.be.oneOf([200]));",
+         "pm.test(\"estado EN_REVISION\",()=>pm.expect(JSON.stringify(j)).to.include(\"EN_REVISION\"));"
+        ]
+       }
+      }
+     ]
+    },
+    {
+     "name": "Variante menor por 1 día (Mateo, 2008-10-03)",
+     "request": {
+      "method": "POST",
+      "url": "{{baseInterna}}/api/clientes/natural",
+      "header": [
+       {
+        "key": "Content-Type",
+        "value": "application/json"
+       }
+      ],
+      "body": {
+       "mode": "raw",
+       "raw": "{\n  \"primerNombre\": \"Mateo\",\n  \"primerApellido\": \"Menor\",\n  \"dpi\": \"2999999990195\",\n  \"fechaNacimiento\": \"2008-10-21\",\n  \"email\": \"mateo.menor@nexus.test\",\n  \"telefono\": \"55778800\"\n}",
+       "options": {
+        "raw": {
+         "language": "json"
+        }
+       }
+      },
+      "auth": {
+       "type": "bearer",
+       "bearer": [
+        {
+         "key": "token",
+         "value": "{{token_admin}}",
+         "type": "string"
+        }
+       ]
+      },
+      "description": "TC-REQ04-001 — paso del Documento E2 (sección 4)."
+     },
+     "event": [
+      {
+       "listen": "test",
+       "script": {
+        "type": "text/javascript",
+        "exec": [
+         "let j={}; try { j=pm.response.json(); } catch(e) { j={}; }",
+         "pm.test(\"TC-REQ04-001: HTTP 400\", ()=>pm.expect(pm.response.code).to.be.oneOf([400]));"
+        ]
+       }
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

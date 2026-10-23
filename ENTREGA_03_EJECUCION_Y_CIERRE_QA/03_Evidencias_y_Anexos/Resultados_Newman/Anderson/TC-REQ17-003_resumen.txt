@@ -1,0 +1,7 @@
+2026-10-19 18:49:12  TC-REQ17-003 · ACH entrante idempotente por código de confirmación 
+- ACH entrante Q500 (primera vez)
+    HTTP 201 | ok=2 fail=0 
+    body: {"status":true,"message":"Transferencia recibida correctamente.","data":{"codigoConfirmacion":"E2-EXT-20261002-001","numeroCuentaDestino":"AH261002000101","monto":500.0,"moneda":"Q","estado":"APROBADA","fechaProcesamiento":"2026-10-20T00:49:13.375787Z"},"errors":null}
+- Repetir el mismo código de confirmación
+    HTTP 409 | ok=2 fail=0 
+    body: {"status":false,"message":"La transferencia ya fue procesada.","data":null,"errors":{"codigo_confirmacion":["El codigo de confirmacion ya existe."]}}

@@ -1,0 +1,4 @@
+2026-10-19 18:53:59  TC-REQ12-003 · Límite diario del portal en frontera parte2_Q100.01
+- Portal Q100.01 tras reiniciar fixture
+    HTTP 422 | ok=2 fail=0 
+    body: {"message":"La transferencia supera el limite diario de la cuenta origen."}

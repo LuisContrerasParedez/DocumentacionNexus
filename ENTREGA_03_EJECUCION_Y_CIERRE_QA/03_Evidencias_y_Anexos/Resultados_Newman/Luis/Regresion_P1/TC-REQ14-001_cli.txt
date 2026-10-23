@@ -1,0 +1,42 @@
+# 2026-10-19 18:54:01 newman (Luis/Regresion_P1) TC-REQ14-001 · Transferencia ACH saliente válida 
+newman
+
+BancoERP Nexus · E2 Diseño e Implementación QA (46 casos)
+
+❏ REQ-14 / TC-REQ14-001 · Transferencia ACH saliente válida
+↳ Precondición: reactivar QA_NEXUS
+  PATCH http://localhost:15141/api/ach/bancos/6ad6ba31cf560ee3ce8d006e/estado [200 OK, 800B, 61ms]
+  ✓  TC-REQ14-001: HTTP 200
+
+↳ Validar destino EXT-QA-0001
+  POST http://localhost:15141/api/ach/transferencias/validar-destino [200 OK, 674B, 26ms]
+  ✓  TC-REQ14-001: HTTP 200
+
+↳ Enviar ACH Q15
+  POST http://localhost:15141/api/ach/transferencias/enviar [200 OK, 992B, 12ms]
+  ✓  TC-REQ14-001: HTTP 200
+  ✓  ENVIADA o PENDIENTE
+
+↳ Historial ACH de la cuenta
+  GET http://localhost:15141/api/ach/transferencias/cuenta/60e12f09-f1be-5506-b494-5381502e3e75 [200 OK, 1.84kB, 17ms]
+  ✓  TC-REQ14-001: HTTP 200
+
+┌─────────────────────────┬───────────────────┬──────────────────┐
+│                         │          executed │           failed │
+├─────────────────────────┼───────────────────┼──────────────────┤
+│              iterations │                 1 │                0 │
+├─────────────────────────┼───────────────────┼──────────────────┤
+│                requests │                 4 │                0 │
+├─────────────────────────┼───────────────────┼──────────────────┤
+│            test-scripts │                 4 │                0 │
+├─────────────────────────┼───────────────────┼──────────────────┤
+│      prerequest-scripts │                 4 │                0 │
+├─────────────────────────┼───────────────────┼──────────────────┤
+│              assertions │                 5 │                0 │
+├─────────────────────────┴───────────────────┴──────────────────┤
+│ total run duration: 1425ms                                     │
+├────────────────────────────────────────────────────────────────┤
+│ total data received: 3.71kB (approx)                           │
+├────────────────────────────────────────────────────────────────┤
+│ average response time: 29ms [min: 12ms, max: 61ms, s.d.: 19ms] │
+└────────────────────────────────────────────────────────────────┘

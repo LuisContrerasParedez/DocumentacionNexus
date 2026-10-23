@@ -1,0 +1,10 @@
+2026-10-19 18:47:56  TC-REQ13-002 · Banco ACH inactivo no es utilizable 
+- Desactivar QA_NEXUS
+    HTTP 200 | ok=1 fail=0 
+    body: {"id":"6ad6ba31cf560ee3ce8d006e","nombre":"Banco QA Nexus","codigo":"QA_NEXUS","descripcion":"Banco sintético exclusivo QA E2 Nexus; sin integración real.","activo":false,"apiBaseUrl":"http://mock-bank:8081","apiEndpoint":"/success/transferencias","httpMethod":"POST","authLoginEndpoint":null,"authEmail":null,"authPassword":null,"headers":{},"estructuraJsonFormulario":"\"{ \\\"numeroCuentaDestino\\\" : \\\"EXT-QA-0001\\\" }\"","estructuraJsonPayload":"\"{ }\"","lookupCuentaEndpoint":"/cuentas/search/{numeroCuenta}","lookupCuentasDisponiblesEndpoint":null,"fechaCreacion":"2026-10-20T00:47:45.313Z","fechaActualizacion":"2026-10-20T00:47:46.375Z"}
+- Listado de activos
+    HTTP 200 | ok=2 fail=0 
+    body: [{"id":"e20000000000000000000005","nombre":"Banco Sintetico duplicate","codigo":"E2_QA_DUPLICATE","descripcion":"Fixture exclusivamente QA; sin integración real.","activo":true,"apiBaseUrl":"http://mock-bank:8081","apiEndpoint":"/duplicate/transferencias","httpMethod":"POST","authLoginEndpoint":null,"authEmail":null,"authPassword":null,"headers":{},"estructuraJsonFormulario":"{ \"numeroCuentaDestino\" : \"EXT-QA-0001\" }","estructuraJsonPayload":"{ }","lookupCuentaEndpoint":"/cuentas/search/{numeroCuenta}","lookupCuentasDisponiblesEndpoint":null,"fechaCreacion":"2026-10-07T00:15:58.602Z","fechaActualizacion":"2026-10-07T00:15:58.603Z"},{"id":"e20000000000000000000004","nombre":"Banco Sinteti
+- Validar destino con banco inactivo
+    HTTP 422 | ok=2 fail=0 
+    body: {"message":"El banco ACH seleccionado esta inactivo."}

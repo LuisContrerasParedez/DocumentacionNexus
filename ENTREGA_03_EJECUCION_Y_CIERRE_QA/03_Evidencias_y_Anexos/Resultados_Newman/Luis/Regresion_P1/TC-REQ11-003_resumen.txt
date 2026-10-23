@@ -1,0 +1,4 @@
+2026-10-19 18:53:56  TC-REQ11-003 · Fallo de validación no deja débito parcial 
+- Transferir Q400.01 desde AH261002000203 (dejaría Q99.99 < mínimo)
+    HTTP 422 | ok=1 fail=0 
+    body: {"message":"El retiro dejaria el saldo por debajo del minimo requerido"}

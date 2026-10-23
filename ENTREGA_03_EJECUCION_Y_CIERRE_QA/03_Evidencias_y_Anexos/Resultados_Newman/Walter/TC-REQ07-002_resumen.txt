@@ -1,0 +1,10 @@
+2026-10-19 18:43:00  TC-REQ07-002 · Cierre solo con saldo cero 
+- Cerrar AH261002000203 (saldo Q500)
+    HTTP 422 | ok=2 fail=0 
+    body: {"message":"No se puede cerrar. Saldo actual: Q500.00"}
+- Cerrar AH261002000204 (saldo Q0)
+    HTTP 200 | ok=1 fail=0 
+    body: {"message":"Cuenta cerrada","estado":"CERRADA"}
+- Consultar AH261002000204
+    HTTP 200 | ok=2 fail=0 
+    body: {"id":"9dfa3756-c7af-5e3b-8cd6-c9d395a38482","numeroCuenta":"AH261002000204","tipoCuenta":"AHORRO","clienteId":"29f57303-cfdf-5c62-883f-ac4372522b71","clienteNombre":"Bruno Prueba","estado":"CERRADA","saldo":0.00,"saldoDisponible":0.00,"saldoRetenido":0.00,"saldoMinimo":0.00,"limiteRetiroDiario":5000.00,"montoRetiradoHoy":0.00,"tasaInteresAnual":0.0000,"permiteCheques":false,"fechaApertura":"2026-10-20T00:40:16.847132Z"}

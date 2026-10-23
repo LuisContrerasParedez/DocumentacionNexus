@@ -1,0 +1,30 @@
+# 2026-10-19 18:53:59 newman (Luis/Regresion_P1) TC-REQ12-003 · Límite diario del portal en frontera parte2_Q100.01
+newman
+
+BancoERP Nexus · E2 Diseño e Implementación QA (46 casos) · TC-REQ12-003_parte2_Q100.01 (subconjunto)
+
+❏ TC-REQ12-003 · Límite diario del portal en frontera
+↳ Portal Q100.01 tras reiniciar fixture
+  POST http://localhost:15141/api/portal/transferencias [422 Unprocessable Entity, 241B, 32ms]
+  ✓  TC-REQ12-003: HTTP 422
+  ✓  mensaje contiene "limite diario"
+
+┌─────────────────────────┬──────────────────┬──────────────────┐
+│                         │         executed │           failed │
+├─────────────────────────┼──────────────────┼──────────────────┤
+│              iterations │                1 │                0 │
+├─────────────────────────┼──────────────────┼──────────────────┤
+│                requests │                1 │                0 │
+├─────────────────────────┼──────────────────┼──────────────────┤
+│            test-scripts │                1 │                0 │
+├─────────────────────────┼──────────────────┼──────────────────┤
+│      prerequest-scripts │                1 │                0 │
+├─────────────────────────┼──────────────────┼──────────────────┤
+│              assertions │                2 │                0 │
+├─────────────────────────┴──────────────────┴──────────────────┤
+│ total run duration: 370ms                                     │
+├───────────────────────────────────────────────────────────────┤
+│ total data received: 75B (approx)                             │
+├───────────────────────────────────────────────────────────────┤
+│ average response time: 32ms [min: 32ms, max: 32ms, s.d.: 0µs] │
+└───────────────────────────────────────────────────────────────┘

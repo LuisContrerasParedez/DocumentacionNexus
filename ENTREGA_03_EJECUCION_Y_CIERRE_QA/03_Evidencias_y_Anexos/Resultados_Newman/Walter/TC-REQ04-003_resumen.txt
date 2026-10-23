@@ -1,0 +1,10 @@
+2026-10-19 18:41:56  TC-REQ04-003 · Validación de correo y teléfono 
+- Correo sin @
+    HTTP 400 | ok=2 fail=0 
+    body: {"message":"Email con formato invalido"}
+- Teléfono 7 dígitos
+    HTTP 400 | ok=2 fail=0 
+    body: {"message":"Telefono invalido. Debe tener 8 digitos"}
+- Teléfono 9 dígitos
+    HTTP 400 | ok=2 fail=0 
+    body: {"message":"Telefono invalido. Debe tener 8 digitos"}

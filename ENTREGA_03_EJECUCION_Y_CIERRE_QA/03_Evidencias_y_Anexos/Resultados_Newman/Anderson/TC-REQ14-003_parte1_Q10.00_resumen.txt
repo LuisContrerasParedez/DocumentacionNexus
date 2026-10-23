@@ -1,0 +1,4 @@
+2026-10-19 18:48:23  TC-REQ14-003 · ACH respeta límite diario parte1_Q10.00
+- Enviar Q10.00 (restante exacto)
+    HTTP 200 | ok=1 fail=0 
+    body: {"id":"8ddab0cb-f92b-4267-965e-cb73ca038b09","bancoAchId":"6ad6ba31cf560ee3ce8d006e","bancoCodigo":"QA_NEXUS","cuentaOrigenId":"1f2314cc-84d6-51f5-82e5-224bf6f4bea3","monto":10.00,"descripcion":"TC-REQ14-003","codigoConfirmacion":"TRX-20261019-000002","estado":1,"estadoNombre":"ENVIADA","requestJson":"{\"monto\": 10.0, \"referencia\": \"TC-REQ14-003\", \"descripcion\": \"TC-REQ14-003\", \"codigo_confirmacion\": \"TRX-20261019-000002\", \"numeroCuentaDestino\": \"EXT-QA-0001\"}","responseJson":"{\"data\": {\"monto\": 10, \"estado\": \"APROBADA\", \"codigo_confirmacion\": \"TRX-20261019-000002\"}, \"status\": true, \"message\": \"Transferencia sintetica aprobada.\"}","mensajeError":null,"usuar

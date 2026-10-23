@@ -1,0 +1,7 @@
+2026-10-19 18:53:35  TC-REQ01-003 · Rechazo de usuario inactivo o bloqueado 
+- Login qa_inactivo
+    HTTP 403 | ok=3 fail=0 
+    body: {"message":"El usuario se encuentra inactivo. Por favor comuniquese con soporte."}
+- Login qa_bloqueado
+    HTTP 423 | ok=3 fail=0 
+    body: {"message":"El usuario se encuentra bloqueado. Por favor comuniquese con soporte."}

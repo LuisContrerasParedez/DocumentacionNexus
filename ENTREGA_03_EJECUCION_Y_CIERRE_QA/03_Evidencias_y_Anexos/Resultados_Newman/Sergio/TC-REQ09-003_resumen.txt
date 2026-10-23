@@ -1,0 +1,7 @@
+2026-10-19 18:44:03  TC-REQ09-003 · Depósito rechazado por estado/caja 
+- Depósito a cuenta BLOQUEADA AH261002000103
+    HTTP 422 | ok=1 fail=0 
+    body: {"message":"La cuenta AH261002000103 no esta activa. Estado actual: BLOQUEADA"}
+- Depósito con operador sin caja (qa_cajero2)
+    HTTP 422 | ok=2 fail=0 
+    body: {"message":"El usuario autenticado debe tener un empleado activo con caja abierta."}

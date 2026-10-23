@@ -1,0 +1,19 @@
+2026-10-19 18:53:32  TC-REQ01-002 · Bloqueo en frontera de intentos fallidos 
+- Intento 1 con contraseña errónea
+    HTTP 401 | ok=2 fail=0 
+    body: {"message":"Credenciales incorrectas. Intento 1 de 5."}
+- Intento 2 con contraseña errónea
+    HTTP 401 | ok=2 fail=0 
+    body: {"message":"Credenciales incorrectas. Intento 2 de 5."}
+- Intento 3 con contraseña errónea
+    HTTP 401 | ok=2 fail=0 
+    body: {"message":"Credenciales incorrectas. Intento 3 de 5."}
+- Intento 4 con contraseña errónea
+    HTTP 401 | ok=2 fail=0 
+    body: {"message":"Credenciales incorrectas. Intento 4 de 5."}
+- Intento 5 con contraseña errónea
+    HTTP 401 | ok=1 fail=0 
+    body: {"message":"Credenciales incorrectas. El usuario se encuentra bloqueado. Por favor comuniquese con soporte."}
+- Intento posterior con contraseña correcta (bloqueo vigente)
+    HTTP 423 | ok=1 fail=0 
+    body: {"message":"El usuario se encuentra bloqueado. Por favor comuniquese con soporte."}

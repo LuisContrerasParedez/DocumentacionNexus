@@ -1,0 +1,13 @@
+2026-10-19 18:45:37  TC-REQ02-002 · Logout revoca la sesión activa 
+- Login qa_cajero
+    HTTP 200 | ok=1 fail=0 
+    body: {"token":"<JWT>","refreshToken":"<refresh>","rol":"CAJERO","nombre":"Usuario QA qa_cajero","expiraEn":"2026-10-20T01:45:37.677737Z","refreshTokenExpiraEn":"2026-10-27T00:45:37.6768675Z","usuario":{"id":"b6b6a2f5-73e0-58b6-8f78-d50f97d583ba","username":"qa_cajero","correo":"qa_cajero@example.invalid","nombre":"Usuario QA qa_cajero","estado":true,"bloqueado":false,"debeCambiarPassword":false,"ultimoLogin":"2026-10-20T00:45:37.673881Z","roles":[{"id":"d9c883ba-65b5-48f0-b6d4-44c2022e016c","codigo":"CAJERO","nombre":"Cajero","descripcion":"Operacion de ventanilla.","activo":true,"createdAt":"2026-10-06T23:55:22.996187Z","updatedAt":"2026-10-06T23:55:22.996187Z"}],"permisos":[{"id":"190d0e20-984b
+- Logout
+    HTTP 200 | ok=1 fail=0 
+    body: {"message":"Operacion realizada correctamente."}
+- Reutilizar access token en /api/auth/me
+    HTTP 401 | ok=1 fail=0 
+    body: 
+- Refresh de la sesión revocada
+    HTTP 401 | ok=1 fail=0 
+    body: {"message":"Refresh token invalido o expirado."}

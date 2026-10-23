@@ -1,0 +1,7 @@
+2026-10-19 18:49:44  TC-REQ15-002 · Operación financiera genera auditoría de antes/después 
+- Depósito Q100 a AH261002000101
+    HTTP 200 | ok=1 fail=0 
+    body: {"referencia":"DEP-b835ae25d7554ad6b68d1daba4f9abe3","saldoNuevo":7600.00,"monto":100.0}
+- Transferencia Q50 AH261002000101 → AH261002000209
+    HTTP 200 | ok=1 fail=0 
+    body: {"referencia":"TRF-ebae7a32553c4b88a53d941f70d90025","saldoOrigen":7550.00,"saldoDestino":550.00,"monto":50.0}

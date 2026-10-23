@@ -1,0 +1,22 @@
+2026-10-19 18:51:13  00 · Preparación (tokens) REP01
+- Login qa_admin
+    HTTP 200 | ok=1 fail=0 
+    body: {"token":"<JWT>","refreshToken":"<refresh>","rol":"ADMINISTRADOR","nombre":"Usuario QA REP01 qa_admin","expiraEn":"2026-10-20T01:51:14.9228265Z","refreshTokenExpiraEn":"2026-10-27T00:51:14.916176Z","usuario":{"id":"1e99735f-ed03-5b6c-b60b-455321c9507f","username":"qa_admin","correo":"qa_admin@example.invalid","nombre":"Usuario QA REP01 qa_admin","estado":true,"bloqueado":false,"debeCambiarPassword":false,"ultimoLogin":"2026-10-20T00:51:14.908886Z","roles":[{"id":"d0d960ee-7e06-418d-befd-5c505d05a1f1","codigo":"ADMIN","nombre":"Administrador","descripcion":"Acceso total al sistema.","activo":true,"createdAt":"2026-10-20T00:50:40.081684Z","updatedAt":"2026-10-20T00:50:40.081684Z"}],"permisos":
+- Login qa_cajero
+    HTTP 200 | ok=1 fail=0 
+    body: {"token":"<JWT>","refreshToken":"<refresh>","rol":"CAJERO","nombre":"Usuario QA REP01 qa_cajero","expiraEn":"2026-10-20T01:51:15.2867601Z","refreshTokenExpiraEn":"2026-10-27T00:51:15.2862324Z","usuario":{"id":"b6b6a2f5-73e0-58b6-8f78-d50f97d583ba","username":"qa_cajero","correo":"qa_cajero@example.invalid","nombre":"Usuario QA REP01 qa_cajero","estado":true,"bloqueado":false,"debeCambiarPassword":false,"ultimoLogin":"2026-10-20T00:51:15.28435Z","roles":[{"id":"c9dfc0e6-3b39-4b43-ac15-9f7dc1437702","codigo":"CAJERO","nombre":"Cajero","descripcion":"Operacion de ventanilla.","activo":true,"createdAt":"2026-10-20T00:50:40.081684Z","updatedAt":"2026-10-20T00:50:40.081684Z"}],"permisos":[{"id":"f
+- Login qa_cajero2
+    HTTP 401 | ok=0 fail=1 FALLAN: Prep: HTTP 200
+    body: {"message":"Credenciales incorrectas."}
+- Login qa_sin_empleado
+    HTTP 401 | ok=0 fail=1 FALLAN: Prep: HTTP 200
+    body: {"message":"Credenciales incorrectas."}
+- Login qa_cliente_ana
+    HTTP 401 | ok=0 fail=1 FALLAN: Prep: HTTP 200
+    body: {"message":"Credenciales incorrectas."}
+- Login qa_cliente_bruno
+    HTTP 401 | ok=0 fail=1 FALLAN: Prep: HTTP 200
+    body: {"message":"Credenciales incorrectas."}
+- Login externo qa.banco.externo@nexus.test
+    HTTP 200 | ok=1 fail=0 
+    body: {"accessToken":"<JWT>","expiresAt":"2026-10-20T01:51:17.0670019Z","tokenType":"Bearer"}

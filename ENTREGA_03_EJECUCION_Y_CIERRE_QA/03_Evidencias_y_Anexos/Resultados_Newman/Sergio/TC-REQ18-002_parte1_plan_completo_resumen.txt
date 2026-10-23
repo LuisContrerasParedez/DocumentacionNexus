@@ -1,0 +1,7 @@
+2026-10-19 18:44:57  TC-REQ18-002 · Dependencias de catálogo/plan contable determinan readiness parte1_plan_completo
+- Precondición: caja ABIERTA de qa_cajero (acepta "ya abierta")
+    HTTP 422 | ok=1 fail=0 
+    body: {"message":"Ya tiene una sesion de caja abierta hoy"}
+- Depósito Q10 con plan contable completo
+    HTTP 200 | ok=1 fail=0 
+    body: {"referencia":"DEP-46416fe1f0e5489a9641ec501f7d7908","saldoNuevo":7010.00,"monto":10.0}

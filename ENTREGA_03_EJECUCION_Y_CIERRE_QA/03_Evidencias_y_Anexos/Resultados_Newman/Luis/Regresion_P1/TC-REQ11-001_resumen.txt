@@ -1,0 +1,4 @@
+2026-10-19 18:53:55  TC-REQ11-001 · Origen y destino no pueden ser la misma cuenta 
+- Transferencia origen = destino
+    HTTP 400 | ok=2 fail=0 
+    body: {"message":"La cuenta origen y destino no pueden ser la misma"}

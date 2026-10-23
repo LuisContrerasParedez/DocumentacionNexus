@@ -1,0 +1,13 @@
+2026-10-19 18:53:40  TC-REQ03-002 · Denegación por rol/permiso insuficiente 
+- P2: CLIENTE → /api/clientes
+    HTTP 403 | ok=1 fail=0 
+    body: 
+- P4: BANCO_EXTERNO (JWT público) → InternalAPI
+    HTTP 403 | ok=1 fail=0 
+    body: 
+- Sin permiso → endpoint mutable (POST cliente con token CLIENTE)
+    HTTP 403 | ok=1 fail=0 
+    body: 
+- P7: sin token → endpoint protegido
+    HTTP 401 | ok=1 fail=0 
+    body: 

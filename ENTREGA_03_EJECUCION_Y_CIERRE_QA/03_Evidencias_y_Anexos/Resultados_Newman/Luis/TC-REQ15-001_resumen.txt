@@ -1,0 +1,22 @@
+2026-10-19 18:49:33  TC-REQ15-001 · Eventos de login fallido y bloqueo quedan trazables 
+- Login fallido 1/5 qa_bloqueo
+    HTTP 401 | ok=1 fail=0 
+    body: {"message":"Credenciales incorrectas. Intento 1 de 5."}
+- Login fallido 2/5 qa_bloqueo
+    HTTP 401 | ok=1 fail=0 
+    body: {"message":"Credenciales incorrectas. Intento 2 de 5."}
+- Login fallido 3/5 qa_bloqueo
+    HTTP 401 | ok=1 fail=0 
+    body: {"message":"Credenciales incorrectas. Intento 3 de 5."}
+- Login fallido 4/5 qa_bloqueo
+    HTTP 401 | ok=1 fail=0 
+    body: {"message":"Credenciales incorrectas. Intento 4 de 5."}
+- Login fallido 5/5 qa_bloqueo
+    HTTP 401 | ok=1 fail=0 
+    body: {"message":"Credenciales incorrectas. El usuario se encuentra bloqueado. Por favor comuniquese con soporte."}
+- Eventos LOGIN_FALLIDO de qa_bloqueo
+    HTTP 200 | ok=3 fail=0 
+    body: [{"id":"c3bb5cc4-393d-4602-a8ef-453d0e698b9e","usuarioId":"4d00b5fc-9b29-5274-bf79-4d712ff0c72b","usernameIntentado":"qa_bloqueo","evento":"LOGIN_FALLIDO","descripcion":"Password incorrecta. Intento 5 de 5.","ipAddress":"172.22.0.1","userAgent":"PostmanRuntime/7.39.1","exitoso":false,"createdAt":"2026-10-20T00:49:35.853006Z"},{"id":"cfe50a9a-c4b8-47af-8681-d48efd3e74b8","usuarioId":"4d00b5fc-9b29-5274-bf79-4d712ff0c72b","usernameIntentado":"qa_bloqueo","evento":"LOGIN_FALLIDO","descripcion":"Password incorrecta. Intento 4 de 5.","ipAddress":"172.22.0.1","userAgent":"PostmanRuntime/7.39.1","exitoso":false,"createdAt":"2026-10-20T00:49:35.516228Z"},{"id":"bfb3f33e-7d78-47e5-8f28-cce749bfda09",
+- Evento USUARIO_BLOQUEADO
+    HTTP 200 | ok=2 fail=0 
+    body: [{"id":"9062039b-66b1-45d4-a51d-ef00b098299d","usuarioId":"4d00b5fc-9b29-5274-bf79-4d712ff0c72b","usernameIntentado":"qa_bloqueo","evento":"USUARIO_BLOQUEADO","descripcion":"Usuario bloqueado por intentos fallidos.","ipAddress":"172.22.0.1","userAgent":"PostmanRuntime/7.39.1","exitoso":true,"createdAt":"2026-10-20T00:49:35.85413Z"},{"id":"5b32160c-8d8e-499d-9be6-223d93fd06ab","usuarioId":"4d00b5fc-9b29-5274-bf79-4d712ff0c72b","usernameIntentado":"qa_bloqueo","evento":"USUARIO_BLOQUEADO","descripcion":"Usuario bloqueado por intentos fallidos.","ipAddress":"172.22.0.1","userAgent":"PostmanRuntime/7.39.1","exitoso":true,"createdAt":"2026-10-20T00:45:23.504312Z"}]

@@ -1,0 +1,7 @@
+2026-10-19 18:53:51  TC-REQ10-001 · Monto de retiro mayor que cero 
+- Retiro Q0.00
+    HTTP 400 | ok=2 fail=0 
+    body: {"message":"El monto debe ser mayor a cero."}
+- Retiro Q0.01
+    HTTP 200 | ok=1 fail=0 
+    body: {"referencia":"RET-3fcc5e440a6c418bb1fb1c3961305465","saldoNuevo":9000.00,"monto":0.01}

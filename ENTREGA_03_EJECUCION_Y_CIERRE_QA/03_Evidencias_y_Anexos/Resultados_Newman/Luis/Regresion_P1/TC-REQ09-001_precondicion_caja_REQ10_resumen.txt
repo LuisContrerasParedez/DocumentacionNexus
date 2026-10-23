@@ -1,0 +1,4 @@
+2026-10-19 18:53:54  TC-REQ09-001 · Monto mínimo de depósito precondicion_caja_REQ10
+- Precondición: caja ABIERTA de qa_cajero (acepta "ya abierta")
+    HTTP 200 | ok=1 fail=0 
+    body: {"sesionCajaId":"8df205fb-a0db-4ac8-a1e6-f56ed82ac944","message":"Caja abierta. Puede comenzar a operar."}

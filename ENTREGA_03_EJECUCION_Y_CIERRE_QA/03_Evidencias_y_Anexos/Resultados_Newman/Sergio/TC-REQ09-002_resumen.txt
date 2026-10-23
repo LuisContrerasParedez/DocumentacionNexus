@@ -1,0 +1,7 @@
+2026-10-19 18:44:02  TC-REQ09-002 · Depósito válido reconcilia cuenta, movimiento y caja 
+- Depósito Q2000 a AH261002000101
+    HTTP 200 | ok=1 fail=0 
+    body: {"referencia":"DEP-1edd670aa8ef42ab830b1e0ad60b5e04","saldoNuevo":9000.01,"monto":2000.0}
+- Historial de la cuenta
+    HTTP 200 | ok=2 fail=0 
+    body: [{"id":"a3bbc61f-2859-4ac0-937d-abc9421d3f61","tipo":"DEPOSITO","monto":2000.00,"saldoAntes":7000.01,"saldoDespues":9000.01,"descripcion":"TC-REQ09-002","referencia":"DEP-1edd670aa8ef42ab830b1e0ad60b5e04","estado":"COMPLETADA","creadoEn":"2026-10-20T00:44:02.877305Z"},{"id":"4eaf7709-fa48-4031-a925-e35db560d0dc","tipo":"DEPOSITO","monto":0.01,"saldoAntes":7000.00,"saldoDespues":7000.01,"descripcion":"TC-REQ09-001","referencia":"DEP-2ac52f6dd5c94a53aa82dd91bea9c235","estado":"COMPLETADA","creadoEn":"2026-10-20T00:44:01.906097Z"}]

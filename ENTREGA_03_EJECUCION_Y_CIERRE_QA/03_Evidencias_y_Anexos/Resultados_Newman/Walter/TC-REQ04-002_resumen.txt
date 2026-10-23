@@ -1,0 +1,13 @@
+2026-10-19 18:41:54  TC-REQ04-002 · Fronteras y duplicidad de DPI 
+- DPI 12 dígitos
+    HTTP 400 | ok=2 fail=0 
+    body: {"message":"DPI invalido. Debe tener 13 digitos"}
+- DPI 13 dígitos nuevo
+    HTTP 201 | ok=1 fail=0 
+    body: {"id":"449ad0fe-35c6-4045-86a0-5d8b74223d86","message":"Cliente registrado en revision"}
+- DPI 14 dígitos
+    HTTP 400 | ok=2 fail=0 
+    body: {"message":"DPI invalido. Debe tener 13 digitos"}
+- DPI duplicado (Ana)
+    HTTP 409 | ok=2 fail=0 
+    body: {"message":"Ya existe cliente con ese DPI"}

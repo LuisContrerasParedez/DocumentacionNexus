@@ -1,0 +1,34 @@
+# 2026-10-19 18:47:55 newman (Anderson) TC-REQ13-001 · Código de banco ACH único 
+newman
+
+BancoERP Nexus · E2 Diseño e Implementación QA (46 casos)
+
+❏ REQ-13 / TC-REQ13-001 · Código de banco ACH único
+↳ Crear banco QA_NEXUS
+  POST http://localhost:15141/api/ach/bancos [201 Created, 805B, 75ms]
+  ✓  TC-REQ13-001: HTTP 200/201
+
+↳ Crear QA_NEXUS duplicado
+  POST http://localhost:15141/api/ach/bancos [409 Conflict, 211B, 5ms]
+  ✓  TC-REQ13-001: HTTP 409
+  ✓  mensaje contiene "mismo codigo"
+
+┌─────────────────────────┬──────────────────┬──────────────────┐
+│                         │         executed │           failed │
+├─────────────────────────┼──────────────────┼──────────────────┤
+│              iterations │                1 │                0 │
+├─────────────────────────┼──────────────────┼──────────────────┤
+│                requests │                2 │                0 │
+├─────────────────────────┼──────────────────┼──────────────────┤
+│            test-scripts │                2 │                0 │
+├─────────────────────────┼──────────────────┼──────────────────┤
+│      prerequest-scripts │                2 │                0 │
+├─────────────────────────┼──────────────────┼──────────────────┤
+│              assertions │                3 │                0 │
+├─────────────────────────┴──────────────────┴──────────────────┤
+│ total run duration: 746ms                                     │
+├───────────────────────────────────────────────────────────────┤
+│ total data received: 709B (approx)                            │
+├───────────────────────────────────────────────────────────────┤
+│ average response time: 40ms [min: 5ms, max: 75ms, s.d.: 35ms] │
+└───────────────────────────────────────────────────────────────┘

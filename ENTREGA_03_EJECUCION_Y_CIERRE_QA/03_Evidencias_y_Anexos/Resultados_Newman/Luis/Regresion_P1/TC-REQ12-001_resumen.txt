@@ -1,0 +1,4 @@
+2026-10-19 18:53:57  TC-REQ12-001 · Portal lista únicamente cuentas propias 
+- GET /api/portal/cuentas con token de Ana
+    HTTP 200 | ok=4 fail=0 
+    body: [{"id":"b910404c-b029-4955-90c2-ef19bc56248a","numeroCuenta":"AH261020990846","tipoCuenta":"AHORRO","clienteId":"5eefea06-04b7-5a99-8e78-a3080150319d","clienteNombre":"Ana Prueba","estado":"ACTIVA","saldo":0.00,"saldoDisponible":0.00,"saldoRetenido":0.00,"saldoMinimo":100.00,"limiteRetiroDiario":5000.00,"montoRetiradoHoy":0.00,"tasaInteresAnual":0.0300,"permiteCheques":false,"fechaApertura":"2026-10-20T00:53:42.957333Z"},{"id":"d2d15b6d-57dc-4727-9b8f-9df28fbee2cc","numeroCuenta":"AH261020969652","tipoCuenta":"AHORRO","clienteId":"5eefea06-04b7-5a99-8e78-a3080150319d","clienteNombre":"Ana Prueba","estado":"ACTIVA","saldo":0.00,"saldoDisponible":0.00,"saldoRetenido":0.00,"saldoMinimo":100.00,

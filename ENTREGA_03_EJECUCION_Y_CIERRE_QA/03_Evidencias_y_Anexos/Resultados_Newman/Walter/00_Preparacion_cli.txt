@@ -1,0 +1,53 @@
+# 2026-10-19 18:41:49 newman (Walter) 00 · Preparación (tokens) 
+newman
+
+BancoERP Nexus · E2 Diseño e Implementación QA (46 casos)
+
+❏ 00 · Preparación (tokens)
+↳ Login qa_admin
+  POST http://localhost:15141/api/auth/login [200 OK, 30.22kB, 186ms]
+  ✓  Prep: HTTP 200
+
+↳ Login qa_cajero
+  POST http://localhost:15141/api/auth/login [200 OK, 7.43kB, 15ms]
+  ✓  Prep: HTTP 200
+
+↳ Login qa_cajero2
+  POST http://localhost:15141/api/auth/login [200 OK, 7.44kB, 21ms]
+  ✓  Prep: HTTP 200
+
+↳ Login qa_sin_empleado
+  POST http://localhost:15141/api/auth/login [200 OK, 7.48kB, 15ms]
+  ✓  Prep: HTTP 200
+
+↳ Login qa_cliente_ana
+  POST http://localhost:15141/api/auth/login [200 OK, 3.4kB, 28ms]
+  ✓  Prep: HTTP 200
+
+↳ Login qa_cliente_bruno
+  POST http://localhost:15141/api/auth/login [200 OK, 3.41kB, 14ms]
+  ✓  Prep: HTTP 200
+
+↳ Login externo qa.banco.externo@nexus.test
+  POST http://localhost:15254/api/external/auth/login [200 OK, 1.37kB, 123ms]
+  ✓  Prep: HTTP 200
+
+┌─────────────────────────┬───────────────────┬───────────────────┐
+│                         │          executed │            failed │
+├─────────────────────────┼───────────────────┼───────────────────┤
+│              iterations │                 1 │                 0 │
+├─────────────────────────┼───────────────────┼───────────────────┤
+│                requests │                 7 │                 0 │
+├─────────────────────────┼───────────────────┼───────────────────┤
+│            test-scripts │                 7 │                 0 │
+├─────────────────────────┼───────────────────┼───────────────────┤
+│      prerequest-scripts │                 7 │                 0 │
+├─────────────────────────┼───────────────────┼───────────────────┤
+│              assertions │                 7 │                 0 │
+├─────────────────────────┴───────────────────┴───────────────────┤
+│ total run duration: 2.6s                                        │
+├─────────────────────────────────────────────────────────────────┤
+│ total data received: 59.71kB (approx)                           │
+├─────────────────────────────────────────────────────────────────┤
+│ average response time: 57ms [min: 14ms, max: 186ms, s.d.: 63ms] │
+└─────────────────────────────────────────────────────────────────┘

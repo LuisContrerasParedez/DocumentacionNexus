@@ -1,0 +1,4 @@
+2026-10-19 18:45:20  TC-REQ01-001 · Login válido con usuario activo 
+- Login válido qa_admin
+    HTTP 200 | ok=2 fail=0 
+    body: {"token":"<JWT>","refreshToken":"<refresh>","rol":"ADMINISTRADOR","nombre":"Usuario QA qa_admin","expiraEn":"2026-10-20T01:45:21.328269Z","refreshTokenExpiraEn":"2026-10-27T00:45:21.3274653Z","usuario":{"id":"1e99735f-ed03-5b6c-b60b-455321c9507f","username":"qa_admin","correo":"qa_admin@example.invalid","nombre":"Usuario QA qa_admin","estado":true,"bloqueado":false,"debeCambiarPassword":false,"ultimoLogin":"2026-10-20T00:45:21.324314Z","roles":[{"id":"aab614cd-604a-444c-8a98-b14d8084949d","codigo":"ADMIN","nombre":"Administrador","descripcion":"Acceso total al sistema.","activo":true,"createdAt":"2026-10-06T23:55:22.996187Z","updatedAt":"2026-10-06T23:55:22.996187Z"}],"permisos":[{"id":"2f05

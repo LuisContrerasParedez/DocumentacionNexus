@@ -1,0 +1,13 @@
+2026-10-19 18:54:02  TC-REQ14-002 · ACH rechazada por banco inactivo o saldo insuficiente 
+- Desactivar QA_NEXUS
+    HTTP 200 | ok=1 fail=0 
+    body: {"id":"6ad6ba31cf560ee3ce8d006e","nombre":"Banco QA Nexus","codigo":"QA_NEXUS","descripcion":"Banco sintético exclusivo QA E2 Nexus; sin integración real.","activo":false,"apiBaseUrl":"http://mock-bank:8081","apiEndpoint":"/success/transferencias","httpMethod":"POST","authLoginEndpoint":null,"authEmail":null,"authPassword":null,"headers":{},"estructuraJsonFormulario":"\"{ \\\"numeroCuentaDestino\\\" : \\\"EXT-QA-0001\\\" }\"","estructuraJsonPayload":"\"{ }\"","lookupCuentaEndpoint":"/cuentas/search/{numeroCuenta}","lookupCuentasDisponiblesEndpoint":null,"fechaCreacion":"2026-10-20T00:47:45.313Z","fechaActualizacion":"2026-10-20T00:54:03.472Z"}
+- Enviar con banco inactivo
+    HTTP 422 | ok=2 fail=0 
+    body: {"message":"El banco ACH seleccionado esta inactivo."}
+- Reactivar QA_NEXUS
+    HTTP 200 | ok=1 fail=0 
+    body: {"id":"6ad6ba31cf560ee3ce8d006e","nombre":"Banco QA Nexus","codigo":"QA_NEXUS","descripcion":"Banco sintético exclusivo QA E2 Nexus; sin integración real.","activo":true,"apiBaseUrl":"http://mock-bank:8081","apiEndpoint":"/success/transferencias","httpMethod":"POST","authLoginEndpoint":null,"authEmail":null,"authPassword":null,"headers":{},"estructuraJsonFormulario":"\"{ \\\"numeroCuentaDestino\\\" : \\\"EXT-QA-0001\\\" }\"","estructuraJsonPayload":"\"{ }\"","lookupCuentaEndpoint":"/cuentas/search/{numeroCuenta}","lookupCuentasDisponiblesEndpoint":null,"fechaCreacion":"2026-10-20T00:47:45.313Z","fechaActualizacion":"2026-10-20T00:54:04.14Z"}
+- Enviar Q1500.01 desde MO261002000102 (disponible Q1500)
+    HTTP 422 | ok=2 fail=0 
+    body: {"message":"Saldo disponible insuficiente para completar la transferencia ACH."}

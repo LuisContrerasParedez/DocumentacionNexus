@@ -1,0 +1,13 @@
+2026-10-19 18:53:43  TC-REQ06-002 · Negativas de apertura por precondición 
+- R2: cliente no ACTIVO (Gabriel EN_REVISION)
+    HTTP 422 | ok=1 fail=0 
+    body: {"message":"El cliente no esta activo. Estado: EN_REVISION"}
+- R3: tipo inválido
+    HTTP 400 | ok=1 fail=0 
+    body: {"message":"Tipo de cuenta invalido. Tipos activos: AHORRO, MONETARIA"}
+- R4: usuario sin empleado activo
+    HTTP 422 | ok=1 fail=0 
+    body: {"message":"El usuario autenticado no tiene un empleado activo asociado."}
+- R5: operador sin caja abierta (qa_cajero2)
+    HTTP 400 | ok=2 fail=0 
+    body: {"message":"Abra su caja primero"}

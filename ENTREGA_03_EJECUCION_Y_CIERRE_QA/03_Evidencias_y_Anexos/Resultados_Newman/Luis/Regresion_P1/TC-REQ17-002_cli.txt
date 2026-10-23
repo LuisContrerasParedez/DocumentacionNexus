@@ -1,0 +1,37 @@
+# 2026-10-19 18:54:07 newman (Luis/Regresion_P1) TC-REQ17-002 · Permiso externo obligatorio en PublicAPI 
+newman
+
+BancoERP Nexus · E2 Diseño e Implementación QA (46 casos)
+
+❏ REQ-17 / TC-REQ17-002 · Permiso externo obligatorio en PublicAPI
+↳ Login externo qa.banco.externo@nexus.test
+  POST http://localhost:15254/api/external/auth/login [200 OK, 1.19kB, 55ms]
+  ✓  TC-REQ17-002: HTTP 200
+
+↳ Búsqueda de cuenta sin ach.public.cuentas.consultar
+  GET http://localhost:15254/api/external/ach/cuentas/search/AH261002000101 [403 Forbidden, 99B, 41ms]
+  ✓  TC-REQ17-002: HTTP 403
+
+↳ Transferencia entrante sin ach.public.transferencias.crear
+  POST http://localhost:15254/api/external/ach/transferencias [403 Forbidden, 99B, 10ms]
+  ✓  TC-REQ17-002: HTTP 403
+
+┌─────────────────────────┬───────────────────┬──────────────────┐
+│                         │          executed │           failed │
+├─────────────────────────┼───────────────────┼──────────────────┤
+│              iterations │                 1 │                0 │
+├─────────────────────────┼───────────────────┼──────────────────┤
+│                requests │                 3 │                0 │
+├─────────────────────────┼───────────────────┼──────────────────┤
+│            test-scripts │                 3 │                0 │
+├─────────────────────────┼───────────────────┼──────────────────┤
+│      prerequest-scripts │                 3 │                0 │
+├─────────────────────────┼───────────────────┼──────────────────┤
+│              assertions │                 3 │                0 │
+├─────────────────────────┴───────────────────┴──────────────────┤
+│ total run duration: 1086ms                                     │
+├────────────────────────────────────────────────────────────────┤
+│ total data received: 1.04kB (approx)                           │
+├────────────────────────────────────────────────────────────────┤
+│ average response time: 35ms [min: 10ms, max: 55ms, s.d.: 18ms] │
+└────────────────────────────────────────────────────────────────┘

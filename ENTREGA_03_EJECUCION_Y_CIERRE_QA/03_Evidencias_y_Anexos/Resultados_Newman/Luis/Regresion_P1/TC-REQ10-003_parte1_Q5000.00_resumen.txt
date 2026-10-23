@@ -1,0 +1,4 @@
+2026-10-19 18:53:53  TC-REQ10-003 · Frontera del límite diario en AHORRO parte1_Q5000.00
+- Retiro Q5000.00 (en el límite)
+    HTTP 200 | ok=1 fail=0 
+    body: {"referencia":"RET-bca7d1d87eb144e4a15c1bbe8c71abc9","saldoNuevo":7000.00,"monto":5000.0}

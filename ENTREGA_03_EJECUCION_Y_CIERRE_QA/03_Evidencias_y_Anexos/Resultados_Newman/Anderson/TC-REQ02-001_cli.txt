@@ -1,0 +1,38 @@
+# 2026-10-19 18:45:35 newman (Anderson) TC-REQ02-001 · Rotación de refresh token 
+newman
+
+BancoERP Nexus · E2 Diseño e Implementación QA (46 casos)
+
+❏ REQ-02 / TC-REQ02-001 · Rotación de refresh token
+↳ Login qa_cajero
+  POST http://localhost:15141/api/auth/login [200 OK, 7.43kB, 27ms]
+  ✓  TC-REQ02-001: HTTP 200
+
+↳ Refresh con refresh_v1
+  POST http://localhost:15141/api/auth/refresh-token [200 OK, 7.43kB, 18ms]
+  ✓  TC-REQ02-001: HTTP 200
+  ✓  refresh nuevo distinto
+
+↳ Reutilizar refresh_v1 (rotado)
+  POST http://localhost:15141/api/auth/refresh-token [401 Unauthorized, 206B, 6ms]
+  ✓  TC-REQ02-001: HTTP 401
+
+┌─────────────────────────┬──────────────────┬─────────────────┐
+│                         │         executed │          failed │
+├─────────────────────────┼──────────────────┼─────────────────┤
+│              iterations │                1 │               0 │
+├─────────────────────────┼──────────────────┼─────────────────┤
+│                requests │                3 │               0 │
+├─────────────────────────┼──────────────────┼─────────────────┤
+│            test-scripts │                3 │               0 │
+├─────────────────────────┼──────────────────┼─────────────────┤
+│      prerequest-scripts │                3 │               0 │
+├─────────────────────────┼──────────────────┼─────────────────┤
+│              assertions │                4 │               0 │
+├─────────────────────────┴──────────────────┴─────────────────┤
+│ total run duration: 1025ms                                   │
+├──────────────────────────────────────────────────────────────┤
+│ total data received: 14.6kB (approx)                         │
+├──────────────────────────────────────────────────────────────┤
+│ average response time: 17ms [min: 6ms, max: 27ms, s.d.: 8ms] │
+└──────────────────────────────────────────────────────────────┘

@@ -1,0 +1,4 @@
+2026-10-19 18:44:32  TC-REQ10-003 · Frontera del límite diario en AHORRO parte2_Q5000.01
+- Retiro Q5000.01 tras reiniciar fixture
+    HTTP 422 | ok=2 fail=0 
+    body: {"message":"Limite diario excedido. Retirado hoy: Q0.00. Limite: Q5000.00. Puede retirar maximo: Q5000.00"}

@@ -1,0 +1,34 @@
+# 2026-10-19 18:53:51 newman (Luis/Regresion_P1) TC-REQ10-001 · Monto de retiro mayor que cero 
+newman
+
+BancoERP Nexus · E2 Diseño e Implementación QA (46 casos)
+
+❏ REQ-10 / TC-REQ10-001 · Monto de retiro mayor que cero
+↳ Retiro Q0.00
+  POST http://localhost:15141/api/transacciones/retiro [400 Bad Request, 202B, 26ms]
+  ✓  TC-REQ10-001: HTTP 400
+  ✓  mensaje contiene "mayor a cero"
+
+↳ Retiro Q0.01
+  POST http://localhost:15141/api/transacciones/retiro [200 OK, 235B, 13ms]
+  ✓  TC-REQ10-001: HTTP 200
+
+┌─────────────────────────┬──────────────────┬──────────────────┐
+│                         │         executed │           failed │
+├─────────────────────────┼──────────────────┼──────────────────┤
+│              iterations │                1 │                0 │
+├─────────────────────────┼──────────────────┼──────────────────┤
+│                requests │                2 │                0 │
+├─────────────────────────┼──────────────────┼──────────────────┤
+│            test-scripts │                2 │                0 │
+├─────────────────────────┼──────────────────┼──────────────────┤
+│      prerequest-scripts │                2 │                0 │
+├─────────────────────────┼──────────────────┼──────────────────┤
+│              assertions │                3 │                0 │
+├─────────────────────────┴──────────────────┴──────────────────┤
+│ total run duration: 699ms                                     │
+├───────────────────────────────────────────────────────────────┤
+│ total data received: 132B (approx)                            │
+├───────────────────────────────────────────────────────────────┤
+│ average response time: 19ms [min: 13ms, max: 26ms, s.d.: 6ms] │
+└───────────────────────────────────────────────────────────────┘

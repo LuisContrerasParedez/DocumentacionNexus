@@ -1,0 +1,40 @@
+# 2026-10-19 18:41:56 newman (Walter) TC-REQ04-003 · Validación de correo y teléfono 
+newman
+
+BancoERP Nexus · E2 Diseño e Implementación QA (46 casos)
+
+❏ REQ-04 / TC-REQ04-003 · Validación de correo y teléfono
+↳ Correo sin @
+  POST http://localhost:15141/api/clientes/natural [400 Bad Request, 197B, 29ms]
+  ✓  TC-REQ04-003: HTTP 400
+  ✓  mensaje contiene "Email"
+
+↳ Teléfono 7 dígitos
+  POST http://localhost:15141/api/clientes/natural [400 Bad Request, 210B, 6ms]
+  ✓  TC-REQ04-003: HTTP 400
+  ✓  mensaje contiene "8 digitos"
+
+↳ Teléfono 9 dígitos
+  POST http://localhost:15141/api/clientes/natural [400 Bad Request, 210B, 8ms]
+  ✓  TC-REQ04-003: HTTP 400
+  ✓  mensaje contiene "8 digitos"
+
+┌─────────────────────────┬──────────────────┬──────────────────┐
+│                         │         executed │           failed │
+├─────────────────────────┼──────────────────┼──────────────────┤
+│              iterations │                1 │                0 │
+├─────────────────────────┼──────────────────┼──────────────────┤
+│                requests │                3 │                0 │
+├─────────────────────────┼──────────────────┼──────────────────┤
+│            test-scripts │                3 │                0 │
+├─────────────────────────┼──────────────────┼──────────────────┤
+│      prerequest-scripts │                3 │                0 │
+├─────────────────────────┼──────────────────┼──────────────────┤
+│              assertions │                6 │                0 │
+├─────────────────────────┴──────────────────┴──────────────────┤
+│ total run duration: 1019ms                                    │
+├───────────────────────────────────────────────────────────────┤
+│ total data received: 146B (approx)                            │
+├───────────────────────────────────────────────────────────────┤
+│ average response time: 14ms [min: 6ms, max: 29ms, s.d.: 10ms] │
+└───────────────────────────────────────────────────────────────┘

@@ -1,0 +1,30 @@
+# 2026-10-19 18:53:47 newman (Luis/Regresion_P1) TC-REQ08-003 · Cierre con diferencia mayor a Q10 justificada 
+newman
+
+BancoERP Nexus · E2 Diseño e Implementación QA (46 casos)
+
+❏ REQ-08 / TC-REQ08-003 · Cierre con diferencia mayor a Q10 justificada
+↳ Cierre +Q10.01 con justificación
+  POST http://localhost:15141/api/cajas/cerrar [200 OK, 309B, 30ms]
+  ✓  TC-REQ08-003: HTTP 200
+  ✓  mensaje contiene "SOBRANTE"
+
+┌─────────────────────────┬──────────────────┬──────────────────┐
+│                         │         executed │           failed │
+├─────────────────────────┼──────────────────┼──────────────────┤
+│              iterations │                1 │                0 │
+├─────────────────────────┼──────────────────┼──────────────────┤
+│                requests │                1 │                0 │
+├─────────────────────────┼──────────────────┼──────────────────┤
+│            test-scripts │                1 │                0 │
+├─────────────────────────┼──────────────────┼──────────────────┤
+│      prerequest-scripts │                1 │                0 │
+├─────────────────────────┼──────────────────┼──────────────────┤
+│              assertions │                2 │                0 │
+├─────────────────────────┴──────────────────┴──────────────────┤
+│ total run duration: 365ms                                     │
+├───────────────────────────────────────────────────────────────┤
+│ total data received: 161B (approx)                            │
+├───────────────────────────────────────────────────────────────┤
+│ average response time: 30ms [min: 30ms, max: 30ms, s.d.: 0µs] │
+└───────────────────────────────────────────────────────────────┘

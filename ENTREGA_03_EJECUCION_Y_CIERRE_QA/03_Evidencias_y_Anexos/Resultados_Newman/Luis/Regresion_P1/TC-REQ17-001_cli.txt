@@ -1,0 +1,35 @@
+# 2026-10-19 18:54:06 newman (Luis/Regresion_P1) TC-REQ17-001 · Login de banco externo autorizado 
+newman
+
+BancoERP Nexus · E2 Diseño e Implementación QA (46 casos)
+
+❏ REQ-17 / TC-REQ17-001 · Login de banco externo autorizado
+↳ Login externo autorizado
+  POST http://localhost:15254/api/external/auth/login [200 OK, 1.37kB, 35ms]
+  ✓  TC-REQ17-001: HTTP 200
+  ✓  Bearer + expiración
+
+↳ Login externo con usuario sin rol BANCO_EXTERNO (Ana)
+  POST http://localhost:15254/api/external/auth/login [403 Forbidden, 271B, 25ms]
+  ✓  TC-REQ17-001: HTTP 403
+  ✓  mensaje contiene "banco externo"
+
+┌─────────────────────────┬──────────────────┬──────────────────┐
+│                         │         executed │           failed │
+├─────────────────────────┼──────────────────┼──────────────────┤
+│              iterations │                1 │                0 │
+├─────────────────────────┼──────────────────┼──────────────────┤
+│                requests │                2 │                0 │
+├─────────────────────────┼──────────────────┼──────────────────┤
+│            test-scripts │                2 │                0 │
+├─────────────────────────┼──────────────────┼──────────────────┤
+│      prerequest-scripts │                2 │                0 │
+├─────────────────────────┼──────────────────┼──────────────────┤
+│              assertions │                4 │                0 │
+├─────────────────────────┴──────────────────┴──────────────────┤
+│ total run duration: 706ms                                     │
+├───────────────────────────────────────────────────────────────┤
+│ total data received: 1.34kB (approx)                          │
+├───────────────────────────────────────────────────────────────┤
+│ average response time: 30ms [min: 25ms, max: 35ms, s.d.: 5ms] │
+└───────────────────────────────────────────────────────────────┘

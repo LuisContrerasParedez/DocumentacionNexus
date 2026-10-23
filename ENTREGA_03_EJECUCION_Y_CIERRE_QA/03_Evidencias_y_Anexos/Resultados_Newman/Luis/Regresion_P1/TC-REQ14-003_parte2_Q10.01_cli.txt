@@ -1,0 +1,30 @@
+# 2026-10-19 18:54:05 newman (Luis/Regresion_P1) TC-REQ14-003 · ACH respeta límite diario parte2_Q10.01
+newman
+
+BancoERP Nexus · E2 Diseño e Implementación QA (46 casos) · TC-REQ14-003_parte2_Q10.01 (subconjunto)
+
+❏ TC-REQ14-003 · ACH respeta límite diario
+↳ Enviar Q10.01 tras reiniciar fixture
+  POST http://localhost:15141/api/ach/transferencias/enviar [422 Unprocessable Entity, 245B, 31ms]
+  ✓  TC-REQ14-003: HTTP 422
+  ✓  mensaje contiene "limite diario"
+
+┌─────────────────────────┬──────────────────┬──────────────────┐
+│                         │         executed │           failed │
+├─────────────────────────┼──────────────────┼──────────────────┤
+│              iterations │                1 │                0 │
+├─────────────────────────┼──────────────────┼──────────────────┤
+│                requests │                1 │                0 │
+├─────────────────────────┼──────────────────┼──────────────────┤
+│            test-scripts │                1 │                0 │
+├─────────────────────────┼──────────────────┼──────────────────┤
+│      prerequest-scripts │                1 │                0 │
+├─────────────────────────┼──────────────────┼──────────────────┤
+│              assertions │                2 │                0 │
+├─────────────────────────┴──────────────────┴──────────────────┤
+│ total run duration: 367ms                                     │
+├───────────────────────────────────────────────────────────────┤
+│ total data received: 79B (approx)                             │
+├───────────────────────────────────────────────────────────────┤
+│ average response time: 31ms [min: 31ms, max: 31ms, s.d.: 0µs] │
+└───────────────────────────────────────────────────────────────┘

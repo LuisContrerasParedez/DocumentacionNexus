@@ -1,0 +1,7 @@
+2026-10-19 18:53:49  TC-REQ09-002 · Depósito válido reconcilia cuenta, movimiento y caja 
+- Depósito Q2000 a AH261002000101
+    HTTP 200 | ok=1 fail=0 
+    body: {"referencia":"DEP-f2a5c56c934240d5be2b234bdd09259b","saldoNuevo":9000.01,"monto":2000.0}
+- Historial de la cuenta
+    HTTP 200 | ok=2 fail=0 
+    body: [{"id":"a7da1b3c-9bd3-4fbd-af3d-6c11e2c0a59d","tipo":"DEPOSITO","monto":2000.00,"saldoAntes":7000.01,"saldoDespues":9000.01,"descripcion":"TC-REQ09-002","referencia":"DEP-f2a5c56c934240d5be2b234bdd09259b","estado":"COMPLETADA","creadoEn":"2026-10-20T00:53:50.283366Z"},{"id":"8a0e70fa-f5b3-4c70-ad3f-04689a83e27c","tipo":"DEPOSITO","monto":0.01,"saldoAntes":7000.00,"saldoDespues":7000.01,"descripcion":"TC-REQ09-001","referencia":"DEP-fcf3cfb33fb947cdb582621e499f8d45","estado":"COMPLETADA","creadoEn":"2026-10-20T00:53:49.602957Z"},{"id":"fd58a366-cd49-4f81-8e91-d2eb92bc96ad","tipo":"TRF_OUT","monto":50.00,"saldoAntes":7600.00,"saldoDespues":7550.00,"descripcion":"TC-REQ15-002","referencia":"TRF

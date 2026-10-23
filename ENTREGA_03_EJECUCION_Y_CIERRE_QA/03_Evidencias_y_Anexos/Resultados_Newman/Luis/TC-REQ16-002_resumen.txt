@@ -1,0 +1,7 @@
+2026-10-19 18:49:45  TC-REQ16-002 · Reporte requiere permiso reportes.ver 
+- Resumen con qa_cajero (sin reportes.ver)
+    HTTP 403 | ok=1 fail=0 
+    body: 
+- Resumen con qa_admin (con permiso)
+    HTTP 200 | ok=1 fail=0 
+    body: {"totalClientes":1007,"clientesActivos":1002,"clientesEnRevision":4,"totalCuentas":2018,"cuentasActivas":2014,"saldoTotal":1547400.00,"totalTransferenciasInternas":3,"montoTransferenciasInternas":1150.00,"totalMovimientosHoy":0,"montoMovimientosHoy":0,"totalAch":2,"achPendientes":0,"achAprobadas":2,"achRechazadas":0,"montoAch":25.00,"clientesPorEstado":[{"codigo":"ACTIVO","total":1002},{"codigo":"EN_REVISION","total":4},{"codigo":"INACTIVO","total":1}],"cuentasPorEstado":[{"codigo":"ACTIVA","total":2014},{"codigo":"BLOQUEADA","total":2},{"codigo":"CERRADA","total":2}],"montosUltimos7Dias":[{"fecha":"2026-10-14","montoDepositos":0,"montoRetiros":0,"montoTransferenciasInternas":0,"montoAch":0}

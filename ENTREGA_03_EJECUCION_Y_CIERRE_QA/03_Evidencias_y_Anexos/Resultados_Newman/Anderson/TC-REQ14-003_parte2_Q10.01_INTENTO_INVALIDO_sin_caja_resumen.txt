@@ -1,0 +1,4 @@
+2026-10-19 18:48:24  TC-REQ14-003 · ACH respeta límite diario parte2_Q10.01
+- Enviar Q10.01 tras reiniciar fixture
+    HTTP 403 | ok=0 fail=2 FALLAN: TC-REQ14-003: HTTP 422 | mensaje contiene "limite diario"
+    body: {"message":"El usuario autenticado no esta autorizado para enviar transferencias ACH."}

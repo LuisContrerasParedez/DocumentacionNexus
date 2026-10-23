@@ -1,0 +1,10 @@
+2026-10-19 18:41:53  TC-REQ04-001 · Registro válido en frontera exacta de 18 años 
+- Registro 18 años exactos (Diego)
+    HTTP 201 | ok=1 fail=0 
+    body: {"id":"b53f0390-eeff-47d6-99ac-522297d0da71","message":"Cliente registrado en revision"}
+- Consultar cliente creado
+    HTTP 200 | ok=2 fail=0 
+    body: {"id":"b53f0390-eeff-47d6-99ac-522297d0da71","tipoCliente":"NATURAL","nombreCompleto":"Diego Frontera","dpi":"2999999990199","email":"diego.qa@nexus.test","telefono":"55778899","observaciones":null,"estado":"EN_REVISION","primerNombre":"Diego","segundoNombre":null,"primerApellido":"Frontera","segundoApellido":null,"fechaNacimiento":"2008-10-20","totalCuentas":0,"cuentasActivas":0,"saldoTotal":0,"creadoEn":"2026-10-20T00:41:53.852907Z","fechaAprobacion":null}
+- Variante menor por 1 día (Mateo, 2008-10-03)
+    HTTP 400 | ok=1 fail=0 
+    body: {"message":"El cliente tiene 17 anos. Minimo: 18"}

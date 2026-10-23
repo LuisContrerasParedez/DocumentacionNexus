@@ -1,0 +1,30 @@
+# 2026-10-19 18:53:54 newman (Luis/Regresion_P1) TC-REQ10-003 · Frontera del límite diario en AHORRO parte2_Q5000.01
+newman
+
+BancoERP Nexus · E2 Diseño e Implementación QA (46 casos) · TC-REQ10-003_parte2_Q5000.01 (subconjunto)
+
+❏ TC-REQ10-003 · Frontera del límite diario en AHORRO
+↳ Retiro Q5000.01 tras reiniciar fixture
+  POST http://localhost:15141/api/transacciones/retiro [422 Unprocessable Entity, 273B, 30ms]
+  ✓  TC-REQ10-003: HTTP 422
+  ✓  mensaje contiene "limite"
+
+┌─────────────────────────┬──────────────────┬──────────────────┐
+│                         │         executed │           failed │
+├─────────────────────────┼──────────────────┼──────────────────┤
+│              iterations │                1 │                0 │
+├─────────────────────────┼──────────────────┼──────────────────┤
+│                requests │                1 │                0 │
+├─────────────────────────┼──────────────────┼──────────────────┤
+│            test-scripts │                1 │                0 │
+├─────────────────────────┼──────────────────┼──────────────────┤
+│      prerequest-scripts │                1 │                0 │
+├─────────────────────────┼──────────────────┼──────────────────┤
+│              assertions │                2 │                0 │
+├─────────────────────────┴──────────────────┴──────────────────┤
+│ total run duration: 365ms                                     │
+├───────────────────────────────────────────────────────────────┤
+│ total data received: 107B (approx)                            │
+├───────────────────────────────────────────────────────────────┤
+│ average response time: 30ms [min: 30ms, max: 30ms, s.d.: 0µs] │
+└───────────────────────────────────────────────────────────────┘

@@ -1,0 +1,124 @@
+{
+ "info": {
+  "_postman_id": "d0fedf10-dc1c-5a4c-bedf-1d9611853c68",
+  "name": "BancoERP Nexus · E2 Diseño e Implementación QA (46 casos) · TC-REQ17-003_codigo_REG (subconjunto)",
+  "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+  "description": "Colección trazable a los 46 casos del Documento E2 (E2_Documento_Diseno_Implementacion_Nexus.docx). Una carpeta por requerimiento y una subcarpeta por caso TC-REQxx-xxx con sus pasos. Requiere el entorno QA aislado (docker-compose.qa.yml) y MockData_Fixtures_Nexus.sql. Plantillas de diseño: NO equivale a una ejecución; los resultados formales se registran en la Entrega 3."
+ },
+ "event": [
+  {
+   "listen": "prerequest",
+   "script": {
+    "type": "text/javascript",
+    "exec": [
+     "for (const k of [\"baseInterna\",\"basePublica\"]) {",
+     "  const v=pm.variables.get(k);",
+     "  if (![\"http://localhost:15141\",\"http://localhost:15254\"].includes(v)) {",
+     "    pm.execution.skipRequest(); throw new Error(\"Solo URLs del entorno QA aislado (docker-compose.qa.yml)\");",
+     "  }",
+     "}"
+    ]
+   }
+  }
+ ],
+ "item": [
+  {
+   "name": "TC-REQ17-003 · ACH entrante idempotente por código de confirmación",
+   "description": "TC-REQ17-003 → REQ-17 | Técnica: Transición de Estados | Prioridad: Alta\nPrecondiciones: Banco externo autenticado/autorizado; destino ACTIVA.\nDatos de entrada: codigo_confirmacion=E2-EXT-20261002-001; destino AH261002000101; monto=500.00; moneda=GTQ\nPasos (Word): 1. POST transferencia entrante Q500 con código E2-EXT-20261002-001. 2. Repetir exactamente el mismo código.\nResultado esperado (Word): Primera: HTTP 201, estado APROBADA y saldo destino acreditado una vez. Repetición: HTTP 409 'La transferencia ya fue procesada.' y error codigo_confirmacion='El codigo de confirmacion ya existe.'; no duplica fondos.",
+   "item": [
+    {
+     "name": "ACH entrante Q500 (primera vez)",
+     "request": {
+      "method": "POST",
+      "url": "{{basePublica}}/api/external/ach/transferencias",
+      "header": [
+       {
+        "key": "Content-Type",
+        "value": "application/json"
+       }
+      ],
+      "body": {
+       "mode": "raw",
+       "raw": "{\n  \"codigo_confirmacion\": \"E2-EXT-20261019-REG-001\",\n  \"banco_externo\": \"QA_NEXUS\",\n  \"cuenta_externa\": \"EXT-QA-0001\",\n  \"numeroCuentaDestino\": \"AH261002000101\",\n  \"monto\": 500.0,\n  \"moneda\": \"GTQ\",\n  \"referencia\": \"TC-REQ17-003 ACH entrante idempotente\",\n  \"tipo\": \"entrante\"\n}",
+       "options": {
+        "raw": {
+         "language": "json"
+        }
+       }
+      },
+      "auth": {
+       "type": "bearer",
+       "bearer": [
+        {
+         "key": "token",
+         "value": "{{token_externo}}",
+         "type": "string"
+        }
+       ]
+      },
+      "description": "TC-REQ17-003 — paso del Documento E2 (sección 4)."
+     },
+     "event": [
+      {
+       "listen": "test",
+       "script": {
+        "type": "text/javascript",
+        "exec": [
+         "let j={}; try { j=pm.response.json(); } catch(e) { j={}; }",
+         "pm.test(\"TC-REQ17-003: HTTP 201\", ()=>pm.expect(pm.response.code).to.be.oneOf([201]));",
+         "pm.test(\"APROBADA\",()=>pm.expect(JSON.stringify(j)).to.include(\"APROBADA\"));"
+        ]
+       }
+      }
+     ]
+    },
+    {
+     "name": "Repetir el mismo código de confirmación",
+     "request": {
+      "method": "POST",
+      "url": "{{basePublica}}/api/external/ach/transferencias",
+      "header": [
+       {
+        "key": "Content-Type",
+        "value": "application/json"
+       }
+      ],
+      "body": {
+       "mode": "raw",
+       "raw": "{\n  \"codigo_confirmacion\": \"E2-EXT-20261019-REG-001\",\n  \"banco_externo\": \"QA_NEXUS\",\n  \"cuenta_externa\": \"EXT-QA-0001\",\n  \"numeroCuentaDestino\": \"AH261002000101\",\n  \"monto\": 500.0,\n  \"moneda\": \"GTQ\",\n  \"referencia\": \"TC-REQ17-003 ACH entrante idempotente\",\n  \"tipo\": \"entrante\"\n}",
+       "options": {
+        "raw": {
+         "language": "json"
+        }
+       }
+      },
+      "auth": {
+       "type": "bearer",
+       "bearer": [
+        {
+         "key": "token",
+         "value": "{{token_externo}}",
+         "type": "string"
+        }
+       ]
+      },
+      "description": "TC-REQ17-003 — paso del Documento E2 (sección 4)."
+     },
+     "event": [
+      {
+       "listen": "test",
+       "script": {
+        "type": "text/javascript",
+        "exec": [
+         "let j={}; try { j=pm.response.json(); } catch(e) { j={}; }",
+         "pm.test(\"TC-REQ17-003: HTTP 409\", ()=>pm.expect(pm.response.code).to.be.oneOf([409]));",
+         "pm.test(\"mensaje contiene \\\"ya fue procesada\\\"\", ()=>pm.expect(JSON.stringify(j).toLowerCase()).to.include(\"ya fue procesada\"));"
+        ]
+       }
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

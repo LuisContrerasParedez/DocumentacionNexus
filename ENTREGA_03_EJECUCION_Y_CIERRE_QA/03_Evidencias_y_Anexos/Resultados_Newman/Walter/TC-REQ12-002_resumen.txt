@@ -1,0 +1,4 @@
+2026-10-19 18:43:23  TC-REQ12-002 · Autorización horizontal en transferencia portal 
+- Transferencia portal con origen de Bruno
+    HTTP 403 | ok=2 fail=0 
+    body: {"message":"La cuenta origen no pertenece al cliente autenticado."}

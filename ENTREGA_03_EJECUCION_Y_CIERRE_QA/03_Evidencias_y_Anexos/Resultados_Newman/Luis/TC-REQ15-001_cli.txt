@@ -1,0 +1,56 @@
+# 2026-10-19 18:49:33 newman (Luis) TC-REQ15-001 · Eventos de login fallido y bloqueo quedan trazables 
+newman
+
+BancoERP Nexus · E2 Diseño e Implementación QA (46 casos)
+
+❏ REQ-15 / TC-REQ15-001 · Eventos de login fallido y bloqueo quedan trazables
+↳ Login fallido 1/5 qa_bloqueo
+  POST http://localhost:15141/api/auth/login [401 Unauthorized, 213B, 37ms]
+  ✓  TC-REQ15-001: HTTP 401
+
+↳ Login fallido 2/5 qa_bloqueo
+  POST http://localhost:15141/api/auth/login [401 Unauthorized, 213B, 13ms]
+  ✓  TC-REQ15-001: HTTP 401
+
+↳ Login fallido 3/5 qa_bloqueo
+  POST http://localhost:15141/api/auth/login [401 Unauthorized, 213B, 15ms]
+  ✓  TC-REQ15-001: HTTP 401
+
+↳ Login fallido 4/5 qa_bloqueo
+  POST http://localhost:15141/api/auth/login [401 Unauthorized, 213B, 15ms]
+  ✓  TC-REQ15-001: HTTP 401
+
+↳ Login fallido 5/5 qa_bloqueo
+  POST http://localhost:15141/api/auth/login [401 Unauthorized, 267B, 16ms]
+  ✓  TC-REQ15-001: HTTP 401
+
+↳ Eventos LOGIN_FALLIDO de qa_bloqueo
+  GET http://localhost:15141/api/seguridad/eventos?usuarioId=4d00b5fc-9b29-5274-bf79-4d712ff0c72b&evento=LOGIN_FALLIDO [200 OK, 3.73kB, 26ms]
+  ✓  TC-REQ15-001: HTTP 200
+  ✓  hay eventos
+  ✓  sin contraseña en claro
+
+↳ Evento USUARIO_BLOQUEADO
+  GET http://localhost:15141/api/seguridad/eventos?usuarioId=4d00b5fc-9b29-5274-bf79-4d712ff0c72b&evento=USUARIO_BLOQUEADO [200 OK, 816B, 9ms]
+  ✓  TC-REQ15-001: HTTP 200
+  ✓  evento de bloqueo
+
+┌─────────────────────────┬──────────────────┬─────────────────┐
+│                         │         executed │          failed │
+├─────────────────────────┼──────────────────┼─────────────────┤
+│              iterations │                1 │               0 │
+├─────────────────────────┼──────────────────┼─────────────────┤
+│                requests │                7 │               0 │
+├─────────────────────────┼──────────────────┼─────────────────┤
+│            test-scripts │                7 │               0 │
+├─────────────────────────┼──────────────────┼─────────────────┤
+│      prerequest-scripts │                7 │               0 │
+├─────────────────────────┼──────────────────┼─────────────────┤
+│              assertions │               10 │               0 │
+├─────────────────────────┴──────────────────┴─────────────────┤
+│ total run duration: 2.4s                                     │
+├──────────────────────────────────────────────────────────────┤
+│ total data received: 4.58kB (approx)                         │
+├──────────────────────────────────────────────────────────────┤
+│ average response time: 18ms [min: 9ms, max: 37ms, s.d.: 8ms] │
+└──────────────────────────────────────────────────────────────┘

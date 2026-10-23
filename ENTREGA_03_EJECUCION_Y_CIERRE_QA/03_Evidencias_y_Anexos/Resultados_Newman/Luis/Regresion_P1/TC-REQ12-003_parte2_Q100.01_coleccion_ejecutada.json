@@ -1,0 +1,78 @@
+{
+ "info": {
+  "_postman_id": "d0fedf10-dc1c-5a4c-bedf-1d9611853c68",
+  "name": "BancoERP Nexus · E2 Diseño e Implementación QA (46 casos) · TC-REQ12-003_parte2_Q100.01 (subconjunto)",
+  "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+  "description": "Colección trazable a los 46 casos del Documento E2 (E2_Documento_Diseno_Implementacion_Nexus.docx). Una carpeta por requerimiento y una subcarpeta por caso TC-REQxx-xxx con sus pasos. Requiere el entorno QA aislado (docker-compose.qa.yml) y MockData_Fixtures_Nexus.sql. Plantillas de diseño: NO equivale a una ejecución; los resultados formales se registran en la Entrega 3."
+ },
+ "event": [
+  {
+   "listen": "prerequest",
+   "script": {
+    "type": "text/javascript",
+    "exec": [
+     "for (const k of [\"baseInterna\",\"basePublica\"]) {",
+     "  const v=pm.variables.get(k);",
+     "  if (![\"http://localhost:15141\",\"http://localhost:15254\"].includes(v)) {",
+     "    pm.execution.skipRequest(); throw new Error(\"Solo URLs del entorno QA aislado (docker-compose.qa.yml)\");",
+     "  }",
+     "}"
+    ]
+   }
+  }
+ ],
+ "item": [
+  {
+   "name": "TC-REQ12-003 · Límite diario del portal en frontera",
+   "description": "TC-REQ12-003 → REQ-12 | Técnica: Análisis de Valores Límite | Prioridad: Alta\nPrecondiciones: Cuenta propia ACTIVA; límite Q5000; montoRetiradoHoy Q4900; saldo suficiente.\nDatos de entrada: AH261002000104 (retirado Q4900) → MO261002000102: 100.00 / 100.01\nPasos (Word): 1. Transferir Q100.00. 2. Reiniciar fixture. 3. Transferir Q100.01.\nResultado esperado (Word): Q100.00 permitido. Q100.01→HTTP 422 'La transferencia supera el limite diario de la cuenta origen.' El éxito incrementa monto_retirado_hoy.",
+   "item": [
+    {
+     "name": "Portal Q100.01 tras reiniciar fixture",
+     "request": {
+      "method": "POST",
+      "url": "{{baseInterna}}/api/portal/transferencias",
+      "header": [
+       {
+        "key": "Content-Type",
+        "value": "application/json"
+       }
+      ],
+      "body": {
+       "mode": "raw",
+       "raw": "{\n  \"numeroCuentaOrigen\": \"AH261002000104\",\n  \"numeroCuentaDestino\": \"MO261002000102\",\n  \"monto\": 100.01,\n  \"concepto\": \"TC-REQ12-003\"\n}",
+       "options": {
+        "raw": {
+         "language": "json"
+        }
+       }
+      },
+      "auth": {
+       "type": "bearer",
+       "bearer": [
+        {
+         "key": "token",
+         "value": "{{token_ana}}",
+         "type": "string"
+        }
+       ]
+      },
+      "description": "TC-REQ12-003 — paso del Documento E2 (sección 4).\nAntes: re-ejecutar sección 4 del fixture (monto_retirado_hoy=4900.00)."
+     },
+     "event": [
+      {
+       "listen": "test",
+       "script": {
+        "type": "text/javascript",
+        "exec": [
+         "let j={}; try { j=pm.response.json(); } catch(e) { j={}; }",
+         "pm.test(\"TC-REQ12-003: HTTP 422\", ()=>pm.expect(pm.response.code).to.be.oneOf([422]));",
+         "pm.test(\"mensaje contiene \\\"limite diario\\\"\", ()=>pm.expect(JSON.stringify(j).toLowerCase()).to.include(\"limite diario\"));"
+        ]
+       }
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

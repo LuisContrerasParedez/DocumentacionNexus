@@ -1,0 +1,10 @@
+2026-10-19 18:53:48  TC-REQ09-001 · Monto mínimo de depósito 
+- Precondición: caja ABIERTA de qa_cajero (acepta "ya abierta")
+    HTTP 200 | ok=1 fail=0 
+    body: {"sesionCajaId":"2f1dc2aa-2024-4434-aa9e-32e1de083d04","message":"Caja abierta. Puede comenzar a operar."}
+- Depósito Q0.00
+    HTTP 400 | ok=2 fail=0 
+    body: {"message":"El monto debe ser mayor a cero."}
+- Depósito Q0.01
+    HTTP 200 | ok=1 fail=0 
+    body: {"referencia":"DEP-fcf3cfb33fb947cdb582621e499f8d45","saldoNuevo":7000.01,"monto":0.01}

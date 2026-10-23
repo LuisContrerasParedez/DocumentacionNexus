@@ -1,0 +1,7 @@
+2026-10-19 18:44:55  TC-REQ18-001 · Operación bloqueada si usuario no tiene empleado activo 
+- Abrir caja sin empleado activo
+    HTTP 422 | ok=2 fail=0 
+    body: {"message":"El usuario autenticado no tiene un empleado activo asociado."}
+- Abrir cuenta sin empleado activo
+    HTTP 422 | ok=2 fail=0 
+    body: {"message":"El usuario autenticado no tiene un empleado activo asociado."}

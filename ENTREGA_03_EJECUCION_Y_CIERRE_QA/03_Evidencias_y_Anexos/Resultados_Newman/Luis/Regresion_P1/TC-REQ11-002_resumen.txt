@@ -1,0 +1,4 @@
+2026-10-19 18:53:56  TC-REQ11-002 · Transferencia interna atómica válida 
+- Transferir Q1000 AH261002000208 → AH261002000209
+    HTTP 200 | ok=1 fail=0 
+    body: {"referencia":"TRF-8ae2748e056b4c4fba8e2ded671805bc","saldoOrigen":2000.00,"saldoDestino":1500.00,"monto":1000.0}

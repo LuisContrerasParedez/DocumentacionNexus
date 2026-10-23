@@ -1,0 +1,41 @@
+# 2026-10-19 18:53:40 newman (Luis/Regresion_P1) TC-REQ03-002 · Denegación por rol/permiso insuficiente 
+newman
+
+BancoERP Nexus · E2 Diseño e Implementación QA (46 casos)
+
+❏ REQ-03 / TC-REQ03-002 · Denegación por rol/permiso insuficiente
+↳ P2: CLIENTE → /api/clientes
+  GET http://localhost:15141/api/clientes [403 Forbidden, 99B, 32ms]
+  ✓  TC-REQ03-002: HTTP 403
+
+↳ P4: BANCO_EXTERNO (JWT público) → InternalAPI
+  GET http://localhost:15141/api/clientes [403 Forbidden, 99B, 6ms]
+  ✓  TC-REQ03-002: HTTP 401/403
+
+↳ Sin permiso → endpoint mutable (POST cliente con token CLIENTE)
+  POST http://localhost:15141/api/clientes/natural [403 Forbidden, 99B, 10ms]
+  ✓  TC-REQ03-002: HTTP 403
+
+↳ P7: sin token → endpoint protegido
+  GET http://localhost:15141/api/clientes [401 Unauthorized, 128B, 5ms]
+  ✓  TC-REQ03-002: HTTP 401
+
+┌─────────────────────────┬──────────────────┬──────────────────┐
+│                         │         executed │           failed │
+├─────────────────────────┼──────────────────┼──────────────────┤
+│              iterations │                1 │                0 │
+├─────────────────────────┼──────────────────┼──────────────────┤
+│                requests │                4 │                0 │
+├─────────────────────────┼──────────────────┼──────────────────┤
+│            test-scripts │                4 │                0 │
+├─────────────────────────┼──────────────────┼──────────────────┤
+│      prerequest-scripts │                4 │                0 │
+├─────────────────────────┼──────────────────┼──────────────────┤
+│              assertions │                4 │                0 │
+├─────────────────────────┴──────────────────┴──────────────────┤
+│ total run duration: 1357ms                                    │
+├───────────────────────────────────────────────────────────────┤
+│ total data received: 0B (approx)                              │
+├───────────────────────────────────────────────────────────────┤
+│ average response time: 13ms [min: 5ms, max: 32ms, s.d.: 10ms] │
+└───────────────────────────────────────────────────────────────┘

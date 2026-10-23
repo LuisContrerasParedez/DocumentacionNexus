@@ -1,0 +1,10 @@
+2026-10-19 18:43:02  TC-REQ07-003 · Actualización de límite no negativo y no modificable al cerrar 
+- Límite -0.01 en cuenta ACTIVA
+    HTTP 400 | ok=2 fail=0 
+    body: {"message":"El límite diario no puede ser negativo."}
+- Límite 0.00 en cuenta ACTIVA
+    HTTP 200 | ok=1 fail=0 
+    body: {"message":"Límite diario actualizado a Q0.00.","limiteRetiroDiario":0.0}
+- Límite en cuenta CERRADA
+    HTTP 422 | ok=2 fail=0 
+    body: {"message":"No se puede actualizar el límite de una cuenta cerrada."}

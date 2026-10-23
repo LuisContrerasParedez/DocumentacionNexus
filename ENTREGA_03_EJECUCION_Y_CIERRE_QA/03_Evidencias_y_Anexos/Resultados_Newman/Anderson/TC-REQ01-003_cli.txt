@@ -1,0 +1,37 @@
+# 2026-10-19 18:45:23 newman (Anderson) TC-REQ01-003 · Rechazo de usuario inactivo o bloqueado 
+newman
+
+BancoERP Nexus · E2 Diseño e Implementación QA (46 casos)
+
+❏ REQ-01 / TC-REQ01-003 · Rechazo de usuario inactivo o bloqueado
+↳ Login qa_inactivo
+  POST http://localhost:15141/api/auth/login [403 Forbidden, 237B, 29ms]
+  ✓  TC-REQ01-003: HTTP 403
+  ✓  mensaje contiene "inactivo"
+  ✓  sin token
+
+↳ Login qa_bloqueado
+  POST http://localhost:15141/api/auth/login [423 Locked, 235B, 6ms]
+  ✓  TC-REQ01-003: HTTP 423
+  ✓  mensaje contiene "bloqueado"
+  ✓  sin token
+
+┌─────────────────────────┬──────────────────┬──────────────────┐
+│                         │         executed │           failed │
+├─────────────────────────┼──────────────────┼──────────────────┤
+│              iterations │                1 │                0 │
+├─────────────────────────┼──────────────────┼──────────────────┤
+│                requests │                2 │                0 │
+├─────────────────────────┼──────────────────┼──────────────────┤
+│            test-scripts │                2 │                0 │
+├─────────────────────────┼──────────────────┼──────────────────┤
+│      prerequest-scripts │                2 │                0 │
+├─────────────────────────┼──────────────────┼──────────────────┤
+│              assertions │                6 │                0 │
+├─────────────────────────┴──────────────────┴──────────────────┤
+│ total run duration: 691ms                                     │
+├───────────────────────────────────────────────────────────────┤
+│ total data received: 165B (approx)                            │
+├───────────────────────────────────────────────────────────────┤
+│ average response time: 17ms [min: 6ms, max: 29ms, s.d.: 11ms] │
+└───────────────────────────────────────────────────────────────┘

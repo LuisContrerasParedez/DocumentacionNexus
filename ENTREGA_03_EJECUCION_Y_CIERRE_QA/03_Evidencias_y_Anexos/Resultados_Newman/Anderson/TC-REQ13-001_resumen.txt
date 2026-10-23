@@ -1,0 +1,7 @@
+2026-10-19 18:47:55  TC-REQ13-001 · Código de banco ACH único 
+- Crear banco QA_NEXUS
+    HTTP 201 | ok=1 fail=0 
+    body: {"id":"6ad6ba31cf560ee3ce8d006e","nombre":"Banco QA Nexus","codigo":"QA_NEXUS","descripcion":"Banco sintético exclusivo QA E2 Nexus; sin integración real.","activo":true,"apiBaseUrl":"http://mock-bank:8081","apiEndpoint":"/success/transferencias","httpMethod":"POST","authLoginEndpoint":null,"authEmail":null,"authPassword":null,"headers":{},"estructuraJsonFormulario":"\"{ \\\"numeroCuentaDestino\\\" : \\\"EXT-QA-0001\\\" }\"","estructuraJsonPayload":"\"{ }\"","lookupCuentaEndpoint":"/cuentas/search/{numeroCuenta}","lookupCuentasDisponiblesEndpoint":null,"fechaCreacion":"2026-10-20T00:47:45.313Z","fechaActualizacion":"2026-10-20T00:47:45.313Z"}
+- Crear QA_NEXUS duplicado
+    HTTP 409 | ok=2 fail=0 
+    body: {"message":"Ya existe un banco ACH con el mismo codigo."}

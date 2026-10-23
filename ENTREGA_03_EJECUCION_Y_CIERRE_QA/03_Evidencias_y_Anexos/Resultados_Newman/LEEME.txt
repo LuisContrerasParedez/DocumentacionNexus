@@ -1,0 +1,12 @@
+Resultados de Newman 6.2.3 — Ejecución E3 (19/10/2026, 18:40-18:54 UTC-6)
+Estructura: <Especialista>/<TC>[_parte|_tag].json (reporte JSON de Newman), _cli.txt (salida de consola), _resumen.txt (código y cuerpo por petición).
+- Walter/  : REQ-04, 05, 06, 07, 12 (13 casos)
+- Sergio/  : REQ-08, 09, 10, 11, 18 (14 casos)
+- Anderson/: REQ-01, 02, 03, 13, 14, 17 (15 casos)
+- Luis/    : REQ-15, 16 (4 casos) + 00_Preparacion_REP01/BC01 + Regresion_P1/ (30 casos P1 repetidos al cierre)
+Cada carpeta incluye 00_Preparacion.json (tokens). Los casos con reinicio de fixture se ejecutaron en dos partes (_parte1/_parte2); en esos casos
+y en TC-REQ04-001 (fechas ajustadas a la fecha UTC del servidor) se guarda junto al resultado la colección efectivamente ejecutada (_coleccion_ejecutada.json),
+extraída sin cambios de Postman_Collection_QA_Nexus.json salvo lo indicado.
+Anderson/TC-REQ14-003_parte2_Q10.01_INTENTO_INVALIDO_sin_caja.* es un intento descartado (caja cerrada por la sección 5 del reinicio); el válido es TC-REQ14-003_parte2_Q10.01.json.
+Los JWT y refresh tokens se redactaron en los JSON (<JWT-redactado>). Verificaciones SQL por caso: ../Logs_Consola_Servidor/Verificaciones_SQL/.
+Ciclo 2 (22/10/2026): la re-prueba y la regresión completa sobre la build corregida están en ../Re_Prueba_Cierre_E3 (ver su LEEME.txt).

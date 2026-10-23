@@ -1,0 +1,13 @@
+2026-10-19 18:42:22  TC-REQ05-002 · EN_REVISION no abre cuenta; ACTIVO sí puede continuar 
+- Precondición: caja ABIERTA de qa_cajero (acepta "ya abierta")
+    HTTP 200 | ok=1 fail=0 
+    body: {"sesionCajaId":"80439ba9-fae3-4830-bea1-84b191a91688","message":"Caja abierta. Puede comenzar a operar."}
+- Apertura con cliente EN_REVISION (Carla)
+    HTTP 422 | ok=1 fail=0 
+    body: {"message":"El cliente no esta activo. Estado: EN_REVISION"}
+- PATCH cliente a ACTIVO
+    HTTP 200 | ok=1 fail=0 
+    body: {"message":"Estado cambiado a ACTIVO","estado":"ACTIVO"}
+- Repetir apertura (cliente ACTIVO)
+    HTTP 201 | ok=1 fail=0 
+    body: {"id":"65f50c35-0170-4077-a877-1e45c0cc2d54","numeroCuenta":"AH261020854073","tipoCuenta":"AHORRO","saldoMinimo":100.00,"message":"Cuenta abierta correctamente"}

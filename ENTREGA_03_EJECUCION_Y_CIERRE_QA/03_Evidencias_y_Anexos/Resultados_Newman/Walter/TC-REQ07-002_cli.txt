@@ -1,0 +1,39 @@
+# 2026-10-19 18:43:00 newman (Walter) TC-REQ07-002 · Cierre solo con saldo cero 
+newman
+
+BancoERP Nexus · E2 Diseño e Implementación QA (46 casos)
+
+❏ REQ-07 / TC-REQ07-002 · Cierre solo con saldo cero
+↳ Cerrar AH261002000203 (saldo Q500)
+  PATCH http://localhost:15141/api/cuentas/6e68ac18-6765-559e-86bb-4931f89b74ce/cerrar [422 Unprocessable Entity, 221B, 40ms]
+  ✓  TC-REQ07-002: HTTP 422
+  ✓  mensaje contiene "No se puede cerrar"
+
+↳ Cerrar AH261002000204 (saldo Q0)
+  PATCH http://localhost:15141/api/cuentas/9dfa3756-c7af-5e3b-8cd6-c9d395a38482/cerrar [200 OK, 195B, 7ms]
+  ✓  TC-REQ07-002: HTTP 200
+
+↳ Consultar AH261002000204
+  GET http://localhost:15141/api/cuentas/9dfa3756-c7af-5e3b-8cd6-c9d395a38482 [200 OK, 572B, 2ms]
+  ✓  TC-REQ07-002: HTTP 200
+  ✓  CERRADA
+
+┌─────────────────────────┬──────────────────┬──────────────────┐
+│                         │         executed │           failed │
+├─────────────────────────┼──────────────────┼──────────────────┤
+│              iterations │                1 │                0 │
+├─────────────────────────┼──────────────────┼──────────────────┤
+│                requests │                3 │                0 │
+├─────────────────────────┼──────────────────┼──────────────────┤
+│            test-scripts │                3 │                0 │
+├─────────────────────────┼──────────────────┼──────────────────┤
+│      prerequest-scripts │                3 │                0 │
+├─────────────────────────┼──────────────────┼──────────────────┤
+│              assertions │                5 │                0 │
+├─────────────────────────┴──────────────────┴──────────────────┤
+│ total run duration: 1021ms                                    │
+├───────────────────────────────────────────────────────────────┤
+│ total data received: 526B (approx)                            │
+├───────────────────────────────────────────────────────────────┤
+│ average response time: 16ms [min: 2ms, max: 40ms, s.d.: 16ms] │
+└───────────────────────────────────────────────────────────────┘

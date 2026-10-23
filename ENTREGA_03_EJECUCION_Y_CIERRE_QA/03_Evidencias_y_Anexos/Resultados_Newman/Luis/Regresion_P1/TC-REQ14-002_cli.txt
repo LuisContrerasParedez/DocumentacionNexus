@@ -1,0 +1,43 @@
+# 2026-10-19 18:54:02 newman (Luis/Regresion_P1) TC-REQ14-002 · ACH rechazada por banco inactivo o saldo insuficiente 
+newman
+
+BancoERP Nexus · E2 Diseño e Implementación QA (46 casos)
+
+❏ REQ-14 / TC-REQ14-002 · ACH rechazada por banco inactivo o saldo insuficiente
+↳ Desactivar QA_NEXUS
+  PATCH http://localhost:15141/api/ach/bancos/6ad6ba31cf560ee3ce8d006e/estado [200 OK, 801B, 32ms]
+  ✓  TC-REQ14-002: HTTP 200
+
+↳ Enviar con banco inactivo
+  POST http://localhost:15141/api/ach/transferencias/enviar [422 Unprocessable Entity, 220B, 8ms]
+  ✓  TC-REQ14-002: HTTP 422
+  ✓  mensaje contiene "inactivo"
+
+↳ Reactivar QA_NEXUS
+  PATCH http://localhost:15141/api/ach/bancos/6ad6ba31cf560ee3ce8d006e/estado [200 OK, 799B, 9ms]
+  ✓  TC-REQ14-002: HTTP 200
+
+↳ Enviar Q1500.01 desde MO261002000102 (disponible Q1500)
+  POST http://localhost:15141/api/ach/transferencias/enviar [422 Unprocessable Entity, 246B, 9ms]
+  ✓  TC-REQ14-002: HTTP 422
+  ✓  mensaje contiene "insuficiente"
+
+┌─────────────────────────┬──────────────────┬──────────────────┐
+│                         │         executed │           failed │
+├─────────────────────────┼──────────────────┼──────────────────┤
+│              iterations │                1 │                0 │
+├─────────────────────────┼──────────────────┼──────────────────┤
+│                requests │                4 │                0 │
+├─────────────────────────┼──────────────────┼──────────────────┤
+│            test-scripts │                4 │                0 │
+├─────────────────────────┼──────────────────┼──────────────────┤
+│      prerequest-scripts │                4 │                0 │
+├─────────────────────────┼──────────────────┼──────────────────┤
+│              assertions │                6 │                0 │
+├─────────────────────────┴──────────────────┴──────────────────┤
+│ total run duration: 1365ms                                    │
+├───────────────────────────────────────────────────────────────┤
+│ total data received: 1.44kB (approx)                          │
+├───────────────────────────────────────────────────────────────┤
+│ average response time: 14ms [min: 8ms, max: 32ms, s.d.: 10ms] │
+└───────────────────────────────────────────────────────────────┘

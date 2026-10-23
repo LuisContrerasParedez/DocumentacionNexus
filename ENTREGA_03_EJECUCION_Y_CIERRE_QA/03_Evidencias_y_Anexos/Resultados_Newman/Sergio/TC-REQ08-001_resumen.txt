@@ -1,0 +1,7 @@
+2026-10-19 18:43:48  TC-REQ08-001 · Una sola caja abierta por día 
+- Primera apertura fondo Q1000
+    HTTP 200 | ok=1 fail=0 
+    body: {"sesionCajaId":"3d1cd63b-d217-4d44-a92b-4fb44cf8c4c6","message":"Caja abierta. Puede comenzar a operar."}
+- Segunda apertura el mismo día
+    HTTP 422 | ok=2 fail=0 
+    body: {"message":"Ya tiene una sesion de caja abierta hoy"}

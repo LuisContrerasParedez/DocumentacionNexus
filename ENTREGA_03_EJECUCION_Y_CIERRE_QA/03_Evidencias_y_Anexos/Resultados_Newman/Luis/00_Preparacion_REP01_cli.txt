@@ -1,0 +1,75 @@
+# 2026-10-19 18:51:13 newman (Luis) 00 · Preparación (tokens) REP01
+newman
+
+BancoERP Nexus · E2 Diseño e Implementación QA (46 casos)
+
+❏ 00 · Preparación (tokens)
+↳ Login qa_admin
+  POST http://localhost:15141/api/auth/login [200 OK, 30.24kB, 170ms]
+  ✓  Prep: HTTP 200
+
+↳ Login qa_cajero
+  POST http://localhost:15141/api/auth/login [200 OK, 7.45kB, 15ms]
+  ✓  Prep: HTTP 200
+
+↳ Login qa_cajero2
+  POST http://localhost:15141/api/auth/login [401 Unauthorized, 197B, 8ms]
+  1. Prep: HTTP 200
+
+↳ Login qa_sin_empleado
+  POST http://localhost:15141/api/auth/login [401 Unauthorized, 197B, 5ms]
+  2. Prep: HTTP 200
+
+↳ Login qa_cliente_ana
+  POST http://localhost:15141/api/auth/login [401 Unauthorized, 197B, 9ms]
+  3. Prep: HTTP 200
+
+↳ Login qa_cliente_bruno
+  POST http://localhost:15141/api/auth/login [401 Unauthorized, 197B, 8ms]
+  4. Prep: HTTP 200
+
+↳ Login externo qa.banco.externo@nexus.test
+  POST http://localhost:15254/api/external/auth/login [200 OK, 1.37kB, 139ms]
+  ✓  Prep: HTTP 200
+
+┌─────────────────────────┬───────────────────┬──────────────────┐
+│                         │          executed │           failed │
+├─────────────────────────┼───────────────────┼──────────────────┤
+│              iterations │                 1 │                0 │
+├─────────────────────────┼───────────────────┼──────────────────┤
+│                requests │                 7 │                0 │
+├─────────────────────────┼───────────────────┼──────────────────┤
+│            test-scripts │                 7 │                0 │
+├─────────────────────────┼───────────────────┼──────────────────┤
+│      prerequest-scripts │                 7 │                0 │
+├─────────────────────────┼───────────────────┼──────────────────┤
+│              assertions │                 7 │                4 │
+├─────────────────────────┴───────────────────┴──────────────────┤
+│ total run duration: 2.6s                                       │
+├────────────────────────────────────────────────────────────────┤
+│ total data received: 38.77kB (approx)                          │
+├────────────────────────────────────────────────────────────────┤
+│ average response time: 50ms [min: 5ms, max: 170ms, s.d.: 66ms] │
+└────────────────────────────────────────────────────────────────┘
+
+[31m  # [39m[31m failure        [39m[31m detail                                                      [39m
+[90m    [39m[90m                [39m[90m                                                             [39m
+ 1.  AssertionError  Prep: HTTP 200                                              
+                     expected 401 to be one of [ 200 ]                           
+                     at assertion:0 in test-script                               
+                     inside "00 · Preparación (tokens) / Login qa_cajero2"       
+[90m    [39m[90m                [39m[90m                                                             [39m
+ 2.  AssertionError  Prep: HTTP 200                                              
+                     expected 401 to be one of [ 200 ]                           
+                     at assertion:0 in test-script                               
+                     inside "00 · Preparación (tokens) / Login qa_sin_empleado"  
+[90m    [39m[90m                [39m[90m                                                             [39m
+ 3.  AssertionError  Prep: HTTP 200                                              
+                     expected 401 to be one of [ 200 ]                           
+                     at assertion:0 in test-script                               
+                     inside "00 · Preparación (tokens) / Login qa_cliente_ana"   
+[90m    [39m[90m                [39m[90m                                                             [39m
+ 4.  AssertionError  Prep: HTTP 200                                              
+                     expected 401 to be one of [ 200 ]                           
+                     at assertion:0 in test-script                               
+                     inside "00 · Preparación (tokens) / Login qa_cliente_bruno" 

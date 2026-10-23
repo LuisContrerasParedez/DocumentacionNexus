@@ -1,0 +1,4 @@
+2026-10-19 18:53:39  TC-REQ03-001 · Acceso permitido con permiso requerido 
+- GET /api/clientes con qa_admin
+    HTTP 200 | ok=1 fail=0 
+    body: [{"id":"119fa00d-e0ad-4b8a-b201-71bb218674a5","tipoCliente":"NATURAL","nombreCompleto":"Elena Nueva","dpi":"2999999990197","email":"elena.nueva@nexus.test","telefono":"55990011","estado":"EN_REVISION","fechaNacimiento":"1992-05-05","creadoEn":"2026-10-20T00:42:21.816896Z","fechaAprobacion":null},{"id":"449ad0fe-35c6-4045-86a0-5d8b74223d86","tipoCliente":"NATURAL","nombreCompleto":"Felipe Dpi","dpi":"2999999990198","email":"felipe.dpi@nexus.test","telefono":"55334455","estado":"EN_REVISION","fechaNacimiento":"1993-02-02","creadoEn":"2026-10-20T00:41:55.513256Z","fechaAprobacion":null},{"id":"b53f0390-eeff-47d6-99ac-522297d0da71","tipoCliente":"NATURAL","nombreCompleto":"Diego Frontera","dpi":

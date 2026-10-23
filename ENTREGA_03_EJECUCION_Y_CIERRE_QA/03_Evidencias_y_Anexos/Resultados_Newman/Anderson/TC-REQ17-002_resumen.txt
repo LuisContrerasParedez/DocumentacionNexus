@@ -1,0 +1,10 @@
+2026-10-19 18:49:02  TC-REQ17-002 · Permiso externo obligatorio en PublicAPI 
+- Login externo qa.banco.externo@nexus.test
+    HTTP 200 | ok=1 fail=0 
+    body: {"accessToken":"<JWT>","expiresAt":"2026-10-20T01:49:03.0246843Z","tokenType":"Bearer"}
+- Búsqueda de cuenta sin ach.public.cuentas.consultar
+    HTTP 403 | ok=1 fail=0 
+    body: 
+- Transferencia entrante sin ach.public.transferencias.crear
+    HTTP 403 | ok=1 fail=0 
+    body: 
