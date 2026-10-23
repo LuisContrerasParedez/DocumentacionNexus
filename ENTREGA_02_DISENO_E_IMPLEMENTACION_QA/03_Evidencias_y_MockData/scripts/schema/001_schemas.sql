@@ -1,0 +1,15 @@
+-- Production deploy - paso 001
+-- Crea extension y schemas requeridos por el codigo actual.
+
+CREATE EXTENSION IF NOT EXISTS pgcrypto;
+
+CREATE SCHEMA IF NOT EXISTS seguridad;
+CREATE SCHEMA IF NOT EXISTS catalogos;
+CREATE SCHEMA IF NOT EXISTS crm;
+CREATE SCHEMA IF NOT EXISTS rrhh;
+CREATE SCHEMA IF NOT EXISTS cuentas;
+CREATE SCHEMA IF NOT EXISTS cajas;
+CREATE SCHEMA IF NOT EXISTS transacciones;
+CREATE SCHEMA IF NOT EXISTS ach;
+CREATE SCHEMA IF NOT EXISTS contabilidad;
+CREATE SCHEMA IF NOT EXISTS auditoria;
