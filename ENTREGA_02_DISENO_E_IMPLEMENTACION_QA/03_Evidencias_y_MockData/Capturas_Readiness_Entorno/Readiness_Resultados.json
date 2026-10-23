@@ -1,0 +1,424 @@
+{
+  "fecha_hora_Guatemala": "2026-10-06T18:42:29-06:00",
+  "checks": [
+    {
+      "id": "RD-01",
+      "title": "Seis servicios QA activos",
+      "estado": "APTO",
+      "observado": [
+        {
+          "Service": "frontend",
+          "Name": "bancoerp-e2-qa-frontend-1",
+          "State": "running",
+          "Health": "",
+          "Publishers": [
+            {
+              "URL": "127.0.0.1",
+              "TargetPort": 3000,
+              "PublishedPort": 13000,
+              "Protocol": "tcp"
+            }
+          ]
+        },
+        {
+          "Service": "internal-api",
+          "Name": "bancoerp-e2-qa-internal-api-1",
+          "State": "running",
+          "Health": "",
+          "Publishers": [
+            {
+              "URL": "127.0.0.1",
+              "TargetPort": 8080,
+              "PublishedPort": 15141,
+              "Protocol": "tcp"
+            }
+          ]
+        },
+        {
+          "Service": "mock-bank",
+          "Name": "bancoerp-e2-qa-mock-bank-1",
+          "State": "running",
+          "Health": "",
+          "Publishers": [
+            {
+              "URL": "127.0.0.1",
+              "TargetPort": 8081,
+              "PublishedPort": 18081,
+              "Protocol": "tcp"
+            }
+          ]
+        },
+        {
+          "Service": "mongo",
+          "Name": "bancoerp-e2-qa-mongo-1",
+          "State": "running",
+          "Health": "",
+          "Publishers": [
+            {
+              "URL": "127.0.0.1",
+              "TargetPort": 27017,
+              "PublishedPort": 17017,
+              "Protocol": "tcp"
+            }
+          ]
+        },
+        {
+          "Service": "postgres",
+          "Name": "bancoerp-e2-qa-postgres-1",
+          "State": "running",
+          "Health": "healthy",
+          "Publishers": [
+            {
+              "URL": "127.0.0.1",
+              "TargetPort": 5432,
+              "PublishedPort": 15433,
+              "Protocol": "tcp"
+            }
+          ]
+        },
+        {
+          "Service": "public-api",
+          "Name": "bancoerp-e2-qa-public-api-1",
+          "State": "running",
+          "Health": "",
+          "Publishers": [
+            {
+              "URL": "127.0.0.1",
+              "TargetPort": 8080,
+              "PublishedPort": 15254,
+              "Protocol": "tcp"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "RD-02",
+      "title": "Accesibilidad http://localhost:13000/login",
+      "estado": "APTO",
+      "observado": {
+        "url": "http://localhost:13000/login",
+        "HTTP": 200,
+        "content_type": "text/html",
+        "bytes": 612
+      }
+    },
+    {
+      "id": "RD-03",
+      "title": "Accesibilidad http://localhost:15141/swagger/v1/swagger.json",
+      "estado": "APTO",
+      "observado": {
+        "url": "http://localhost:15141/swagger/v1/swagger.json",
+        "HTTP": 200,
+        "content_type": "application/json;charset=utf-8",
+        "bytes": 81379,
+        "rutas": 72
+      }
+    },
+    {
+      "id": "RD-04",
+      "title": "Accesibilidad http://localhost:15254/swagger/v1/swagger.json",
+      "estado": "APTO",
+      "observado": {
+        "url": "http://localhost:15254/swagger/v1/swagger.json",
+        "HTTP": 200,
+        "content_type": "application/json;charset=utf-8",
+        "bytes": 14329,
+        "rutas": 4
+      }
+    },
+    {
+      "id": "RD-05",
+      "title": "Base QA y datos masivos cargados",
+      "estado": "APTO",
+      "observado": {
+        "database": "bancoerp_e2_qa",
+        "usuarios": 8,
+        "clientes": 1000,
+        "cuentas": 2000,
+        "movimientos": 10000,
+        "plan_activo": 2
+      }
+    },
+    {
+      "id": "RD-06",
+      "title": "Aislamiento: destinos internos, red y montajes",
+      "estado": "APTO",
+      "observado": {
+        "apis": [
+          {
+            "service": "internal-api",
+            "postgres_host": "postgres",
+            "database": "bancoerp_e2_qa",
+            "environment": "QA",
+            "image_id": "sha256:d8923dc3472f6248fccb4c79f7fb613317aac867576d01c9c0f767b1d8e0e0db",
+            "networks": [
+              "bancoerp-e2-qa_default"
+            ],
+            "volumes": [],
+            "binds": [
+              {
+                "destino": "/src",
+                "escritura": false
+              }
+            ]
+          },
+          {
+            "service": "public-api",
+            "postgres_host": "postgres",
+            "database": "bancoerp_e2_qa",
+            "environment": "QA",
+            "image_id": "sha256:0d5bff3eacf8767246f6b01c7d30aded9eb1a91efdf7f27a4814834afde109ab",
+            "networks": [
+              "bancoerp-e2-qa_default"
+            ],
+            "volumes": [],
+            "binds": [
+              {
+                "destino": "/src",
+                "escritura": false
+              }
+            ]
+          }
+        ],
+        "red": "bancoerp-e2-qa_default",
+        "internal": false,
+        "egreso_produccion": "Sin destinos productivos configurados; red/volúmenes exclusivos y puertos solo 127.0.0.1. Egreso no bloqueado por firewall."
+      }
+    },
+    {
+      "id": "RD-07",
+      "title": "MongoDB QA accesible",
+      "estado": "APTO",
+      "observado": {
+        "database": "bancoerp_e2_qa",
+        "host": "mongo",
+        "uso": "Configuración ACH; cinco bancos simulados locales, sin bancos reales"
+      }
+    },
+    {
+      "id": "RD-08",
+      "title": "Login de preparación interno",
+      "estado": "APTO",
+      "observado": {
+        "HTTP": 200,
+        "token_presente": true,
+        "token": "[ENMASCARADO]",
+        "usuario": "qa_cajero"
+      }
+    },
+    {
+      "id": "RD-09",
+      "title": "Login de preparación externo",
+      "estado": "APTO",
+      "observado": {
+        "HTTP": 200,
+        "token_presente": true,
+        "token": "[ENMASCARADO]",
+        "usuario": "qa_externo@example.invalid"
+      }
+    },
+    {
+      "id": "RD-10",
+      "title": "Cuenta destino sintética consultable",
+      "estado": "APTO",
+      "observado": {
+        "HTTP": 200,
+        "response": {
+          "status": true,
+          "message": "Cuenta encontrada.",
+          "data": {
+            "numeroCuenta": "AH000000000001",
+            "nombreTitular": "Persona Sintetica QA 0001",
+            "moneda": "Q",
+            "estado": "ACTIVA",
+            "puedeRecibirTransferencias": true
+          },
+          "errors": null
+        }
+      }
+    },
+    {
+      "id": "RD-11",
+      "title": "Control de autenticación representativo",
+      "estado": "APTO",
+      "observado": {
+        "HTTP": 401,
+        "ruta": "/api/clientes",
+        "token": "ausente"
+      }
+    },
+    {
+      "id": "RD-12",
+      "title": "CORS http://localhost:13000",
+      "estado": "APTO",
+      "observado": {
+        "HTTP": 204,
+        "Origin": "http://localhost:13000",
+        "allow_origin": "http://localhost:13000"
+      }
+    },
+    {
+      "id": "RD-13",
+      "title": "CORS http://origen-no-permitido.invalid",
+      "estado": "APTO",
+      "observado": {
+        "HTTP": 204,
+        "Origin": "http://origen-no-permitido.invalid",
+        "allow_origin": null
+      }
+    },
+    {
+      "id": "RD-15",
+      "title": "Banco simulado QA accesible",
+      "estado": "APTO",
+      "observado": {
+        "HTTP": 200,
+        "response": {
+          "status": "READY",
+          "synthetic": true,
+          "scenarios": [
+            "success",
+            "http500",
+            "invalid",
+            "timeout",
+            "duplicate"
+          ],
+          "timeoutDelaySeconds": 20
+        }
+      }
+    },
+    {
+      "id": "RD-14",
+      "title": "Colección Postman disponible",
+      "estado": "APTO",
+      "observado": {
+        "archivo": "Postman_Collection_QA.json",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+        "sha256": "c00ec04250517e83ccbd332dad0681bc914f8c953faa0730df8c951a63a4c334"
+      }
+    }
+  ],
+  "observaciones": [
+    {
+      "id": "OBS-01",
+      "reqs": [
+        "REQ-06",
+        "REQ-17"
+      ],
+      "HTTP": 200,
+      "ruta": "/api/ach/bancos",
+      "sin_token": true,
+      "observacion": "El catálogo ACH permanece accesible sin token.",
+      "response": [
+        {
+          "id": "e20000000000000000000005",
+          "nombre": "Banco Sintetico duplicate",
+          "codigo": "E2_QA_DUPLICATE",
+          "descripcion": "Fixture exclusivamente QA; sin integración real.",
+          "activo": true,
+          "apiBaseUrl": "http://mock-bank:8081",
+          "apiEndpoint": "/duplicate/transferencias",
+          "httpMethod": "POST",
+          "authLoginEndpoint": null,
+          "authEmail": null,
+          "authPassword": null,
+          "headers": {},
+          "estructuraJsonFormulario": "{ \"numeroCuentaDestino\" : \"EXT-QA-0001\" }",
+          "estructuraJsonPayload": "{ }",
+          "lookupCuentaEndpoint": "/cuentas/search/{numeroCuenta}",
+          "lookupCuentasDisponiblesEndpoint": null,
+          "fechaCreacion": "2026-10-07T00:15:58.602Z",
+          "fechaActualizacion": "2026-10-07T00:15:58.603Z"
+        },
+        {
+          "id": "e20000000000000000000004",
+          "nombre": "Banco Sintetico timeout",
+          "codigo": "E2_QA_TIMEOUT",
+          "descripcion": "Fixture exclusivamente QA; sin integración real.",
+          "activo": true,
+          "apiBaseUrl": "http://mock-bank:8081",
+          "apiEndpoint": "/timeout/transferencias",
+          "httpMethod": "POST",
+          "authLoginEndpoint": null,
+          "authEmail": null,
+          "authPassword": null,
+          "headers": {},
+          "estructuraJsonFormulario": "{ \"numeroCuentaDestino\" : \"EXT-QA-0001\" }",
+          "estructuraJsonPayload": "{ }",
+          "lookupCuentaEndpoint": "/cuentas/search/{numeroCuenta}",
+          "lookupCuentasDisponiblesEndpoint": null,
+          "fechaCreacion": "2026-10-07T00:15:58.597Z",
+          "fechaActualizacion": "2026-10-07T00:15:58.599Z"
+        },
+        {
+          "id": "e20000000000000000000003",
+          "nombre": "Banco Sintetico invalid",
+          "codigo": "E2_QA_INVALID",
+          "descripcion": "Fixture exclusivamente QA; sin integración real.",
+          "activo": true,
+          "apiBaseUrl": "http://mock-bank:8081",
+          "apiEndpoint": "/invalid/transferencias",
+          "httpMethod": "POST",
+          "authLoginEndpoint": null,
+          "authEmail": null,
+          "authPassword": null,
+          "headers": {},
+          "estructuraJsonFormulario": "{ \"numeroCuentaDestino\" : \"EXT-QA-0001\" }",
+          "estructuraJsonPayload": "{ }",
+          "lookupCuentaEndpoint": "/cuentas/search/{numeroCuenta}",
+          "lookupCuentasDisponiblesEndpoint": null,
+          "fechaCreacion": "2026-10-07T00:15:58.592Z",
+          "fechaActualizacion": "2026-10-07T00:15:58.593Z"
+        },
+        {
+          "id": "e20000000000000000000002",
+          "nombre": "Banco Sintetico http500",
+          "codigo": "E2_QA_HTTP500",
+          "descripcion": "Fixture exclusivamente QA; sin integración real.",
+          "activo": true,
+          "apiBaseUrl": "http://mock-bank:8081",
+          "apiEndpoint": "/http500/transferencias",
+          "httpMethod": "POST",
+          "authLoginEndpoint": null,
+          "authEmail": null,
+          "authPassword": null,
+          "headers": {},
+          "estructuraJsonFormulario": "{ \"numeroCuentaDestino\" : \"EXT-QA-0001\" }",
+          "estructuraJsonPayload": "{ }",
+          "lookupCuentaEndpoint": "/cuentas/search/{numeroCuenta}",
+          "lookupCuentasDisponiblesEndpoint": null,
+          "fechaCreacion": "2026-10-07T00:15:58.587Z",
+          "fechaActualizacion": "2026-10-07T00:15:58.588Z"
+        },
+        {
+          "id": "e20000000000000000000001",
+          "nombre": "Banco Sintetico success",
+          "codigo": "E2_QA_SUCCESS",
+          "descripcion": "Fixture exclusivamente QA; sin integración real.",
+          "activo": true,
+          "apiBaseUrl": "http://mock-bank:8081",
+          "apiEndpoint": "/success/transferencias",
+          "httpMethod": "POST",
+          "authLoginEndpoint": null,
+          "authEmail": null,
+          "authPassword": null,
+          "headers": {},
+          "estructuraJsonFormulario": "{ \"numeroCuentaDestino\" : \"EXT-QA-0001\" }",
+          "estructuraJsonPayload": "{ }",
+          "lookupCuentaEndpoint": "/cuentas/search/{numeroCuenta}",
+          "lookupCuentasDisponiblesEndpoint": null,
+          "fechaCreacion": "2026-10-07T00:15:58.575Z",
+          "fechaActualizacion": "2026-10-07T00:15:58.581Z"
+        }
+      ]
+    }
+  ],
+  "dictamen": "APTO CON RESTRICCIONES",
+  "restricciones": [
+    "No se declara ejecución de la suite formal completa. Se ejecutaron solo comprobaciones de preparación.",
+    "Diseño sin bloqueos por definición: reglas aprobadas; banco simulado preparado. El código actual debe contrastarse con los nuevos oráculos.",
+    "OBS-01: H-05 persiste; priorizar autorización antes de aceptación integral.",
+    "No se ejecutó CI remoto ni pruebas TLS/carga."
+  ]
+}

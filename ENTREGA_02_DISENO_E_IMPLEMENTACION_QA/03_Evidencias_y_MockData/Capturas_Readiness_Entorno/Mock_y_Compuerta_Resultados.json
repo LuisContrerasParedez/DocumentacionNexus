@@ -1,0 +1,170 @@
+{
+  "fecha_hora_Guatemala": "2026-10-06T18:16:05-06:00",
+  "alcance": "Comprobación del banco simulado y de la compuerta LOCAL. No equivale a ejecución integral del sistema ni a una corrida CI remota.",
+  "controles": [
+    {
+      "id": "MOCK-01",
+      "resultado": "OK",
+      "observado": {
+        "status": "READY",
+        "synthetic": true,
+        "scenarios": [
+          "success",
+          "http500",
+          "invalid",
+          "timeout",
+          "duplicate"
+        ],
+        "timeoutDelaySeconds": 20
+      }
+    },
+    {
+      "id": "MOCK-02",
+      "resultado": "OK",
+      "observado": {
+        "status": true,
+        "message": "Cuenta sintetica encontrada.",
+        "data": {
+          "numeroCuenta": "EXT-QA-0001",
+          "estado": true,
+          "moneda": "GTQ",
+          "tipoCuenta": "AHORRO",
+          "titular": {
+            "nombre": "Titular QA Sintetico"
+          }
+        }
+      }
+    },
+    {
+      "id": "MOCK-03",
+      "resultado": "OK",
+      "observado": {
+        "HTTP": 201,
+        "response": {
+          "status": true,
+          "message": "Transferencia sintetica aprobada.",
+          "data": {
+            "estado": "APROBADA",
+            "codigo_confirmacion": "E2-SMOKE-0001",
+            "monto": "100.00"
+          }
+        }
+      }
+    },
+    {
+      "id": "MOCK-04",
+      "resultado": "OK",
+      "observado": {
+        "HTTP": 409,
+        "response": {
+          "status": false,
+          "message": "La transferencia ya fue procesada.",
+          "codigo_confirmacion": "E2-SMOKE-0001"
+        }
+      }
+    },
+    {
+      "id": "MOCK-05",
+      "resultado": "OK",
+      "observado": {
+        "HTTP": 500,
+        "response": {
+          "status": false,
+          "message": "Fallo sintetico de banco externo."
+        }
+      }
+    },
+    {
+      "id": "MOCK-06",
+      "resultado": "OK",
+      "observado": {
+        "HTTP": 200,
+        "cuerpo_JSON_invalido": true
+      }
+    },
+    {
+      "id": "MOCK-07",
+      "resultado": "OK",
+      "observado": {
+        "timeout_cliente_fixture_segundos": 0.5,
+        "demora_mock_segundos": 20,
+        "observado": 0.501,
+        "nota": "Verifica demora del fixture, no el timeout de 15 s del producto."
+      }
+    },
+    {
+      "id": "MOCK-08",
+      "resultado": "OK",
+      "observado": {
+        "processed": [
+          "E2-SMOKE-0001"
+        ],
+        "attempts": {
+          "E2-SMOKE-0001": 2,
+          "E2-SMOKE-0002": 1,
+          "E2-SMOKE-0003": 1,
+          "E2-SMOKE-0004": 1
+        }
+      }
+    },
+    {
+      "id": "GATE-ALTA",
+      "resultado": "OK",
+      "observado": {
+        "exit_code": 1,
+        "decision": "RECHAZADO",
+        "criticas": 0,
+        "altas": 1,
+        "medias": 0,
+        "bajas": 0,
+        "seguimiento": []
+      }
+    },
+    {
+      "id": "GATE-CRITICA",
+      "resultado": "OK",
+      "observado": {
+        "exit_code": 1,
+        "decision": "RECHAZADO",
+        "criticas": 1,
+        "altas": 0,
+        "medias": 0,
+        "bajas": 0,
+        "seguimiento": []
+      }
+    },
+    {
+      "id": "GATE-MEDIA",
+      "resultado": "OK",
+      "observado": {
+        "exit_code": 0,
+        "decision": "APROBADO_CON_SEGUIMIENTO",
+        "criticas": 0,
+        "altas": 0,
+        "medias": 1,
+        "bajas": 0,
+        "seguimiento": [
+          {
+            "id": "QA-HALLAZGO-MEDIA",
+            "severidad": "MEDIA",
+            "componente": "componente-sintetico"
+          }
+        ]
+      }
+    },
+    {
+      "id": "GATE-BAJA",
+      "resultado": "OK",
+      "observado": {
+        "exit_code": 0,
+        "decision": "APROBADO",
+        "criticas": 0,
+        "altas": 0,
+        "medias": 0,
+        "bajas": 1,
+        "seguimiento": []
+      }
+    }
+  ],
+  "errores": 0
+}
